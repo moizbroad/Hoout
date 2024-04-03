@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 const Layout = () => {
   return (
   <>
-  <section className='px-[100px]'>
+  <section >
   <HeaderSection />
 
 <div >

@@ -8,6 +8,7 @@ import grayLine from "../assets/authImages/grayLine.svg";
 import thumbsUp from "../assets/authImages/thumbsUp.svg";
 import signinBlur from "../assets/authImages/signinBlur.png";
 import InputField from "../components/Common/InputField";
+import Switch from "../components/Common/Switch";
 
 const Signin = () => {
   return (
@@ -22,7 +23,7 @@ const Signin = () => {
                <div className="yellowBar   bg-[#FBC700] w-[80%]  rounded-xl items-center py-[10px] px-[20px] gap-2 mb-[22.34px] flex">
             <img src={thumbsUp} alt="" />
             <div>
-              <h6 className="text-22">Lorem Ipsum is simply</h6>
+              <h6 className="text-20">Lorem Ipsum is simply</h6>
             </div>
           </div>
               <h6 className="flex-1 text-20 font-normal leading-[24px]  mt-[10px] text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h6>
@@ -90,10 +91,8 @@ const Signin = () => {
                 </div>
 
               <div className="recPasswrd mb-[30px] flex w-full justify-between">
-                <div className="flex gap-2  items-center">
-                <input type="checkbox" id="switch" /><label for="switch"></label>
-                <span className="block">Remember me</span>
-                </div>
+                
+                <Switch/>
                  
                 <a href="#" className="text-14 text-red">
                 Recover Password </a> </div>

@@ -1,12 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import "./main.css";
-import "./index.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Landingpage from "./Pages/Landingpage";
-import ShopPage from "./Pages/ShopPage";
 import Layout from "./components/Layout/Layout";
-import IsAuthenticated from "./components/Auth/IsAuthenticated";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 
@@ -23,14 +20,10 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
-            <Route element={<IsAuthenticated />}>
-            
-            <Route path="/" element={<Landingpage />} />
-            <Route path="shop-page/" element={<ShopPage />} />
-            </Route>
-            <Route path="/sign-in" element={<Signin />} />
-            <Route path="/sign-up" element={<Signup />} />
+         <Route element={<Layout />} > 
+         <Route path="/signin" element={<Signin />} />
+         <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Landingpage />} />
           </Route>
         </Routes>
       </BrowserRouter>

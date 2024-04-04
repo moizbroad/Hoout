@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+
 
 const FooterSection = () => {
   return (
-    <div>FooterSection</div>
-  )
-}
+   <div>wqdqd</div>
+  );
+};
 
-export default FooterSection
+export default FooterSection;

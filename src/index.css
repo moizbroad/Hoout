@@ -69,3 +69,60 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .flex-between-start {
+    @apply flex justify-between items-start;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-start;
+  }
+  .flex-end {
+    @apply flex justify-end items-start;
+  }
+  .flex-start-center {
+    @apply flex justify-start items-center;
+  }
+
+  .flex-col-start {
+    @apply flex flex-col justify-start items-start;
+  }
+
+  .flex-col-between {
+    @apply flex flex-col justify-between items-center;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col justify-center items-center;
+  }
+}
+
+.landing {
+  /* Background image */
+  background-image: url(./assets/LandingPageImages/backWood.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  /* Height and Width */
+  min-height: 765px; /* Adjust based on your Figma design */
+  width: 100%; /* Take full width of the container */
+
+  /* Padding */
+  /* Adjust padding as needed */
+  /* padding-top: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px; */
+
+  /* Positioning if necessary */
+  /* position: relative; */
+}

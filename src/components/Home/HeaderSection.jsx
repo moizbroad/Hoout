@@ -7,7 +7,7 @@ import search from "../../assets/HeaderAndFooter/searchh.svg";
 
 const HeaderSection = () => {
   return (
-    <section className="px-[100px] flex-between pt-[45px] ">
+    <section className="px-[100px] flex-between py-[27px] bg-[#E9E6D6] ">
       <section className="flex gap-x-[20px]  items-center ">
         <div>Home</div>
         <div>Values</div>

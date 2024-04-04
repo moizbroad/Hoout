@@ -1,8 +1,11 @@
 import React from 'react'
+import HoutHandelSection from '../components/LandingPageSections/HoutHandelSection'
 
 const Landingpage = () => {
   return (
-    <div className='bg-red-900'>Landingpage</div>
+    <>
+    <HoutHandelSection/>
+    </>
   )
 }
 

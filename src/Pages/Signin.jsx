@@ -5,10 +5,8 @@ import googleIcon from "../assets/authImages/googleIcon.svg";
 import faceBookIcon from "../assets/authImages/faceBookIcon.svg";
 import appleIcon from "../assets/authImages/appleIcon.svg";
 import grayLine from "../assets/authImages/grayLine.svg";
-import blackRin from "../assets/authImages/blackRin.svg";
-import whiteRin from "../assets/authImages/whiteRin.svg";
-import microscope from "../assets/authImages/microscope.svg";
-import slBlurBg from "../assets/authImages/slBlurBg.png";
+import thumbsUp from "../assets/authImages/thumbsUp.svg";
+import signinBlur from "../assets/authImages/signinBlur.png";
 import InputField from "../components/Common/InputField";
 
 const Signin = () => {
@@ -19,28 +17,21 @@ const Signin = () => {
         <div className="signUpLeft w-[50%] relative">
           <img src={signInRight} alt="signupleftImg" className="w-[100%]" />
           <div>
-            <div className=" yellowBar absolute top-[35%] left-[50%] translate-x-[-50%]  bg-[#FBC700] w-[291px]  rounded-xl flex items-center py-[10px] px-[20px] gap-2 mb-[22.34px]">
-              <div className="w-[45px] h-[38px] rounded-[50%] bg-[hw] grid place-items-center">
-              <img src={blackRin} alt="" />
-              </div>
-              <h6 className="flex-1 text-20 font-medium text-center">Lorem Ipsum is </h6>
+            <div className=" yellowBar absolute bottom-[20%] left-[50%] translate-x-[-50%]  w-[70%]  rounded-lg   py-[42px] px-[37px] gap-2 mb-[22.34px] min-h-[120px]" style={{ backgroundImage: `url(${signinBlur})` }}>
+            
+               <div className="yellowBar   bg-[#FBC700] w-[80%]  rounded-xl items-center py-[10px] px-[20px] gap-2 mb-[22.34px] flex">
+            <img src={thumbsUp} alt="" />
+            <div>
+              <h6 className="text-22">Lorem Ipsum is simply</h6>
             </div>
-            <div className=" yellowBar absolute top-[43%] left-[50%] translate-x-[-50%]  w-[291px]  rounded-lg   py-[21px] px-[25px] gap-2 mb-[22.34px] min-h-[120px]" style={{ backgroundImage: `url(${slBlurBg})` }}>
-              <div className="w-[56px] h-[51px] rounded-lg  grid place-items-center bg-black p-[6px]">
-              <img src={microscope} alt="" className="mb-[5px]" />
-              </div>
-              <h6 className="flex-1 text-20 font-normal leading-[24px]  mt-[10px] text-white">Lorem Ipsum is simply dummy text of the printing </h6>
+          </div>
+              <h6 className="flex-1 text-20 font-normal leading-[24px]  mt-[10px] text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h6>
             </div>
-            <div className=" grayBar absolute top-[50%] right-[-10%] translate-x-[20%]  bg-[#5A5A5A] min-w-[200px]  rounded-full flex items-center py-[10px] px-[20px] gap-2 mb-[22.34px]">
-               <div className="w-[45px] h-[38px] rounded-[50%] bg-[#9c9c9c] grid place-items-center">
-              <img src={whiteRin} alt="" />
-              </div>
-              <h6 className="flex-1 text-18 font-normal text-center text-white">Lorem Ipsum is </h6>
-            </div>
+           
           </div>
         </div>
         <div className="signUpRight w-[50%] py-[25px] px-[51px]">
-          <div className="signUpHead flex justify-end mb-[46px]">
+          <div className="signUpHead flex justify-start mb-[46px]">
             <img src={houtLogo} alt="" />
           </div>
           <div className="signUpFormSec px-[100px] ">
@@ -90,31 +81,30 @@ const Signin = () => {
                 </div>
               </div>
               <div className="formSec">
-                <div className="mb-[23px]">
-                <InputField placeholder="First Name"/>
-                </div>
-                <div className="mb-[23px]">
-
-                <InputField placeholder="Last Name"/>
-                </div>
-                <div className="mb-[23px]">
-
-                <InputField placeholder="Company Name"/>
-                </div>
+                
                 <div className="mb-[23px]">
                 <InputField placeholder="Enter Email"/>
                 </div>
                 <div className="mb-[23px]">
                 <InputField placeholder="Password"/>
                 </div>
-                <div className="mb-[23px]">
-                <InputField placeholder="Confirm Password"/>
+
+              <div className="recPasswrd mb-[30px] flex w-full justify-between">
+                <div className="flex gap-2  items-center">
+                <input type="checkbox" id="switch" /><label for="switch"></label>
+                <span className="block">Remember me</span>
                 </div>
+                 
+                <a href="#" className="text-14 text-red">
+                Recover Password </a> </div>
+              
+
+               
                 <div className="w-full ">
                   <button className="bg-[#FBC700] block text-black text-center py-[19px] px-[25px] w-full font-semibold mb-[23px]">
-                    Create Account
+                    Log In
                   </button>
-                  <span className="flex justify-end text-14">Have an account? <a href="#" className="text-yellow-400 ml-1 font-semibold">Sign in!</a></span>
+                  <span className="flex justify-end text-14">Don't have an account? <a href="#" className="text-yellow-400 ml-1 font-semibold">Sign up!</a></span>
                 </div>
               </div>
             </form>

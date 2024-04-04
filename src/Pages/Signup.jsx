@@ -19,22 +19,22 @@ const Signup = () => {
           <img src={signUpLeft} alt="signupleftImg" className="w-[100%]" />
           <div>
             <div className=" yellowBar absolute top-[35%] left-[50%] translate-x-[-50%]  bg-[#FBC700] w-[291px]  rounded-xl flex items-center py-[10px] px-[20px] gap-2 mb-[22.34px]">
-              <div className="w-[45px] h-[38px] rounded-[50%] bg-[hw] grid place-items-center">
+              <div className="w-[40px] h-[38px] rounded-[50%] bg-[hw] grid place-items-center bg-[#00000066]">
               <img src={blackRin} alt="" />
               </div>
               <h6 className="flex-1 text-20 font-medium text-center">Lorem Ipsum is </h6>
             </div>
-            <div className=" yellowBar absolute top-[43%] left-[50%] translate-x-[-50%]  w-[291px]  rounded-lg   py-[21px] px-[25px] gap-2 mb-[22.34px] min-h-[120px]" style={{ backgroundImage: `url(${slBlurBg})` }}>
-              <div className="w-[56px] h-[51px] rounded-lg  grid place-items-center bg-black p-[6px]">
+            <div className=" absolute top-[43%] left-[50%] translate-x-[-50%]  w-[291px]  rounded-lg   py-[21px] px-[25px] gap-2 mb-[22.34px] min-h-[120px]" style={{ backgroundImage: `url(${slBlurBg})` }}>
+              <div className="w-[56px] h-[51px] rounded-lg  grid place-items-center  p-[6px] bg-[#000]">
               <img src={microscope} alt="" className="mb-[5px]" />
               </div>
-              <h6 className="flex-1 text-20 font-normal leading-[24px]  mt-[10px] text-white">Lorem Ipsum is simply dummy text of the printing </h6>
+              <h6 className="flex-1 text-20 font-normal leading-[24px]  mt-[10px] text-primary">Lorem Ipsum is simply dummy text of the printing </h6>
             </div>
             <div className=" grayBar absolute top-[50%] right-[-10%] translate-x-[20%]  bg-[#5A5A5A] min-w-[200px]  rounded-full flex items-center py-[10px] px-[20px] gap-2 mb-[22.34px]">
-               <div className="w-[45px] h-[38px] rounded-[50%] bg-[#9c9c9c] grid place-items-center">
+               <div className="w-[40px] h-[38px] rounded-[50%] bg-[#9c9c9c] grid place-items-center text-white">
               <img src={whiteRin} alt="" />
               </div>
-              <h6 className="flex-1 text-18 font-normal text-center text-white">Lorem Ipsum is </h6>
+              <h6 className="flex-1 text-18 font-normal text-center text-primary	">Lorem Ipsum is </h6>
             </div>
           </div>
         </div>

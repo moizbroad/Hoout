@@ -12,15 +12,19 @@ const Button = ({
   color,
   breakpoint,
   widthfull,
+  fontbold,
 }) => {
   return (
     <button
       className={` ${
         disabled ? "bg-gray-500 opacity-80" : "hover:opacity-85"
       }  flex-center rounded-md  
-       ${widthfull ? "w-full" : null}  ${breakpoint}  ${
+  fontbold
+       ${widthfull ? "w-full" : null}  ${breakpoint} ${
+        fontbold ? "font-bold" : null
+      }   ${
         textColor ? "text-[#fff]" : "text-white"
-      } py-3 px-2 xl:text-md bg-[#15803D]`}
+      } py-3 px-2 xl:text-md bg-yellow text-16`}
       disabled={disabled}
       onClick={onClick}
       type={type}

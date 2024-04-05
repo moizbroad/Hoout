@@ -6,6 +6,7 @@ import Landingpage from "./Pages/Landingpage";
 import Layout from "./components/Layout/Layout";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
          <Route path="/signin" element={<Signin />} />
          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Landingpage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

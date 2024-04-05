@@ -21,24 +21,11 @@ const AdminSidenav = () => {
   };
 
   return (
-    <>
-      {/* <section className="max-w-[250px] py-10">
-      <div onClick={handleDashboardClick} style={{ cursor: "pointer" }}>
-        Dashboard
-      </div>
-      <div onClick={handleInboxClick} style={{ cursor: "pointer" }}>
-        Inbox
-      </div>
-      <div onClick={handleOrderListClick} style={{ cursor: "pointer" }}>
-        Order List
-      </div>
-      <div onClick={handleProductsClick} style={{ cursor: "pointer" }}>
-        Products
-      </div>
-      <div>hwwhdw</div>
-    </section> */}
+    
+      
 
-      <div className="w-[240px] min-h-screen py-[13px] ">
+     <section>
+         <div className="w-[240px] min-h-screen py-[13px] ">
         <a href="#" className="mb-[22px] block px-[24px]">
           {/* <img src={houtLogo} alt="" /> */}
         </a>
@@ -73,7 +60,8 @@ const AdminSidenav = () => {
           </a>
         </div>
       </div>
-    </>
+     </section>
+    
   );
 };
 

@@ -9,74 +9,45 @@ import Products from "../../Pages/Products"; // Import Products component
 import { Outlet, useLocation } from "react-router-dom";
 
 const Layout = () => {
-  const excludedPaths = ["/sign-in", "/sign-up"];
-  const dashboardPaths = ["/dashboard"];
-  const inboxPath = ["/inbox"];
-  const orderListPath = ["/order-list"];
-  const productsPath = ["/products"];
+  const authPaths = ["/sign-in", "/sign-up"];
+  const adminPaths = ["/dashboard", "/inbox", "/order-list", "/products"];
   const currentPath = useLocation().pathname;
-
-  const isExcludedPath = excludedPaths.some((path) =>
-    currentPath.includes(path)
-  );
-
-  const isDashboardPath = dashboardPaths.some((path) =>
-    currentPath.includes(path)
-  );
-
-  const isInboxPath = inboxPath.some((path) => currentPath.includes(path));
-
-  const isOrderListPath = orderListPath.some((path) =>
-    currentPath.includes(path)
-  );
-
-  const isProductsPath = productsPath.some((path) =>
-    currentPath.includes(path)
-  );
+  const hasSidnav = adminPaths.includes(currentPath);
+  const hasHeaderFooter = authPaths.includes(currentPath);
 
   return (
     <>
       <div>
-        {!isExcludedPath &&
-          !isDashboardPath &&
-          !isInboxPath &&
-          !isOrderListPath &&
-          !isProductsPath && <HeaderSection />}
         <div>
-          {/* Your main content here */}
-          {isDashboardPath ? (
+          {hasSidnav ? (
             <>
-              <AdminMainNav />
-              <AdminSideNav />
-              <Outlet />
-            </>
-          ) : isInboxPath ? (
-            <>
-              <AdminMainNav />
-              <AdminSideNav />
-              <Inbox />
-            </>
-          ) : isOrderListPath ? (
-            <>
-              <AdminMainNav />
-              <AdminSideNav />
-              <OrderList />
-            </>
-          ) : isProductsPath ? (
-            <>
-              <AdminMainNav />
-              <AdminSideNav />
-              <Products />
+              <div className="flex bg-yellow">
+                <div>
+                  <AdminSideNav />
+                </div>
+                <div className="flex-1 bg-red">
+                  {" "}
+                  <AdminMainNav />
+                  <Outlet />
+                </div>
+              </div>
             </>
           ) : (
-            <Outlet />
+            <>
+              {!hasHeaderFooter ? (
+                <>
+                  <HeaderSection />
+                  <Outlet />
+                  <FooterSection />
+                </>
+              ) : (
+                <>
+                  <Outlet />
+                </>
+              )}
+            </>
           )}
         </div>
-        {!isExcludedPath &&
-          !isDashboardPath &&
-          !isInboxPath &&
-          !isOrderListPath &&
-          !isProductsPath && <FooterSection />}
       </div>
     </>
   );

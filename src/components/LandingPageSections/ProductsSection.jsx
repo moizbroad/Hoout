@@ -11,7 +11,7 @@ import productHeart from "../../assets/LandingPageImages/products/productHeart.s
 import addToCart from "../../assets/LandingPageImages/products/addToCart.svg";
 import Button from "../Common/Button";
 
-const ProductsSection = () => {
+const ProductsSection = ({ isthree, notRequired }) => {
   const productData = [
     {
       image: image1,
@@ -93,12 +93,21 @@ const ProductsSection = () => {
   ];
   return (
     <>
-      <section className="pt-[100px] px-[100px]  ">
-        <div className="text-60  font-bold text-center pb-[60px]">
-          {" "}
-          Products
-        </div>
-        <div className=" grid grid-cols-4 gap-y-8 ">
+      <section className={notRequired ? "pt-[100px] px-[100px]" : ""}>
+        {notRequired ? (
+          <div className="text-60  font-bold text-center pb-[60px]">
+            {" "}
+            Products
+          </div>
+        ) : (
+          ""
+        )}
+
+        <div
+          className={
+            isthree ? "grid grid-cols-3 gap-y-3" : "grid grid-cols-4 gap-y-8"
+          }
+        >
           {productData.map((item, index) => {
             return (
               // JSX code here

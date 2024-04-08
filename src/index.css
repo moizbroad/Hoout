@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 :root {
-  font-family: josefin Sans;
+  font-family: josefin Sans, poppins;
+  line-height: 1.5;
+  font-weight: 400, 600, 800, 900;
+}
+.tr {
+  font-family: poppins;
+  line-height: 1.5;
+  font-weight: 400, 600, 800, 900;
+}
+.td {
+  font-family: poppins;
   line-height: 1.5;
   font-weight: 400, 600, 800, 900;
 }
@@ -117,4 +127,16 @@ button:focus-visible {
 
   /* Positioning if necessary */
   /* position: relative; */
+}
+
+.shop {
+  /* Background image */
+  background-image: url(./assets/shopPage/shopImage.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  /* Height and Width */
+  min-height: 360px; /* Adjust based on your Figma design */
+  width: 100%; /* Take full width of the container */
 }

@@ -9,6 +9,7 @@ import Dashboard from "./Pages/Dashboard";
 import Inbox from "./Pages/Inbox";
 import OrderList from "./Pages/OrderList";
 import Products from "./Pages/Products";
+import ShopPage from "./Pages/ShopPage";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 
@@ -28,7 +29,7 @@ function App() {
           <Route element={<Layout />}>
             <Route element={<IsAuthenticated />}>
               <Route path="/" element={<Landingpage />} />
-              {/* <Route path="/shop-page" element={<ShopPage />} /> */}
+              <Route path="/shop-page" element={<ShopPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/inbox" element={<Inbox />} />

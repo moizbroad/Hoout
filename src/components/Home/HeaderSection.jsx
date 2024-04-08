@@ -4,8 +4,10 @@ import heart from "../../assets/HeaderAndFooter/heart.svg";
 import persons from "../../assets/HeaderAndFooter/persons.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 import search from "../../assets/HeaderAndFooter/searchh.svg";
+import { useNavigate } from "react-router-dom";
 
 const HeaderSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="px-[100px] flex-between py-[27px] bg-[#E9E6D6] ">
       <section className="flex gap-x-[20px]  items-center ">
@@ -21,7 +23,15 @@ const HeaderSection = () => {
       </section>
 
       <section className="flex  gap-x-[40px] ">
-        <div> Shop </div>{" "}
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            navigate("/shop-page");
+          }}
+        >
+          {" "}
+          Shop{" "}
+        </div>{" "}
         <div>
           {" "}
           <img src={persons} />{" "}

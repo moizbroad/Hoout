@@ -1,31 +1,54 @@
-import React from 'react';
-import HeaderSection from '../Home/HeaderSection';
-import FooterSection from '../Home/FooterSection';
-import { Outlet, useLocation } from 'react-router-dom';
+import React from "react";
+import HeaderSection from "../Home/HeaderSection";
+import FooterSection from "../Home/FooterSection";
+import AdminSideNav from "../AdminLayout/AdminSideNav";
+import AdminMainNav from "../AdminLayout/AdminMainNav";
+import Inbox from "../../Pages/Inbox";
+import OrderList from "../../Pages/OrderList"; // Import OrderList component
+import Products from "../../Pages/Products"; // Import Products component
+import { Outlet, useLocation } from "react-router-dom";
 
 const Layout = () => {
-  const location = useLocation();
-
-  // Array of paths where you don't want to show the header and footer
-  const excludedPaths = ['/sign-in', '/sign-up'];
-
-  // Check if current path is in the excluded paths array
-  const isExcludedPath = excludedPaths.some(path => location.pathname.includes(path));
+  const authPaths = ["/sign-in", "/sign-up"];
+  const adminPaths = ["/dashboard", "/inbox", "/order-list", "/products"];
+  const currentPath = useLocation().pathname;
+  const hasSidnav = adminPaths.includes(currentPath);
+  const hasHeaderFooter = authPaths.includes(currentPath);
 
   return (
     <>
-      {!isExcludedPath && (
-        <section>
-          <div> <HeaderSection /></div>
-          <div> <Outlet /></div>
-          <div> <FooterSection /></div>
-        </section>
-      )}
-      {isExcludedPath && (
-        <section>
-          <div> <Outlet /></div>
-        </section>
-      )}
+      <div>
+        <div>
+          {hasSidnav ? (
+            <>
+              <div className="flex bg-yellow">
+                <div>
+                  <AdminSideNav />
+                </div>
+                <div className="flex-1 bg-red">
+                  {" "}
+                  <AdminMainNav />
+                  <Outlet />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {!hasHeaderFooter ? (
+                <>
+                  <HeaderSection />
+                  <Outlet />
+                  <FooterSection />
+                </>
+              ) : (
+                <>
+                  <Outlet />
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 };

@@ -62,6 +62,7 @@ export default {
       toggle: "#C9C9C9",
       gray: "#D9D9D9",
       gray1: "#767676",
+        gray2:  "#898989",
      
       customGray: "#BDBDBD",
       transparentGray: "#60606061",

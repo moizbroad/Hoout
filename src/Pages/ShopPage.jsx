@@ -7,6 +7,7 @@ import ProductsSection from "../components/LandingPageSections/ProductsSection";
 import Filters from "../components/ShopComponents/Filters";
 
 const ShopPage = () => {
+  console.log(first);
   return (
     <>
       <div className="shop ">

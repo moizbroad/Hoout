@@ -8,6 +8,7 @@ import Filters from "../components/ShopComponents/Filters";
 
 const ShopPage = () => {
   console.log(first);
+  console.log(first);
   return (
     <>
       <div className="shop ">

@@ -5,6 +5,7 @@ import OurValuesSection from "../components/LandingPageSections/OurValuesSection
 import OurAssortmentSectio from "../components/LandingPageSections/OurAssortmentSectio";
 import VideoSection from "../components/LandingPageSections/VideoSection";
 import TestimonialSection from "../components/LandingPageSections/TestimonialSection";
+import { ContactusSection } from "../components/LandingPageSections/ContactusSection";
 
 const Landingpage = () => {
   return (
@@ -12,9 +13,12 @@ const Landingpage = () => {
       <HoutHandelSection />
       <ProductsSection />
       <OurValuesSection />
-      <TestimonialSection />
+
       <OurAssortmentSectio />
+
       <VideoSection />
+      <ContactusSection />
+      <TestimonialSection />
     </>
   );
 };

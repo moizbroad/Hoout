@@ -28,7 +28,7 @@ function App() {
           <Route element={<Layout />}>
             <Route element={<IsAuthenticated />}>
               <Route path="/" element={<Landingpage />} />
-              <Route path="/shop-page" element={<ShopPage />} />
+              {/* <Route path="/shop-page" element={<ShopPage />} /> */}
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/inbox" element={<Inbox />} />

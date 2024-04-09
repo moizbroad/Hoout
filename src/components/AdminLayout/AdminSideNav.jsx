@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import houtLogo from "../../assets/authImages/houtLogo.svg";
+ 
 const AdminSidenav = () => {
   const navigate = useNavigate();
 
@@ -24,10 +25,10 @@ const AdminSidenav = () => {
     
       
 
-     <section>
+     <section className="">
          <div className="w-[240px] min-h-screen py-[13px] ">
         <a href="#" className="mb-[22px] block px-[24px]">
-          {/* <img src={houtLogo} alt="" /> */}
+          <img src={houtLogo} alt="" />
         </a>
         <div className="flex flex-col items-start sideBarMain px-[24px]">
           <a

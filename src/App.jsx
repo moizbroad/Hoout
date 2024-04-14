@@ -12,18 +12,13 @@ import Products from "./Pages/Products";
 import ShopPage from "./Pages/ShopPage";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
+import CustomWoodPage from "./Pages/CustomWoodPage";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      {/* <div>
-        <div className="bg-blue-500  text-white p-4">
-          This is a div with Tailwind CSS styles
-        </div>
-      </div> */}
-
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
@@ -34,6 +29,7 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/inbox" element={<Inbox />} />
               <Route path="/order-list" element={<OrderList />} />
+              <Route path="/wood-page" element={<CustomWoodPage />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

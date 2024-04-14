@@ -11,7 +11,7 @@ import productHeart from "../../assets/LandingPageImages/products/productHeart.s
 import addToCart from "../../assets/LandingPageImages/products/addToCart.svg";
 import Button from "../Common/Button";
 
-const ProductsSection = ({ isthree, notRequired }) => {
+const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
   const productData = [
     {
       image: image1,
@@ -93,14 +93,12 @@ const ProductsSection = ({ isthree, notRequired }) => {
   ];
   return (
     <>
-      <section className={notRequired ? "pt-[100px] px-[100px]" : ""}>
-        {notRequired ? (
+      <section className={notRequired ? "" : "pt-[100px] px-[100px]"}>
+        {notRequired ? null : (
           <div className="text-60  font-bold text-center pb-[60px]">
             {" "}
             Products
           </div>
-        ) : (
-          ""
         )}
 
         <div
@@ -140,15 +138,17 @@ const ProductsSection = ({ isthree, notRequired }) => {
             );
           })}
         </div>
-        <div className="flex justify-center pt-[70px]">
-          {" "}
-          <Button
-            btnText="View Shop"
-            paddingX="72px"
-            fontbold
-            paddingY="22px"
-          />{" "}
-        </div>
+        {isbuttonReqird ? null : (
+          <div className="flex  justify-center pt-[70px]">
+            {" "}
+            <Button
+              btnText="View Shop"
+              paddingX="72px"
+              fontbold
+              paddingY="22px"
+            />{" "}
+          </div>
+        )}
       </section>
     </>
   );

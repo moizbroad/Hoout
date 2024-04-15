@@ -62,14 +62,14 @@ export default {
       toggle: "#C9C9C9",
       gray: "#D9D9D9",
       gray1: "#767676",
-        gray2:  "#898989",
-     
+      gray2: "#898989",
+      gray3: "#202224",
       customGray: "#BDBDBD",
       transparentGray: "#60606061",
-     
-      
       red: "#CA1717",
       orange: "#FFA14E",
+      white: "#fff",
+      orange: "#FCBE2D",
     },
 
     fontFamily: {

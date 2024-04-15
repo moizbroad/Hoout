@@ -13,6 +13,7 @@ import ShopPage from "./Pages/ShopPage";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import CustomWoodPage from "./Pages/CustomWoodPage";
+import AddToCart from "./Pages/AddToCart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +31,7 @@ function App() {
               <Route path="/inbox" element={<Inbox />} />
               <Route path="/order-list" element={<OrderList />} />
               <Route path="/wood-page" element={<CustomWoodPage />} />
+              <Route path="/cart" element={<AddToCart />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

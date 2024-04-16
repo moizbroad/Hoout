@@ -1,5 +1,5 @@
 import React from 'react';
-import Camera from "../assets/DashboardImages/cameraImg.png"
+// import Camera from "../assets/DashboardImages/CameraImg.png"
 
 const UserProfile = () => {
   return (
@@ -9,7 +9,7 @@ const UserProfile = () => {
         
       <div className="uploadImgWrap">
                     <img
-                      src={Camera}
+                      // src={Camera}
                       alt="Profile" 
                     />
                     <input

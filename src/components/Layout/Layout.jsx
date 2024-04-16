@@ -9,7 +9,7 @@ import Products from "../../Pages/Products"; // Import Products component
 import { Outlet, useLocation } from "react-router-dom";
 const Layout = () => {
   const authPaths = ["/sign-in", "/sign-up"];
-  const adminPaths = ["/dashboard", "/inbox", "/order-list", "/products"];
+  const adminPaths = ["/dashboard", "/inbox", "/order-list", "/products", "/user-profile"];
   const currentPath = useLocation().pathname;
   const hasSidnav = adminPaths.includes(currentPath);
   const hasHeaderFooter = authPaths.includes(currentPath);

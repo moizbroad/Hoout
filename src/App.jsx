@@ -13,6 +13,9 @@ import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import CustomWoodPage from "./Pages/CustomWoodPage";
 import AddToCart from "./Pages/AddToCart";
+import UserProfile from "./Pages/UserProfile";
+import CustomizedProduct from "./Pages/CustomizedProduct";
+import AddNewProduct from "./Pages/AddNewProduct";
 
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
               <Route path="/order-list" element={<OrderList />} />
               <Route path="/wood-page" element={<CustomWoodPage />} />
               <Route path="/cart" element={<AddToCart />} />
+              <Route path="/new-product" element={<AddNewProduct />} />
+              <Route path="/customized-product" element={<CustomizedProduct />} />
+              <Route path="/user-profile" element={<UserProfile />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

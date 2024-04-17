@@ -140,3 +140,15 @@ button:focus-visible {
   min-height: 360px; /* Adjust based on your Figma design */
   width: 100%; /* Take full width of the container */
 }
+
+.about {
+  /* Background image */
+  background-image: url(./assets/about/aboutImage.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  /* Height and Width */
+  min-height: 360px; /* Adjust based on your Figma design */
+  width: 100%; /* Take full width of the container */
+}

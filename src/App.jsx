@@ -13,6 +13,10 @@ import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import CustomWoodPage from "./Pages/CustomWoodPage";
 import AddToCart from "./Pages/AddToCart";
+import AddressCard from "./components/Address/AddressCard";
+import OrderHistory from "./components/Address/OrderHistory";
+import Wishlist from "./components/Address/Wishlist";
+
 
 
 function App() {
@@ -32,6 +36,10 @@ function App() {
               <Route path="/order-list" element={<OrderList />} />
               <Route path="/wood-page" element={<CustomWoodPage />} />
               <Route path="/cart" element={<AddToCart />} />
+              <Route path="/address" element={<AddressCard />} />
+              <Route path="/orderHistory" element={<OrderHistory />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

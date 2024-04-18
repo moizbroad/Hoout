@@ -10,8 +10,10 @@ import image8 from "../../assets/LandingPageImages/products/image8.svg";
 import productHeart from "../../assets/LandingPageImages/products/productHeart.svg";
 import addToCart from "../../assets/LandingPageImages/products/addToCart.svg";
 import Button from "../Common/Button";
+import { useNavigate } from "react-router-dom";
 
 const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
+  const navigate = useNavigate();
   const productData = [
     {
       image: image1,
@@ -110,7 +112,12 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
             return (
               // JSX code here
               <div key={index} className="    ">
-                <div>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => {
+                    navigate("/wood-page");
+                  }}
+                >
                   <img src={item.image} className="w-[285px] h-[310px] " />
                 </div>
                 <section className="bg-[#F4F5F7]  w-[285px] pb-4 px-4 ">
@@ -125,7 +132,12 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                     <div className="text-gray2">{item.subamount}</div>
                   </section>
                   <section className="flex gap-x-4 items-center">
-                    <div className="border-2 border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  w-[70%]  ">
+                    <div
+                      className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  w-[70%]  "
+                      onClick={() => {
+                        navigate("/cart");
+                      }}
+                    >
                       <img src={item.addToCart} />
                       Add to Cart{" "}
                     </div>

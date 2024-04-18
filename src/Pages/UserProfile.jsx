@@ -78,7 +78,6 @@ const UserProfile = () => {
                 </div>
               </div>
               <div>
-              
                 <Button
                   btnText="Save Changes"
                   paddingX="20px"
@@ -100,11 +99,14 @@ const UserProfile = () => {
                     class="uppercase text-black text-xs font-semibold mb-[12px] block"
                     for="op"
                   >
-                    Old password 
+                    Old password
                   </label>
-                  <InputField placeholder="Old password " id="op" type="password"  />
+                  <InputField
+                    placeholder="Old password "
+                    id="op"
+                    type="password"
+                  />
                 </div>
-              
               </div>
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2 md:mb-0">
@@ -123,10 +125,13 @@ const UserProfile = () => {
                   >
                     Repeat new passsword
                   </label>
-                  <InputField placeholder="Repeat new passsword" id="rnPassword" />
+                  <InputField
+                    placeholder="Repeat new passsword"
+                    id="rnPassword"
+                  />
                 </div>
               </div>
-              
+
               <div>
                 {/* <button type="submit" className="bg-[#FBC700] block text-black text-center py-[19px] px-[25px] w-full font-semibold mb-[23px]">
                    Save Changes
@@ -154,7 +159,7 @@ const UserProfile = () => {
                   >
                     Street and Number
                   </label>
-                  <InputField placeholder="Street and Number" id="stNumber"  />
+                  <InputField placeholder="Street and Number" id="stNumber" />
                 </div>
                 <div class="w-1/2">
                   <label
@@ -163,7 +168,7 @@ const UserProfile = () => {
                   >
                     Zip Code
                   </label>
-                  <InputField placeholder="12345" id="zCode" type="number"  />
+                  <InputField placeholder="12345" id="zCode" type="number" />
                 </div>
               </div>
               <div class=" flex gap-[20px] mb-[24px]">
@@ -172,7 +177,7 @@ const UserProfile = () => {
                     class="uppercase text-black text-xs font-semibold mb-[12px] block"
                     for="city"
                   >
-                    City 
+                    City
                   </label>
                   <InputField placeholder="DropDown replace plz" id="city" />
                 </div>
@@ -183,12 +188,11 @@ const UserProfile = () => {
                   >
                     Country
                   </label>
-                  <InputField placeholder="DropDown replace plz" id="country"  />
+                  <InputField placeholder="DropDown replace plz" id="country" />
                 </div>
               </div>
-              
+
               <div>
-              
                 <Button
                   btnText="Save Changes"
                   paddingX="20px"
@@ -211,7 +215,7 @@ const UserProfile = () => {
                   >
                     Street and Number
                   </label>
-                  <InputField placeholder="Street and Number" id="stNumber"  />
+                  <InputField placeholder="Street and Number" id="stNumber" />
                 </div>
                 <div class="w-1/2">
                   <label
@@ -220,7 +224,7 @@ const UserProfile = () => {
                   >
                     Zip Code
                   </label>
-                  <InputField placeholder="12345" id="zCode" type="number"  />
+                  <InputField placeholder="12345" id="zCode" type="number" />
                 </div>
               </div>
               <div class=" flex gap-[20px] mb-[24px]">
@@ -229,7 +233,7 @@ const UserProfile = () => {
                     class="uppercase text-black text-xs font-semibold mb-[12px] block"
                     for="city"
                   >
-                    City 
+                    City
                   </label>
                   <InputField placeholder="DropDown replace plz" id="city" />
                 </div>
@@ -240,12 +244,11 @@ const UserProfile = () => {
                   >
                     Country
                   </label>
-                  <InputField placeholder="DropDown replace plz" id="country"  />
+                  <InputField placeholder="DropDown replace plz" id="country" />
                 </div>
               </div>
-              
+
               <div>
-              
                 <Button
                   btnText="Save Changes"
                   paddingX="20px"

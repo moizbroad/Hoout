@@ -17,7 +17,10 @@ import AddToCart from "./Pages/AddToCart";
 import UserProfile from "./Pages/UserProfile";
 import CustomizedProduct from "./Pages/CustomizedProduct";
 import AddNewProduct from "./Pages/AddNewProduct";
-import About from "./Pages/About";
+import AddressCard from "./components/Address/AddressCard";
+import OrderHistory from "./components/Address/OrderHistory";
+import Wishlist from "./components/Address/Wishlist";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -42,7 +45,9 @@ function App() {
                 element={<CustomizedProduct />}
               />
               <Route path="/user-profile" element={<UserProfile />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/address" element={<AddressCard />} />
+              <Route path="/orderHistory" element={<OrderHistory />} />
+              <Route path="/wishlist" element={<Wishlist />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

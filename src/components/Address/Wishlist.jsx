@@ -1,5 +1,7 @@
 import React from "react";
 import profileImg from "../../assets/myAccount/profile.png";
+import crossImg from "../../assets/myAccount/Shape.svg";
+import productImg from "../../assets/myAccount/image 1.svg";
 
 
 const Wishlist = () => {
@@ -35,7 +37,9 @@ const Wishlist = () => {
               <th className="text-[14px] text-[#6C7275] w-[40%] text-left flex justify-center items-center">Action</th>
             </tr>
             <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px]">
-              <td className="text-[14px] text-[#141718] w-[40%] text-left"><div><button><span></span></button><div><img src="" alt="" /></div><div><h1></h1><p></p></div></div></td>
+              <td className="text-[14px] text-[#141718] w-[40%] text-left"><div className="flex items-center "><button className="mr-[29px]"><span><img src={crossImg}  /></span></button><div className="w-[60px] h-[72px] mr-[16px]"><img src={productImg}  className="w-[100%]"/></div><div className="flex flex-col items-center content-center gap-[8px]"><h1 className="text-[14px]">Tray Table</h1><p className="text-[#6C7275] text-[12px]">Color: Black</p></div></div></td>
+              <td className="w-[20%] text-left">$19.19</td>
+              <td className="w-[40%] flex justify-center items-center"><button className="px-[24px] py-[6px] bg-[#FBC700]"><span>Add to cart</span></button></td>
             </tr>
           </table>
         </div>

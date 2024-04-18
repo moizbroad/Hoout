@@ -1,6 +1,8 @@
 import React from "react";
 import profileImg from "../../assets/myAccount/profile.png";
 import invoiceImg from "../../assets/myAccount/invoiceimg.svg"
+import profilebtn from "../../assets/myAccount/profileBtn.svg";
+
 
 const OrderHistory = () => {
   return (
@@ -9,9 +11,14 @@ const OrderHistory = () => {
         My Account
       </h1>
       <div className="flex">
-        <div className="px-[16px] py-[40px] bg-[#F3F5F7] w-[262px] flex justify-center items-center flex-col rounded-[8px] mr-[79px]">
-          <div className="w-[80px] h-[80px] rounded-[50%]">
-            <img src={profileImg} className="w-[100%]" />
+        <div className="px-[16px] py-[40px] bg-[#F3F5F7] w-[262px] flex justify-center items-center flex-col rounded-[8px] mr-[79px] h-[fit-content]">
+          <div className="w-[80px] h-[80px] rounded-[50%] relative">
+            <img src={profileImg} className="w-[100%] " />
+            <button className="w-[30px] h-[30px] absolute bottom-0 right-0">
+              <span>
+                <img src={profilebtn} className="w-[100%]" />
+              </span>
+            </button>
           </div>
           <h1 className="text-[16px] text-[#000000] text-center mt-[8px] mb-[48px] font-semibold">
             Sofia Havertz
@@ -57,7 +64,7 @@ const OrderHistory = () => {
               <td className="text-[14px] text-[#141718] w-[20%] text-left">$1234.00</td>
               <td className="text-[14px] text-[#141718] w-[20%] text-left"><button><span><img src={invoiceImg} /></span></button></td>
             </tr>
-            <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px]">
+            <tr className="  flex w-[100%] justify-between py-[22px]">
               <td className="text-[14px] text-[#141718] w-[20%] text-left">#3456_768</td>
               <td className="text-[14px] text-[#141718] w-[20%] text-left">October 17, 2024</td>
               <td className="text-[14px] text-[#141718] w-[20%] text-left">Delivered</td>

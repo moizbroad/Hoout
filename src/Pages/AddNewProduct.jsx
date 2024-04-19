@@ -6,14 +6,21 @@ import Textarea from "../components/Common/Textarea";
 import Button from "../components/Common/Button";
 import Dropzone from "../components/Common/Dropzone";
 import addImg from "../assets/DashboardImages/add.svg";
+import { useNavigate } from "react-router-dom";
 
 const AddNewProduct = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div>
         <form action="">
-          <div className="pt-[80px] pb-[30px] px-[20px] bg-[rgb(250,250,250)] h-full min-h-[86vh]">
-            <div className="flex gap-2 items-center mb-[49px]">
+          <div className=" cursor-pointer pt-[80px] pb-[30px] px-[20px] bg-[rgb(250,250,250)] h-full min-h-[86vh]">
+            <div
+              onClick={() => {
+                navigate("/products");
+              }}
+              className="flex gap-2 items-center mb-[49px]"
+            >
               <img src={ArrowBack} alt="" />
               <h5 className="text-32 font-bold">Add New Product</h5>
             </div>
@@ -292,7 +299,7 @@ const AddNewProduct = () => {
                   </label>
                   {/* dropzone sec  */}
                   <div className="flex gap-[14px] flex-wrap">
-                    <Dropzone width={'215px'} />
+                    <Dropzone width={"215px"} />
                     <div
                       className=""
                       style={{
@@ -301,11 +308,21 @@ const AddNewProduct = () => {
                         border: "0.93px dashed #4C5B66",
                         borderRadius: "7.8px",
                         padding: "12px",
-                       
                       }}
-                    > 
-                     <a href="#" style={{height: "100%" , width: "100%" , display: "flex",
-                        alignItems: "center" , justifyContent: "center"}}>   <img src={addImg} alt="" /> </a>
+                    >
+                      <a
+                        href="#"
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {" "}
+                        <img src={addImg} alt="" />{" "}
+                      </a>
                     </div>
                   </div>
                   {/* dropzone sec end  */}

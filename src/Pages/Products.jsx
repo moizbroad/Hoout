@@ -6,8 +6,126 @@ import woodImg from "../assets/DashboardImages/woodImg.svg";
 import editImg from "../assets/DashboardImages/edit.svg";
 import dltImg from "../assets/DashboardImages/delete.svg";
 import dots from "../assets/DashboardImages/dotsvertical.svg";
-
+import Button from "../components/Common/Button";
+import { useNavigate } from "react-router-dom";
 const Products = () => {
+  const navigate = useNavigate();
+  const productData = [
+    {
+      id: "#123456",
+      productName: "Product Name",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: productName,
+      code: "QAk",
+      category: "Standard",
+      condition: "Sanded",
+      quantity: {
+        amount: 120,
+        status: "80 Left",
+      },
+      price: "$1,500.00",
+      editLink: "#",
+      deleteLink: "#",
+      dropdownMenuLink: "#",
+    },
+
+    {
+      id: "#123456",
+      productName: "Product Name",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: productName,
+      code: "QAk",
+      category: "Standard",
+      condition: "Sanded",
+      quantity: {
+        amount: 120,
+        status: "80 Left",
+      },
+      price: "$1,500.00",
+      editLink: "#",
+      deleteLink: "#",
+      dropdownMenuLink: "#",
+    },
+
+    {
+      id: "#123456",
+      productName: "Product Name",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: productName,
+      code: "QAk",
+      category: "Standard",
+      condition: "Sanded",
+      quantity: {
+        amount: 120,
+        status: "80 Left",
+      },
+      price: "$1,500.00",
+      editLink: "#",
+      deleteLink: "#",
+      dropdownMenuLink: "#",
+    },
+
+    {
+      id: "#123456",
+      productName: "Product Name",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: productName,
+      code: "QAk",
+      category: "Standard",
+      condition: "Sanded",
+      quantity: {
+        amount: 120,
+        status: "80 Left",
+      },
+      price: "$1,500.00",
+      editLink: "#",
+      deleteLink: "#",
+      dropdownMenuLink: "#",
+    },
+
+    {
+      id: "#123456",
+      productName: "Product Name",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: productName,
+      code: "QAk",
+      category: "Standard",
+      condition: "Sanded",
+      quantity: {
+        amount: 120,
+        status: "80 Left",
+      },
+      price: "$1,500.00",
+      editLink: "#",
+      deleteLink: "#",
+      dropdownMenuLink: "#",
+    },
+
+    {
+      id: "#123456",
+      productName: "Product Name",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: productName,
+      code: "QAk",
+      category: "Standard",
+      condition: "Sanded",
+      quantity: {
+        amount: 120,
+        status: "80 Left",
+      },
+      price: "$1,500.00",
+      editLink: "#",
+      deleteLink: "#",
+      dropdownMenuLink: "#",
+    },
+  ];
+
   return (
     <div>
       <div className="py-[24px] px-[20px] bg-[#fafafa] h-full min-h-[86vh]">
@@ -112,9 +230,113 @@ const Products = () => {
                 <th className="px-[8px] py-[12px]  text-center text-14 font-bold rounded-r-2xl	"></th>
               </tr>
             </thead>
-            <tbody>
-              {/* PRODUCT TABLE FIRST ROW  */}
-              <tr className="border-b-[0.4px] border-gray">
+
+            {productData.map((rowData, index) => {
+              return (
+                <tbody>
+                  <tr key={index} className="border-b-[0.4px] border-gray">
+                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                      <div className="">
+                        <p className="text-gray-900 whitespace-no-wrap">
+                          {rowData.id}
+                        </p>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-2 items-center">
+                        <div className="flex-shrink-0 w-[60px] h-[60px]">
+                          <img src={rowData.image} alt={rowData.productName} />
+                        </div>
+                        <div className="min-w-[100px]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {rowData.productName}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3 w-[12%]">
+                      <p className="text-gray-900 overflow-hidden whitespace-normal line-clamp-3 min-w-[120px]">
+                        {rowData.description}
+                      </p>
+                    </td>
+                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-2 items-center">
+                        <div className="flex-shrink-0 w-[38.64px] h-[38.64px]">
+                          <img src={rowData.image} alt={rowData.productName} />
+                        </div>
+                        <div className="min-w-[40px]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {rowData.code}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center">
+                        <div className="">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {rowData.category}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-[24px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center">
+                        <div className="">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {rowData.condition}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center">
+                        <div className="">
+                          <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
+                            {rowData.quantity.amount}{" "}
+                            <span className="bg-[#FBC7001A] text-[#FBC7001A] p-[8px] rounded-full inline-block min-w-[70px] text-center">
+                              {rowData.quantity.status}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center justify-center">
+                        <div className="">
+                          <p className="text-14 text-center">{rowData.price}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center justify-center">
+                        <p className="text-14 text-center">N/A</p>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center justify-center">
+                        <a href={rowData.editLink}>
+                          <img src={editImg} alt="edit icon image" />
+                        </a>
+                        <a href={rowData.deleteLink}>
+                          <img src={dltImg} alt="Delete icon image" />
+                        </a>
+                      </div>
+                    </td>
+                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-3 items-center justify-center">
+                        <a href={rowData.dropdownMenuLink}>
+                          <img src={dots} alt="vertical drop down dot img" />
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
+
+            {/* PRODUCT TABLE FIRST ROW  */}
+            {/* <tr className="border-b-[0.4px] border-gray">
                 <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
                   <div className="">
                     <p className="text-gray-900 whitespace-no-wrap">#123456</p>
@@ -204,312 +426,27 @@ const Products = () => {
                 </td>
                 <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
                   <div className="flex gap-3 items-center justify-center">
-                   <a href="#">
-                    <img src={dots} alt="vertical drop down dot img" />
-                   </a>
-                  </div>
-                </td>
-              </tr>
-              {/* PRODUCT TABLE FIRST ROW END  */}
-              {/* PRODUCT TABLE second ROW   */}
-              <tr className="border-b-[0.4px] border-gray trActive">
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="">
-                    <p className="text-gray-900 whitespace-no-wrap">#123456</p>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-2 items-center">
-                    <div className="flex-shrink-0 w-[60px] h-[60px]">
-                      <img src={productName} alt="sample Product Name" />
-                    </div>
-                    <div className="min-w-[100px]">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        Product Name
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3 w-[12%]">
-                  <p className="text-gray-900 overflow-hidden whitespace-normal line-clamp-3 min-w-[120px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </p>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-2 items-center">
-                    <div className="flex-shrink-0 w-[38.64px] h-[38.64px]">
-                      <img src={woodImg} alt="sample Product Name" />
-                    </div>
-                    <div className="min-w-[40px]">
-                      <p className="text-gray-900 whitespace-no-wrap">QAk</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        Standard
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[24px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap">Sanded</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
-                        120{" "}
-                        <span
-                          className="bg-[#FBC7001A] text-[#FBC7001A
-] p-[8px] rounded-full inline-block min-w-[70px] text-center"
-                        >
-                          80 Left
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </td>
-
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <div className="">
-                      <p className=" text-14 text-center">$1,500.00</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <p className=" text-14 text-center">N/A</p>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
                     <a href="#">
-                      <img src={editImg} alt="edit icon image" />
-                    </a>
-                    <a href="#">
-                      <img src={dltImg} alt="Delete icon image" />
+                      <img src={dots} alt="vertical drop down dot img" />
                     </a>
                   </div>
                 </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                   <a href="#">
-                    <img src={dots} alt="vertical drop down dot img" />
-                   </a>
-                  </div>
-                </td>
-              </tr>
-              
-              {/* PRODUCT TABLE second ROW end  */}
-               <tr className="border-b-[0.4px] border-gray">
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="">
-                    <p className="text-gray-900 whitespace-no-wrap">#123456</p>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-2 items-center">
-                    <div className="flex-shrink-0 w-[60px] h-[60px]">
-                      <img src={productName} alt="sample Product Name" />
-                    </div>
-                    <div className="min-w-[100px]">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        Product Name
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3 w-[12%]">
-                  <p className="text-gray-900 overflow-hidden whitespace-normal line-clamp-3 min-w-[120px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </p>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-2 items-center">
-                    <div className="flex-shrink-0 w-[38.64px] h-[38.64px]">
-                      <img src={woodImg} alt="sample Product Name" />
-                    </div>
-                    <div className="min-w-[40px]">
-                      <p className="text-gray-900 whitespace-no-wrap">QAk</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        Standard
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[24px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap">Sanded</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
-                        120{" "}
-                        <span
-                          className="bg-[#FBC7001A] text-[#FBC7001A
-] p-[8px] rounded-full inline-block min-w-[70px] text-center"
-                        >
-                          80 Left
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </td>
-
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <div className="">
-                      <p className=" text-14 text-center">$1,500.00</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <p className=" text-14 text-center">N/A</p>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <a href="#">
-                      <img src={editImg} alt="edit icon image" />
-                    </a>
-                    <a href="#">
-                      <img src={dltImg} alt="Delete icon image" />
-                    </a>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                   <a href="#">
-                    <img src={dots} alt="vertical drop down dot img" />
-                   </a>
-                  </div>
-                </td>
-              </tr>  <tr className="border-b-[0.4px] border-gray">
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="">
-                    <p className="text-gray-900 whitespace-no-wrap">#123456</p>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-2 items-center">
-                    <div className="flex-shrink-0 w-[60px] h-[60px]">
-                      <img src={productName} alt="sample Product Name" />
-                    </div>
-                    <div className="min-w-[100px]">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        Product Name
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3 w-[12%]">
-                  <p className="text-gray-900 overflow-hidden whitespace-normal line-clamp-3 min-w-[120px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </p>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-2 items-center">
-                    <div className="flex-shrink-0 w-[38.64px] h-[38.64px]">
-                      <img src={woodImg} alt="sample Product Name" />
-                    </div>
-                    <div className="min-w-[40px]">
-                      <p className="text-gray-900 whitespace-no-wrap">QAk</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[12px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        Standard
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[24px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap">Sanded</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center">
-                    <div className="">
-                      <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
-                        120{" "}
-                        <span
-                          className="bg-[#FBC7001A] text-[#FBC7001A
-] p-[8px] rounded-full inline-block min-w-[70px] text-center"
-                        >
-                          80 Left
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </td>
-
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <div className="">
-                      <p className=" text-14 text-center">$1,500.00</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <p className=" text-14 text-center">N/A</p>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                    <a href="#">
-                      <img src={editImg} alt="edit icon image" />
-                    </a>
-                    <a href="#">
-                      <img src={dltImg} alt="Delete icon image" />
-                    </a>
-                  </div>
-                </td>
-                <td className="px-[10px] py-[24px]  text-left text-14 font-semibold text-gray3">
-                  <div className="flex gap-3 items-center justify-center">
-                   <a href="#">
-                    <img src={dots} alt="vertical drop down dot img" />
-                   </a>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+              </tr> */}
           </table>
         </div>
         {/* order details table end */}
 
-        <div className="w-full mt-[60px] flex justify-end">
-          <button className="bg-[#FBC700] block text-black text-center py-[14px] px-[20px] w-[26%] font-semibold mb-[23px] text-20 ">
+        <div
+          onClick={() => {
+            navigate("/new-product");
+          }}
+          className="w-full mt-[60px] flex justify-end"
+        >
+          {/* <button className="bg-[#FBC700] block text-black text-center py-[14px] px-[20px] w-[26%] font-semibold mb-[23px] text-20 ">
             Add New Product
-          </button>
+          </button> */}
+
+          <Button btnText=" Add New Product" breakpoint="xl:w-[282px]" />
         </div>
       </div>
     </div>

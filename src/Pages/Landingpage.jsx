@@ -17,8 +17,8 @@ const Landingpage = () => {
       <OurAssortmentSectio />
 
       <VideoSection />
-      <ContactusSection />
       <TestimonialSection />
+      <ContactusSection />
     </>
   );
 };

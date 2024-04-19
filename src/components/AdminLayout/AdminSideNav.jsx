@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import houtLogo from "../../assets/authImages/houtLogo.svg";
- 
+
 const AdminSidenav = () => {
   const navigate = useNavigate();
 
@@ -22,11 +22,8 @@ const AdminSidenav = () => {
   };
 
   return (
-    
-      
-
-     <section className="">
-         <div className="w-[240px] min-h-screen py-[13px] ">
+    <section className="">
+      <div className="w-[240px] min-h-screen py-[13px] ">
         <a href="#" className="mb-[22px] block px-[24px]">
           <img src={houtLogo} alt="" />
         </a>
@@ -61,8 +58,7 @@ const AdminSidenav = () => {
           </a>
         </div>
       </div>
-     </section>
-    
+    </section>
   );
 };
 

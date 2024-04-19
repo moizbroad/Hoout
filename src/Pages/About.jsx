@@ -4,6 +4,7 @@ import gridGroup from "../assets/about/gridGroup.svg";
 import avatars from "../assets/about/avatars.svg";
 import stars from "../assets/about/stars.svg";
 import QualitySection from "../components/Common/QualitySection";
+import Ratings from "../components/Common/Rating";
 
 const About = () => {
   return (
@@ -46,25 +47,9 @@ const About = () => {
         </section>
       </section>
 
-      <div className="flex justify-center items-center pt-[65px]">
-        <section className="flex-col">
-          <div className="flex items-center gap-x-3">
-            <div className="flex items-center">
-              <img src={avatars} />
-            </div>
-            <div className="flex-col">
-              {" "}
-              <div className="text-26 font-bold">2,874</div>
-              <div>Satisfied Customers</div>
-            </div>
-          </div>
-          <div className="flex gap-x-3 pt-3  ">
-            <div className="text-26 font-bold">4.8/5</div>
-            <div>
-              <img src={stars} />
-            </div>
-          </div>
-        </section>
+      <div className="pt-[65px]">
+        {" "}
+        <Ratings />
       </div>
       <div className="pt-[121px]">
         {" "}

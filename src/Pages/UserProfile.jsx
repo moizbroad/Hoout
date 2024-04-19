@@ -2,6 +2,7 @@ import React from "react";
 import Camera from "../assets/DashboardImages/CameraImg.png";
 import InputField from "../components/Common/InputField";
 import Button from "../components/Common/Button";
+import DropDown from "../components/Common/DropDown";
 
 const UserProfile = () => {
   return (
@@ -179,7 +180,11 @@ const UserProfile = () => {
                   >
                     City
                   </label>
-                  <InputField placeholder="DropDown replace plz" id="city" />
+                  <DropDown
+                    width="w-[100%]"
+                    paddingY="12px"
+                    firstOptionText="City"
+                  />
                 </div>
                 <div class="w-1/2">
                   <label
@@ -188,7 +193,11 @@ const UserProfile = () => {
                   >
                     Country
                   </label>
-                  <InputField placeholder="DropDown replace plz" id="country" />
+                  <DropDown
+                    width="w-[100%]"
+                    paddingY="12px"
+                    firstOptionText="Country"
+                  />
                 </div>
               </div>
 
@@ -235,7 +244,11 @@ const UserProfile = () => {
                   >
                     City
                   </label>
-                  <InputField placeholder="DropDown replace plz" id="city" />
+                  <DropDown
+                    width="w-[100%]"
+                    paddingY="12px"
+                    firstOptionText="City"
+                  />
                 </div>
                 <div class="w-1/2">
                   <label
@@ -244,7 +257,12 @@ const UserProfile = () => {
                   >
                     Country
                   </label>
-                  <InputField placeholder="DropDown replace plz" id="country" />
+                  <DropDown
+                    width="w-[100%]"
+                    paddingY="12px"
+                    firstOptionText="Country"
+                    // headerTextColor="gray"
+                  />
                 </div>
               </div>
 

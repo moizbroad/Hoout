@@ -7,6 +7,7 @@ import emailFooter from "../../assets/HeaderAndFooter/emailFooter.svg";
 import phone from "../../assets/HeaderAndFooter/phoneFooter.svg";
 import whatsp from "../../assets/HeaderAndFooter/whatspFooter.svg";
 import facebook from "../../assets/HeaderAndFooter/facebookFooter.svg";
+import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 
 const FooterSection = ({ isShow }) => {
   const [openhours, setOpenHours] = useState([
@@ -133,6 +134,16 @@ const FooterSection = ({ isShow }) => {
               >
                 {" "}
               </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t-2 border-gray2 ">
+          <div className="flex justify-center items-center py-[53px] ">
+            {" "}
+            <div>Copyright © 2024 Hout Total</div>
+            <div>
+              <img src={headerImage} />
             </div>
           </div>
         </section>

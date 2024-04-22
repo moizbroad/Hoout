@@ -50,8 +50,8 @@ const FooterSection = ({ isShow }) => {
 
         {/* footer top end */}
 
-        <section className="flex  pt-[80px] justify-center sm:justify-normal gap-y-6 text-[#000] mt-4">
-          <div className=" w-[50%] lg:w-[25%] md:w-[50%] sm:w-[50%]">
+        <section className="flex flex-wrap  pt-[80px] justify-center sm:justify-normal gap-y-12  text-[#000] mt-4">
+          <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
             <div className="mb-7 text-lg lg:text-3xl">Home</div>
             <div className="mt-5 text-sm">About Us</div>
             <div className="mt-5 text-sm">Impression</div>
@@ -70,7 +70,7 @@ const FooterSection = ({ isShow }) => {
             </div>
           </div>
 
-          <div className=" w-[50%] lg:w-[25%] md:w-[50%] sm:w-[50%]">
+          <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
             {openhours.map((item, index) => (
               <div key={index}>
                 <div className="mb-7 text-lg lg:text-3xl text-[#000]">
@@ -87,8 +87,8 @@ const FooterSection = ({ isShow }) => {
             ))}
           </div>
 
-          <div className=" w-[50%] lg:w-[25%] md:w-[50%] sm:w-[50%]">
-            <div>Contact Us</div>
+          <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
+            <div className="mb-7 text-lg lg:text-3xl text-[#000]">Contact Us</div>
             <div className="flex items-start gap-x-2">
               {" "}
               <img src={location} /> Lageweg 35K 2222AG <br /> Katwijk aan Zee
@@ -118,7 +118,7 @@ const FooterSection = ({ isShow }) => {
             </div>
           </div>
 
-          <div className=" w-[50%] lg:w-[25%] md:w-[50%] sm:w-[50%]">
+          <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
             <div className="mb-7 text-lg lg:text-3xl">Chamber of Commerce</div>
             <div className="mt-5 text-sm">61392421</div>
             <div className="mt-5 text-sm">Bank</div>

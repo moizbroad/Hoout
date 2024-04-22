@@ -37,7 +37,7 @@ const FooterSection = ({ isShow }) => {
                   placeholder="Enter Email Address"
                   className="bg-[#F5F4F8] w-full rounded-l-xl border-none outline-none px-4 py-2 text-sm xs:text-base"
                 />
-                <button className="bg-[#15803D] text-[#000] py-2 px-3 xs:px-4 rounded-r-xl font-semibold text-xs xs:text-base">
+                <button className="bg-yellow text-[#000] py-2 px-3 xs:px-4 rounded-r-xl font-semibold text-xs xs:text-base">
                   Subscribe
                 </button>
               </div>

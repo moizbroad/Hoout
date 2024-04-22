@@ -100,7 +100,7 @@ const AddToCart = () => {
         <div className="font-medium  text-22  "> Order Complete </div>
       </section> */}
 
-      <section className="   4xll:py-40 4xl:py-36 3xll:py-32  3xl:py-28 2xll:py-24 2xl:py-20  xl:py-16  lg:py-14 md:py-12 sm:py-10  flex-center flex-col xs:py-[12px]">
+      <section className="   flex-center flex-col ">
         {/* <div className="flex-center font-extrabold gap-x-3">
           <img
             src={blackLogoBackGround}
@@ -109,7 +109,7 @@ const AddToCart = () => {
           <p className="text-2xl"> Got Seven </p>
         </div> */}
 
-        <section className="flex-center xs:px-[20px] xs:w-full xs:gap-[10px] gap-x-4  sm:gap-x-2   xs:gap-x-2  4xll:gap-x-[50px] 4xl:gap-x-[40px] 3xll:gap-x-[30px]  3xl:gap-x-[20px] 2xll:gap-x-[10px] 2xl:gap-x-2   xl:mt-[53px] lg:mt-[40px] md:mt-[35px] sm:mt-[25px] xs:mt-[17px] ">
+        <section className="flex-center xs:px-[20px] xs:w-full xs:gap-[10px] gap-x-4  sm:gap-x-2   xs:gap-x-2     xl:mt-[40px] lg:mt-[30px] md:mt-[20px] sm:mt-[20px] xs:mt-[10px] xl:mb-[80px] ">
           {tabs.map((tab, idx) => (
             <div
               key={tab.name}

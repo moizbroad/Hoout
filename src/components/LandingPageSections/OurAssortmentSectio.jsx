@@ -69,7 +69,7 @@ const OurAssortmentSectio = () => {
         Discover the world of wood through our extensive range.{" "}
       </div>
 
-      <section className="grid grid-cols-3 px-[100px] gap-x-6 pt-[88px]">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-[50px] md:px-[80px] lg:px-[100px] xl:px-[100px] gap-x-6 pt-[88px]">
         {WoodData.map((item, index) => {
           return (
             <div key={index} className="flex-col w-[85%] ">

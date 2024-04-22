@@ -105,7 +105,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
 
         <div
           className={
-            isthree ? "grid grid-cols-3 gap-y-3" : "grid grid-cols-4 gap-y-8"
+            isthree ? "grid grid-cols-3 gap-y-3" : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6"
           }
         >
           {productData.map((item, index) => {

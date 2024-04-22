@@ -31,11 +31,7 @@ const HeaderSection = () => {
           />
         </svg>
       </div>
-      <section
-        className={`navbar ${
-          isActive ? "active open-sidebar" : ""
-        }  flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
-      >
+      <section className="navbar flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0">
         <div>Home</div>
         <div>Values</div>
         <div>Product Range</div>

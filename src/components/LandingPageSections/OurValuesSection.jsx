@@ -39,7 +39,7 @@ const OurValuesSection = () => {
         Our Values{" "}
       </div>
 
-      <section className="grid grid-cols-2 gap-x-[150px] px-[179px] ">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2  gap-x-[150px] px-[50px]  md:px-[80px] lg:px-[179px] xl:px-[179px]">
         {valueData.map((item, index) => {
           return (
             <div key={index} className="">

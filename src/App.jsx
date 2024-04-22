@@ -13,11 +13,12 @@ import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import CustomWoodPage from "./Pages/CustomWoodPage";
 import AddToCart from "./Pages/AddToCart";
+// import ShoppingCart from "./components/CartSections/ShoppingCart";
 import AddressCard from "./components/Address/AddressCard";
 import OrderHistory from "./components/Address/OrderHistory";
 import Wishlist from "./components/Address/Wishlist";
-
-
+// import Test from "./Pages/Test";
+import Test from "./Pages/Test";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -39,7 +40,8 @@ function App() {
               <Route path="/address" element={<AddressCard />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
               <Route path="/wishlist" element={<Wishlist />} />
-              
+              {/* <Route path="/shop-page" element={<ShoppingCart />} /> */}
+              <Route path="/test" element={<Test />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

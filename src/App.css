@@ -94,8 +94,10 @@ a.sideActive::before {
   background: #fbc700;
 }
 .searchSvg {
+
   filter: brightness(0) saturate(100%) invert(49%) sepia(1%) saturate(0%) hue-rotate(92deg) brightness(100%)
     contrast(90%);
+
 }
 
 .inventCard {
@@ -263,4 +265,5 @@ input::placeholder{
   font-size: 13px;
 }
 }
+
 

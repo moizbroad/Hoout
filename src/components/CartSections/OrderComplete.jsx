@@ -5,9 +5,9 @@ import Button from "../Common/Button";
 const OrderComplete = () => {
   return (
     <>
-      <section className="mx-[351px]  shadow-2xl">
+      <section className="mx-[351px]  shadow-2xl mb-[130px]">
         <div className="px-[95px]">
-          <div className="pt-[80px] text-center text-28 text-[#6C7275]">
+          <div className="pt-[80px] text-center text-28 text-[#6C7275] ">
             Thank you!
           </div>
           <div className="text-40 font-medium  text-center pt-4">

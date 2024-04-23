@@ -11,7 +11,7 @@ import Button from "../../components/Common/Button";
 const ShoppingCart = () => {
   return (
     <>
-      <section className="pt-[80px] flex justify-between px-[100px]  ">
+      <section className=" flex justify-between px-[100px]  pb-[100px] ">
         <section className="flex-1 ">
           <table>
             <thead className="">

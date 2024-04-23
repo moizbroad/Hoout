@@ -140,3 +140,54 @@ button:focus-visible {
   min-height: 360px; /* Adjust based on your Figma design */
   width: 100%; /* Take full width of the container */
 }
+
+.about {
+  /* Background image */
+  background-image: url(./assets/about/aboutImage.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  /* Height and Width */
+  min-height: 360px; /* Adjust based on your Figma design */
+  width: 100%; /* Take full width of the container */
+}
+
+.add-cart-btn {
+  width: calc(100% - 40px);
+}
+.footer-content {
+  border-top: 1px solid rgb(17 23 39 / 14%);
+  border-bottom: 1px solid rgb(17 23 39 / 14%);
+}
+.pay-button button {
+  font-size: 20px !important;
+  line-height : 28px;
+  color: #000;
+}
+footer .input-field {
+  border-radius: 12px 0px 0px 12px;
+  font-size: 16px;
+  color: #878788;
+  padding: 18px 30px;
+}
+.subscribe-btn {
+  border-radius: 0px 12px 12px 0px;
+  background-color: #FBC700;
+  padding: 18px 30px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
+@media only screen and (max-width: 767.98px) {
+  footer .input-field {
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+  .subscribe-btn {
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}

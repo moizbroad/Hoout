@@ -23,11 +23,11 @@ const AdminSidenav = () => {
 
   return (
     <section className="">
-      <div className="w-[240px] min-h-screen py-[13px] ">
+      <div className="xl:w-[240px] lg:w-[220px] w-[200px] min-h-screen xl:py-[13px] py-[10px]">
         <a href="#" className="mb-[22px] block px-[24px]">
-          <img src={houtLogo} alt="" />
+          <img src={houtLogo} alt="" className="xl:w-[160px] xl:h-[46px] lg:w-[135px] lg:h-[40px] w-[120px] h-[36px] mx-auto object-cover	" />
         </a>
-        <div className="flex flex-col items-start sideBarMain px-[24px]">
+        <div className="flex flex-col items-start sideBarMain xl:px-[24px] lg:px-[20px] px-[16px]">
           <a
             href="#"
             className="h-[43px] text-14 font-medium sideActive"

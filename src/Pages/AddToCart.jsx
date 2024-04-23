@@ -70,18 +70,18 @@ const AddToCart = () => {
   };
   return (
     <>
-      <section className="px-[100px] bg-[#F4F5F7]">
-        <tr className="gap-x-6 flex  items-center  py-[40px]">
-          <td className="text-[#9F9F9F] text-16">Home </td>
+      <section className="px-[30px] md:px-[80px] lg:px-[100px] bg-[#F4F5F7]">
+        <tr className="xs:gap-x-3 gap-x-6 flex  items-center  py-[40px]">
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16">Home </td>
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="text-[#9F9F9F] text-16"> Shop</td>
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16"> Shop</td>
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="h-[px] font-bold text-[#9F9F9F] ">| </td>
-          <td>Cart </td>
+          <td className="h-[px] font-bold text-[#9F9F9F]">| </td>
+          <td className="xs:text-14 sm:text-15 ">Cart </td>
         </tr>
       </section>
 

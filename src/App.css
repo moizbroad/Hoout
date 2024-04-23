@@ -229,6 +229,21 @@ input[type="radio"]:checked + .box-content {
 /* .open-sidebar {
   overflow: hidden;
 } */
+.number-box {
+  width: 43px;
+  height: 36px;
+  border-radius: 5px;
+  border: 2px solid #B9B9B9;
+}
+.cart-button {
+  width: 52px;
+  height: 43px;
+  background-color: #FBC700;
+  border-radius: 5px;
+}
+.wood-stock-table table tr:nth-child(even) {
+  background-color: #F8F8F8;
+}
 
 /* media query start  */
 
@@ -315,7 +330,7 @@ input::placeholder{
   }
   .landing {
     height: 100vh;
-    min-height: initial !important;
+    min-height: auto !important;
   }
 }
 

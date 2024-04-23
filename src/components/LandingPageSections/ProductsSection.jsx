@@ -111,7 +111,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
           {productData.map((item, index) => {
             return (
               // JSX code here
-              <div key={index} className="    ">
+              <div key={index} className="">
                 <div
                   className="cursor-pointer"
                   onClick={() => {
@@ -120,8 +120,8 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                 >
                   <img src={item.image} className="w-full object-cover h-full sm:h-[310px] lg:h-[310px] xl:h-[310px]" />
                 </div>
-                <section className="bg-[#F4F5F7] pb-4 px-4 ">
-                  <div className=" font-semibold  text-24 pt-[15px] ">
+                <section className="bg-[#F4F5F7] pb-4 px-4">
+                  <div className="font-semibold  text-24 pt-[15px]">
                     {item.heading}
                   </div>
                   <div className=" font-medium  text-16  text-gray2 pt-[15px]">

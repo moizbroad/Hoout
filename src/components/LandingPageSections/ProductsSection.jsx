@@ -95,9 +95,9 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
   ];
   return (
     <>
-      <section className={notRequired ? "" : "pt-[100px] px-[100px]"}>
+      <section className={notRequired ? "" : "pt-[30px] md:pt-[70px] lg:pt-[100px] xl:pt-[100px] px-[30px] md:px-[80px] lg:px-[100px] xl:px-[100px]"}>
         {notRequired ? null : (
-          <div className="text-60  font-bold text-center pb-[60px]">
+          <div className="text-30 md:text-40 lg:text-50 xl:text-60 font-bold text-center pb-[30px] md:pb-[40px] lg:pb-[60px] xl:pb-[60px]">
             {" "}
             Products
           </div>
@@ -105,7 +105,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
 
         <div
           className={
-            isthree ? "grid grid-cols-3 gap-y-3" : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6"
+            isthree ? "grid grid-cols-3 gap-y-3" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1240px] mx-auto"
           }
         >
           {productData.map((item, index) => {
@@ -118,9 +118,9 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                     navigate("/wood-page");
                   }}
                 >
-                  <img src={item.image} className="w-[285px] h-[310px] " />
+                  <img src={item.image} className="w-full object-cover h-full sm:h-[310px] lg:h-[310px] xl:h-[310px]" />
                 </div>
-                <section className="bg-[#F4F5F7]  w-[285px] pb-4 px-4 ">
+                <section className="bg-[#F4F5F7] pb-4 px-4 ">
                   <div className=" font-semibold  text-24 pt-[15px] ">
                     {item.heading}
                   </div>
@@ -131,9 +131,9 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                     <div>{item.amount}</div>
                     <div className="text-gray2">{item.subamount}</div>
                   </section>
-                  <section className="flex gap-x-4 items-center">
+                  <section className="flex gap-x-4 items-center justify-between">
                     <div
-                      className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  w-[70%]  "
+                      className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  add-cart-btn"
                       onClick={() => {
                         navigate("/cart");
                       }}
@@ -151,7 +151,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
           })}
         </div>
         {isbuttonReqird ? null : (
-          <div className="flex  justify-center pt-[70px]">
+          <div className="flex  justify-center pt-[30px] md:pt-[40px] lg:pt-[70px] xl:pt-[70px] view-assortment-btn">
             {" "}
             <Button
               btnText="View Shop"

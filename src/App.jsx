@@ -21,6 +21,7 @@ import AddressCard from "./components/Address/AddressCard";
 import OrderHistory from "./components/Address/OrderHistory";
 import Wishlist from "./components/Address/Wishlist";
 import About from "./Pages/About";
+import MyAccount from "./Pages/MyAccount";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -49,6 +50,7 @@ function App() {
               <Route path="/orderHistory" element={<OrderHistory />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/about" element={<About />} />
+              <Route path="/myaccount" element={<MyAccount />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

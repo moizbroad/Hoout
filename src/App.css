@@ -220,6 +220,14 @@ input[type="radio"]:checked + .box-content {
   font-size: 1.4em;
 }
 
+.navbar.active {
+  left: 0;
+  opacity: 1;
+}
+/* .open-sidebar {
+  overflow: hidden;
+} */
+
 /* media query start  */
 
 @media (max-width: 1199px) {
@@ -241,7 +249,7 @@ input::placeholder{
   font-size: 14px;
 }
 }
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
   a.sideActive::before {
     content: "";
     left: -18px;
@@ -262,5 +270,55 @@ label{
 input::placeholder{
   font-size: 13px;
 }
+
+/* rauf bhai css  */
+ .header-logo {
+    position: absolute;
+    top: 20px;
+    left: 0;
+  }
+  .navbar {
+    background: #E9E6D6;
+    height: 100vh;
+    left: -40vw;
+    opacity: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px 0 30px 0;
+    position: fixed;
+    top: 0;
+    width: 40vw;
+    z-index: 1000;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    transition: all 0.3s;
+    padding-top: 100px;
+/* rauf bhai css // */
+
+
 }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .navbar {
+    height: 100vh;
+    left: -100vw;
+    width: 100vw;
+  }
+  .view-assortment-btn button {
+    padding-block: 15px !important;
+    padding-inline: 35px !important;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .landing {
+    height: 100vh;
+    min-height: initial !important;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+
+}
+
 

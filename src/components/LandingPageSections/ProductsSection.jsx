@@ -95,7 +95,13 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
   ];
   return (
     <>
-      <section className={notRequired ? "" : "pt-[30px] md:pt-[70px] lg:pt-[100px] xl:pt-[100px] px-[30px] md:px-[80px] lg:px-[100px] xl:px-[100px]"}>
+      <section
+        className={
+          notRequired
+            ? ""
+            : "pt-[30px] md:pt-[70px] lg:pt-[100px] xl:pt-[100px] px-[30px] md:px-[80px] lg:px-[100px] xl:px-[100px]"
+        }
+      >
         {notRequired ? null : (
           <div className="text-30 md:text-40 lg:text-50 xl:text-60 font-bold text-center pb-[30px] md:pb-[40px] lg:pb-[60px] xl:pb-[60px]">
             {" "}
@@ -105,7 +111,9 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
 
         <div
           className={
-            isthree ? "grid grid-cols-3 gap-y-3" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1240px] mx-auto"
+            isthree
+              ? "grid grid-cols-3 gap-y-3  gap-x-8 "
+              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1240px] mx-auto"
           }
         >
           {productData.map((item, index) => {
@@ -118,7 +126,10 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                     navigate("/wood-page");
                   }}
                 >
-                  <img src={item.image} className="w-full object-cover h-full sm:h-[310px] lg:h-[310px] xl:h-[310px]" />
+                  <img
+                    src={item.image}
+                    className="w-full object-cover h-full sm:h-[310px] lg:h-[310px] xl:h-[310px]"
+                  />
                 </div>
                 <section className="bg-[#F4F5F7] pb-4 px-4 ">
                   <div className=" font-semibold  text-24 pt-[15px] ">

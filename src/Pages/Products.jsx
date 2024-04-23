@@ -128,9 +128,9 @@ const Products = () => {
 
   return (
     <div>
-      <div className="py-[24px] px-[20px] bg-[#fafafa] h-full min-h-[86vh]">
+      <div className="xl:py-[24px] lg:py-[20px] py-[16px] xl:px-[20px] lg:px-[16px] px-[10px] bg-[#fafafa] h-full min-h-[86vh]">
         <div className="flex justify-between">
-          <h1 className="text-32 font-bold mb-[30px] ">Products</h1>
+          <h1 className="xl:text-32 lg:text-28 text-26 font-bold xl:mb-[30px] lg:mb-[22px] mb-[14px] ">Products</h1>
 
           <div className="flex gap-4">
             <div class="relative inline-block text-left">
@@ -227,7 +227,7 @@ const Products = () => {
                   Action
                 </th>
 
-                <th className="px-[8px] py-[12px]  text-center text-14 font-bold rounded-r-2xl	"></th>
+              
               </tr>
             </thead>
 
@@ -235,31 +235,31 @@ const Products = () => {
               return (
                 <tbody>
                   <tr key={index} className="border-b-[0.4px] border-gray">
-                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="">
                         <p className="text-gray-900 whitespace-no-wrap">
                           {rowData.id}
                         </p>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
-                      <div className="flex gap-2 items-center">
-                        <div className="flex-shrink-0 w-[60px] h-[60px]">
-                          <img src={rowData.image} alt={rowData.productName} />
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex gap-1 items-center">
+                        <div className="block xl:w-[60px] lg:w-[50px] w-[45px]">
+                          <img src={rowData.image} alt={rowData.productName} className="" />
                         </div>
-                        <div className="min-w-[100px]">
+                        <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {rowData.productName}
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3 w-[12%]">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3 w-[12%]">
                       <p className="text-gray-900 overflow-hidden whitespace-normal line-clamp-3 min-w-[120px]">
                         {rowData.description}
                       </p>
                     </td>
-                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-2 items-center">
                         <div className="flex-shrink-0 w-[38.64px] h-[38.64px]">
                           <img src={rowData.image} alt={rowData.productName} />
@@ -271,7 +271,7 @@ const Products = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[12px] text-left text-14 font-semibold text-gray3">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-3 items-center">
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
@@ -280,8 +280,8 @@ const Products = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-[24px] py-[24px] text-left text-14 font-semibold text-gray3">
-                      <div className="flex gap-3 items-center">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex xl:gap-3 gap-2 items-center">
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {rowData.condition}
@@ -289,47 +289,48 @@ const Products = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-3 items-center">
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
                             {rowData.quantity.amount}{" "}
-                            <span className="bg-[#FBC7001A] text-[#FBC7001A] p-[8px] rounded-full inline-block min-w-[70px] text-center">
+                            <span className="bg-[#FBC7001A] text-[#747474] p-[8px] rounded-full inline-block min-w-[70px] text-center">
                               {rowData.quantity.status}
                             </span>
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-3 items-center justify-center">
                         <div className="">
                           <p className="text-14 text-center">{rowData.price}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
-                      <div className="flex gap-3 items-center justify-center">
-                        <p className="text-14 text-center">N/A</p>
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex xl:gap-3 gap-2 items-center justify-center">
+                        <p className="xl:text-14 lg-text-[13px] text-12 text-center">N/A</p>
                       </div>
                     </td>
-                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
-                      <div className="flex gap-3 items-center justify-center">
+                    <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left xl:text-14 lg-text-[13px] text-12 font-semibold text-gray3 min-w-[100px]">
+                      <div className="flex xl:gap-3 gap-2 items-center justify-center">
                         <a href={rowData.editLink}>
                           <img src={editImg} alt="edit icon image" />
                         </a>
                         <a href={rowData.deleteLink}>
                           <img src={dltImg} alt="Delete icon image" />
                         </a>
-                      </div>
-                    </td>
-                    <td className="px-[10px] py-[24px] text-left text-14 font-semibold text-gray3">
-                      <div className="flex gap-3 items-center justify-center">
-                        <a href={rowData.dropdownMenuLink}>
+                         <a href={rowData.dropdownMenuLink}>
                           <img src={dots} alt="vertical drop down dot img" />
                         </a>
                       </div>
                     </td>
+                    {/* <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
+                      <div className="flex xl:gap-3 gap-2 items-center justify-center">
+                       
+                      </div>
+                    </td> */}
                   </tr>
                 </tbody>
               );
@@ -440,13 +441,13 @@ const Products = () => {
           onClick={() => {
             navigate("/new-product");
           }}
-          className="w-full mt-[60px] flex justify-end"
+          className="w-full xl:mt-[60px] lg:mt-[40px] mt-[25px] flex justify-end"
         >
           {/* <button className="bg-[#FBC700] block text-black text-center py-[14px] px-[20px] w-[26%] font-semibold mb-[23px] text-20 ">
             Add New Product
           </button> */}
 
-          <Button btnText=" Add New Product" breakpoint="xl:w-[282px]" />
+          <Button btnText=" Add New Product" breakpoint="xl:w-[282px] lg:w-[240px] w-[200px] " />
         </div>
       </div>
     </div>

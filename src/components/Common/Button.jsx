@@ -18,13 +18,14 @@ const Button = ({
     <button
       className={` ${
         disabled ? "bg-gray-500 opacity-80" : "hover:opacity-85"
-      }  text-22 flex-center rounded-md fontbold
+      }  xl:text-22 lg:text-20 text-18
+ flex-center rounded-md fontbold
        ${widthfull ? "w-full" : null}
        ${breakpoint} 
        ${fontbold ? "font-bold" : null} 
        ${
          textColor ? "text-[#fff]" : "text-white"
-       } py-3 px-2 xl:text-md bg-yellow text-16`}
+       } xl:py-3 py-2 px-2 xl:text-md bg-yellow text-16`}
       disabled={disabled}
       onClick={onClick}
       type={type}

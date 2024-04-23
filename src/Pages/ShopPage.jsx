@@ -67,27 +67,27 @@ const ShopPage = () => {
             <td>
               <img src={listView} />
             </td>
-            <td>Showing 1-16 of 32 results</td>
+            <td className="pops">Showing 1-16 of 32 results</td>
           </tr>
         </section>
         <section>
           <tr className="flex gap-x-6">
-            <td>Show Prices</td>
-            <td>Incl. VAT</td>
-            <td>fe</td>
-            <td>Ecxl.VAT</td>
+            <td className="pops">Show Prices</td>
+            <td className="pops">Incl. VAT</td>
+            <td className="pops">fe</td>
+            <td className="pops">Ecxl.VAT</td>
           </tr>
         </section>
       </section>
 
       <section className="flex pb-[200px]">
         {openfilter && (
-          <div className="w-[25%]">
+          <div className="w-[22%]">
             <Filters />
           </div>
         )}
 
-        <div className="w-[90%] pt-[75px] ">
+        <div className="w-[100%] pt-[75px] px-[100px] ">
           {" "}
           <ProductsSection isthree isbuttonReqird notRequired />{" "}
         </div>

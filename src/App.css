@@ -94,10 +94,12 @@ a.sideActive::before {
   background: #fbc700;
 }
 .searchSvg {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(1%) saturate(0%)
+    hue-rotate(92deg) brightness(100%) contrast(90%);
+}
 
-  filter: brightness(0) saturate(100%) invert(49%) sepia(1%) saturate(0%) hue-rotate(92deg) brightness(100%)
-    contrast(90%);
-
+.pops {
+  font-family: "Poppins" !important;
 }
 
 .inventCard {
@@ -238,18 +240,17 @@ input[type="radio"]:checked + .box-content {
     left: -21px;
   }
   .myCard {
-  padding: 26px;
-  
-}
-.flagSelMain button#rfs-btn{
-  font-size: 14px !important;
-}
-label{
-  font-size: 14px !important;
-}
-input::placeholder{
-  font-size: 14px;
-}
+    padding: 26px;
+  }
+  .flagSelMain button#rfs-btn {
+    font-size: 14px !important;
+  }
+  label {
+    font-size: 14px !important;
+  }
+  input::placeholder {
+    font-size: 14px;
+  }
 }
 @media (max-width: 991.98px) {
   a.sideActive::before {
@@ -257,30 +258,29 @@ input::placeholder{
     left: -18px;
   }
   .myCard {
-  padding: 20px;
-  
-}
-.flagSelMain button#rfs-btn{
-  font-size:13px !important; 
-}
-.prodImgLeft section.container{
-  width: 50% !important;
-}
-label{
-  font-size: 13px !important;
-}
-input::placeholder{
-  font-size: 13px;
-}
+    padding: 20px;
+  }
+  .flagSelMain button#rfs-btn {
+    font-size: 13px !important;
+  }
+  .prodImgLeft section.container {
+    width: 50% !important;
+  }
+  label {
+    font-size: 13px !important;
+  }
+  input::placeholder {
+    font-size: 13px;
+  }
 
-/* rauf bhai css  */
- .header-logo {
+  /* rauf bhai css  */
+  .header-logo {
     position: absolute;
     top: 20px;
     left: 0;
   }
   .navbar {
-    background: #E9E6D6;
+    background: #e9e6d6;
     height: 100vh;
     left: -40vw;
     opacity: 0;
@@ -295,10 +295,8 @@ input::placeholder{
     -webkit-box-direction: normal;
     transition: all 0.3s;
     padding-top: 100px;
-/* rauf bhai css // */
-
-
-}
+    /* rauf bhai css // */
+  }
 }
 
 @media only screen and (max-width: 767.98px) {
@@ -320,7 +318,4 @@ input::placeholder{
 }
 
 @media only screen and (max-width: 575.98px) {
-
 }
-
-

@@ -73,7 +73,7 @@ const OrderList = () => {
     <div>
       <div className="p-[30px] bg-[#fafafa] h-full min-h-[86vh]">
         <div className="flex justify-between">
-          <h1 className="text-32 font-bold mb-[30px] ">Order Lists</h1>
+          <h1 className="xl:text-32 lg:text-28 text-26 font-bold mb-[30px] ">Order Lists</h1>
 
           <div className="flex gap-4">
             <div class="relative inline-block text-left">

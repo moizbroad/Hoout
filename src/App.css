@@ -94,8 +94,10 @@ a.sideActive::before {
   background: #fbc700;
 }
 .searchSvg {
-  filter: brightness(0) saturate(100%) invert(49%) sepia(1%) saturate(0%)
-    hue-rotate(92deg) brightness(100%) contrast(90%);
+
+  filter: brightness(0) saturate(100%) invert(49%) sepia(1%) saturate(0%) hue-rotate(92deg) brightness(100%)
+    contrast(90%);
+
 }
 
 .inventCard {
@@ -204,6 +206,22 @@ input[type="radio"]:checked + .box-content {
   color: #fff; */
 }
 /* radio buttons clickable css end */
+
+.flagSelMain button#rfs-btn {
+  border: none;
+  padding-bottom: 0;
+  font-size: 15px !important;
+}
+.flagSelMain .ReactFlagsSelect-module_flagsSelect__2pfa2 {
+  padding: 0;
+}
+.flagSelMain span.ReactFlagsSelect-module_label__27pw9 {
+  padding-top: 6px;
+}
+.flagSelMain .ReactFlagsSelect-module_selectFlag__2q5gC {
+  font-size: 1.4em;
+}
+
 .navbar.active {
   left: 0;
   opacity: 1;
@@ -212,14 +230,57 @@ input[type="radio"]:checked + .box-content {
   overflow: hidden;
 } */
 
-@media only screen and (max-width: 991.98px) {
-  .header-logo {
+/* media query start  */
+
+@media (max-width: 1199px) {
+  a.sideActive::before {
+    content: "";
+    left: -21px;
+  }
+  .myCard {
+  padding: 26px;
+  
+}
+.flagSelMain button#rfs-btn{
+  font-size: 14px !important;
+}
+label{
+  font-size: 14px !important;
+}
+input::placeholder{
+  font-size: 14px;
+}
+}
+@media (max-width: 991.98px) {
+  a.sideActive::before {
+    content: "";
+    left: -18px;
+  }
+  .myCard {
+  padding: 20px;
+  
+}
+.flagSelMain button#rfs-btn{
+  font-size:13px !important; 
+}
+.prodImgLeft section.container{
+  width: 50% !important;
+}
+label{
+  font-size: 13px !important;
+}
+input::placeholder{
+  font-size: 13px;
+}
+
+/* rauf bhai css  */
+ .header-logo {
     position: absolute;
     top: 20px;
     left: 0;
   }
   .navbar {
-    background: #e9e6d6;
+    background: #E9E6D6;
     height: 100vh;
     left: -40vw;
     opacity: 0;
@@ -234,8 +295,12 @@ input[type="radio"]:checked + .box-content {
     -webkit-box-direction: normal;
     transition: all 0.3s;
     padding-top: 100px;
-  }
+/* rauf bhai css // */
+
+
 }
+}
+
 @media only screen and (max-width: 767.98px) {
   .navbar {
     height: 100vh;
@@ -253,3 +318,9 @@ input[type="radio"]:checked + .box-content {
     min-height: initial !important;
   }
 }
+
+@media only screen and (max-width: 575.98px) {
+
+}
+
+

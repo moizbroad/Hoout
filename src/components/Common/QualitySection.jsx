@@ -36,8 +36,8 @@ const QualitySection = () => {
             </div>
             <div className="flex-col">
               {" "}
-              <div className="text-primary">{item.head}</div>
-              <div className="text-primary">{item.subHead}</div>
+              <div className="text-primary pops ">{item.head}</div>
+              <div className="text-primary pops ">{item.subHead}</div>
             </div>
           </div>
         );

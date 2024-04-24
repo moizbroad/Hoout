@@ -9,6 +9,7 @@ import cup from "../assets/shopPage/cup.svg";
 import guarantee from "../assets/shopPage/guarantee.svg";
 import shipping from "../assets/shopPage/shipping.svg";
 import supports from "../assets/shopPage/supports.svg";
+import QualitySection from "../components/Common/QualitySection";
 
 const ShopPage = () => {
   const [openfilter, setOpenfilter] = useState(true);
@@ -53,30 +54,39 @@ const ShopPage = () => {
         </section>
       </div>
 
-      <section className="flex justify-between  md:flex-col sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[100px] lg:px-[100px]  ">
-        <section>
+      <section className="flex justify-between   sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[100px] lg:px-[100px] md:px-[60px]  ">
+        <div>
           {" "}
-          <tr className="flex gap-x-6">
-            <td className="poppins" onClick={toggle}>
-              <img src={filter} />
-            </td>
-            <td onClick={openfilter}>Filter</td>
-            <td>
-              <img src={gridView} />
-            </td>
-            <td>
-              <img src={listView} />
-            </td>
-            <td className="pops">Showing 1-16 of 32 results</td>
-          </tr>
-        </section>
-        <section>
-          <tr className="flex gap-x-6">
-            <td className="pops">Show Prices</td>
-            <td className="pops">Incl. VAT</td>
-            <td className="pops">fe</td>
-            <td className="pops">Ecxl.VAT</td>
-          </tr>
+          <div className="flex items-center gap-x-6 md:gap-x-4 xs:gap-x-3 ">
+            <div className="poppins" onClick={toggle}>
+              <img src={filter} className="md:size-5 xs:size-5" />
+            </div>
+            <div onClick={openfilter}>Filter</div>
+            <div>
+              <img src={gridView} className="md:size-4  xs:size-3 " />
+            </div>
+            <div>
+              <img src={listView} className="md:size-5 xs:size-3.5" />
+            </div>
+            <div className="pops md:text-14 sm:text-14 xs:text-12  ">
+              Showing 1-16 of 32 results
+            </div>
+          </div>
+        </div>
+
+        <section className=" sm:pt-4  xs:pt-4">
+          <div className="flex gap-x-6  md:gap-x-4 xs:gap-x-3 ">
+            <div className="pops md:text-14  sm:text-14 xs:text-12  ">
+              Show Prices
+            </div>
+            <div className="pops md:text-14 sm:text-14 xs:text-12 ">
+              Incl. VAT
+            </div>
+            <div className="pops md:text-14 sm:text-14 xs:text-12 ">fe</div>
+            <div className="pops md:text-14 sm:text-14 xs:text-12 ">
+              Ecxl.VAT
+            </div>
+          </div>
         </section>
       </section>
 
@@ -92,22 +102,10 @@ const ShopPage = () => {
           <ProductsSection isthree isbuttonReqird notRequired />{" "}
         </div>
       </section>
-      <section className="bg-[#111727] flex flex-wrap justify-center items-center px-[50px] gap-[50px] md:gap-[50px] lg:gap-[40px] xl:gap-[60px] g pt-[100px] pb-[130px]">
-        {data.map((item, index) => {
-          return (
-            <div key={index} className="flex gap-x-3">
-              <div>
-                {" "}
-                <img src={item.image} />{" "}
-              </div>
-              <div className="flex-col">
-                {" "}
-                <div className="text-primary">{item.head}</div>
-                <div className="text-primary">{item.subHead}</div>
-              </div>
-            </div>
-          );
-        })}
+
+      <section>
+        {" "}
+        <QualitySection />
       </section>
     </>
   );

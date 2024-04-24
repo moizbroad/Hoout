@@ -4,6 +4,7 @@ import notfiIcon from "../../assets/DashboardImages/notfiIcon.svg";
 import country from "../../assets/DashboardImages/country.svg";
 import ProfileDD from "../../assets/DashboardImages/ProfileDD.svg";
 import CountrySelector from "../Common/CountrySelector";
+import HeadLessDropDown from "../Common/HeadLessDropDown";
 
 const AdminMainNav = () => {
   const navigate = useNavigate();
@@ -56,9 +57,14 @@ const AdminMainNav = () => {
           <div className="flagSelMain">
             <CountrySelector />
           </div>
-          <a href="#">
-            <img src={ProfileDD} alt="" />
-          </a>
+          {/* <div>
+            <a href="#">
+              <img src={ProfileDD} alt="" />
+            </a>
+          </div> */}
+          <div className=" ">
+            <HeadLessDropDown />
+          </div>
         </div>
       </div>
     </div>

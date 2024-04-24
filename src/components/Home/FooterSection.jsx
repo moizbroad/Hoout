@@ -30,7 +30,7 @@ const FooterSection = ({ isShow }) => {
         <section className="w-full absolute top-[-72px] left-[50%] right-[50%] transform -translate-x-1/2 -translate-y-1/2sF justify-center bg-white rounded-2xl max-w-[95%] xl:max-w-[1130px] mx-auto gap-x-3 py-3 md:py-7 lg:py-7 xl:py-7 px-4 md:px-7 lg:px-9 xl:px-9">
           <div className="flex flex-col flex-1 gap-2">
             <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row gap-4 items-start md:items-center lg:items-center xl:items-center">
-              <div className="font-semibold text-[#000] text-[25px]">
+              <div className="font-semibold text-[#000] text-[25px] vietnam">
                 Newsletter
               </div>
               <div className="flex flex-col xs:gap-4 sm:gap-4 sm:flex-row md:flex-row lg:flex-row xl:flex-row w-full">
@@ -39,12 +39,12 @@ const FooterSection = ({ isShow }) => {
                   placeholder="Enter Email Address"
                   className="bg-[#F5F4F8] flex-grow input-field"
                 />
-                <button className="subscribe-btn w-[150px] md:w-[200px] lg:w-[253px] xl:w-[253px]">
+                <button className="subscribe-btn vietnam  w-[150px] md:w-[200px] lg:w-[253px] xl:w-[253px]">
                   Subscribe
                 </button>
               </div>
             </div>
-            <div className=" pt-2 text-xs  text-[#000] xs:text-sm ms-0 md:ms-[140px] lg:ms-[140px] xl:ms-[140px]">
+            <div className=" pt-2 text-xs vietnam  text-[#000] xs:text-sm ms-0 md:ms-[140px] lg:ms-[140px] xl:ms-[140px]">
               Subscribe to Our Newsletter and get updated every time.
             </div>
           </div>
@@ -57,24 +57,24 @@ const FooterSection = ({ isShow }) => {
         <section className="footer-content">
           <div className="flex flex-wrap justify-center sm:justify-normal gap-y-12  text-[#000] mt-7 max-w-[1240px] px-[30px] mx-auto sm:mb-4 xs:mb-4">
             <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
-              <div className="mb-6 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
+              <div className="mb-6  vietnam text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
                 Home
               </div>
-              <div className="mb-5 text-[14px]">Home</div>
-              <div className="mb-5 text-[14px]">About Us</div>
-              <div className="mb-5 text-[14px]">Impression</div>
-              <div className="mb-5 text-[14px]">Custom Tables</div>
+              <div className="mb-5 text-[14px] vietnam ">Home</div>
+              <div className="mb-5 text-[14px] vietnam ">About Us</div>
+              <div className="mb-5 text-[14px] vietnam ">Impression</div>
+              <div className="mb-5 text-[14px] vietnam ">Custom Tables</div>
               <div className="mb-5">
                 <Link to="/faq" className="text-[14px]">
                   FAQ
                 </Link>
               </div>
-              <div className="mb-5 text-[14px]">Contact</div>
-              <div className="mb-5 text-[14px]">
+              <div className="mb-5 text-[14px] vietnam ">Contact</div>
+              <div className="mb-5 text-[14px] vietnam ">
                 <Link to="/terms-conditions">Terms & Conditions</Link>
               </div>
               <div className="mb-5 text-[14px]">
-                <Link to="privacy-policy">Privacy Policy</Link>
+                <Link to="privacy-policy vietnam ">Privacy Policy</Link>
               </div>
             </div>
 
@@ -84,36 +84,36 @@ const FooterSection = ({ isShow }) => {
                   <div className="mb-6 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
                     {item.title}
                   </div>
-                  <div className="mb-5 text-[14px]">{item.mon}</div>
-                  <div className="mb-5 text-[14px]">{item.tue}</div>
-                  <div className="mb-5 text-[14px]">{item.wed}</div>
-                  <div className="mb-5 text-[14px]">{item.thurs}</div>
-                  <div className="mb-5 text-[14px]">{item.fri}</div>
-                  <div className="mb-5 text-[14px]">{item.sat}</div>
-                  <div className="mb-5 text-[14px]">{item.sun}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.mon}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.tue}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.wed}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.thurs}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.fri}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.sat}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.sun}</div>
                 </div>
               ))}
             </div>
 
             <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
-              <div className="mb-6 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
+              <div className="mb-6 text-[18px] vietnam  md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
                 Contact Us
               </div>
-              <div className="flex items-start gap-x-2 mb-5 text-[14px]">
+              <div className="flex items-start gap-x-2 mb-5 text-[14px] vietnam ">
                 {" "}
                 <img src={location} /> Lageweg 35K 2222AG <br /> Katwijk aan Zee
                 The <br />
                 Netherlands{" "}
               </div>
-              <div className="flex items-center mb-5 text-[14px] gap-x-2">
+              <div className="flex items-center mb-5 text-[14px] gap-x-2 vietnam ">
                 {" "}
                 <img src={whatsp} /> +316 339 66 002
               </div>
-              <div className="flex items-center mb-5 text-[14px] gap-x-2">
+              <div className="flex items-center mb-5 text-[14px] gap-x-2 vietnam ">
                 {" "}
                 <img src={phone} /> +31 71 203 40 90
               </div>
-              <div className="flex items-center mb-5 text-[14px] gap-x-2">
+              <div className="flex items-center mb-5 text-[14px] gap-x-2 vietnam ">
                 {" "}
                 <img src={emailFooter} /> info@makeyourplank.nl
               </div>
@@ -129,12 +129,16 @@ const FooterSection = ({ isShow }) => {
             </div>
 
             <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
-              <div className="mb-6 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
+              <div className="mb-6 text-[18px] vietnam  md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
                 Chamber of Commerce
               </div>
-              <div className="mb-5 text-[14px]">61392421</div>
-              <div className="mb-5 text-[14px] font-semibold">Bank</div>
-              <div className="mb-5 text-[14px]">NL65 BUNQ 2064 2611 33</div>
+              <div className="mb-5 text-[14px] vietnam ">61392421</div>
+              <div className="mb-5 text-[14px] font-semibold vietnam ">
+                Bank
+              </div>
+              <div className="mb-5 text-[14px] vietnam ">
+                NL65 BUNQ 2064 2611 33
+              </div>
               <div className=" mt-5 pay-button">
                 {" "}
                 <Button
@@ -150,7 +154,7 @@ const FooterSection = ({ isShow }) => {
           </div>
         </section>
         <div className="copyright-sect xs:flex-col-reverse flex justify-center items-center sm:gap-[30px] xs:gap-[30px] gap-[100px] py-[30px] px-[30px]">
-          <div className="text-[14px] text-[#111727s]">
+          <div className="text-[14px] vietnam text-[#111727s]">
             Copyright © 2024 Hout Total
           </div>
           <img src={footerLogo} />

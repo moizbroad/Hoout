@@ -7,6 +7,9 @@
 /* Nunito Sans */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
+/* bs vitnam */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 a:hover,
 button:hover {
   opacity: 0.8;
@@ -100,6 +103,10 @@ a.sideActive::before {
 
 .pops {
   font-family: "Poppins" !important;
+}
+
+.vietnam {
+  font-family: "Be Vietnam Pro" !important;
 }
 
 .inventCard {
@@ -235,16 +242,16 @@ input[type="radio"]:checked + .box-content {
   width: 43px;
   height: 36px;
   border-radius: 5px;
-  border: 2px solid #B9B9B9;
+  border: 2px solid #b9b9b9;
 }
 .cart-button {
   width: 52px;
   height: 43px;
-  background-color: #FBC700;
+  background-color: #fbc700;
   border-radius: 5px;
 }
 .wood-stock-table table tr:nth-child(even) {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 /* media query start  */

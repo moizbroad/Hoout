@@ -6,7 +6,7 @@ import trendUp from "../assets/DashboardImages/trendUp.svg";
 import trendDown from "../assets/DashboardImages/trendDown.svg";
 import sampleProductImg from "../assets/DashboardImages/sampleProductImg.svg";
 import CountrySelector from "../components/Common/CountrySelector";
-// import DatePicker from "../components/Common/DatePicker";
+import Date from "../components/Common/Date";
 
 const OrderList = () => {
   const orderListTable = [
@@ -73,11 +73,15 @@ const OrderList = () => {
     <div>
       <div className="p-[30px] bg-[#fafafa] h-full min-h-[86vh]">
         <div className="flex justify-between">
-          <h1 className="xl:text-32 lg:text-28 text-26 font-bold mb-[30px] ">Order Lists</h1>
+          <h1 className="xl:text-32 lg:text-28 text-26 font-bold mb-[30px] ">
+            Order Lists
+          </h1>
 
           <div className="flex gap-4">
             <div class="relative inline-block text-left">
-              <div>{/* <DatePicker /> */}</div>
+              {/* <div>
+                <Date />
+              </div> */}
             </div>
             <div class="relative inline-block text-left">
               <div>

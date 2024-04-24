@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import profileImg from "../assets/myAccount/profile.png";
 import crossImg from "../assets/myAccount/Shape.svg";
 import profilebtn from "../assets/myAccount/profileBtn.svg";
 import productImg from "../assets/myAccount/image 1.svg";
 import productImg2 from "../assets/myAccount/image 2.svg";
 import productImg3 from "../assets/myAccount/image 3.svg";
+import Account from "../components/Address/Account";
+import AddressCard from "../components/Address/AddressCard";
+import OrderHistory from "../components/Address/OrderHistory";
+import Wishlist from "../components/Address/Wishlist";
 
 const MyAccount = () => {
+  const [selectedComponent, setSelectedComponent] = useState("Account");
+
   const data = [
-    { id: 1, name1: "Account" },
-    { id: 2, name2: "Address" },
-    { id: 3, name3: "Orders" },
-    { id: 4, name4: "Wishlist" },
-    { id: 5, name5: "LogOut" },
+    { id: 1, name: "Account", component: <Account /> },
+    { id: 2, name: "Address", component: <AddressCard /> },
+    { id: 3, name: "Orders", component: <OrderHistory /> },
+    { id: 4, name: "Wishlist", component: <Wishlist /> },
+    { id: 5, name: "LogOut", component: null },
   ];
+
   return (
     <>
       <section className="px-40 xs:px-8 sm:px-10 md:px-10 lg:px-12 my-20 xs:my-8 sm:my-10 md:my-13 lg:my-14">
@@ -34,157 +41,20 @@ const MyAccount = () => {
               Sofia Havertz
             </h1>
 
-            {data.map((item, index) => {
-              return (
-                <div className="w-[100%]" key={index}>
-                  <h1 className="text-[16px]  text-[#000000] pb-[8px] mb-[12px]">
-                    {item.name1}
-                  </h1>
-                  <div className="py-[8px] text-[16px] text-[#6C7275]">
-                    {" "}
-                    {item.name2}
-                  </div>
-                  <div className="py-[8px] text-[16px] text-[#6C7275]">
-                    {" "}
-                    {item.name3}
-                  </div>
-                  <div className="py-[8px] text-[16px] text-[#6C7275]">
-                    {" "}
-                    {item.name4}
-                  </div>
-                  <div className="py-[8px] text-[16px] text-[#6C7275]">
-                    {" "}
-                    {item.name5}
-                  </div>
-                </div>
-              );
-            })}
+            {data.map((item) => (
+              <div
+                key={item.id}
+                className="w-[100%] cursor-pointer"
+                onClick={() => setSelectedComponent(item.component)}
+              >
+                <h1 className="text-[16px]  text-[#000000] pb-[8px] mb-[12px]">
+                  {item.name}
+                </h1>
+              </div>
+            ))}
           </div>
 
-          <div className="w-[100%]">
-            <h1 className="text-20 font-semibold mb-[18px] sm:mt-12 sm:text-center xs:mt-10 xs:text-center">
-              Your Wishlist
-            </h1>
-            <div className="xs:overflow-auto">
-              <table className="w-[100%] xs:w-[574px]">
-                <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px]">
-                  <th className="text-[14px] text-[#6C7275] w-[40%] text-left">
-                    Product
-                  </th>
-                  <th className="text-[14px] text-[#6C7275] w-[20%] text-left">
-                    Price
-                  </th>
-                  <th className="text-[14px] text-[#6C7275] w-[40%] text-left flex justify-center items-center">
-                    Action
-                  </th>
-                </tr>
-                <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px] items-center">
-                  <td className="text-[14px] text-[#141718] w-[40%] text-left">
-                    <div className="flex items-center ">
-                      <button className="mr-[29px] md:mr-[15px] sm:mr-[10px]">
-                        <span>
-                          <img src={crossImg} />
-                        </span>
-                      </button>
-                      <div className="w-[60px] h-[72px] mr-[16px] md:w-[50px] md:h-[60px] md:mr-[12px] sm:w-[40px] sm:h-[50px] sm:mr-[10px]">
-                        <img src={productImg} className="w-[100%]" />
-                      </div>
-                      <div className="flex flex-col items-center content-center gap-[8px]">
-                        <h1 className="text-[14px]">Tray Table</h1>
-                        <p className="text-[#6C7275] text-[12px]">
-                          Color: Black
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="w-[20%] text-left">$19.19</td>
-                  <td className="w-[40%] flex justify-center items-center">
-                    <button className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]">
-                      <span className="text-[#fff]">Add to cart</span>
-                    </button>
-                  </td>
-                </tr>
-                <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px] items-center">
-                  <td className="text-[14px] text-[#141718] w-[40%] text-left">
-                    <div className="flex items-center ">
-                      <button className="mr-[29px] md:mr-[15px] sm:mr-[10px]">
-                        <span>
-                          <img src={crossImg} />
-                        </span>
-                      </button>
-                      <div className="w-[60px] h-[72px] mr-[16px] md:w-[50px] md:h-[60px] md:mr-[12px] sm:w-[40px] sm:h-[50px] sm:mr-[10px]">
-                        <img src={productImg2} className="w-[100%]" />
-                      </div>
-                      <div className="flex flex-col items-center content-center gap-[8px]">
-                        <h1 className="text-[14px]">Tray Table</h1>
-                        <p className="text-[#6C7275] text-[12px]">
-                          Color: Black
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="w-[20%] text-left">$345</td>
-                  <td className="w-[40%] flex justify-center items-center">
-                    <button className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]">
-                      <span className="text-[#fff]">Add to cart</span>
-                    </button>
-                  </td>
-                </tr>
-                <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px] items-center">
-                  <td className="text-[14px] text-[#141718] w-[40%] text-left">
-                    <div className="flex items-center ">
-                      <button className="mr-[29px] md:mr-[15px] sm:mr-[10px]">
-                        <span>
-                          <img src={crossImg} />
-                        </span>
-                      </button>
-                      <div className="w-[60px] h-[72px] mr-[16px] md:w-[50px] md:h-[60px] md:mr-[12px] sm:w-[40px] sm:h-[50px] sm:mr-[10px]">
-                        <img src={productImg3} className="w-[100%]" />
-                      </div>
-                      <div className="flex flex-col items-center content-center gap-[8px]">
-                        <h1 className="text-[14px]">Tray Table</h1>
-                        <p className="text-[#6C7275] text-[12px]">
-                          Color: Black
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="w-[20%] text-left">$8.80</td>
-                  <td className="w-[40%] flex justify-center items-center">
-                    <button className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]">
-                      <span className="text-[#fff]">Add to cart</span>
-                    </button>
-                  </td>
-                </tr>
-                <tr className=" border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px] items-center">
-                  <td className="text-[14px] text-[#141718] w-[40%] text-left">
-                    <div className="flex items-center ">
-                      <button className="mr-[29px] md:mr-[15px] sm:mr-[10px]">
-                        <span>
-                          <img src={crossImg} />
-                        </span>
-                      </button>
-                      <div className="w-[60px] h-[72px] mr-[16px] md:w-[50px] md:h-[60px] md:mr-[12px] sm:w-[40px] sm:h-[50px] sm:mr-[10px]">
-                        <img src={productImg} className="w-[100%]" />
-                      </div>
-                      <div className="flex flex-col items-center content-center gap-[8px]">
-                        <h1 className="text-[14px]">Tray Table</h1>
-                        <p className="text-[#6C7275] text-[12px]">
-                          Color: Black
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="w-[20%] text-left">$8.80</td>
-                  <td className="w-[40%] flex justify-center items-center">
-                    <button className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]">
-                      <span className="text-[#fff]">Add to cart</span>
-                    </button>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
+          <div className="w-[100%]">{selectedComponent}</div>
         </div>
       </section>
     </>

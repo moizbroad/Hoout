@@ -15,17 +15,17 @@ const Filters = () => {
   ];
 
   return (
-    <div className="max-w-[300px] min-h-[1050px] shadow-xl">
-      <span className="pt-[50px]  text-22 flex px-12 text-center font-bold">
+    <div className="max-w-[300px] md:max-w-[100%]  sm:max-w-[100%]    xs:max-w-[100%]   xl:min-h-[1050px] shadow-xl md:overflow-auto sm:overflow-auto  xs:overflow-auto   ">
+      <span className="pt-[50px]  text-22 flex px-12 text-center md:justify-center font-bold ">
         Our assortment
       </span>
 
-      <section>
+      <section className="md:flex sm:flex xs:flex ">
         {filterData.map((item, index) => {
           return (
             <div
               key={index}
-              className="flex justify-start px-12 items-center py-[5px]   "
+              className="flex justify-start px-12 lg:px-8 md:px-8 sm:px-6    items-center py-[5px]   "
             >
               <PaymentCard name={item.filter} isChecked={true} removeBg />
             </div>

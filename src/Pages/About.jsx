@@ -21,8 +21,8 @@ const About = () => {
         </div>
       </section>
 
-      <section className="grid grid-cols-12 px-[100px] pt-[100px] gap-x-2 ">
-        <section className="xl:col-span-6 text-16  ">
+      <section className="grid xl:grid-cols-2  lg:grid-cols-2  md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1   px-[100px] lg:px-[60px] md:px[40px] sm:px-[30px] xs:px-[20px]  pt-[100px] gap-x-2 ">
+        <section className="xl:w-[100%] lg:w-[100%] w-[100%]  text-16  ">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -42,7 +42,7 @@ const About = () => {
           publishing software like Aldus PageMaker including versions of Lorem
           Ipsum.
         </section>
-        <section className="xl:col-span-6 ">
+        <section className="xl:w-[100%] lg:w-[100%]  w-[100%]     md:pt-10 sm:pt-10 xs:pt-10 ">
           <img src={gridGroup} />
         </section>
       </section>

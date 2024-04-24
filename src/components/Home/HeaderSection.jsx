@@ -15,7 +15,7 @@ const HeaderSection = () => {
   const navigate = useNavigate();
   return (
     <section className="px-[10px] sm:px-[20px] md:px-[30px] lg:px-[30px] xl:px-[100px] flex-between py-[27px] bg-[#E9E6D6] ">
-      <div className="menu-cons xl:hidden" onClick={toggleMenu}>
+      <div className="menu-cons xl:hidden lg:hidden" onClick={toggleMenu}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -40,7 +40,7 @@ const HeaderSection = () => {
         <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
           <img src={headerImage} />
-          <div className="close-menu xl:hidden" onClick={toggleMenu}>
+          <div className="close-menu xl:hidden lg:hidden" onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

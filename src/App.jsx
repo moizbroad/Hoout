@@ -46,9 +46,9 @@ function App() {
                 element={<CustomizedProduct />}
               />
               <Route path="/user-profile" element={<UserProfile />} />
-              <Route path="/address" element={<AddressCard />} />
-              <Route path="/orderHistory" element={<OrderHistory />} />
-              <Route path="/wishlist" element={<Wishlist />} />
+              {/* <Route path="/address" element={<AddressCard />} /> */}
+              {/* <Route path="/orderHistory" element={<OrderHistory />} /> */}
+              {/* <Route path="/wishlist" element={<Wishlist />} /> */}
               <Route path="/about" element={<About />} />
               <Route path="/myaccount" element={<MyAccount />} />
             </Route>

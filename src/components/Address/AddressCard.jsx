@@ -10,28 +10,6 @@ const AddressCard = () => {
         My Account
       </h1>
       <div className="flex xs:flex-col xs:items-center sm:flex-col sm:items-center mb-32 justify-center">
-        <div className="px-[16px] py-[40px] bg-[#F3F5F7] w-[262px] xs:w-[100%] sm:w-[100%] flex justify-center items-center flex-col rounded-[8px] mr-[79px] xs:mr-0 sm:mr-0 md:mr-7 h-[fit-content]">
-          <div className="w-[80px] h-[80px] rounded-[50%] relative">
-            <img src={profileImg} className="w-[100%]" />
-            <button className="w-[30px] h-[30px] absolute bottom-0 right-0">
-              <span>
-                <img src={profilebtn} className="w-[100%]" />
-              </span>
-            </button>
-          </div>
-          <h1 className="text-[16px] text-[#000000] text-center mt-[8px] mb-[48px] font-semibold">
-            Sofia Havertz
-          </h1>
-          <div className="w-[100%]">
-            <h1 className="text-[16px] text-[#000000] pb-[8px] border-b-[1px] border-[#111727] border-solid mb-[12px]">
-              Account
-            </h1>
-            <div className="py-[8px] text-[16px] text-[#6C7275]">Address</div>
-            <div className="py-[8px] text-[16px] text-[#6C7275]">Orders</div>
-            <div className="py-[8px] text-[16px] text-[#6C7275]">Wishlist</div>
-            <div className="py-[8px] text-[16px] text-[#6C7275]">Log Out</div>
-          </div>
-        </div>
         <div className="xs:w-[100%]">
           <h1 className="text-[16px] font-semibold text-[#111727] mb-[19px] xs:text-center xs:mt-5 sm:mt-8 sm:text-center">
             Address

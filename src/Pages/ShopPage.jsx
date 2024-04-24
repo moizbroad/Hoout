@@ -53,7 +53,7 @@ const ShopPage = () => {
         </section>
       </div>
 
-      <section className="flex justify-between items-center py-[36px] font-poppins bg-[#F4F5F7] px-[100px]">
+      <section className="flex justify-between  md:flex-col sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[100px] lg:px-[100px]  ">
         <section>
           {" "}
           <tr className="flex gap-x-6">
@@ -80,14 +80,14 @@ const ShopPage = () => {
         </section>
       </section>
 
-      <section className="flex pb-[200px]">
+      <section className="flex pb-[200px]  md:flex-col sm:flex-col  xs:flex-col ">
         {openfilter && (
-          <div className="w-[22%]">
+          <div className=" xl:w-[22%] md:w-full ">
             <Filters />
           </div>
         )}
 
-        <div className="w-[100%] pt-[75px] px-[100px] ">
+        <div className="w-[100%] pt-[75px] xl:px-[100px] lg:px-[60px]  md:px-[40px]  sm:px-[40px]  xs:px-[40px]   ">
           {" "}
           <ProductsSection isthree isbuttonReqird notRequired />{" "}
         </div>

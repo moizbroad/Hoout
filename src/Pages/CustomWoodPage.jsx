@@ -21,25 +21,32 @@ const CustomWoodPage = () => {
 
   return (
     <>
-      <section className="px-[100px] bg-[#F4F5F7]">
-        <tr className="gap-x-6 flex  items-center  py-[40px]">
-          <td className="text-[#9F9F9F] text-16">Home </td>
+      <section className="px-[30px] md:px-[80px] lg:px-[100px] bg-[#F4F5F7]">
+        <tr className="xs:gap-x-3 gap-x-6 flex  items-center  py-[40px]">
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16">
+            Home{" "}
+          </td>
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="text-[#9F9F9F] text-16"> Shop</td>
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16">
+            {" "}
+            Shop
+          </td>
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="h-[px] font-bold text-[#9F9F9F] ">| </td>
+          <td className="h-[px] font-bold text-[#9F9F9F] xs:text-14 sm:text-15 text-16">
+            |{" "}
+          </td>
           <td>Oka Wood </td>
         </tr>
       </section>
 
-      <section className="px-[150px] grid pt-[55px]  grid-cols-2">
+      <section className="px-[30px] max-w-[1240px] mx-auto grid pt-[55px] grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
         <section className="">
           <section className="flex  gap-x-7">
-            <div className="flex-col ">
+            <div className="flex-col">
               <div className="">
                 <img src={wood1} />
               </div>
@@ -54,9 +61,9 @@ const CustomWoodPage = () => {
               </div>
             </div>
 
-            <div>
+            <div className="flex-grow">
               {" "}
-              <img src={bigOak} className="" />{" "}
+              <img src={bigOak} className="w-full" />{" "}
             </div>
           </section>
 

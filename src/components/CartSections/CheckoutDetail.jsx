@@ -11,7 +11,7 @@ import TotalBalance from "../Common/TotalBalance";
 const CheckoutDetail = () => {
   return (
     <>
-      <section className="px-[100px]">
+      <section className="xl:px-[100px] lg:px-[60px] px-[30px] xs:px-[15px]">
         <section className="grid grid-cols-12 gap-4 xs:gap-6 lg:gap-[45px] gap-x-12 ">
           <section className="col-span-12 xl:col-span-4">
             <div className="text-22 font-medium border-b  border-[#D9D9D9] pb-2">
@@ -22,7 +22,7 @@ const CheckoutDetail = () => {
             <section className="flex pt-5 items-center">
               <div>
                 {" "}
-                <img src={image1} />
+                <img src={image1} className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] " />
               </div>
               <div>
                 <div className="px-2 text-18">Tray Tabel</div>
@@ -51,18 +51,24 @@ const CheckoutDetail = () => {
               </div>
             </section>
 
-            <section className="flex justify-between items-center px-[80px]  ">
-              <div className="flex items-center ">
-                <div className="border p-[10px]">
-                  <img src={minus} className="size-3" />
+            <section className="flex justify-between items-center xl:pl-[80px] lg:pl-[60px] pl-[50px]  ">
+              <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px] w-[40%] ">
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={minus} />
+                    </a>
+                  </div>
+                  <h6>2</h6>
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={plus} />{" "}
+                    </a>
+                  </div>
                 </div>
-                <div className="border  px-3.5 py-1 ">1</div>
-                <div className="border p-[10px]">
-                  <img src={plus} className="size-3" />
-                </div>
-              </div>
 
-              <div className="text-22 font-bold  "> $60.25 </div>
+              <div className="xl:text-22 lg:text-20 md:text-18 text-16 font-bold  "> $60.25 </div>
             </section>
 
             <div>
@@ -74,7 +80,7 @@ const CheckoutDetail = () => {
           {/* Right Side Section  */}
 
           <section className="col-span-12 xl:col-span-8 font-bold text-md">
-            <div className="text-22 font-semibold border-b pb-2 border-[#D9D9D9]">
+            <div className="xl:text-22 lg:text-20 md:text-18 text-16 font-semibold border-b pb-2 border-[#D9D9D9]">
               {" "}
               Delivery Address
             </div>

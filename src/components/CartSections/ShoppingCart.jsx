@@ -11,19 +11,116 @@ import Button from "../../components/Common/Button";
 const ShoppingCart = () => {
   return (
     <>
-      <section className=" flex justify-between px-[100px]  pb-[100px] ">
+      <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[40px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
         <section className="flex-1 ">
-          <table>
-            <thead className="">
-              <tr className="border-b-2 pb-1 border-[#979797] ">
-                <td className="text-18 min-w-[300px] ">Product</td>
-                <td className="text-18 min-w-[140px] ">Quantity</td>
-                <td className="text-18  min-w-[140px]">Price</td>
-                <td className="text-18  min-w-[140px]">Subtotal</td>
+          <div className="overflow-auto">
+          <table className="w-full ">
+            <thead>
+              <tr className="border-b-[1px] border-[#979797]  ">
+                <th
+                  className="text-left xl:text-18 lg:text-16 text-14 xl:pb-[24px] lg:pb-[18px] pb-[10px]
+ "
+                >
+                  Product
+                </th>
+                <th
+                  className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
+  "
+                >
+                  Quantity
+                </th>
+                <th
+                  className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
+ "
+                >
+                  Price
+                </th>
+                <th
+                  className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
+"
+                >
+                  Subtotal
+                </th>
               </tr>
             </thead>
+            <tbody>
+              <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                <section className="flex items-center gap-x-2 pt-5 xs:min-w-[300px]">
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={cross} />{" "}
+                    </a>
+                  </div>
+                  <div>
+                    {" "}
+                    <img src={image1}  className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] "/>
+                  </div>
+
+                  <div className="flex flex-col xl:min-w-[220px]">
+                    <div
+                      className="xl:text-18 lg:text-16 text-14
+"
+                    >
+                      Tray Table
+                    </div>
+
+                    <div className="flex gap-[15px] items-center">
+                      <div>
+                        <div
+                          className="text-12 text-[#24242480] font-medium "
+                        >
+                          THICKNESS
+                        </div>
+                        <div className="xl:text-14 text-[13px]">25 mm </div>
+                      </div>
+
+                      <div>
+                        <div
+                          className="text-12 text-[#24242480]
+ font-medium "
+                        >
+                          width
+                        </div>
+                        <div className="xl:text-14 text-[13px]">220 mm </div>
+                      </div>
+
+                      <div>
+                        <div
+                          className="text-12 text-[#24242480]
+ font-medium "
+                        >
+                          Length
+                        </div>
+                        <div className="xl:text-14 text-[13px]">220 mm </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </td>
+              <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px]">
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={minus} />
+                    </a>
+                  </div>
+                  <h6>2</h6>
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={plus} />{" "}
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">$19.00</td>
+              <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">$38.00</td>
+            </tbody>
           </table>
-          <section className="flex items-center  gap-x-2">
+          </div>
+          {/* <section className="flex items-center  gap-x-2">
             <section className="flex items-center gap-x-2 pt-5">
               <div>
                 <img src={cross} />
@@ -63,16 +160,26 @@ const ShoppingCart = () => {
 
             <div className="min-w-[140px]">$19.00</div>
             <div className="min-w-[140px]">$38.00</div>
-          </section>
+          </section> */}
 
           <section className="pt-[30px]">
-            <div>Have a coupon?</div>
-            <div className="pt-3">
-              Add your code for an instant cart discount
+            <div>
+              <h6
+                className="xl:text-16 lg:text-14 text-[13px]
+"
+              >
+                Have a coupon?{" "}
+              </h6>
             </div>
-            <div className="flex border justify-between items-center rounded-md flex-1 w-[442px] px-3 mt-3">
-              <div className="flex gap-x-2 py-[14px]">
-                <img src={coupon} /> Coupon Code
+            <div className="pt-2">
+              <p className="xl:text-16 lg:text-14 text-[13px] text-[#6C7275]">
+                Add your code for an instant cart discount
+              </p>
+            </div>
+            <div className="flex border justify-between items-center rounded-md flex-1 xl:w-[442px] w-[100%] px-3 mt-3">
+              <div className="flex gap-x-2 xl:py-[14px] lg:py-[12px] py-[8px] items-center">
+                <img src={coupon} />
+                <span className="pt-[4px] text-[#6C7275]">Coupon Code</span>
               </div>
               <div> Apply</div>
             </div>
@@ -80,37 +187,48 @@ const ShoppingCart = () => {
         </section>
 
         {/* Right side of grid  */}
-        <section className=" w-[36%] ">
-          <section className="bg-[#F8F8F8] px-[32px]  pt-[44px] rounded-lg ">
+        <section className=" xl:w-[38.2%] lg:w-[38.2%] ">
+          <section className="bg-[#F8F8F8] xl:px-[32px] lg:px-[25px] md:px-[20px] px-[12px]  xl:pt-[44px] lg:pt-[30px] pt-[15px] rounded-lg ">
             <section className="">
               <section className="flex justify-between">
-                <div className="text-[#696C74] text-16">Subtotal</div>
+                <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
+                  Subtotal
+                </div>
                 <div>$1,500</div>
               </section>
 
               <section className="flex justify-between pt-[25px]">
-                <div className="text-[#696C74] text-16 ">Delivery Fee</div>
+                <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
+                  Delivery Fee
+                </div>
                 <div>$30</div>
               </section>
               <section className="flex justify-between pt-[25px] border-b  border-[#D9D9D9] pb-3">
-                <div className="text-[#696C74] text-16  ">Tax</div>
+                <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]  ">
+                  Tax
+                </div>
                 <div> $30</div>
               </section>
 
               <section className="flex justify-between pt-[25px] pb-5 ">
-                <div className="text-16 font-medium">Total</div>
-                <div className="text-yellow font-medium text-18">
+                <div className="xl:text-16 lg:text-15 md:text-14 text-[13px] font-medium">
+                  Total
+                </div>
+                <div
+                  className="text-yellow font-medium xl:text-18 lg:text-16 text-14
+"
+                >
                   USD $1,560.00
                 </div>
               </section>
             </section>
           </section>
 
-          <div className="py-[30px]  ">
+          <div className="xl:py-[30px] py-[15px] flex justify-center  ">
             <Button
               btnText="Checkout "
-              paddingY="20px"
-              breakpoint="xl:w-[447px]"
+              paddingY="14px"
+              breakpoint="xl:w-[93.5%] lg:w-[93.5%] w-[100%]"
             />
           </div>
         </section>

@@ -1,11 +1,11 @@
 import React from "react";
-import inventory from "../assets/DashboardImages/inventory.svg";
-import skuImg from "../assets/DashboardImages/skuImg.svg";
-import salesImg from "../assets/DashboardImages/salesImg.svg";
-import trendUp from "../assets/DashboardImages/trendUp.svg";
-import trendDown from "../assets/DashboardImages/trendDown.svg";
+// import inventory from "../assets/DashboardImages/inventory.svg";
+// import skuImg from "../assets/DashboardImages/skuImg.svg";
+// import salesImg from "../assets/DashboardImages/salesImg.svg";
+// import trendUp from "../assets/DashboardImages/trendUp.svg";
+// import trendDown from "../assets/DashboardImages/trendDown.svg";
 import sampleProductImg from "../assets/DashboardImages/sampleProductImg.svg";
-import CountrySelector from "../components/Common/CountrySelector";
+// import CountrySelector from "../components/Common/CountrySelector";
 // import DatePicker from "../components/Common/DatePicker";
 
 const OrderList = () => {
@@ -221,9 +221,9 @@ const OrderList = () => {
         {/* order detail card table row end */}
       </div>
 
-      <div className="mt-[50px]">
+      {/* <div className="mt-[50px]">
         <CountrySelector />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import OrderList from "./Pages/OrderList";
 import Products from "./Pages/Products";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
+import ShopPage from "./Pages/ShopPage";
 import CustomWoodPage from "./Pages/CustomWoodPage";
 import AddToCart from "./Pages/AddToCart";
 import UserProfile from "./Pages/UserProfile";
@@ -19,7 +20,8 @@ import AddNewProduct from "./Pages/AddNewProduct";
 import AddressCard from "./components/Address/AddressCard";
 import OrderHistory from "./components/Address/OrderHistory";
 import Wishlist from "./components/Address/Wishlist";
-
+import About from "./Pages/About";
+import MyAccount from "./Pages/MyAccount";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,7 +33,7 @@ function App() {
           <Route element={<Layout />}>
             <Route element={<IsAuthenticated />}>
               <Route path="/" element={<Landingpage />} />
-              {/* <Route path="/shop-page" element={<ShopPage />} /> */}
+              <Route path="/shop-page" element={<ShopPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/inbox" element={<Inbox />} />
@@ -39,11 +41,16 @@ function App() {
               <Route path="/wood-page" element={<CustomWoodPage />} />
               <Route path="/cart" element={<AddToCart />} />
               <Route path="/new-product" element={<AddNewProduct />} />
-              <Route path="/customized-product" element={<CustomizedProduct />} />
+              <Route
+                path="/customized-product"
+                element={<CustomizedProduct />}
+              />
               <Route path="/user-profile" element={<UserProfile />} />
-              <Route path="/address" element={<AddressCard />} />
-              <Route path="/orderHistory" element={<OrderHistory />} />
-              <Route path="/wishlist" element={<Wishlist />} />
+              {/* <Route path="/address" element={<AddressCard />} /> */}
+              {/* <Route path="/orderHistory" element={<OrderHistory />} /> */}
+              {/* <Route path="/wishlist" element={<Wishlist />} /> */}
+              <Route path="/about" element={<About />} />
+              <Route path="/myaccount" element={<MyAccount />} />
             </Route>
             <Route path="/sign-in" element={<Signin />} />
             <Route path="/sign-up" element={<Signup />} />

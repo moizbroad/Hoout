@@ -1,41 +1,33 @@
 import React from "react";
+import PaymentCard from "../Common/PaymentCard";
 
 const Filters = () => {
   const filterData = [
-    { filter: "Oak" },
-    { filter: "Thermo Hout " },
-    { filter: "Fire" },
-    { filter: "Hardwood" },
-    { filter: "Beacon" },
-    { filter: "Mahogany" },
-    { filter: "Brazilian Nuts" },
-    { filter: "Iron Store" },
-    { filter: "Parasols" },
+    { id: 1, filter: "Oak", isChecked: true },
+    { id: 1, filter: "Thermo Hout ", isChecked: false },
+    { id: 2, filter: "Fire", isChecked: false },
+    { id: 2, filter: "Hardwood", isChecked: false },
+    { id: 2, filter: "Beacon", isChecked: false },
+    { id: 2, filter: "Mahogany", isChecked: false },
+    { id: 2, filter: "Brazilian Nuts", isChecked: false },
+    { id: 2, filter: "Iron Store", isChecked: false },
+    { id: 2, filter: "Parasols", isChecked: false },
   ];
 
   return (
-    <div className="max-w-[300px] shadow-xl">
-      <span className="pt-[50px]  text-22 flex justify-center text-cnter">
-        {" "}
+    <div className="max-w-[300px] md:max-w-[100%]  sm:max-w-[100%]    xs:max-w-[100%]   xl:min-h-[1050px] shadow-xl md:overflow-auto sm:overflow-auto  xs:overflow-auto   ">
+      <span className="pt-[50px]  text-22 flex px-12 text-center md:justify-center font-bold ">
         Our assortment
       </span>
 
-      <section>
+      <section className="md:flex sm:flex xs:flex ">
         {filterData.map((item, index) => {
           return (
             <div
               key={index}
-              className="flex justify-center items-center py-[20px]   "
+              className="flex justify-start px-12 lg:px-8 md:px-8 sm:px-6    items-center py-[5px]   "
             >
-              {/* Use the `item.filter` to display the filter value */}
-              <section className="flex gap-x-5">
-                {" "}
-                <div className="">
-                  {" "}
-                  <input type="Radio" />
-                </div>
-                <div>{item.filter}</div>
-              </section>
+              <PaymentCard name={item.filter} isChecked={true} removeBg />
             </div>
           );
         })}

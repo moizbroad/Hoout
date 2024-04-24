@@ -47,7 +47,7 @@ const InputField = (props) => {
         <input
           className={`block w-full appearance-none  ${
             IconComponent ? "pl-10" : ""
-          } rounded-md   py-3 px-3 outline-none  border border-[#D9D9D9] focus:outline-none sm:text-sm input-field`}
+          } rounded-md   xl:py-3 xl:px-3 py-2 px-2 outline-none  border border-[#D9D9D9] focus:outline-none sm:text-sm input-field`}
           id={id}
           label={label}
           type={type}

@@ -10,6 +10,7 @@ import guarantee from "../assets/shopPage/guarantee.svg";
 import shipping from "../assets/shopPage/shipping.svg";
 import supports from "../assets/shopPage/supports.svg";
 import QualitySection from "../components/Common/QualitySection";
+import Switch from "../components/Common/Switch";
 
 const ShopPage = () => {
   const [openfilter, setOpenfilter] = useState(true);
@@ -82,7 +83,11 @@ const ShopPage = () => {
             <div className="pops md:text-14 sm:text-14 xs:text-12 ">
               Incl. VAT
             </div>
-            <div className="pops md:text-14 sm:text-14 xs:text-12 ">fe</div>
+            <div className="recPasswrd ">
+              {" "}
+              <Switch optional />{" "}
+            </div>
+
             <div className="pops md:text-14 sm:text-14 xs:text-12 ">
               Ecxl.VAT
             </div>

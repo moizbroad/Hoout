@@ -16,11 +16,16 @@ const Signin = () => {
       <div>
         <div className="signUpMain flex flex-row-reverse min-h-screen">
           <div className="signUpLeft w-[50%] relative">
-            <img src={signInRight} alt="signupleftImg" className="w-[100%]" style={{objectFit: "cover"  , minHeight: "100vh"}} />
+            <img
+              src={signInRight}
+              alt="signupleftImg"
+              className="w-[100%]"
+              style={{ objectFit: "cover", minHeight: "100vh" }}
+            />
             <div>
               <div
                 className=" yellowBar absolute bottom-[20%] left-[50%] translate-x-[-50%]  xl:w-[70%] lg:w-[80%] w-[90%]  rounded-lg   xl:py-[40px] lg:py-[30px] py-[20px]  xl:px-[35px] lg:px-[25px] px-[18px] gap-2 xl:mb-[22.34px] mb-[14px] min-h-[120px]"
-                style={{ backgroundImage: `url(${signinBlur})`,   }}
+                style={{ backgroundImage: `url(${signinBlur})` }}
               >
                 <div className="yellowBar  bg-[#FBC700] w-[90%]  rounded-xl items-center py-[10px] xl:px-[20px] px-[14px] gap-2 mb-[22.34px] flex">
                   <img src={thumbsUp} alt="" />
@@ -45,7 +50,11 @@ const Signin = () => {
           </div>
           <div className="xl:min-w-[650px] min-w-[auto] signUpRight xl:w-[50%] lg:w-[55%] w-[60%] xl:py-[25px] py-[18px] xl:px-[51px] lg:px-[30px] px-[20px]">
             <div className="signUpHead flex justify-start xl:mb-[46px] lg:mb-[30px] mb-[20px]">
-              <img src={houtLogo} alt="" className="xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover" />
+              <img
+                src={houtLogo}
+                alt=""
+                className="xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+              />
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">
               <div className="text-center xl:mb-[42px] lg:mb-[30px] mb-[20px]">

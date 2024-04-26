@@ -50,7 +50,7 @@ const AdminMainNav = () => {
           </div>
         </div>
 
-        <div className="dashHeadRight xl:w-[40%] w-[51%] flex justify-end gap-[15px] items-center">
+        <div className="dashHeadRight xl:w-[44%] w-[51%] flex justify-end gap-[15px] items-center">
           <a href="#">
             <img src={notfiIcon} alt="" />
           </a>
@@ -62,7 +62,7 @@ const AdminMainNav = () => {
               <img src={ProfileDD} alt="" />
             </a>
           </div> */}
-          <div className=" ">
+          <div className="">
             <HeadLessDropDown />
           </div>
         </div>

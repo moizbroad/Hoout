@@ -34,10 +34,10 @@ function App() {
             <Route element={<IsAuthenticated />}>
               <Route path="/" element={<Landingpage />} />
               <Route path="/shop-page" element={<ShopPage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/inbox" element={<Inbox />} />
-              <Route path="/order-list" element={<OrderList />} />
+              <Route path="/dashboard/" element={<Dashboard />} />
+              <Route path="/products/" element={<Products />} />
+              <Route path="/inbox/" element={<Inbox />} />
+              <Route path="/order-list/" element={<OrderList />} />
               <Route path="/wood-page" element={<CustomWoodPage />} />
               <Route path="/cart" element={<AddToCart />} />
               <Route path="/new-product" element={<AddNewProduct />} />

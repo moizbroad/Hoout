@@ -10,13 +10,13 @@ import { Outlet, useLocation } from "react-router-dom";
 const Layout = () => {
   const authPaths = ["/sign-in", "/sign-up"];
   const adminPaths = [
-    "/dashboard",
-    "/inbox",
-    "/order-list",
-    "/products",
-    "/user-profile ",
-    "/new-product",
-    "/customized-product",
+    "/dashboard/",
+    "/inbox/",
+    "/order-list/",
+    "/products/",
+    "/user-profile/",
+    "/new-product/",
+    "/customized-product/",
   ];
   const currentPath = useLocation().pathname;
   const hasSidnav = adminPaths.includes(currentPath);

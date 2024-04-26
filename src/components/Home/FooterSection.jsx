@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../Common/Button";
 import location from "../../assets/HeaderAndFooter/locationFooter.svg";
 import cameraFooter from "../../assets/HeaderAndFooter/cameraFooter.svg";
@@ -11,6 +11,9 @@ import facebook from "../../assets/HeaderAndFooter/facebookFooter.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 
 const FooterSection = ({ isShow }) => {
+
+  const navigate = useNavigate()
+
   const [openhours, setOpenHours] = useState([
     {
       title: "Openings hours",
@@ -60,8 +63,8 @@ const FooterSection = ({ isShow }) => {
               <div className="mb-6  vietnam text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
                 Home
               </div>
-              <div className="mb-5 text-[14px] vietnam ">Home</div>
-              <div className="mb-5 text-[14px] vietnam ">About Us</div>
+              <div className="mb-5 text-[14px] vietnam " onClick={() => navigate('/')}>Home</div>
+              <div className="mb-5 text-[14px] vietnam " onClick={() => navigate('/about')}>About Us</div>
               <div className="mb-5 text-[14px] vietnam ">Impression</div>
               <div className="mb-5 text-[14px] vietnam ">Custom Tables</div>
               <div className="mb-5">

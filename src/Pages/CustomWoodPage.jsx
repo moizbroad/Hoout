@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ProductDetailTable from "../components/CustomWood/ProductDetailTable";
 import RelatedProduct from "../components/CustomWood/RelatedProduct";
 import rightArrow from "../assets/customWoodPage/rightArrow.svg";
@@ -17,7 +17,44 @@ import linkdln from "../assets/customWoodPage/linkdln.svg";
 import email from "../assets/customWoodPage/email.svg";
 
 const CustomWoodPage = () => {
-  const productInfo = [{}];
+  const [productInfo, setProductInfo] = useState([
+    {
+      itemName: "Hout Type",
+      type: "Hardhout",
+    },
+    {
+      itemName: "Timber",
+      type: "Angelim red",
+    },
+    {
+      itemName: "Enduring",
+      type: "Untreated",
+    },
+    {
+      itemName: "Form",
+      type: "Square",
+    },
+    {
+      itemName: "Woodworking",
+      type: "Created",
+    },
+    {
+      itemName: "Pointed",
+      type: "No",
+    },
+    {
+      itemName: "Extra Treament",
+      type: "N.v.t",
+    },
+    {
+      itemName: "Package",
+      type: "Per stuk of per vol package",
+    },
+    {
+      itemName: "Freight",
+      type: "Major Transport",
+    },
+  ]);
 
   return (
     <>
@@ -134,46 +171,17 @@ const CustomWoodPage = () => {
               Product specifications
             </div>
 
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2 ">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 border-b pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
-            <div className="flex items-center pt-5 pb-2">
-              <div className="text-16 font-bold w-[60%] ">Hout Type</div>
-              <div className=" text-[#333333] w-[60%] text-16"> Hardout</div>
-            </div>
+            {productInfo.map((item) => {
+              return (
+                <div className="flex items-center pt-5 border-b pb-2">
+                  <div className="text-16 font-bold w-[60%] ">{item.itemName}</div>
+                  <div className=" text-[#333333] w-[60%] text-16">
+                    {" "}
+                    {item.type}
+                  </div>
+                </div>
+              );
+            })}
           </section>
         </section>
       </section>

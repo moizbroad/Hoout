@@ -36,7 +36,7 @@ const HeaderSection = () => {
           isActive ? "active" : null
         }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
-        <div>Home</div>
+        <div onClick={() => navigate('/')}>Home</div>
         <div>Values</div>
         <div>Product Range</div>
         <div>Why Hout Total</div>
@@ -75,7 +75,7 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={persons} />{" "}
+          <img src={persons} onClick={() => navigate('/myaccount')}/>{" "}
         </div>{" "}
         <div>
           {" "}
@@ -83,7 +83,7 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={heart} />{" "}
+          <img src={heart} onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
         </div>
         <div>
           {" "}

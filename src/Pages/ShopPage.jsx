@@ -40,19 +40,17 @@ const ShopPage = () => {
   return (
     <>
       <div className="shop ">
-        <section className="">
-          <div className=" font-medium text-48 text-primary text-center pt-[145px]">
-            {" "}
-            Shop
-          </div>
-          <section className="flex bg-transparentGray   justify-center gap-x-3">
-            <div className="text-primary ">Home</div>
-            <div>
-              <img src={rightArrow} />
+        <section className="about flex justify-center items-center ">
+        <div className="w-[320px] m-auto  text-center bg-transparentGray text-white py-[35px] rounded-lg ">
+          <div className="text-white text-48 font-medium">Shop</div>
+          <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
+            <div className="flex items-center gap-x-3">
+              Home <img src={rightArrow} />
             </div>
-            <div className="text-[#FFFFFF]">Shop</div>
-          </section>
-        </section>
+            <div>Shop</div>
+          </div>
+        </div>
+      </section>
       </div>
 
       <section className="flex justify-between   sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[100px] lg:px-[100px] md:px-[60px]  ">

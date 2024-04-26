@@ -9,9 +9,14 @@ import Account from "../components/Address/Account";
 import AddressCard from "../components/Address/AddressCard";
 import OrderHistory from "../components/Address/OrderHistory";
 import Wishlist from "../components/Address/Wishlist";
+import { useLocation } from "react-router-dom";
 
 const MyAccount = () => {
-  const [selectedComponent, setSelectedComponent] = useState("Account");
+
+  const location = useLocation()
+  const {state} = location
+
+  const [selectedComponent, setSelectedComponent] = useState(state?.key === 'wish' ? <Wishlist/> : <Account />);
 
   const data = [
     { id: 1, name: "Account", component: <Account /> },

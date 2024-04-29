@@ -37,10 +37,12 @@ const HeaderSection = () => {
         }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
         <div onClick={() => navigate('/')}>Home</div>
-        <div>Values</div>
-        <div>Product Range</div>
-        <div>Why Hout Total</div>
-        <div>Contact</div>
+        <span className=" cursor-pointer " onClick={() => navigate('/sign-in')}> Login </span>
+        <span className="cursor-pointer " onClick={() => navigate('/sign-up')}> Signup</span>
+        {/* <div>Values</div> */}
+        {/* <div>Product Range</div> */}
+        {/* <div>Why Hout Total</div> */}
+        {/* <div>Contact</div> */}
         <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
           <img src={headerImage} />

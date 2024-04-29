@@ -8,6 +8,7 @@ import OrderList from "../../Pages/OrderList"; // Import OrderList component
 import Products from "../../Pages/Products"; // Import Products component
 import { Outlet, useLocation } from "react-router-dom";
 const Layout = () => {
+
   const authPaths = ["/sign-in", "/sign-up"];
   const adminPaths = [
     "/dashboard/",
@@ -18,8 +19,16 @@ const Layout = () => {
     "/new-product/",
     "/customized-product/",
   ];
+
   const currentPath = useLocation().pathname;
-  const hasSidnav = adminPaths.includes(currentPath);
+  const hasSidnav = adminPaths.map((item, index) => {
+    let splittedRoute = item.split('/')[1]
+    if(currentPath.includes(splittedRoute)){
+      return true
+    } else{
+      return false
+    }
+  })
   const hasHeaderFooter = authPaths.includes(currentPath);
   return (
     <>

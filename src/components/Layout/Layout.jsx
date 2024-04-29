@@ -3,9 +3,6 @@ import HeaderSection from "../Home/HeaderSection";
 import FooterSection from "../Home/FooterSection";
 import AdminSideNav from "../AdminLayout/AdminSideNav";
 import AdminMainNav from "../AdminLayout/AdminMainNav";
-import Inbox from "../../Pages/Inbox";
-import OrderList from "../../Pages/OrderList"; // Import OrderList component
-import Products from "../../Pages/Products"; // Import Products component
 import { Outlet, useLocation } from "react-router-dom";
 const Layout = () => {
 
@@ -22,8 +19,9 @@ const Layout = () => {
 
   const currentPath = useLocation().pathname;
   const hasSidnav = adminPaths.map((item, index) => {
+
     let splittedRoute = item.split('/')[1]
-    if(currentPath.includes(splittedRoute)){
+    if(currentPath === splittedRoute || currentPath.includes(splittedRoute)){
       return true
     } else{
       return false
@@ -34,7 +32,7 @@ const Layout = () => {
     <>
       <div>
         <div>
-          {hasSidnav ? (
+          {hasSidnav.includes(true) ? (
             <>
               <div className="flex">
                 <div className="min-h-screen">

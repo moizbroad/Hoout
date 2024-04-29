@@ -1,15 +1,28 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import houtLogo from "../../assets/authImages/houtLogo.svg";
 
 const AdminSidenav = () => {
+  
   const navigate = useNavigate();
+  const location = useLocation()
+
   const [navs, setNavs] = useState([
     { name: "Dashboard", link: "/dashboard/", active: true },
     { name: "Products", link: "/products/", active: false },
     { name: "Inbox", link: "/inbox/", active: false },
     { name: "Order List", link: "/order-list/", active: false },
   ]);
+
+  useEffect(() => {
+    setNavs(prevNavs => (
+      prevNavs.map(subItem => ({
+        ...subItem,
+        active: location.pathname.includes(subItem.link.split('/')[1])
+      }))
+    ));
+  },[])
 
   const handleClick = (item) => {
     setNavs(prevNavs => (

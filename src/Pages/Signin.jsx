@@ -58,7 +58,7 @@ const Signin = () => {
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">
               <div className="text-center xl:mb-[42px] lg:mb-[30px] mb-[20px]">
-                <h4 className="xl:text-24 lg:text-20 text-18 font-semibold">
+                <h4 className="xl:text-36 lg:text-24 text-20 font-semibold">
                   Welcome Back
                 </h4>
                 <span className="xl:text-15 text-14 text-gray-500 block font-normal	">
@@ -128,7 +128,7 @@ const Signin = () => {
                       Don't have an account?{" "}
                       <a
                         href="#"
-                        className="text-yellow-400 ml-1 font-semibold"
+                        className="text-[#FBC700] ml-1 font-semibold"
                       >
                         Sign up!
                       </a>

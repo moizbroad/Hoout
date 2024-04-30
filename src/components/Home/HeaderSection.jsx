@@ -45,7 +45,7 @@ const HeaderSection = () => {
         {/* <div>Contact</div> */}
         <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
-          <img src={headerImage} />
+          <img src={headerImage} onClick={() => navigate('/')} />
           <div className="close-menu xl:hidden lg:hidden" onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

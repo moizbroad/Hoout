@@ -12,11 +12,12 @@ import Wishlist from "../components/Address/Wishlist";
 import { useLocation } from "react-router-dom";
 
 const MyAccount = () => {
+  const location = useLocation();
+  const { state } = location;
 
-  const location = useLocation()
-  const {state} = location
-
-  const [selectedComponent, setSelectedComponent] = useState(state?.key === 'wish' ? <Wishlist/> : <Account />);
+  const [selectedComponent, setSelectedComponent] = useState(
+    state?.key === "wish" ? <Wishlist /> : <Account />
+  );
 
   const data = [
     { id: 1, name: "Account", component: <Account /> },
@@ -46,17 +47,24 @@ const MyAccount = () => {
               Sofia Havertz
             </h1>
 
-            {data.map((item) => (
-              <div
-                key={item.id}
-                className="w-[100%] cursor-pointer"
-                onClick={() => setSelectedComponent(item.component)}
-              >
-                <h1 className="text-[16px]  text-[#000000] pb-[8px] mb-[12px]">
-                  {item.name}
-                </h1>
-              </div>
-            ))}
+            {data.map((item) => {
+              return (
+                <div
+                  key={item.id}
+                  // border color implement
+                  className={`w-[100%] cursor-pointer ${
+                    selectedComponent?.type?.name === item.component?.type?.name ?
+                    "border-b-[#FBC700]" : ''
+                  }`}
+                  onClick={() => setSelectedComponent(item.component)}
+                >
+                  <h1 className={`text-[16px] pb-[8px] mb-[12px] ${selectedComponent?.type?.name === item.component?.type?.name ?
+                    "text-[#000000]" : 'text-[#7b7b7b]'}`}>
+                    {item.name}
+                  </h1>
+                </div>
+              );
+            })}
           </div>
 
           <div className="w-[100%]">{selectedComponent}</div>

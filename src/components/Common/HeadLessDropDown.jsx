@@ -4,8 +4,12 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import ProfileDD from "../../assets/DashboardImages/ProfileDD.svg";
 import avatars from "../../assets/DashboardImages/avatars.svg";
 import more from "../../assets/DashboardImages/more.svg";
+import { useNavigate } from "react-router-dom";
 
 const HeadLessDropDown = () => {
+
+  const navigate = useNavigate()
+
   return (
     <Menu as="div" className="relative inline-block text-left z-10 ">
       <div>
@@ -35,8 +39,8 @@ const HeadLessDropDown = () => {
       >
         <Menu.Items className="absolute right-[-12px] mt-2 w-52 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
           <div className="px-1 py-1 ">
-            <ul className="">
-              <li className="text-center">Profile</li>
+            <ul className="cursor-pointer">
+              <li className="text-center" onClick={() => navigate('/user-profile')}>Profile</li>
               <li className="text-center pt-3">Login</li>
             </ul>
           </div>

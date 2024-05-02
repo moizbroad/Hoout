@@ -158,7 +158,7 @@ const Products = () => {
                 </button>
               </div>
             </div>
-            <div class="relative inline-block text-left">
+            {/* <div class="relative inline-block text-left">
               <div>
                 <button
                   type="button"
@@ -182,7 +182,7 @@ const Products = () => {
                   </svg>
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -234,7 +234,7 @@ const Products = () => {
             {productData.map((rowData, index) => {
               return (
                 <tbody>
-                  <tr key={index} className="border-b-[0.4px] border-gray">
+                  <tr key={index} className={`border-b-[0.4px] border-gray ${index % 2 !== 0 ? 'bg-[#F1F4F9]' : 'bg-[#fff]'}`}>
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="">
                         <p className="text-gray-900 whitespace-no-wrap">
@@ -294,7 +294,7 @@ const Products = () => {
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
                             {rowData.quantity.amount}{" "}
-                            <span className="bg-[#FBC7001A] text-[#747474] p-[8px] rounded-full inline-block min-w-[70px] text-center">
+                            <span className="bg-[#FBC7001A] text-[#FBC700] p-[8px] rounded-full inline-block min-w-[70px] text-center">
                               {rowData.quantity.status}
                             </span>
                           </p>

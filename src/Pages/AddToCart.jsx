@@ -154,7 +154,7 @@ const AddToCart = () => {
                 className={`${
                   selectedDiv[tab.name]
                     ? "bg-secondary border rounded-full text-white  "
-                    : "bg-primary text-secondary  "
+                    : "bg-primary text-secondary text-[#727272] "
                 } border rounded-full  4xll:px-[3.6rem]  4xl:px-[3.5rem]  3xll:px-[3rem]  3xl:px-[2.5rem]  2xll:px-[2rem]  2xl:px-[1.9rem]   4xll:text-80  4xl:text-75 3xll:text-70  3xl:text-65 2xll:text-60 2xl:text-56    px-4 py-1.5 text-22 sm:text-14 sm:py-2.5 xs:py-2.5 xs:text-14 cursor-pointer`}
               >
                 {tab.id}

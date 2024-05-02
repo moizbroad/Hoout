@@ -24,7 +24,7 @@ const Button = ({
        ${breakpoint} 
        ${fontbold ? "font-bold" : null} 
        ${
-         textColor ? "text-[#fff]" : "text-white"
+         textColor ? "text-[#1e0c06]" : "text-white"
        } xl:py-3 py-2 px-2 xl:text-md bg-yellow text-16`}
       disabled={disabled}
       onClick={onClick}

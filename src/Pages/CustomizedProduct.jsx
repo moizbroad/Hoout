@@ -34,7 +34,7 @@ const CustomizedProduct = () => {
                   <div class=" mb-[24px]">
                     <div class="w-full md:mb-0">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="prodname"
                       >
                         Product Name
@@ -59,10 +59,10 @@ const CustomizedProduct = () => {
                   >
                     <div class="w-full  mb-[12px]">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="name"
                       >
-                        Group
+                        Wood Type
                       </label>
                       <div className="flex justify-between gap-[5px] w-[100%]">
                         <label className="box">
@@ -70,14 +70,14 @@ const CustomizedProduct = () => {
                           <span className="box-content flex flex-col">
                             <img src={WoodTOne} alt="" />
 
-                            <p className="text-12 mt-[7px] text-center">QAK</p>
+                            <p className="text-10 mt-[7px] text-center">OAK</p>
                           </span>
                         </label>
                         <label className="box">
                           <input type="radio" name="box" value="box2" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTTwo} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               THERMO HOUT
                             </p>
                           </span>
@@ -86,14 +86,14 @@ const CustomizedProduct = () => {
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTThree} alt="" />
-                            <p className="text-12 mt-[7px] text-center">FIRE</p>
+                            <p className="text-10 mt-[7px] text-center">FIRE</p>
                           </span>
                         </label>
                         <label className="box">
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTFour} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               HARDWOOD
                             </p>
                           </span>
@@ -102,7 +102,7 @@ const CustomizedProduct = () => {
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTFive} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               BEACON
                             </p>
                           </span>
@@ -111,7 +111,7 @@ const CustomizedProduct = () => {
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTSix} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               MAHOGANY
                             </p>
                           </span>
@@ -120,7 +120,7 @@ const CustomizedProduct = () => {
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTSeven} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               BRAZILIAN NUTS
                             </p>
                           </span>
@@ -129,7 +129,7 @@ const CustomizedProduct = () => {
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTEight} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               IRON STORE
                             </p>
                           </span>
@@ -138,7 +138,7 @@ const CustomizedProduct = () => {
                           <input type="radio" name="box" value="box3" />
                           <span className="box-content flex flex-col">
                             <img src={WoodTNine} alt="" />
-                            <p className="text-12 mt-[7px] text-center">
+                            <p className="text-10 mt-[7px] text-center">
                               PARASOLS
                             </p>
                           </span>
@@ -149,25 +149,25 @@ const CustomizedProduct = () => {
                   <div class=" flex gap-[20px] mb-[24px]">
                     <div class="w-1/2 md:mb-0">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="Hangings"
                       >
                         Hangings
                       </label>
                       <InputField
-                        placeholder="need a select dropdown here "
+                        placeholder="Select Hangings"
                         id="Hangings"
                       />
                     </div>
                     <div class="w-1/2">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="Sandeed"
                       >
-                        Sandeed
+                        Sanded
                       </label>
                       <InputField
-                        placeholder="need a select dropdown here"
+                        placeholder="Select Sanded"
                         id="Sandeed"
                       />
                     </div>
@@ -175,19 +175,19 @@ const CustomizedProduct = () => {
                   <div class=" flex gap-[20px] mb-[24px]">
                     <div class="w-1/2 md:mb-0">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="typeProd"
                       >
                         To Color
                       </label>
                       <InputField
-                        placeholder="replace colors select dropdown"
+                        placeholder="Select Color"
                         id="typeProd"
                       />
                     </div>
                     <div class="w-1/2">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="durability"
                       >
                         Price
@@ -198,7 +198,7 @@ const CustomizedProduct = () => {
                   <div class=" flex  mb-[24px]">
                     <div class="w-full md:mb-0">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="planks"
                       >
                         Planks Inventory
@@ -210,7 +210,7 @@ const CustomizedProduct = () => {
                   <div class=" flex mb-[5px]">
                     <div class="w-full md:mb-0">
                       <label
-                        class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                        class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                         for="pDescrp"
                       >
                         Description
@@ -238,15 +238,15 @@ const CustomizedProduct = () => {
                 <div class=" flex gap-[20px] mb-[24px]">
                   <div class="w-full md:mb-0 relative">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="weight"
                     >
                       Product Image
                       <br />
-                      <span className="text-[#6C7275] font-normal text-12">
+                      {/* <span className="text-[#6C7275] font-normal text-12">
                         You can Upload Multiple Images of product in different
                         dimensions
-                      </span>
+                      </span> */}
                     </label>
                     {/* dropzone sec  */}
                     <div className="flex xl:flex-row lg:flex-row flex-col gap-[8px] ">

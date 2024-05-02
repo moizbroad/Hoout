@@ -47,7 +47,7 @@ const ContactInputField = (props) => {
           <input
             className={`block w-full  ${
               IconComponent ? "pl-10" : ""
-            } rounded-md   py-3 px-3 outline-none bg-[#000000] border-[#FFF] border-b-2  focus:outline-none sm:text-sm `}
+            }  py-3 px-3 outline-none bg-[#000000] border-[#FFF] border-b-2  focus:outline-none sm:text-sm `}
             id={id}
             label={label}
             type={type}

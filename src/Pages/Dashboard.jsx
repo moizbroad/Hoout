@@ -52,7 +52,7 @@ const Dashboard = () => {
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
       price: "$34,295",
-      status: "Delivered",
+      status: "Rejected",
     },
     {
       name: "Name",
@@ -61,7 +61,7 @@ const Dashboard = () => {
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
       price: "$34,295",
-      status: "Delivered",
+      status: "Pending",
     },
     // Add more objects as needed
   ];
@@ -89,9 +89,9 @@ const Dashboard = () => {
       head: " Total Sales",
       image: salesImg,
       image1: trendDown,
-      totalInventory: "40,689",
+      totalInventory: "$40,689",
       trendPercentage: "8.5%",
-      trendDescription: "Up from January",
+      trendDescription: "Down from last month",
     },
   ];
   return (
@@ -111,7 +111,7 @@ const Dashboard = () => {
                     <h6 className="xl:text-20 lg:text-18 md:text-16 font-semibold text-gray3 opacity-[0.7] xl:mb-[25px] lg:mb-[20px] mb-[15px]">
                       {items.head}
                     </h6>
-                    <h5 className="xl:text-36 lg:text-32 text-28 font-bold">40,689</h5>
+                    <h5 className="xl:text-36 lg:text-32 text-28 font-bold">{items.totalInventory}</h5>
                   </div>
                   <div className="md:mb-[7px]">
                     <img src={items.image} alt="" className="xl:w-[79px] lg:w-[70px] w-[60px]"  />
@@ -226,7 +226,7 @@ const Dashboard = () => {
                   {tableData.map((items, index) => {
                     return (
                       <tbody>
-                        <tr className="border-b-[0.4px] border-gray">
+                        <tr className={`border-b-[0.4px] border-gray`}>
                           <td className="xl:px-[24px] lg:px-[20px] px-[12px] xl:py-[16px] lg:py-[14px] py-[12px] text-left xl:text-15 text-14 font-semibold text-gray3">
                             <div className="flex xl:gap-3 gap-1 items-center">
                               <div className="flex-shrink-0 w-10 h-10">
@@ -269,7 +269,7 @@ const Dashboard = () => {
                             </div>
                           </td>
                           <td className="xl:px-[24px] lg:px-[16px] px-[8px] xl:py-[16px] lg:py-[14px] py-[12px]  text-left font-semibold text-gray3">
-                                <p className="rounded-full bg-green1 text-white px-[4px] py-[7px] text-14 font-bold text-center">
+                                <p className={`rounded-full ${items.status === 'Rejected' ? 'bg-[#FD5454]' : items.status === 'Pending' ? 'bg-[#FCBE2D]': 'bg-green1'} text-white px-[4px] py-[7px] text-14 font-bold text-center`}>
                                   {items.status}
                                 </p>
                           </td>

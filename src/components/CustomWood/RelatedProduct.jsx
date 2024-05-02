@@ -71,7 +71,7 @@ const RelatedProduct = () => {
                         </div>
                         <section className="flex gap-x-3 pt-[15px] pb-[20px]">
                           <div>{item.amount}</div>
-                          <div className="text-gray2">{item.subamount}</div>
+                          <div className="text-gray2 line-through">{item.subamount}</div>
                         </section>
                         <section className="flex gap-x-4 items-center">
                           <div className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  add-cart-btn">

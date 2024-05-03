@@ -146,9 +146,6 @@ const CustomWoodPage = () => {
             </div>
           </div>
 
-          <section className=" pt-[60px]">
-            <span className="text-24 font-bold border-b-3 border-yellow">
-
           <section className=" xl:pt-[60px] lg:pt-[50px] md:pt-[40px] pt-[30px]">
             <span className="xl:text-24 lg:text-22 md:text-20 sm:text-18 text-[17px] font-bold border-b-3 border-yellow">
 
@@ -248,13 +245,13 @@ const CustomWoodPage = () => {
                   </div>
                   <div className=" text-[#333333] w-[60%] text-16">
 
-                  <div className="xl:text-16 lg:text-15 text-14
- font-bold w-[60%]">{item.itemName}</div>
-                  <div className=" text-[#333333] w-[60%] xl:text-16 lg:text-15 text-14
-">
+                    <div className="xl:text-16 lg:text-15 text-14
+                        font-bold w-[60%]">{item.itemName}</div>
+                    <div className=" text-[#333333] w-[60%] xl:text-16 lg:text-15 text-14">
 
-                    {" "}
-                    {item.type}
+                      {" "}
+                      {item.type}
+                    </div>
                   </div>
                 </div>
               );

@@ -9,8 +9,10 @@ import thumbsUp from "../assets/authImages/thumbsUp.svg";
 import signinBlur from "../assets/authImages/signinBlur.png";
 import InputField from "../components/Common/InputField";
 import Switch from "../components/Common/Switch";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -19,7 +21,8 @@ const Signin = () => {
             <img
               src={signInRight}
               alt="signupleftImg"
-              className="w-[100%] xl:min-h-[100vh] lg:min-h-[100vh] md:h-[70vh] md:min-h-[70vh] sm:h-[70vh] sm:min-h-[70vh] xs:h-[70vh] xs:min-h-[70vh]"
+              onClick={() => navigate('/')}
+              className="cursor-pointer w-[100%] xl:min-h-[100vh] lg:min-h-[100vh] md:h-[70vh] md:min-h-[70vh] sm:h-[70vh] sm:min-h-[70vh] xs:h-[70vh] xs:min-h-[70vh]"
               style={{ objectFit: "cover" }}
             />
             <div>
@@ -52,8 +55,9 @@ const Signin = () => {
             <div className="signUpHead flex justify-start xl:mb-[46px] lg:mb-[30px] mb-[20px]">
               <img
                 src={houtLogo}
+                onClick={() => navigate('/')}
                 alt=""
-                className="xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+                className="xl:w-[160px] xl:h-[46px] cursor-pointer lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
               />
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">

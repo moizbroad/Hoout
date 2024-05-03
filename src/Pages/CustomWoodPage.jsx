@@ -108,7 +108,7 @@ const CustomWoodPage = () => {
             <span className="text-24 font-bold border-b-3 border-yellow">
               Description
             </span>
-            <div className="pt-5 text-18 text-start">
+            <div className="pt-5 text-18 text-start xs:text-15 sm:text-15">
               {" "}
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text

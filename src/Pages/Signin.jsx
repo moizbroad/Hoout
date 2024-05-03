@@ -9,8 +9,10 @@ import thumbsUp from "../assets/authImages/thumbsUp.svg";
 import signinBlur from "../assets/authImages/signinBlur.png";
 import InputField from "../components/Common/InputField";
 import Switch from "../components/Common/Switch";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -19,7 +21,8 @@ const Signin = () => {
             <img
               src={signInRight}
               alt="signupleftImg"
-              className="w-[100%]"
+              className="w-[100%] cursor-pointer"
+              onClick={() => navigate('/')}
               style={{ objectFit: "cover", minHeight: "100vh" }}
             />
             <div>
@@ -53,7 +56,8 @@ const Signin = () => {
               <img
                 src={houtLogo}
                 alt=""
-                className="xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+                onClick={() => navigate('/')}
+                className="xl:w-[160px] xl:h-[46px] lg:w-[140px] cursor-pointer lg:h-[40px] w-[120px] h-[35px] object-cover"
               />
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">

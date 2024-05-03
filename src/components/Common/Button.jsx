@@ -9,10 +9,11 @@ const Button = ({
   disabled,
   paddingX = "16",
   paddingY = "4",
-  color,
+
   breakpoint,
   widthfull,
   fontbold,
+  color,
 }) => {
   return (
     <button
@@ -25,7 +26,9 @@ const Button = ({
        ${fontbold ? "font-bold" : null} 
        ${
          textColor ? "text-[#fff]" : "text-white"
-       } xl:py-3 py-2 px-2 xl:text-md bg-yellow text-16`}
+       } xl:py-3 py-2 px-2 xl:text-md   ${
+        color ? "bg-[#fff]" : null
+      } bg-yellow text-16`}
       disabled={disabled}
       onClick={onClick}
       type={type}

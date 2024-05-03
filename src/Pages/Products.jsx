@@ -7,6 +7,7 @@ import editImg from "../assets/DashboardImages/edit.svg";
 import dltImg from "../assets/DashboardImages/delete.svg";
 import dots from "../assets/DashboardImages/dotsvertical.svg";
 import Button from "../components/Common/Button";
+import cartButton from "../assets/addToCart/cartButton.svg"
 import { useNavigate } from "react-router-dom";
 const Products = () => {
   const navigate = useNavigate();

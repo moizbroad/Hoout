@@ -110,7 +110,7 @@ const Signin = () => {
                     <InputField placeholder="Enter Email" />
                   </div>
                   <div className="mb-[23px]">
-                    <InputField placeholder="Password" />
+                    <InputField placeholder="Password" endicon="eyes" />
                   </div>
 
                   <div className="recPasswrd xl:mb-[30px] mb-[15px] flex w-full justify-between">
@@ -126,10 +126,7 @@ const Signin = () => {
                     </button>
                     <span className="flex justify-end text-14">
                       Don't have an account?{" "}
-                      <a
-                        href="#"
-                        className="text-[#FBC700] ml-1 font-semibold"
-                      >
+                      <a href="#" className="text-[#FBC700] ml-1 font-semibold">
                         Sign up!
                       </a>
                     </span>

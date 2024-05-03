@@ -77,7 +77,7 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={persons} onClick={() => navigate('/myaccount')}/>{" "}
+          <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')}/>{" "}
         </div>{" "}
         <div>
           {" "}
@@ -85,11 +85,11 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={heart} onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
+          <img src={heart} className="cursor-pointer" onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
         </div>
         <div>
           {" "}
-          <img src={cart} />{" "}
+          <img src={cart} onClick={() => navigate('/')} className="cursor-pointer" />{" "}
         </div>
       </section>
     </section>

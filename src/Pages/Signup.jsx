@@ -10,8 +10,10 @@ import whiteRin from "../assets/authImages/whiteRin.svg";
 import microscope from "../assets/authImages/microscope.svg";
 import slBlurBg from "../assets/authImages/slBlurBg.png";
 import InputField from "../components/Common/InputField";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate()
   return (
     <div>
       <div className="signUpMain flex min-h-screen flex-row md:flex-col sm:flex-col xs:flex-col">
@@ -126,12 +128,12 @@ const Signup = () => {
                   <InputField placeholder="Confirm Password" endicon />
                 </div>
                 <div className="w-full ">
-                  <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[14px] text-[13px]">
+                  <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[18px] text-[16px]">
                     Create Account
                   </button>
                   <span className="flex justify-end text-14">
                     Have an account?{" "}
-                    <a href="#" className="text-yellow    ml-1 font-semibold">
+                    <a onClick={() => navigate('/sign-in')} className="text-yellow  cursor-pointer  ml-1 font-semibold">
                       Sign in!
                     </a>
                   </span>

@@ -111,10 +111,10 @@ const Signin = () => {
                 </div>
                 <div className="formSec">
                   <div className="mb-[23px]">
-                    <InputField placeholder="Enter Email" />
+                    <InputField placeholder="Enter Email" type={"email"}/>
                   </div>
                   <div className="mb-[23px]">
-                    <InputField placeholder="Password" endicon="eyes" />
+                    <InputField placeholder="Password" endicon="eyes" type={"password"} />
                   </div>
 
                   <div className="recPasswrd xl:mb-[30px] mb-[15px] flex w-full justify-between">
@@ -125,12 +125,12 @@ const Signin = () => {
                   </div>
 
                   <div className="w-full ">
-                    <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[14px] text-[13px]">
+                    <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[18px] text-[16px]">
                       Log In
                     </button>
                     <span className="flex justify-end text-14">
                       Don't have an account?{" "}
-                      <a href="#" className="text-[#FBC700] ml-1 font-semibold">
+                      <a onClick={() => navigate('/sign-up')} className="text-[#FBC700] ml-1 font-semibold cursor-pointer">
                         Sign up!
                       </a>
                     </span>

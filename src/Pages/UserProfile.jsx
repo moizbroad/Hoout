@@ -96,7 +96,7 @@ const UserProfile = () => {
           <form action="">
             <div className="formSec">
               <div class=" flex gap-[20px] mb-[24px]">
-                <div class="w-1/2  md:mb-0">
+                <div class="w-[48.5%]  md:mb-0">
                   <label
                     class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="op"

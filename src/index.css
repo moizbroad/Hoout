@@ -199,4 +199,17 @@ footer .input-field {
   .filterRowMain .filterRowBox:nth-of-type(3) {
     min-width: 100px;
   }
+  .pay-button button {
+    font-size: 18px !important;
+    line-height: 26px;
+    width: 70%;
+    margin: 0 auto;
+}
+}
+@media (max-width: 767px){
+      .pay-button button {
+        font-size: 17px !important;
+        
+        margin: 0;
+    }
 }

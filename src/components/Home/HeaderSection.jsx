@@ -78,7 +78,7 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={persons} className="cursor-pointer " onClick={() => navigate('/myaccount')}/>{" "}
+          <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')}/>{" "}
         </div>{" "}
         <div>
           {" "}

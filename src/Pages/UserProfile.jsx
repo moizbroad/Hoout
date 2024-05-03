@@ -31,7 +31,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[30px]">
                 <div class="w-1/2 mb-6 md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="fName"
                   >
                     First name *
@@ -40,10 +40,10 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="lastName"
                   >
-                    last name *
+                    Last name *
                   </label>
                   <InputField placeholder="Last name" id="lastName" required />
                 </div>
@@ -51,7 +51,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[30px]">
                 <div class="w-1/2 mb-6 md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="cName"
                   >
                     Company name
@@ -60,7 +60,7 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="phoneNumber"
                   >
                     Phone number
@@ -71,7 +71,7 @@ const UserProfile = () => {
               <div class=" flex xl:mb-[30px] mb-[20px]">
                 <div class="w-full mb-6 md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="email"
                   >
                     Email *
@@ -98,7 +98,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2  md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="op"
                   >
                     Old password
@@ -113,7 +113,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2 md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="nPassword"
                   >
                     New password
@@ -122,7 +122,7 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="rnPassword"
                   >
                     Repeat new passsword
@@ -156,7 +156,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2  md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="stNumber"
                   >
                     Street and Number
@@ -165,7 +165,7 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="zCode"
                   >
                     Zip Code
@@ -176,7 +176,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2 md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="city"
                   >
                     City
@@ -189,7 +189,7 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="country"
                   >
                     Country
@@ -220,7 +220,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2  md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="stNumber"
                   >
                     Street and Number
@@ -229,7 +229,7 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="zCode"
                   >
                     Zip Code
@@ -240,7 +240,7 @@ const UserProfile = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2 md:mb-0">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="city"
                   >
                     City
@@ -253,7 +253,7 @@ const UserProfile = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="country"
                   >
                     Country

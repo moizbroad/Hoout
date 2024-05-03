@@ -53,14 +53,14 @@ const ShopPage = () => {
         </section>
       </div>
 
-      <section className="flex justify-between   sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[100px] lg:px-[100px] md:px-[60px]  ">
+      <section className="flex justify-between   sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[80px] lg:px-[50px] md:px-[40px]  ">
         <div>
           {" "}
-          <div className="flex items-center gap-x-6 md:gap-x-4 xs:gap-x-3 ">
+          <div className="flex items-center gap-x-6 md:gap-x-5 xs:gap-x-4 ">
             <div className="poppins" onClick={toggle}>
               <img src={filter} className="md:size-5 xs:size-5" />
             </div>
-            <div onClick={openfilter}>Filter</div>
+            <div onClick={openfilter}><h4 className="pops text-20 sm:text-16 xs:text-14 xs:leading-[22px]"> Filter </h4></div>
             <div>
               <img src={gridView} className="md:size-4  xs:size-3 " />
             </div>
@@ -74,7 +74,7 @@ const ShopPage = () => {
         </div>
 
         <section className=" sm:pt-4  xs:pt-4">
-          <div className="flex gap-x-6  md:gap-x-4 xs:gap-x-3 ">
+          <div className="flex gap-x-6  md:gap-x-5 ">
             <div className="pops md:text-14  sm:text-14 xs:text-12  ">
               Show Prices
             </div>

@@ -27,7 +27,7 @@ const Filters = () => {
 
   return (
     <div className="max-w-[300px] md:max-w-[100%]  sm:max-w-[100%]    xs:max-w-[100%]   xl:min-h-[1050px] shadow-xl md:overflow-auto sm:overflow-auto  xs:overflow-auto   ">
-      <span className="pt-[50px] md:pt-4 sm:pt-3 xs:pt-3   text-22 lg:text-20  flex px-6  lg:px-4  justify-start  text-center font-bold ">
+      <span className="pt-[50px] md:pt-4 sm:pt-3 xs:pt-3   text-22 lg:text-20  flex px-8   justify-start   font-bold ">
         Our assortment
       </span>
 
@@ -36,7 +36,7 @@ const Filters = () => {
           return (
             <div
               key={index}
-              className="filterRowBox flex justify-start px-6 md:pr-1 sm:pr-1 xs:pr-1  items-center py-[2px] md:min-w-[140px] sm:min-w-[140px] xs:min-w-[140px]"
+              className="filterRowBox flex justify-start px-6 md:pr-1 sm:pr-1 xs:pr-1  items-center py-[2px] md:min-w-[160px] sm:min-w-[163px] xs:min-w-[163px]"
             >
               <PaymentCard
                 item={item}

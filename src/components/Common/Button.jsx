@@ -18,7 +18,7 @@ const Button = ({
     <button
       className={` ${
         disabled ? "bg-gray-500 opacity-80" : "hover:opacity-85"
-      }  xl:text-22 lg:text-20 text-18
+      }  xl:text-22 lg:text-20 md:text-18 sm:text-16 xs:text-15
  flex-center rounded-md fontbold
        ${widthfull ? "w-full" : null}
        ${breakpoint} 

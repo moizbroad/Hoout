@@ -70,9 +70,9 @@ const AddToCart = () => {
   };
   return (
     <>
-      <section className="px-[30px] md:px-[80px] lg:px-[100px] bg-[#F4F5F7]">
-        <tr className="xs:gap-x-3 gap-x-6 flex  items-center  py-[40px]">
-          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16">Home </td>
+      <section className="xl:px-[100px] lg:px-[60px] md:px-[40px] px-[20px] bg-[#F4F5F7]">
+        {/* <tr className="gap-x-6 flex  items-center  py-[40px]">
+          <td className="text-[#9F9F9F] text-16">Home </td>
           <td>
             <img src={rightArrow} />
           </td>
@@ -80,13 +80,37 @@ const AddToCart = () => {
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="h-[px] font-bold text-[#9F9F9F]">| </td>
-          <td className="xs:text-14 sm:text-15 ">Cart </td>
-        </tr>
+          <td className="h-[px] font-bold text-[#9F9F9F] ">| </td>
+          <td>Cart </td>
+        </tr> */}
+        <div className="flex items-center gap-[24px]">
+          <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
+            <h5 className="text-[#9F9F9F] xl:text-16 lg:text-15 md:text-14 text-[13px]"> <a href="#"> Home </a></h5>
+            <div>
+              <img src={rightArrow} className="xl:w-[20px] lg:w-[18px] w-[15px]" />
+            </div>
+          </div>
+          <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
+
+            <h5 className="text-[#9F9F9F] xl:text-16 lg:text-15 md:text-14 text-[13px] "><a href="#"> Shop </a></h5>
+            <div>
+              <img src={rightArrow} className="xl:w-[20px] lg:w-[18px] w-[15px]" />
+            </div>
+          </div>
+          <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
+            {/* <h5 className="font-bold text-[#9F9F9F]  text-16">|</h5> */}
+            <h5 className="bcCartLink flex items-center xl:text-16 lg:text-15 md:text-14 text-[13px]">
+              Cart
+            </h5>
+          </div>
+        </div>
       </section>
 
-      <section className="pt-[50px] flex justify-center">
-        <div className="font-medium  text-54  "> Cart </div>
+      <section className="xl:pt-[50px] lg:pt-[35px] md:pt-[25px] pt-[15px] flex justify-center">
+        <div className="font-medium xl:text-54 lg:text-50 md:text-46 sm:text-44 text-40  ">
+          {" "}
+          Cart{" "}
+        </div>
       </section>
       {/* <Stepper activeStep={3}>
         <Step label="Children Step 1" />
@@ -109,11 +133,11 @@ const AddToCart = () => {
           <p className="text-2xl"> Got Seven </p>
         </div> */}
 
-        <section className="flex-center xs:px-[20px] xs:w-full xs:gap-[10px] gap-x-4  sm:gap-x-2   xs:gap-x-2     xl:mt-[40px] lg:mt-[30px] md:mt-[20px] sm:mt-[20px] xs:mt-[10px] xl:mb-[80px] ">
+        <section className="flex-center xs:px-[10px] xs:w-full xs:gap-[10px] gap-x-4  sm:gap-x-2   xs:gap-x-2     xl:mt-[40px] lg:mt-[30px] md:mt-[20px] sm:mt-[20px] xs:mt-[10px] xl:mb-[80px] lg:mb-[60px] md:mb-[40px] mb-[20px] ">
           {tabs.map((tab, idx) => (
             <div
               key={tab.name}
-              className="  4xll:gap-x-16 4xl:gap-x-14 3xll:gap-x-12   3xl:gap-x-10 2xll:gap-x-8 2xl:gap-x-6   flex-center gap-x-4 xs:flex-col xs:w-[32%] xs:items-center xs:justify-center  sm:gap-x-2  xs:gap-x-2  cursor-pointer"
+              className="  4xll:gap-x-16 4xl:gap-x-14 3xll:gap-x-12   3xl:gap-x-10 2xll:gap-x-8 2xl:gap-x-6   flex-center gap-x-4 xs:flex-col xs:w-[33%] xs:items-center xs:justify-center  sm:gap-x-2  xs:gap-[12px] cursor-pointer"
               onClick={() => handleDivClick(tab.name)}
             >
               <div
@@ -125,7 +149,7 @@ const AddToCart = () => {
               >
                 {tab.id}
               </div>
-              <div className=" 4xll:text-65  4xl:text-60 3xll:text-56  3xl:text-50 2xll:text-46 2xl:text-32  text-20 sm:text-16 xs:text-15 font-bold ">
+              <div className=" 4xll:text-65  4xl:text-60 3xll:text-56  3xl:text-50 2xll:text-46 2xl:text-32  text-20 sm:text-16 xs:text-14 xs:text-center font-bold ">
                 {tab.label}
               </div>
 
@@ -156,7 +180,7 @@ const AddToCart = () => {
         )}
       </section>
 
-      <section> </section>
+
 
       {/* <ShoppingCart/> */}
       {/* <CheckoutDetail/> */}

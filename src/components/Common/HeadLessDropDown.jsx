@@ -19,8 +19,8 @@ const HeadLessDropDown = () => {
               <img src={avatars} />
             </div>
             <div className="flex-col">
-              <div>Name Sur</div>
-              <div>Admin</div>
+              <div className="text-[14px] w-[max-content]">Name Sur</div>
+              <div className="text-[12px] text-[#565656] ">Admin</div>
             </div>
             <div>
               <img src={more} />

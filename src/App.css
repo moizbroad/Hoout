@@ -110,7 +110,7 @@ a.sideActive::before {
 }
 
 .inventCard {
-  box-shadow: 0px 4px 4px 0px #00000040;
+  box-shadow: 0px 4px 4px 0px #00000040 !important;
 }
 .myCard {
   /* box-shadow: 6px 6px 54px 0px #0000000d; */

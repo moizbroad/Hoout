@@ -62,6 +62,23 @@ const CheckoutDetail = () => {
                     {" "}
                     <img src={minus} />
                   </a>
+
+            <section className="flex justify-between items-center xl:pl-[80px] lg:pl-[80px] md:pl-[80px] sm:pl-[80px] xs:pl-[60px] pl-[50px]  ">
+              <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xl:min-w-[118px] lg:w-[170px] md:w-[170px] sm:w-[170px] xs:w-[170px] ">
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={minus} />
+                    </a>
+                  </div>
+                  <h6>2</h6>
+                  <div>
+                    <a href="#">
+                      {" "}
+                      <img src={plus} />{" "}
+                    </a>
+                  </div>
+
                 </div>
                 <h6>2</h6>
                 <div>
@@ -103,7 +120,7 @@ const CheckoutDetail = () => {
                 <div className="mb-4">
                   <InputField label="Street & Number" />
                 </div>
-                <div className="mb-4">
+                <div className="">
                   <InputField label="City" />
                 </div>
               </div>
@@ -112,8 +129,8 @@ const CheckoutDetail = () => {
                 <div className="mb-4">
                   <InputField label="Last Name" />
                 </div>
-                <div className="w-full md:h-20  md:w-0 col-span-6 mb-2"></div>{" "}
-                <div className="mb-4 invisible">
+                <div className="w-full md:h-20  md:w-0 col-span-6 mb-2 lg:hidden md:hidden sm:hidden xs:hidden"></div>{" "}
+                <div className="mb-4 invisible lg:hidden md:hidden sm:hidden xs:hidden">
                   <InputField label="Zip Code" />
                 </div>
                 <div className="mb-4 ">
@@ -128,7 +145,7 @@ const CheckoutDetail = () => {
               </div>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 pb-[100px]">
               <h2 className="text-2xl font-bold my-2 border-b border-[#D9D9D9] pb-3">
                 Payment Method
               </h2>

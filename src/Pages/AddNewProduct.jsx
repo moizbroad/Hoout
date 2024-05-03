@@ -19,7 +19,7 @@ const AddNewProduct = () => {
               onClick={() => {
                 navigate("/products");
               }}
-              className="flex gap-2 items-center xl:mb-[49px] lg:mb-[30px] mb-[20px]"
+              className="flex gap-2 items-center xl:mb-[20px] lg:mb-[10px] mb-[10px]"
             >
               <img src={ArrowBack} alt="" />
               <h5 className="xl:text-32 lg:text-28 text-26 font-bold">Add New Product</h5>
@@ -153,10 +153,10 @@ const AddNewProduct = () => {
                     <InputField placeholder="length" id="length" />
                   </div>
                 </div>
-                <div class=" flex mb-[30px]">
-                  <div class="w-full mb-6 md:mb-0">
+                <div class=" flex mb-[10px]">
+                  <div class="w-full mb-0 md:mb-0">
                     <label
-                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[8px] mb-[4px] block"
                       for="email"
                     >
                       Product Description

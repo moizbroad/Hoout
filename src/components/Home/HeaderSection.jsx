@@ -36,6 +36,7 @@ const HeaderSection = () => {
           isActive ? "active" : null
         }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
+
         <div onClick={() => navigate("/")}>Home</div>
         <span className=" cursor-pointer " onClick={() => navigate("/sign-in")}>
           {" "}
@@ -45,13 +46,23 @@ const HeaderSection = () => {
           {" "}
           Signup
         </span>
+
+        <span className=" cursor-pointer " onClick={() => navigate('/')}>Home</span>
+        <span className=" cursor-pointer " onClick={() => navigate('/sign-in')}> Login </span>
+        <span className="cursor-pointer " onClick={() => navigate('/sign-up')}> Signup</span>
+        <span className="cursor-pointer " onClick={() => navigate('/dashboard')}> Dashboard</span>
+
         {/* <div>Values</div> */}
         {/* <div>Product Range</div> */}
         {/* <div>Why Hout Total</div> */}
         {/* <div>Contact</div> */}
         <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
+
           <img src={headerImage} onClick={() => navigate("/")} />
+
+          <img src={headerImage} className="cursor-pointer " onClick={() => navigate('/')} />
+
           <div className="close-menu xl:hidden lg:hidden" onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,26 +94,34 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
+
           <img
             src={persons}
             className="size-[28px]"
             onClick={() => navigate("/myaccount")}
           />{" "}
+
+          <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')}/>{" "}
+
         </div>{" "}
         <div>
           {" "}
-          <img src={search} />{" "}
+          <img src={search} className="cursor-pointer "/>{" "}
         </div>{" "}
         <div>
           {" "}
+
           <img
             src={heart}
             onClick={() => navigate("/myaccount", { state: { key: "wish" } })}
           />{" "}
+
+          <img src={heart} className="cursor-pointer " onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
+
         </div>
         <div>
           {" "}
-          <img src={cart} />{" "}
+          <img src={cart} className="cursor-pointer " />{" "}
         </div>
       </section>
     </section>

@@ -11,8 +11,7 @@ import facebook from "../../assets/HeaderAndFooter/facebookFooter.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 
 const FooterSection = ({ isShow }) => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [openhours, setOpenHours] = useState([
     {
@@ -47,7 +46,7 @@ const FooterSection = ({ isShow }) => {
                 </button>
               </div>
             </div>
-            <div className=" pt-2 text-xs vietnam  text-[#000] xs:text-sm ms-0 md:ms-[140px] lg:ms-[140px] xl:ms-[140px]">
+            <div className=" pt-2 pl-[15px] text-xs vietnam  text-[#000] xs:text-sm ms-0 md:ms-[140px] lg:ms-[140px] xl:ms-[140px]">
               Subscribe to Our Newsletter and get updated every time.
             </div>
           </div>
@@ -63,21 +62,32 @@ const FooterSection = ({ isShow }) => {
               <div className="mb-6  vietnam text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
                 Home
               </div>
-              <div className="mb-5 text-[14px] vietnam " onClick={() => navigate('/')}>Home</div>
-              <div className="mb-5 text-[14px] vietnam " onClick={() => navigate('/about')}>About Us</div>
-              <div className="mb-5 text-[14px] vietnam ">Impression</div>
-              <div className="mb-5 text-[14px] vietnam ">Custom Tables</div>
-              <div className="mb-5">
-                <Link to="/faq" className="text-[14px]">
-                  FAQ
-                </Link>
+              <div
+                className="mb-5 text-[14px] vietnam "
+                onClick={() => navigate("/")}
+              >
+                Home
               </div>
-              <div className="mb-5 text-[14px] vietnam ">Contact</div>
+              <div
+                className="mb-5 text-[14px] vietnam "
+                onClick={() => navigate("/about")}
+              >
+                About Us
+              </div>
+              <div className="mb-5 text-[14px] vietnam ">Products</div>
+              <div className="mb-5 text-[14px] vietnam ">Our Values</div>
+              <div className="mb-5"></div>
+              <div className="mb-5 text-[14px] vietnam ">Our assortment</div>
+              <div className="mb-5 text-[14px] vietnam ">Why Hout Total</div>
+              <div className="mb-5 text-[14px] vietnam ">Contact Us</div>
               <div className="mb-5 text-[14px] vietnam ">
                 <Link to="/terms-conditions">Terms & Conditions</Link>
               </div>
               <div className="mb-5 text-[14px]">
                 <Link to="privacy-policy vietnam ">Privacy Policy</Link>
+              </div>
+              <div className="mb-5 text-[14px] vietnam ">
+                Customer Support/Faq
               </div>
             </div>
 

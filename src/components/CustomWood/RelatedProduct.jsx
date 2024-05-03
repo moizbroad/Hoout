@@ -89,7 +89,14 @@ const RelatedProduct = () => {
         </section>
         <div className="pt-[50px] flex justify-center mb-24">
           {" "}
-          <Button btnText="Show More" px="100px" py="16px" color />
+          {/* <Button btnText="Show More" px="100px" py="16px" textColor border /> */}
+          <div className="  border-2 border-yellow  ">
+            {" "}
+            <button className="text-yellow px-10 py-3 font-semibold text-18">
+              {" "}
+              Show more{" "}
+            </button>
+          </div>
         </div>
       </section>
     </>

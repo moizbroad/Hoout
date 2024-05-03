@@ -157,18 +157,30 @@ const AddToCart = () => {
               <div
                 className={`${
                   selectedDiv[tab.name]
-                    ? "bg-[#38CB89] border rounded-full text-white     "
+                    ? "bg-[#38CB89] border rounded-full text-white "
                     : "bg-[#B1B5C3] text-white   "
-                }     
-                  border rounded-full  4xll:px-[3.6rem]  4xl:px-[3.5rem]  3xll:px-[3rem]  3xl:px-[2.5rem]  2xll:px-[2rem]  2xl:px-[1.9rem]   4xll:text-80  4xl:text-75 3xll:text-70  3xl:text-65 2xll:text-60 2xl:text-56   ${
-                    tab.id == 1 && "px-[18px]"
-                  }    px-4 py-1.5 text-22 sm:text-14 sm:py-2.5 xs:py-2.5 xs:text-14 cursor-pointer`}
+                }     border rounded-full  
+                     ${
+                       tab.id === 1
+                         ? "h-[45px] w-[45px] px-4 text-center pt-2"
+                         : ""
+                     }    
+                      ${
+                        selectedDiv[tabs.id] === idx + 1
+                          ? "h-[45px] w-[45px] px-4 text-center pt-2"
+                          : "h-[45px] w-[45px] px-4 text-center pt-2"
+                      }     text-22 sm:text-14  xs:text-14  px-4 text-center  cursor-pointer`}
               >
                 {/* {tab.check} */}
-                {tab.id}
-                {/* {selectedDiv.firstTab == true ? tab.image : tab.id}
-                {selectedDiv.secondTab == true ? tab.image : tab.id}
-                {selectedDiv.thirdTab == true ? tab.image : tab.id} */}
+                {selectedDiv.secondTab === true && selectedDiv[tab.name] ? (
+                  <img
+                    src={tab.image}
+                    className="w-[11px] h-[33px]"
+                    style={{ objectFit: "none" }}
+                  />
+                ) : (
+                  <div className="">{idx + 1}</div>
+                )}
               </div>
               <div className=" 4xll:text-65  4xl:text-60 3xll:text-56  3xl:text-50 2xll:text-46 2xl:text-32  text-20 sm:text-16 xs:text-14 xs:text-center font-bold ">
                 {tab.label}

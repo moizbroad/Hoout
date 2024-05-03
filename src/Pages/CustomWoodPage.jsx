@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ProductDetailTable from "../components/CustomWood/ProductDetailTable";
 import RelatedProduct from "../components/CustomWood/RelatedProduct";
 import rightArrow from "../assets/customWoodPage/rightArrow.svg";
@@ -104,8 +104,54 @@ const CustomWoodPage = () => {
             </div>
           </section>
 
+          <div className=" xl:hidden lg:hidden md:hidden mt-20">
+            <h1 className="text-20 font-bold">
+              Angelium Vermelho, Planing, Rounded Corners with Points of 68*68mm
+              FSC*{" "}
+            </h1>
+            <div className="flex gap-x-6 pt-6">
+              <div>
+                <img src={starGroup} />
+              </div>
+              <div>
+                {" "}
+                <img src={line} />
+              </div>
+              <div className="text-18"> 5 Customer Review</div>
+            </div>
+
+            <div className="pt-6 text-44">$ 2,500</div>
+
+            <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
+              <div className="text-14">SHARE THIS PAGE:</div>
+              <div>
+                <img src={whatspp} />
+              </div>
+              <div>
+                <img src={facebook} />
+              </div>
+              <div>
+                <img src={twitter} />
+              </div>
+              <div>
+                <img src={linkdln} />
+              </div>
+              <div>
+                <img src={pintrest} />
+              </div>
+
+              <div>
+                <img src={email} />
+              </div>
+            </div>
+          </div>
+
+          <section className=" pt-[60px]">
+            <span className="text-24 font-bold border-b-3 border-yellow">
+
           <section className=" xl:pt-[60px] lg:pt-[50px] md:pt-[40px] pt-[30px]">
             <span className="xl:text-24 lg:text-22 md:text-20 sm:text-18 text-[17px] font-bold border-b-3 border-yellow">
+
               Description
             </span>
             <div className="pt-5 text-18 text-start xs:text-15 sm:text-15">
@@ -162,8 +208,29 @@ const CustomWoodPage = () => {
               <img src={pintrest} />
             </div>
 
-            <div>
-              <img src={email} />
+            <div className="pt-6 text-44">$ 2,500</div>
+
+            <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
+              <div className="text-14">SHARE THIS PAGE:</div>
+              <div>
+                <img src={whatspp} />
+              </div>
+              <div>
+                <img src={facebook} />
+              </div>
+              <div>
+                <img src={twitter} />
+              </div>
+              <div>
+                <img src={linkdln} />
+              </div>
+              <div>
+                <img src={pintrest} />
+              </div>
+
+              <div>
+                <img src={email} />
+              </div>
             </div>
           </div>
           {/* product specfication  section  */}
@@ -175,10 +242,17 @@ const CustomWoodPage = () => {
             {productInfo.map((item) => {
               return (
                 <div className="flex items-center pt-5 border-b pb-2">
+
+                  <div className="text-16 font-bold w-[60%]">
+                    {item.itemName}
+                  </div>
+                  <div className=" text-[#333333] w-[60%] text-16">
+
                   <div className="xl:text-16 lg:text-15 text-14
  font-bold w-[60%]">{item.itemName}</div>
                   <div className=" text-[#333333] w-[60%] xl:text-16 lg:text-15 text-14
 ">
+
                     {" "}
                     {item.type}
                   </div>

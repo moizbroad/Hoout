@@ -168,20 +168,39 @@ const CustomWoodPage = () => {
 
         {/* Right side Content  */}
         <section>
-          <div className="sm:hidden xs:hidden">
-            <h1 className="text-20 font-bold">
-              Angelium Vermelho, Planing, Rounded Corners with Points of 68*68mm
-              FSC*{" "}
-            </h1>
-            <div className="flex gap-x-6 pt-6">
-              <div>
-                <img src={starGroup} />
-              </div>
-              <div>
-                {" "}
-                <img src={line} />
-              </div>
-              <div className="text-18"> 5 Customer Review</div>
+          <h1 className="text-38 font-bold">
+            Angelium Vermelho, Planing, Rounded Corners with Points of 68*68mm
+            FSC*{" "}
+          </h1>
+          <div className="flex gap-x-6 pt-6">
+            <div>
+              <img src={starGroup} />
+            </div>
+            <div>
+              {" "}
+              <img src={line} />
+            </div>
+            <div className="text-18"> 5 Customer Review</div>
+          </div>
+
+          <div className="pt-6 text-44">$ 2,500</div>
+
+          <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
+            <div className="text-14">SHARE THIS PAGE:</div>
+            <div>
+              <img src={whatspp} />
+            </div>
+            <div>
+              <img src={facebook} />
+            </div>
+            <div>
+              <img src={twitter} />
+            </div>
+            <div>
+              <img src={linkdln} />
+            </div>
+            <div>
+              <img src={pintrest} />
             </div>
 
             <div className="pt-6 text-44">$ 2,500</div>
@@ -218,7 +237,7 @@ const CustomWoodPage = () => {
             {productInfo.map((item) => {
               return (
                 <div className="flex items-center pt-5 border-b pb-2">
-                  <div className="text-16 font-bold w-[60%] ">
+                  <div className="text-16 font-bold w-[60%]">
                     {item.itemName}
                   </div>
                   <div className=" text-[#333333] w-[60%] text-16">

@@ -138,7 +138,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                   <div className=" font-medium  text-16  text-gray2 pt-[15px]">
                     {item.subheading}
                   </div>
-                  <section className="flex gap-x-3 pt-[15px] pb-[20px]">
+                  <section className="flex gap-x-3 pt-[15px] pb-[20px] md:gap-x-2">
                     <div>{item.amount}</div>
                     <div className="text-gray2 line-through">{item.subamount}</div>
                   </section>

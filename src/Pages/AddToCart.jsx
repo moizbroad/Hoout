@@ -76,7 +76,7 @@ const AddToCart = () => {
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="text-[#9F9F9F] text-16"> Shop</td>
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16"> Shop</td>
           <td>
             <img src={rightArrow} />
           </td>

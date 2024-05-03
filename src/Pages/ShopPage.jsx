@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import rightArrow from "../assets/shopPage/rightArrow.svg";
 import filter from "../assets/shopPage/filter.svg";
 import gridView from "../assets/shopPage/gridView.svg";
@@ -11,6 +11,10 @@ import shipping from "../assets/shopPage/shipping.svg";
 import supports from "../assets/shopPage/supports.svg";
 
 const ShopPage = () => {
+  const [openfilter, setOpenfilter] = useState(true);
+  function toggle() {
+    setOpenfilter(!openfilter);
+  }
   const data = [
     { image: cup, head: "High Quality", subHead: "crafted from top materials" },
     {
@@ -53,35 +57,37 @@ const ShopPage = () => {
         <section>
           {" "}
           <tr className="flex gap-x-6">
-            <td className="poppins">
+            <td className="poppins" onClick={toggle}>
               <img src={filter} />
             </td>
-            <td>Filter</td>
+            <td onClick={openfilter}>Filter</td>
             <td>
               <img src={gridView} />
             </td>
             <td>
               <img src={listView} />
             </td>
-            <td>Showing 1-16 of 32 results</td>
+            <td className="pops">Showing 1-16 of 32 results</td>
           </tr>
         </section>
         <section>
           <tr className="flex gap-x-6">
-            <td>Show Prices</td>
-            <td>Incl. VAT</td>
-            <td>fe</td>
-            <td>Ecxl.VAT</td>
+            <td className="pops">Show Prices</td>
+            <td className="pops">Incl. VAT</td>
+            <td className="pops">fe</td>
+            <td className="pops">Ecxl.VAT</td>
           </tr>
         </section>
       </section>
 
       <section className="flex pb-[200px]">
-        <div className="w-[30%]">
-          {" "}
-          <Filters />
-        </div>
-        <div className="w-[90%] pt-[75px]">
+        {openfilter && (
+          <div className="w-[22%]">
+            <Filters />
+          </div>
+        )}
+
+        <div className="w-[100%] pt-[75px] px-[100px] ">
           {" "}
           <ProductsSection isthree isbuttonReqird notRequired />{" "}
         </div>

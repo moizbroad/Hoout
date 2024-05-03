@@ -37,15 +37,7 @@ const HeaderSection = () => {
         }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
 
-        <div onClick={() => navigate("/")}>Home</div>
-        <span className=" cursor-pointer " onClick={() => navigate("/sign-in")}>
-          {" "}
-          Login{" "}
-        </span>
-        <span className="cursor-pointer " onClick={() => navigate("/sign-up")}>
-          {" "}
-          Signup
-        </span>
+        
 
         <span className=" cursor-pointer " onClick={() => navigate('/')}>Home</span>
         <span className=" cursor-pointer " onClick={() => navigate('/sign-in')}> Login </span>
@@ -59,7 +51,6 @@ const HeaderSection = () => {
         <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
 
-          <img src={headerImage} onClick={() => navigate("/")} />
 
           <img src={headerImage} className="cursor-pointer " onClick={() => navigate('/')} />
 
@@ -95,11 +86,7 @@ const HeaderSection = () => {
         <div>
           {" "}
 
-          <img
-            src={persons}
-            className="size-[28px]"
-            onClick={() => navigate("/myaccount")}
-          />{" "}
+          
 
           <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')}/>{" "}
 
@@ -111,10 +98,7 @@ const HeaderSection = () => {
         <div>
           {" "}
 
-          <img
-            src={heart}
-            onClick={() => navigate("/myaccount", { state: { key: "wish" } })}
-          />{" "}
+          
 
           <img src={heart} className="cursor-pointer " onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
 

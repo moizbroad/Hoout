@@ -55,13 +55,7 @@ const CheckoutDetail = () => {
               </div>
             </section>
 
-            <section className="flex justify-between items-center xl:pl-[80px] lg:pl-[60px] pl-[50px]  ">
-              <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px] w-[40%] ">
-                <div>
-                  <a href="#">
-                    {" "}
-                    <img src={minus} />
-                  </a>
+          
 
             <section className="flex justify-between items-center xl:pl-[80px] lg:pl-[80px] md:pl-[80px] sm:pl-[80px] xs:pl-[60px] pl-[50px]  ">
               <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xl:min-w-[118px] lg:w-[170px] md:w-[170px] sm:w-[170px] xs:w-[170px] ">
@@ -77,7 +71,6 @@ const CheckoutDetail = () => {
                       {" "}
                       <img src={plus} />{" "}
                     </a>
-                  </div>
 
                 </div>
                 <h6>2</h6>

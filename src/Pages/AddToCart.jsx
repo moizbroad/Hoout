@@ -182,7 +182,7 @@ const AddToCart = () => {
                   <div className="">{idx + 1}</div>
                 )}
               </div>
-              <div className=" 4xll:text-65  4xl:text-60 3xll:text-56  3xl:text-50 2xll:text-46 2xl:text-32  text-20 sm:text-16 xs:text-14 xs:text-center font-bold ">
+              <div className=" 4xll:text-65  4xl:text-60 3xll:text-56  3xl:text-50 2xll:text-46 2xl:text-32  text-20 sm:text-[13px] xs:text-[13px] xs:text-center font-bold ">
                 {tab.label}
               </div>
 

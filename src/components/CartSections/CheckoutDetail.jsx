@@ -7,6 +7,7 @@ import image1 from "../../assets/addToCart/image1.svg";
 import minus from "../../assets/addToCart/minus.svg";
 import plus from "../../assets/addToCart/plus.svg";
 import TotalBalance from "../Common/TotalBalance";
+import RadioButtons from "../Common/RadioButtons";
 
 const CheckoutDetail = () => {
   return (
@@ -22,7 +23,10 @@ const CheckoutDetail = () => {
             <section className="flex pt-5 items-center">
               <div>
                 {" "}
-                <img src={image1} className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] " />
+                <img
+                  src={image1}
+                  className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] "
+                />
               </div>
               <div>
                 <div className="px-2 text-18">Tray Tabel</div>
@@ -53,22 +57,25 @@ const CheckoutDetail = () => {
 
             <section className="flex justify-between items-center xl:pl-[80px] lg:pl-[60px] pl-[50px]  ">
               <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px] w-[40%] ">
-                  <div>
-                    <a href="#">
-                      {" "}
-                      <img src={minus} />
-                    </a>
-                  </div>
-                  <h6>2</h6>
-                  <div>
-                    <a href="#">
-                      {" "}
-                      <img src={plus} />{" "}
-                    </a>
-                  </div>
+                <div>
+                  <a href="#">
+                    {" "}
+                    <img src={minus} />
+                  </a>
                 </div>
+                <h6>2</h6>
+                <div>
+                  <a href="#">
+                    {" "}
+                    <img src={plus} />{" "}
+                  </a>
+                </div>
+              </div>
 
-              <div className="xl:text-22 lg:text-20 md:text-18 text-16 font-bold  "> $60.25 </div>
+              <div className="xl:text-22 lg:text-20 md:text-18 text-16 font-bold  ">
+                {" "}
+                $60.25{" "}
+              </div>
             </section>
 
             <div>
@@ -132,6 +139,7 @@ const CheckoutDetail = () => {
                     img={item.img}
                     name={item.name}
                     isChecked={item.checked}
+                    isRadioRequired
                   />
                 </div>
               ))}

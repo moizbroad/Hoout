@@ -36,16 +36,22 @@ const HeaderSection = () => {
           isActive ? "active" : null
         }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
-        <div onClick={() => navigate('/')}>Home</div>
-        <span className=" cursor-pointer " onClick={() => navigate('/sign-in')}> Login </span>
-        <span className="cursor-pointer " onClick={() => navigate('/sign-up')}> Signup</span>
+        <div onClick={() => navigate("/")}>Home</div>
+        <span className=" cursor-pointer " onClick={() => navigate("/sign-in")}>
+          {" "}
+          Login{" "}
+        </span>
+        <span className="cursor-pointer " onClick={() => navigate("/sign-up")}>
+          {" "}
+          Signup
+        </span>
         {/* <div>Values</div> */}
         {/* <div>Product Range</div> */}
         {/* <div>Why Hout Total</div> */}
         {/* <div>Contact</div> */}
         <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
-          <img src={headerImage} onClick={() => navigate('/')} />
+          <img src={headerImage} onClick={() => navigate("/")} />
           <div className="close-menu xl:hidden lg:hidden" onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -65,9 +71,9 @@ const HeaderSection = () => {
         </div>
       </section>
 
-      <section className="flex  gap-x-[24px] xl:gap-x-[40px] ">
+      <section className="flex  gap-x-[24px] items-center xl:gap-x-[40px] ">
         <div
-          className="cursor-pointer"
+          className="cursor-pointer  text-20"
           onClick={() => {
             navigate("/shop-page");
           }}
@@ -77,7 +83,11 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={persons} onClick={() => navigate('/myaccount')}/>{" "}
+          <img
+            src={persons}
+            className="size-[28px]"
+            onClick={() => navigate("/myaccount")}
+          />{" "}
         </div>{" "}
         <div>
           {" "}
@@ -85,7 +95,10 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={heart} onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
+          <img
+            src={heart}
+            onClick={() => navigate("/myaccount", { state: { key: "wish" } })}
+          />{" "}
         </div>
         <div>
           {" "}

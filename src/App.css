@@ -202,6 +202,10 @@ input[type="radio"] {
   position: absolute;
   opacity: 0;
 }
+.payMain {
+  opacity: 1 !important;
+  /* margin-right: "10px"; */
+}
 
 input[type="radio"]:checked + .box-content img {
   /* background-color: #90caf9; */
@@ -276,7 +280,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 /* media query start  */

@@ -11,7 +11,7 @@ import Button from "../../components/Common/Button";
 const ShoppingCart = () => {
   return (
     <>
-      <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[40px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
+      <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[80px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
         <section className="flex-1 ">
           <div className="overflow-auto">
           <table className="w-full ">

@@ -1,10 +1,10 @@
 const PaymentCard = ({ img, name, isChecked, removeBg, onChange, item }) => {
   return (
-    <div className={`${removeBg ? "" : "bg-[#F5F4F8] rounded-md"} flex py-2`}>
+    <div className={`${removeBg ? "" : "bg-[#F5F4F8] rounded-md"} flex py-2 px-3`}>
       <label className="inline-flex items-center my-2 w-[] ">
         <input
           type="checkbox"
-          className="form-checkbox rounded-full mr-4 md:mr-1 sm:mr-1 xs:mr-1 h-4 w-4 text-[#15803D]"
+          className="form-checkbox rounded-full mr-4 md:mr-1 sm:mr-2 xs:mr-2 min-h-[16px] min-w-[16px] text-[#15803D]"
           checked={isChecked}
           onChange={() => onChange(item)}
         />

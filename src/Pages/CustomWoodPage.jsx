@@ -205,30 +205,7 @@ const CustomWoodPage = () => {
               <img src={pintrest} />
             </div>
 
-            <div className="pt-6 text-44">$ 2,500</div>
-
-            <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
-              <div className="text-14">SHARE THIS PAGE:</div>
-              <div>
-                <img src={whatspp} />
-              </div>
-              <div>
-                <img src={facebook} />
-              </div>
-              <div>
-                <img src={twitter} />
-              </div>
-              <div>
-                <img src={linkdln} />
-              </div>
-              <div>
-                <img src={pintrest} />
-              </div>
-
-              <div>
-                <img src={email} />
-              </div>
-            </div>
+           
           </div>
           {/* product specfication  section  */}
           <section className=" bg-[#F8F8F8] xl:px-[25px] lg:px-[20px] md:px-[16px] sm:px-[10px] xl:mt-[35px] lg:mt-[30px] md:mt-[25px] mt-[20px] ml-2">
@@ -245,8 +222,7 @@ const CustomWoodPage = () => {
                   </div>
                   <div className=" text-[#333333] w-[60%] text-16">
 
-                    <div className="xl:text-16 lg:text-15 text-14
-                        font-bold w-[60%]">{item.itemName}</div>
+                    
                     <div className=" text-[#333333] w-[60%] xl:text-16 lg:text-15 text-14">
 
                       {" "}

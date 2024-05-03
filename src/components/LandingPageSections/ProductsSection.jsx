@@ -144,7 +144,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                   </section>
                   <section className="flex gap-x-4 items-center justify-between">
                     <div
-                      className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  add-cart-btn"
+                      className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  add-cart-btn md:text-[12px] lg:text-[12px]"
                       onClick={() => {
                         navigate("/cart");
                       }}

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import eyes from "../../assets/authImages/eyes.svg";
+import showEye from '../../assets/authImages/showEye.svg'
 
 const InputField = (props) => {
   const {
@@ -25,10 +27,21 @@ const InputField = (props) => {
     marginBottom,
     name,
     icon: IconComponent,
+    endicon,
   } = props;
 
+  const [passwordType, setPasswordType] = useState(false)
+
+  useEffect(() => {
+    if(type === "password"){
+      setPasswordType(true)
+    } else{
+      setPasswordType(false)
+    }
+  },[])
+
   return (
-    <div className={`${marginTop && "mt-4"} ${marginBottom && "mb-4"} `}>
+    <div className={`${marginTop && "mt-4"} ${marginBottom && "mb-4"}`}>
       {label && (
         <label
           htmlFor={id}
@@ -40,17 +53,17 @@ const InputField = (props) => {
 
       <div className="relative flex items-center">
         {IconComponent && (
-          <span className="absolute left-3">
+          <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
             <IconComponent className="text-gray-400 h-5 w-5" />
           </span>
         )}
         <input
-          className={`block w-full appearance-none  ${
+          className={`block w-full appearance-none ${
             IconComponent ? "pl-10" : ""
-          } rounded-md   xl:py-3 xl:px-3 py-2 px-2 outline-none  border border-[#D9D9D9] focus:outline-none sm:text-sm input-field`}
+          } rounded-md xl:py-3 xl:px-3 py-2 px-2 outline-none border border-[#D9D9D9] focus:outline-none sm:text-sm input-field`}
           id={id}
           label={label}
-          type={type}
+          type={passwordType === true ? "password" : "text"}
           max={max}
           name={name}
           minLength={minLength}
@@ -68,8 +81,16 @@ const InputField = (props) => {
           onChange={onChange}
           autoComplete={autoComplete}
           required={required}
-        
         />
+        {endicon && (
+          <img
+            src={passwordType === true ? eyes : showEye}
+            onClick={() => {
+              setPasswordType(!passwordType)
+            }}
+            className="h-[24px] w-[24px] xs:size-4 ms:size-5 4xll:size-12 4xl:size-11 3xll:size-10 3xl:size-8 2xll:size-6 2xl:size-6 absolute right-3 top-1/2 transform -translate-y-1/2"
+          />
+        )}
       </div>
     </div>
   );

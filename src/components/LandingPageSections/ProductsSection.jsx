@@ -149,7 +149,8 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                         navigate("/cart");
                       }}
                     >
-                      <img src={item.addToCart} />
+                      {/* <img src={item.addToCart} className="bg-red" /> */}
+                      <img src={addToCart} />
                       Add to Cart{" "}
                     </div>
                     <div>

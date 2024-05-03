@@ -162,7 +162,7 @@ button:focus-visible {
 }
 .pay-button button {
   font-size: 20px !important;
-  line-height : 28px;
+  line-height: 28px;
   color: #000;
 }
 footer .input-field {
@@ -173,7 +173,7 @@ footer .input-field {
 }
 .subscribe-btn {
   border-radius: 0px 12px 12px 0px;
-  background-color: #FBC700;
+  background-color: #fbc700;
   padding: 18px 30px;
   font-size: 22px;
   color: #fff;
@@ -190,4 +190,26 @@ footer .input-field {
     padding: 12px 20px;
     font-size: 16px;
   }
+}
+
+@media (max-width: 991px) {
+  .filterRowMain .filterRowBox:nth-of-type(1) {
+    min-width: 100px;
+  }
+  .filterRowMain .filterRowBox:nth-of-type(3) {
+    min-width: 100px;
+  }
+  .pay-button button {
+    font-size: 18px !important;
+    line-height: 26px;
+    width: 70%;
+    margin: 0 auto;
+}
+}
+@media (max-width: 767px){
+      .pay-button button {
+        font-size: 17px !important;
+        
+        margin: 0;
+    }
 }

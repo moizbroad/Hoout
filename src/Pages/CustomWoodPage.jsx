@@ -104,8 +104,8 @@ const CustomWoodPage = () => {
             </div>
           </section>
 
-          <section className=" pt-[60px]">
-            <span className="text-24 font-bold border-b-3 border-yellow">
+          <section className=" xl:pt-[60px] lg:pt-[50px] md:pt-[40px] pt-[30px]">
+            <span className="xl:text-24 lg:text-22 md:text-20 sm:text-18 text-[17px] font-bold border-b-3 border-yellow">
               Description
             </span>
             <div className="pt-5 text-18 text-start xs:text-15 sm:text-15">
@@ -126,11 +126,11 @@ const CustomWoodPage = () => {
 
         {/* Right side Content  */}
         <section>
-          <h1 className="text-38 font-bold">
+          <h1 className="xl:text-38 lg:text-36 md:text-32 text-28 font-bold">
             Angelium Vermelho, Planing, Rounded Corners with Points of 68*68mm
             FSC*{" "}
           </h1>
-          <div className="flex gap-x-6 pt-6">
+          <div className="flex items-center gap-x-6 xl:pt-6 lg:pt-5 pt-4">
             <div>
               <img src={starGroup} />
             </div>
@@ -138,10 +138,11 @@ const CustomWoodPage = () => {
               {" "}
               <img src={line} />
             </div>
-            <div className="text-18"> 5 Customer Review</div>
+            <div className="xl:text-18 lg:text-16 md:text-14 text-[13px]
+"> 5 Customer Review</div>
           </div>
 
-          <div className="pt-6 text-44">$ 2,500</div>
+          <div className="pt-6 xl:text-44 lg:text-40 md:text-36 sm:text-32 text-28">$ 2,500</div>
 
           <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
             <div className="text-14">SHARE THIS PAGE:</div>
@@ -166,16 +167,18 @@ const CustomWoodPage = () => {
             </div>
           </div>
           {/* product specfication  section  */}
-          <section className=" bg-[#F8F8F8] px-[25px] mt-[35px] ml-2">
-            <div className="text-18 font-bold pt-[15px]">
+          <section className=" bg-[#F8F8F8] xl:px-[25px] lg:px-[20px] md:px-[16px] sm:px-[10px] xl:mt-[35px] lg:mt-[30px] md:mt-[25px] mt-[20px] ml-2">
+            <div className="xl:text-18 lg:text-16 md:text-14 text-[13px] font-bold pt-[15px]">
               Product specifications
             </div>
 
             {productInfo.map((item) => {
               return (
                 <div className="flex items-center pt-5 border-b pb-2">
-                  <div className="text-16 font-bold w-[60%]">{item.itemName}</div>
-                  <div className=" text-[#333333] w-[60%] text-16">
+                  <div className="xl:text-16 lg:text-15 text-14
+ font-bold w-[60%]">{item.itemName}</div>
+                  <div className=" text-[#333333] w-[60%] xl:text-16 lg:text-15 text-14
+">
                     {" "}
                     {item.type}
                   </div>

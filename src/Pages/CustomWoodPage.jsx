@@ -126,7 +126,7 @@ const CustomWoodPage = () => {
 
         {/* Right side Content  */}
         <section>
-          <h1 className="text-20 font-bold">
+          <h1 className="text-38 font-bold">
             Angelium Vermelho, Planing, Rounded Corners with Points of 68*68mm
             FSC*{" "}
           </h1>
@@ -174,7 +174,7 @@ const CustomWoodPage = () => {
             {productInfo.map((item) => {
               return (
                 <div className="flex items-center pt-5 border-b pb-2">
-                  <div className="text-16 font-bold w-[60%] ">{item.itemName}</div>
+                  <div className="text-16 font-bold w-[60%]">{item.itemName}</div>
                   <div className=" text-[#333333] w-[60%] text-16">
                     {" "}
                     {item.type}

@@ -91,7 +91,7 @@ const CheckoutDetail = () => {
                   <InputField label="First Name" />
                 </div>
                 <div className="mb-4">
-                  <InputField label="Company Name" />
+                  <InputField label="Company Name (Optional)" />
                 </div>
                 <div className="mb-4">
                   <InputField label="Street & Number" />
@@ -103,7 +103,7 @@ const CheckoutDetail = () => {
 
               <div className="col-span-12 xl:col-span-6 xl:mt-8">
                 <div className="mb-4">
-                  <InputField label="First Name" />
+                  <InputField label="Last Name" />
                 </div>
                 <div className="w-full md:h-20  md:w-0 col-span-6 mb-2"></div>{" "}
                 <div className="mb-4 invisible">
@@ -127,7 +127,7 @@ const CheckoutDetail = () => {
               </h2>
 
               {paymentMethods.map((item) => (
-                <div className="my-4 xl:w-2/3 w-full" key={item.id}>
+                <div className="my-4 xl:w-2/3 w-full h-auto" key={item.id}>
                   <PaymentCard
                     img={item.img}
                     name={item.name}

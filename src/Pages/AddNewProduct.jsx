@@ -19,7 +19,7 @@ const AddNewProduct = () => {
               onClick={() => {
                 navigate("/products");
               }}
-              className="flex gap-2 items-center xl:mb-[49px] lg:mb-[30px] mb-[20px]"
+              className="flex gap-2 items-center xl:mb-[20px] lg:mb-[10px] mb-[10px]"
             >
               <img src={ArrowBack} alt="" />
               <h5 className="xl:text-32 lg:text-28 text-26 font-bold">Add New Product</h5>
@@ -31,7 +31,7 @@ const AddNewProduct = () => {
                 <div class="xl:mb-[24px] mb-[15px]">
                   <div class="w-full md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="name"
                     >
                       Name
@@ -42,7 +42,7 @@ const AddNewProduct = () => {
                 <div class=" flex gap-[20px] mb-[25px]">
                   <div class="w-full  md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="name"
                     >
                       Group
@@ -56,7 +56,7 @@ const AddNewProduct = () => {
                 <div class=" flex gap-[20px] mb-[24px]">
                   <div class="w-1/2 md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="tWood"
                     >
                       Type of Wood
@@ -65,7 +65,7 @@ const AddNewProduct = () => {
                   </div>
                   <div class="w-1/2">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="wGroup"
                     >
                       Wood Group
@@ -76,7 +76,7 @@ const AddNewProduct = () => {
                 <div class=" flex gap-[20px] mb-[24px]">
                   <div class="w-1/2 md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="typeProd"
                     >
                       Type of Product
@@ -85,7 +85,7 @@ const AddNewProduct = () => {
                   </div>
                   <div class="w-1/2">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="durability"
                     >
                       Durability Glass
@@ -96,7 +96,7 @@ const AddNewProduct = () => {
                 <div class=" flex gap-[20px] mb-[24px]">
                   <div class="w-1/2 md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="quality"
                     >
                       Quality
@@ -105,7 +105,7 @@ const AddNewProduct = () => {
                   </div>
                   <div class="w-1/2">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="Edited"
                     >
                       Edited
@@ -116,7 +116,7 @@ const AddNewProduct = () => {
                 <div class=" flex gap-[20px] mb-[24px]">
                   <div class="w-1/2 md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="Application"
                     >
                       Application
@@ -125,7 +125,7 @@ const AddNewProduct = () => {
                   </div>
                   <div class="w-1/2">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="Thickness"
                     >
                       Thickness
@@ -136,7 +136,7 @@ const AddNewProduct = () => {
                 <div class=" flex gap-[20px] mb-[24px]">
                   <div class="w-1/2 md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="width"
                     >
                       Width
@@ -145,7 +145,7 @@ const AddNewProduct = () => {
                   </div>
                   <div class="w-1/2">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                       for="Thickness"
                     >
                       Length
@@ -153,10 +153,10 @@ const AddNewProduct = () => {
                     <InputField placeholder="length" id="length" />
                   </div>
                 </div>
-                <div class=" flex mb-[30px]">
-                  <div class="w-full mb-6 md:mb-0">
+                <div class=" flex mb-[10px]">
+                  <div class="w-full mb-0 md:mb-0">
                     <label
-                      class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                      class=" text-black text-xs font-semibold xl:mb-[8px] mb-[4px] block"
                       for="email"
                     >
                       Product Description
@@ -249,7 +249,7 @@ const AddNewProduct = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2 md:mb-0 relative">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="Discount"
                   >
                     Discount
@@ -261,7 +261,7 @@ const AddNewProduct = () => {
                 </div>
                 <div class="w-1/2">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="wGroup"
                   >
                     Stock
@@ -272,7 +272,7 @@ const AddNewProduct = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-1/2 md:mb-0 relative">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="weight"
                   >
                     Price per m3
@@ -287,7 +287,7 @@ const AddNewProduct = () => {
               <div class=" flex gap-[20px] mb-[24px]">
                 <div class="w-full md:mb-0 relative">
                   <label
-                    class="uppercase text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
+                    class=" text-black text-xs font-semibold xl:mb-[12px] mb-[8px] block"
                     for="weight"
                   >
                     Product Image

@@ -41,16 +41,16 @@ const ShopPage = () => {
     <>
       <div className="shop ">
         <section className="about flex justify-center items-center ">
-        <div className="w-[320px] m-auto  text-center bg-transparentGray text-white py-[35px] rounded-lg ">
-          <div className="text-white text-48 font-medium">Shop</div>
-          <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
-            <div className="flex items-center gap-x-3">
-              Home <img src={rightArrow} />
+          <div className="w-[320px] m-auto  text-center bg-transparentGray text-white py-[35px] rounded-lg ">
+            <div className="text-white text-48 font-medium">Shop</div>
+            <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
+              <div className="flex items-center gap-x-3 font-medium">
+                Home <img src={rightArrow} />
+              </div>
+              <div className="font-light">Shop</div>
             </div>
-            <div>Shop</div>
           </div>
-        </div>
-      </section>
+        </section>
       </div>
 
       <section className="flex justify-between   sm:flex-col xs:flex-col   items-center py-[36px] font-poppins bg-[#F4F5F7] xl:px-[100px] lg:px-[100px] md:px-[60px]  ">

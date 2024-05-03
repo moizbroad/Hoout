@@ -4,6 +4,7 @@ import rightArrow from "../assets/customWoodPage/rightArrow.svg";
 import ShoppingCart from "../components/CartSections/ShoppingCart";
 import CheckoutDetail from "../components/CartSections/CheckoutDetail";
 import OrderComplete from "../components/CartSections/OrderComplete";
+import check from "../assets/addToCart/check.svg";
 import { Stepper, Step } from "react-form-stepper";
 const AddToCart = () => {
   const [selectedDiv, setSelectedDiv] = useState({
@@ -16,22 +17,25 @@ const AddToCart = () => {
   const tabs = [
     {
       id: 1,
+      image: check,
       name: "firstTab",
-      label: "Social Login",
+      label: "Shopping cart",
       bgColor: "primary",
       textColor: "white",
     },
     {
       id: 2,
+      image: check,
       name: "secondTab",
-      label: "Pick Username",
+      label: "Checkout details",
       bgColor: "primary",
       textColor: "secondary",
     },
     {
       id: 3,
+      image: check,
       name: "thirdTab",
-      label: "Bank Details",
+      label: "Order complete",
       bgColor: "primary",
       textColor: "secondary",
     },
@@ -147,17 +151,24 @@ const AddToCart = () => {
           {tabs.map((tab, idx) => (
             <div
               key={tab.name}
-              className="  4xll:gap-x-16 4xl:gap-x-14 3xll:gap-x-12   3xl:gap-x-10 2xll:gap-x-8 2xl:gap-x-6   flex-center gap-x-4 xs:flex-col xs:w-[33%] xs:items-center xs:justify-center  sm:gap-x-2  xs:gap-[12px] cursor-pointer"
+              className="  4xll:gap-x-16 4xl:gap-x-14 3xll:gap-x-12    3xl:gap-x-10 2xll:gap-x-8 2xl:gap-x-6   flex-center gap-x-4 xs:flex-col xs:w-[33%] xs:items-center xs:justify-center  sm:gap-x-2  xs:gap-[12px] cursor-pointer"
               onClick={() => handleDivClick(tab.name)}
             >
               <div
                 className={`${
                   selectedDiv[tab.name]
-                    ? "bg-secondary border rounded-full text-white  "
-                    : "bg-primary text-secondary  "
-                } border rounded-full  4xll:px-[3.6rem]  4xl:px-[3.5rem]  3xll:px-[3rem]  3xl:px-[2.5rem]  2xll:px-[2rem]  2xl:px-[1.9rem]   4xll:text-80  4xl:text-75 3xll:text-70  3xl:text-65 2xll:text-60 2xl:text-56    px-4 py-1.5 text-22 sm:text-14 sm:py-2.5 xs:py-2.5 xs:text-14 cursor-pointer`}
+                    ? "bg-[#38CB89] border rounded-full text-white     "
+                    : "bg-[#B1B5C3] text-white   "
+                }     
+                  border rounded-full  4xll:px-[3.6rem]  4xl:px-[3.5rem]  3xll:px-[3rem]  3xl:px-[2.5rem]  2xll:px-[2rem]  2xl:px-[1.9rem]   4xll:text-80  4xl:text-75 3xll:text-70  3xl:text-65 2xll:text-60 2xl:text-56   ${
+                    tab.id == 1 && "px-[18px]"
+                  }    px-4 py-1.5 text-22 sm:text-14 sm:py-2.5 xs:py-2.5 xs:text-14 cursor-pointer`}
               >
+                {/* {tab.check} */}
                 {tab.id}
+                {/* {selectedDiv.firstTab == true ? tab.image : tab.id}
+                {selectedDiv.secondTab == true ? tab.image : tab.id}
+                {selectedDiv.thirdTab == true ? tab.image : tab.id} */}
               </div>
               <div className=" 4xll:text-65  4xl:text-60 3xll:text-56  3xl:text-50 2xll:text-46 2xl:text-32  text-20 sm:text-16 xs:text-14 xs:text-center font-bold ">
                 {tab.label}
@@ -171,10 +182,6 @@ const AddToCart = () => {
               )}
             </div>
           ))}
-          <h1 className="text-gray2  4xll:text-56 4xl:text-50 3xll:text-46  3xl:text-42 2xll:text-38 2xl:text-34 sm:hidden xs:hidden">
-            {" "}
-            (optional)
-          </h1>
         </section>
 
         {selectedTab === "firstTab" ? (

@@ -20,24 +20,36 @@ const Signup = () => {
           <div>
             <div className=" yellowBar absolute xl:top-[35%] lg:top-[30%] md:top-[10%] sm:top-[20%] xs:top-[20%] left-[50%] translate-x-[-50%]  bg-[#FBC700] w-[291px]  rounded-xl flex items-center xl:py-[10px] py-[6px] xl:px-[20px] px-[12px] gap-2 mb-[22.34px]">
               <div className="w-[40px] h-[38px] rounded-[50%] grid place-items-center bg-[#00000066]">
-              <img src={blackRin} alt="" />
+                <img src={blackRin} alt="" />
               </div>
-              <h6 className="flex-1 xl:text-20 lg:text-18 md:text-16
- font-medium text-center">Lorem Ipsum is </h6>
+              <h6
+                className="flex-1 xl:text-20 lg:text-18 md:text-16
+ font-medium text-center"
+              >
+                Lorem Ipsum is{" "}
+              </h6>
             </div>
             <div className=" absolute top-[43%] md:top-[30%] sm:top-[35%] xs:top-[35%]  left-[50%] translate-x-[-50%]  w-[291px]  rounded-lg   xl:py-[21px] py-[12px] xl:px-[25px] lg:px-[18px] px-[10px] gap-2 mb-[22.34px] min-h-[120px]" style={{ backgroundImage: `url(${slBlurBg})` }}>
               <div className="w-[56px] h-[51px] rounded-lg  grid place-items-center  p-[6px] bg-[#000]">
-              <img src={microscope} alt="" className="mb-[5px]" />
+                <img src={microscope} alt="" className="mb-[5px]" />
               </div>
-              <h6 className="flex-1 xl:text-20 lg:text-18 md:text-16
- font-normal leading-[24px]  mt-[10px] text-primary">Lorem Ipsum is simply dummy text of the printing </h6>
+              <h6
+                className="flex-1 xl:text-20 lg:text-18 md:text-16
+ font-normal leading-[24px]  mt-[10px] text-primary"
+              >
+                Lorem Ipsum is simply dummy text of the printing{" "}
+              </h6>
             </div>
             <div className=" grayBar absolute xl:top-[50%] lg:top-[65%] md:top-[70%]  sm:top-[70%] xs:top-[70%] xl:right-[-10%] lg:right-[1%] md:right-[50%] sm:right-[50%] xs:right-[50%] translate-x-[20%] md:translate-x-[50%] sm:translate-x-[50%] xs:translate-x-[50%]  bg-[#5A5A5A] min-w-[200px] md:min-w-[291px] sm:min-w-[291px] xs:min-w-[291px]  rounded-full flex items-center xl:py-[10px] py-[5px] xl:px-[20px] px-[10px] gap-2 mb-[22.34px]">
                <div className="w-[40px] h-[38px] rounded-[50%] bg-[#9c9c9c] grid place-items-center text-white">
               <img src={whiteRin} alt="" />
               </div>
-              <h6 className="flex-1 xl:text-18 lg:text-16 text-14
- font-normal text-center text-primary	">Lorem Ipsum is </h6>
+              <h6
+                className="flex-1 xl:text-18 lg:text-16 text-14
+ font-normal text-center text-primary	"
+              >
+                Lorem Ipsum is{" "}
+              </h6>
             </div>
           </div>
         </div>
@@ -50,7 +62,7 @@ const Signup = () => {
               <h4 className="xl:text-24 lg:text-20 text-18 font-semibold">
                 Get Started With houttotaal.nl
               </h4>
-              <span className="xl:text-15 text-14 text-gray-500 block font-normal	">
+              <span className="xl:text-15  text-[#7E7E7E] text-14 text-gray-500 block font-normal	">
                 Getting started is easy
               </span>
             </div>
@@ -96,30 +108,33 @@ const Signup = () => {
               </div>
               <div className="formSec">
                 <div className="mb-[23px]">
-                <InputField placeholder="First Name"/>
+                  <InputField placeholder="First Name" />
                 </div>
                 <div className="mb-[23px]">
-
-                <InputField placeholder="Last Name"/>
+                  <InputField placeholder="Last Name" />
                 </div>
                 <div className="mb-[23px]">
-
-                <InputField placeholder="Company Name"/>
+                  <InputField placeholder="Company Name" />
                 </div>
                 <div className="mb-[23px]">
-                <InputField placeholder="Enter Email"/>
+                  <InputField placeholder="Enter Email" />
                 </div>
                 <div className="mb-[23px]">
-                <InputField placeholder="Password"/>
+                  <InputField placeholder="Password" endicon />
                 </div>
                 <div className="mb-[23px]">
-                <InputField placeholder="Confirm Password"/>
+                  <InputField placeholder="Confirm Password" endicon />
                 </div>
                 <div className="w-full ">
                   <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[14px] text-[13px]">
                     Create Account
                   </button>
-                  <span className="flex justify-end text-14">Have an account? <a href="#" className="text-yellow-400 ml-1 font-semibold">Sign in!</a></span>
+                  <span className="flex justify-end text-14">
+                    Have an account?{" "}
+                    <a href="#" className="text-yellow    ml-1 font-semibold">
+                      Sign in!
+                    </a>
+                  </span>
                 </div>
               </div>
             </form>

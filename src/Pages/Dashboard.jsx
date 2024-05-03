@@ -130,7 +130,7 @@ const Dashboard = () => {
         {/* analytics row end  */}
 
         {/* order detail card table row  */}
-        <div className="myCard">
+        <div className="myCard bg-[#fff]">
           <div className="flex justify-between items-center xl:mb-[35px] lg:mb-[28px] mb-[20px]">
             <h5 className="xl:text-24 lg:text-22 text-20  font-bold">Order Details</h5>
             {/* dropdown  */}
@@ -191,7 +191,7 @@ const Dashboard = () => {
           {/* order details table  */}
           <div className="">
             <div className="overflow-x-auto">
-              <div className="inline-block min-w-full  rounded-lg overflow-hidden">
+              <div className="inline-block min-w-full rounded-lg overflow-hidden">
                 <table className="w-full leading-normal">
                   <thead>
                     {tableData.map(() => {

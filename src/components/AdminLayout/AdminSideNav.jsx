@@ -40,6 +40,7 @@ const AdminSidenav = () => {
           <img
             src={houtLogo}
             alt=""
+            onClick={() => navigate('/')}
             className="xl:w-[160px] xl:h-[46px] lg:w-[135px] lg:h-[40px] w-[120px] h-[36px] mx-auto object-cover	"
           />
         </a>

@@ -7,7 +7,8 @@ import trendUp from "../assets/DashboardImages/trendUp.svg";
 import trendDown from "../assets/DashboardImages/trendDown.svg";
 import sampleProductImg from "../assets/DashboardImages/sampleProductImg.svg";
 import DropDown from "../components/Common/DropDown";
-const Dashboard = () => {
+
+export const Dashboard = () => {
   const tableData = [
     {
       name: "Name",
@@ -295,5 +296,3 @@ const Dashboard = () => {
     </div>
   );
 };
-
-export default Dashboard;

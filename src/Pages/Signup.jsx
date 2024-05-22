@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { axiosApi } from "../providers";
+import { toast } from "react-toastify";
+
 import signUpLeft from "../assets/authImages/signUpLeft.svg";
 import houtLogo from "../assets/authImages/houtLogo.svg";
 import googleIcon from "../assets/authImages/googleIcon.svg";
@@ -10,15 +14,67 @@ import whiteRin from "../assets/authImages/whiteRin.svg";
 import microscope from "../assets/authImages/microscope.svg";
 import slBlurBg from "../assets/authImages/slBlurBg.png";
 import InputField from "../components/Common/InputField";
-import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
-  const navigate = useNavigate()
+export const Signup = () => {
+  const navigate = useNavigate();
+  const [btnLoading, setBtnLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    email: "",
+    phone: "",
+  });
+
+  const handleFormData = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const createUser = async (e) => {
+    e.preventDefault();
+    setBtnLoading(true);
+
+    let data = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      company_name: formData.companyName,
+      phone: formData.phone,
+    };
+
+    try {
+      const response = await axiosApi.post("/accounts/sign_up/", data);
+      setBtnLoading(false);
+      toast.success("Successfully registered! please check you email.");
+      setTimeout(() => {
+        navigate("/sign-in");
+      }, 1000);
+    } catch (error) {
+      setBtnLoading(false);
+      if (error?.response?.data?.email) {
+        toast.error(error?.response?.data?.email[0]);
+      } else {
+        toast.error("Something went wrong, Try Again");
+      }
+    }
+  };
+
   return (
     <div>
       <div className="signUpMain flex min-h-screen flex-row md:flex-col sm:flex-col xs:flex-col">
         <div className="signUpLeft w-[50%] md:w-full sm:w-full xs:w-full relative">
-          <img src={signUpLeft} alt="signupleftImg" className="w-[100%] min-h-[142px] md:min-h-[80vh] sm:min-h-[80vh] xs:min-h-[80vh] md:h-[80vh] sm:h-[80vh] xs:h-[80vh]" style={{objectFit: "cover"}} />
+          <img
+            src={signUpLeft}
+            alt="signupleftImg"
+            className="w-[100%] min-h-[142px] md:min-h-[80vh] sm:min-h-[80vh] xs:min-h-[80vh] md:h-[80vh] sm:h-[80vh] xs:h-[80vh]"
+            style={{ objectFit: "cover" }}
+          />
           <div>
             <div className=" yellowBar absolute xl:top-[35%] lg:top-[30%] md:top-[10%] sm:top-[20%] xs:top-[20%] left-[50%] translate-x-[-50%]  bg-[#FBC700] w-[291px]  rounded-xl flex items-center xl:py-[10px] py-[6px] xl:px-[20px] px-[12px] gap-2 mb-[22.34px]">
               <div className="w-[40px] h-[38px] rounded-[50%] grid place-items-center bg-[#00000066]">
@@ -31,7 +87,10 @@ const Signup = () => {
                 Lorem Ipsum is{" "}
               </h6>
             </div>
-            <div className=" absolute top-[43%] md:top-[30%] sm:top-[35%] xs:top-[35%]  left-[50%] translate-x-[-50%]  w-[291px]  rounded-lg   xl:py-[21px] py-[12px] xl:px-[25px] lg:px-[18px] px-[10px] gap-2 mb-[22.34px] min-h-[120px]" style={{ backgroundImage: `url(${slBlurBg})` }}>
+            <div
+              className=" absolute top-[43%] md:top-[30%] sm:top-[35%] xs:top-[35%]  left-[50%] translate-x-[-50%]  w-[291px]  rounded-lg   xl:py-[21px] py-[12px] xl:px-[25px] lg:px-[18px] px-[10px] gap-2 mb-[22.34px] min-h-[120px]"
+              style={{ backgroundImage: `url(${slBlurBg})` }}
+            >
               <div className="w-[56px] h-[51px] rounded-lg  grid place-items-center  p-[6px] bg-[#000]">
                 <img src={microscope} alt="" className="mb-[5px]" />
               </div>
@@ -43,8 +102,8 @@ const Signup = () => {
               </h6>
             </div>
             <div className=" grayBar absolute xl:top-[50%] lg:top-[65%] md:top-[70%]  sm:top-[70%] xs:top-[70%] xl:right-[-10%] lg:right-[1%] md:right-[50%] sm:right-[50%] xs:right-[50%] translate-x-[20%] md:translate-x-[50%] sm:translate-x-[50%] xs:translate-x-[50%]  bg-[#5A5A5A] min-w-[200px] md:min-w-[291px] sm:min-w-[291px] xs:min-w-[291px]  rounded-full flex items-center xl:py-[10px] py-[5px] xl:px-[20px] px-[10px] gap-2 mb-[22.34px]">
-               <div className="w-[40px] h-[38px] rounded-[50%] bg-[#9c9c9c] grid place-items-center text-white">
-              <img src={whiteRin} alt="" />
+              <div className="w-[40px] h-[38px] rounded-[50%] bg-[#9c9c9c] grid place-items-center text-white">
+                <img src={whiteRin} alt="" />
               </div>
               <h6
                 className="flex-1 xl:text-18 lg:text-16 text-14
@@ -57,7 +116,12 @@ const Signup = () => {
         </div>
         <div className="xl:min-w-[650px] min-w-[auto] signUpRight xl:w-[50%] lg:w-[55%] w-[100%] sm:w-[100%] xs:w-[100%] xl:py-[25px] py-[18px] xl:px-[51px] lg:px-[30px] px-[20px]">
           <div className="signUpHead flex justify-start xl:mb-[46px] lg:mb-[30px] mb-[20px]">
-            <img src={houtLogo} alt="" onClick={() => navigate('/')} className="cursor-pointer xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover" />
+            <img
+              src={houtLogo}
+              alt=""
+              onClick={() => navigate("/")}
+              className="cursor-pointer xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+            />
           </div>
           <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">
             <div className="text-center xl:mb-[42px] lg:mb-[30px] mb-[20px]">
@@ -68,34 +132,34 @@ const Signup = () => {
                 Getting started is easy
               </span>
             </div>
-            <form action="" className="w-full">
+            <form className="w-full" onSubmit={createUser}>
               {/* social auth row  */}
-               <div className="socialAuthRow flex gap-3 mb-[12px]">
-                  <a
-                    href="#"
-                    className="w-[32%] flex gap-2 items-center rounded-md	xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
-                    style={{ border: "1px solid #ccc" }}
-                  >
-                    <img src={googleIcon} alt="" />
-                    <span> Google </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-[32%] flex gap-2 items-center rounded-md		xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
-                    style={{ border: "1px solid #ccc" }}
-                  >
-                    <img src={faceBookIcon} alt="" />
-                    <span> Facebook </span>
-                  </a>
-                  <a
-                    href="#"
-                    className=" w-[32%] flex gap-2 items-center rounded-md xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
-                    style={{ border: "1px solid #ccc" }}
-                  >
-                    <img src={appleIcon} alt="" />
-                    <span> Apple </span>
-                  </a>
-                </div>
+              <div className="socialAuthRow flex gap-3 mb-[12px]">
+                <a
+                  href="#"
+                  className="w-[32%] flex gap-2 items-center rounded-md	xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
+                  style={{ border: "1px solid #ccc" }}
+                >
+                  <img src={googleIcon} alt="" />
+                  <span> Google </span>
+                </a>
+                <a
+                  href="#"
+                  className="w-[32%] flex gap-2 items-center rounded-md		xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
+                  style={{ border: "1px solid #ccc" }}
+                >
+                  <img src={faceBookIcon} alt="" />
+                  <span> Facebook </span>
+                </a>
+                <a
+                  href="#"
+                  className=" w-[32%] flex gap-2 items-center rounded-md xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
+                  style={{ border: "1px solid #ccc" }}
+                >
+                  <img src={appleIcon} alt="" />
+                  <span> Apple </span>
+                </a>
+              </div>
 
               <div className="flex justify-between items-center mb-[24px]">
                 <div className="w-[32%]">
@@ -110,30 +174,66 @@ const Signup = () => {
               </div>
               <div className="formSec">
                 <div className="mb-[23px]">
-                  <InputField placeholder="First Name" />
+                  <InputField
+                    required
+                    placeholder="First Name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleFormData}
+                  />
                 </div>
                 <div className="mb-[23px]">
-                  <InputField placeholder="Last Name" />
+                  <InputField
+                    required
+                    placeholder="Last Name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleFormData}
+                  />
                 </div>
                 <div className="mb-[23px]">
-                  <InputField placeholder="Company Name" />
+                  <InputField
+                    required
+                    placeholder="Company Name"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleFormData}
+                  />
                 </div>
                 <div className="mb-[23px]">
-                  <InputField placeholder="Enter Email" />
+                  <InputField
+                    required
+                    placeholder="Enter Email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormData}
+                  />
                 </div>
                 <div className="mb-[23px]">
-                  <InputField placeholder="Password" endicon />
-                </div>
-                <div className="mb-[23px]">
-                  <InputField placeholder="Confirm Password" endicon />
+                  <InputField
+                    required
+                    placeholder="Phone Number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleFormData}
+                  />
                 </div>
                 <div className="w-full ">
-                  <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[18px] text-[16px]">
-                    Create Account
+                  <button
+                    type="submit"
+                    onClick={createUser}
+                    disabled={btnLoading}
+                    className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[18px] text-[16px]"
+                  >
+                    {btnLoading ? "Loading..." : "Create Account"}
                   </button>
                   <span className="flex justify-end text-14">
                     Have an account?{" "}
-                    <a onClick={() => navigate('/sign-in')} className="text-yellow  cursor-pointer  ml-1 font-semibold">
+                    <a
+                      onClick={() => navigate("/sign-in")}
+                      className="text-yellow  cursor-pointer  ml-1 font-semibold"
+                    >
                       Sign in!
                     </a>
                   </span>
@@ -146,5 +246,3 @@ const Signup = () => {
     </div>
   );
 };
-
-export default Signup;

@@ -12,7 +12,7 @@ import supports from "../assets/shopPage/supports.svg";
 import QualitySection from "../components/Common/QualitySection";
 import Switch from "../components/Common/Switch";
 
-const ShopPage = () => {
+export const ShopPage = () => {
   const [openfilter, setOpenfilter] = useState(true);
   function toggle() {
     setOpenfilter(!openfilter);
@@ -113,5 +113,3 @@ const ShopPage = () => {
     </>
   );
 };
-
-export default ShopPage;

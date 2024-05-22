@@ -4,7 +4,7 @@ import InputField from "../components/Common/InputField";
 import Button from "../components/Common/Button";
 import DropDown from "../components/Common/DropDown";
 
-const UserProfile = () => {
+export const UserProfile = () => {
   return (
     <div>
       <div className="xl:py-[48px] lg:py-[38px] py-[28px] xl:px-[170px] lg:px-[100px] px-[60px] bg-[rgb(250,250,250)] h-full min-h-[86vh]">
@@ -282,5 +282,3 @@ const UserProfile = () => {
     </div>
   );
 };
-
-export default UserProfile;

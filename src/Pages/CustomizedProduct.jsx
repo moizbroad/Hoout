@@ -16,7 +16,7 @@ import WoodTSeven from "../assets/DashboardImages/woodTSeven.svg";
 import WoodTEight from "../assets/DashboardImages/woodTEight.svg";
 import WoodTNine from "../assets/DashboardImages/woodTNine.svg";
 
-const CustomizedProduct = () => {
+export const CustomizedProduct = () => {
   return (
     <div>
       <div>
@@ -291,5 +291,3 @@ const CustomizedProduct = () => {
     </div>
   );
 };
-
-export default CustomizedProduct;

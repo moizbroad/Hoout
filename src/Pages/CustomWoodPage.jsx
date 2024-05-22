@@ -16,7 +16,7 @@ import twitter from "../assets/customWoodPage/twitter.svg";
 import linkdln from "../assets/customWoodPage/linkdln.svg";
 import email from "../assets/customWoodPage/email.svg";
 
-const CustomWoodPage = () => {
+export const CustomWoodPage = () => {
   const [productInfo, setProductInfo] = useState([
     {
       itemName: "Hout Type",
@@ -246,5 +246,3 @@ const CustomWoodPage = () => {
     </>
   );
 };
-
-export default CustomWoodPage;

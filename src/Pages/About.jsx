@@ -6,7 +6,7 @@ import stars from "../assets/about/stars.svg";
 import QualitySection from "../components/Common/QualitySection";
 import Ratings from "../components/Common/Rating";
 
-const About = () => {
+export const About = () => {
   return (
     <>
       <section className="about flex justify-center items-center ">
@@ -58,5 +58,3 @@ const About = () => {
     </>
   );
 };
-
-export default About;

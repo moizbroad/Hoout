@@ -1,7 +1,5 @@
 import React from "react";
 
-const Inbox = () => {
+export const Inbox = () => {
   return <div>Inbox</div>;
 };
-
-export default Inbox;

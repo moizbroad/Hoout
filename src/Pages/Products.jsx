@@ -9,7 +9,8 @@ import dots from "../assets/DashboardImages/dotsvertical.svg";
 import Button from "../components/Common/Button";
 import cartButton from "../assets/addToCart/cartButton.svg"
 import { useNavigate } from "react-router-dom";
-const Products = () => {
+
+export  const Products = () => {
   const navigate = useNavigate();
   const productData = [
     {
@@ -457,5 +458,3 @@ const Products = () => {
     </div>
   );
 };
-
-export default Products;

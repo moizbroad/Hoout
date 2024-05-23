@@ -13,30 +13,32 @@ import QualitySection from "../components/Common/QualitySection";
 import Switch from "../components/Common/Switch";
 
 export const ShopPage = () => {
-  const [openfilter, setOpenfilter] = useState(true);
-  function toggle() {
-    setOpenfilter(!openfilter);
+  const [state, setState] = useState({
+    openfilter: true,
+    filterTypes: [],
+    selectedFilter: ""
+  })
+  const toggle = () => {
+    setState((prev) => ({
+      ...prev,
+      openfilter: !state.openfilter
+    }))
   }
-  const data = [
-    { image: cup, head: "High Quality", subHead: "crafted from top materials" },
-    {
-      image: guarantee,
-      head: "High Quality",
-      subHead: "crafted from top materials",
-    },
 
-    {
-      image: shipping,
-      head: "High Quality",
-      subHead: "crafted from top materials",
-    },
+  const getTypes = (types) => {
+    setState((prev) => ({
+      ...prev,
+      filterTypes: types
+    }))
+  }
 
-    {
-      image: supports,
-      head: "High Quality",
-      subHead: "crafted from top materials",
-    },
-  ];
+  const handleFilterCheck = (item) => {
+    setState((prev) => ({
+      ...prev,
+      selectedFilter: item.checked === true ? item.filter : ""
+    }))
+  }
+
   return (
     <>
       <div className="shop ">
@@ -60,7 +62,7 @@ export const ShopPage = () => {
             <div className="poppins" onClick={toggle}>
               <img src={filter} className="md:size-5 xs:size-5" />
             </div>
-            <div onClick={openfilter}><h4 className="pops text-20 sm:text-16 xs:text-14 xs:leading-[22px]"> Filter </h4></div>
+            <div onClick={state.openfilter}><h4 className="pops text-20 sm:text-16 xs:text-14 xs:leading-[22px]"> Filter </h4></div>
             <div>
               <img src={gridView} className="md:size-4  xs:size-3 " />
             </div>
@@ -94,15 +96,15 @@ export const ShopPage = () => {
       </section>
 
       <section className="flex pb-[200px]  md:flex-col sm:flex-col  xs:flex-col ">
-        {openfilter && (
+        {state.openfilter && (
           <div className=" xl:w-[22%] md:w-full ">
-            <Filters />
+            <Filters filters={state.filterTypes} filterCheck={handleFilterCheck} />
           </div>
         )}
 
         <div className="w-[100%] pt-[75px] xl:px-[100px] lg:px-[60px]  md:px-[40px]  sm:px-[40px]  xs:px-[40px]   ">
           {" "}
-          <ProductsSection isthree isbuttonReqird notRequired />{" "}
+          <ProductsSection isthree isbuttonReqird notRequired passTypes={getTypes} selectedFilter={state.selectedFilter} />{" "}
         </div>
       </section>
 

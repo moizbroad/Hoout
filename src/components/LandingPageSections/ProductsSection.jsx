@@ -1,98 +1,50 @@
-import React from "react";
-import image1 from "../../assets/LandingPageImages/products/image1.svg";
-import image2 from "../../assets/LandingPageImages/products/image2.svg";
-import image3 from "../../assets/LandingPageImages/products/image3.svg";
-import image4 from "../../assets/LandingPageImages/products/image4.svg";
-import image5 from "../../assets/LandingPageImages/products/image5.svg";
-import image6 from "../../assets/LandingPageImages/products/image6.svg";
-import image7 from "../../assets/LandingPageImages/products/image7.svg";
-import image8 from "../../assets/LandingPageImages/products/image8.svg";
+import React, { useEffect, useState } from "react";
 import productHeart from "../../assets/LandingPageImages/products/productHeart.svg";
 import addToCart from "../../assets/LandingPageImages/products/addToCart.svg";
 import Button from "../Common/Button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { axiosApi } from "../../providers";
 
-const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
+const ProductsSection = ({ isthree, notRequired, isbuttonReqird, passTypes, selectedFilter }) => {
   const navigate = useNavigate();
-  const productData = [
-    {
-      image: image1,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-    },
-    {
-      image: image2,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
+  const location = useLocation()
 
-    {
-      image: image3,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
+  const [state, setState] = useState({
+    products: [],
+    types: []
+  })
 
-    {
-      image: image3,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
+  useEffect(() => {
+    handleGetProducts()
+  },[selectedFilter])
 
-    {
-      image: image3,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
+  const handleGetProducts = async () => {
+    try {
+      const response = await axiosApi.get("/product/");
+      if(selectedFilter === "" && location.pathname !== '/'){
+        setState((prev) => ({
+          ...prev,
+          products: response.data,
+          types: passTypes(response.data.map(product => ({ filter: product.hout_type, checked: false })))
+        }))
+      } else if(selectedFilter !== "" && location.pathname !== "/"){
+        let filteredProducts = response.data.filter(item => item.hout_type === 'abvc')
+        setState((prev) => ({
+          ...prev,
+          products: filteredProducts,
+          types: passTypes(response.data.map(product => ({ filter: product.hout_type, checked: false })))
+        }))
+      } else{
+        setState((prev) => ({
+          ...prev,
+          products: response.data,
+        }))
+      }
+    } catch (error) {
+      console.log(error, "error")
+    }
+  }
 
-    {
-      image: image3,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
-
-    {
-      image: image3,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
-
-    {
-      image: image3,
-      heading: "Syltherine",
-      subheading: "With Oak Wood",
-      amount: "$2.500.000",
-      subamount: "$ 3.500.000",
-      cartImage: addToCart,
-      heartImage: productHeart,
-    },
-  ];
   return (
     <>
       <section
@@ -116,7 +68,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
               : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1240px] mx-auto"
           }
         >
-          {productData.map((item, index) => {
+          {state.products.map((item, index) => {
             return (
               // JSX code here
               <div key={index} className="">
@@ -127,20 +79,20 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                   }}
                 >
                   <img
-                    src={item.image}
+                    src={item.images_url[0]}
                     className="w-full object-cover h-full sm:h-[310px] lg:h-[310px] xl:h-[310px]"
                   />
                 </div>
                 <section className="bg-[#F4F5F7] pb-4 px-4">
                   <div className="font-semibold  text-24 pt-[15px]">
-                    {item.heading}
+                    {item.name}
                   </div>
                   <div className=" font-medium  text-16  text-gray2 pt-[15px]">
-                    {item.subheading}
+                    {item.hout_type}
                   </div>
                   <section className="flex gap-x-3 pt-[15px] pb-[20px] md:gap-x-2">
-                    <div>{item.amount}</div>
-                    <div className="text-gray2 line-through">{item.subamount}</div>
+                    <div>$ {item.price}</div>
+                    <div className="text-gray2 line-through">{item.vat}</div>
                   </section>
                   <section className="flex gap-x-4 items-center justify-between">
                     <div
@@ -154,7 +106,7 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird }) => {
                       Add to Cart{" "}
                     </div>
                     <div>
-                      <img src={item.heartImage} />{" "}
+                      <img src={productHeart} />{" "}
                     </div>
                   </section>
                 </section>

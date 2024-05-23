@@ -5,14 +5,19 @@ import persons from "../../assets/HeaderAndFooter/persons.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 import search from "../../assets/HeaderAndFooter/searchh.svg";
 import { useNavigate } from "react-router-dom";
+import { getAccessToken } from "../../providers";
 
 const HeaderSection = () => {
+  const navigate = useNavigate();
+  const token = getAccessToken()
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
-  const navigate = useNavigate();
+
+
+
   return (
     <section className="px-[10px] sm:px-[20px] md:px-[30px] lg:px-[30px] xl:px-[100px] flex-between py-[27px] bg-[#E9E6D6] ">
       <div className="menu-cons xl:hidden lg:hidden" onClick={toggleMenu}>
@@ -32,17 +37,17 @@ const HeaderSection = () => {
         </svg>
       </div>
       <section
-        className={`navbar ${
-          isActive ? "active" : null
-        }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
+        className={`navbar ${isActive ? "active" : null
+          }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
 
-        
 
-        <span className=" cursor-pointer " onClick={() => navigate('/')}>Home</span>
-        <span className=" cursor-pointer " onClick={() => navigate('/sign-in')}> Login </span>
-        <span className="cursor-pointer " onClick={() => navigate('/sign-up')}> Signup</span>
-        <span className="cursor-pointer " onClick={() => navigate('/dashboard')}> Dashboard</span>
+        <span className=" cursor-pointer ml-4" onClick={() => navigate('/')}>Home</span>
+        {!token && <>
+          <span className=" cursor-pointer ml-4" onClick={() => navigate('/sign-in')}> Login </span>
+          <span className="cursor-pointer ml-4" onClick={() => navigate('/sign-up')}> Signup</span>
+        </>}
+        <span className="cursor-pointer ml-4" onClick={() => navigate('/dashboard')}> Dashboard</span>
 
         {/* <div>Values</div> */}
         {/* <div>Product Range</div> */}
@@ -86,21 +91,21 @@ const HeaderSection = () => {
         <div>
           {" "}
 
-          
 
-          <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')}/>{" "}
+
+          <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')} />{" "}
 
         </div>{" "}
         <div>
           {" "}
-          <img src={search} className="cursor-pointer "/>{" "}
+          <img src={search} className="cursor-pointer " />{" "}
         </div>{" "}
         <div>
           {" "}
 
-          
 
-          <img src={heart} className="cursor-pointer " onClick={() => navigate('/myaccount', { state: { key: "wish" } })}/>{" "}
+
+          <img src={heart} className="cursor-pointer " onClick={() => navigate('/myaccount', { state: { key: "wish" } })} />{" "}
 
         </div>
         <div>

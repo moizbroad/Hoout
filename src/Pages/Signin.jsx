@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { axiosApi, setAccessToken } from "../providers";
+import { toast } from "react-toastify";
+
 import signInRight from "../assets/authImages/signInRight.svg";
 import houtLogo from "../assets/authImages/houtLogo.svg";
 import googleIcon from "../assets/authImages/googleIcon.svg";
@@ -9,10 +13,46 @@ import thumbsUp from "../assets/authImages/thumbsUp.svg";
 import signinBlur from "../assets/authImages/signinBlur.png";
 import InputField from "../components/Common/InputField";
 import Switch from "../components/Common/Switch";
-import { useNavigate } from "react-router-dom";
 
-const Signin = () => {
-  const navigate = useNavigate()
+export const Signin = () => {
+  const navigate = useNavigate();
+
+  const [btnLoading, setBtnLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleFormData = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+    setBtnLoading(true);
+
+    let data = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    try {
+      const response = await axiosApi.post("/accounts/login/", data);
+      setAccessToken(response.data?.token);
+      setBtnLoading(false);
+      navigate("/myaccount");
+    } catch (error) {
+      setBtnLoading(false);
+      toast.error("Wrong credentials!");
+    }
+  };
+
   return (
     <>
       <div>
@@ -21,14 +61,17 @@ const Signin = () => {
             <img
               src={signInRight}
               alt="signupleftImg"
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               className="cursor-pointer w-[100%] xl:min-h-[100vh] lg:min-h-[100vh] md:h-[70vh] md:min-h-[70vh] sm:h-[70vh] sm:min-h-[70vh] xs:h-[70vh] xs:min-h-[70vh]"
               style={{ objectFit: "cover" }}
             />
             <div>
               <div
                 className=" yellowBar absolute bottom-[20%] left-[50%] translate-x-[-50%]  xl:w-[70%] lg:w-[80%] w-[90%]  rounded-lg   xl:py-[40px] lg:py-[30px] py-[20px]  xl:px-[35px] lg:px-[25px] px-[18px] gap-2 xl:mb-[22.34px] mb-[14px] min-h-[120px]"
-                style={{ backgroundImage: `url(${signinBlur})` , backgroundSize: "cover" }}
+                style={{
+                  backgroundImage: `url(${signinBlur})`,
+                  backgroundSize: "cover",
+                }}
               >
                 <div className="yellowBar  bg-[#FBC700] w-[90%]  rounded-xl items-center py-[10px] xl:px-[20px] px-[14px] gap-2 mb-[22.34px] flex">
                   <img src={thumbsUp} alt="" />
@@ -55,7 +98,7 @@ const Signin = () => {
             <div className="signUpHead flex justify-start xl:mb-[46px] lg:mb-[30px] mb-[20px]">
               <img
                 src={houtLogo}
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 alt=""
                 className="xl:w-[160px] xl:h-[46px] cursor-pointer lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
               />
@@ -69,7 +112,7 @@ const Signin = () => {
                   Login into your account
                 </span>
               </div>
-              <form action="" className="w-full">
+              <form className="w-full" onSubmit={loginUser}>
                 {/* social auth row  */}
                 <div className="socialAuthRow flex gap-3 mb-[12px]">
                   <a
@@ -111,10 +154,24 @@ const Signin = () => {
                 </div>
                 <div className="formSec">
                   <div className="mb-[23px]">
-                    <InputField placeholder="Enter Email" type={"email"}/>
+                    <InputField
+                      required
+                      placeholder="Enter Email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleFormData}
+                    />
                   </div>
                   <div className="mb-[23px]">
-                    <InputField placeholder="Password" endicon="eyes" type={"password"} />
+                    <InputField
+                      required
+                      placeholder="Password"
+                      type="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleFormData}
+                    />
                   </div>
 
                   <div className="recPasswrd xl:mb-[30px] mb-[15px] flex w-full justify-between">
@@ -125,12 +182,20 @@ const Signin = () => {
                   </div>
 
                   <div className="w-full ">
-                    <button className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[18px] text-[16px]">
-                      Log In
+                    <button
+                      type="submit"
+                      onClick={loginUser}
+                      disabled={btnLoading}
+                      className="bg-[#FBC700] block text-black text-center xl:py-[19px] lg:py-[16px] py-[12px] px-[25px] w-full font-semibold mb-[23px] xl:text-[18px] text-[16px]"
+                    >
+                      {btnLoading ? "Loading..." : "Log In"}
                     </button>
                     <span className="flex justify-end text-14">
                       Don't have an account?{" "}
-                      <a onClick={() => navigate('/sign-up')} className="text-[#FBC700] ml-1 font-semibold cursor-pointer">
+                      <a
+                        onClick={() => navigate("/sign-up")}
+                        className="text-[#FBC700] ml-1 font-semibold cursor-pointer"
+                      >
                         Sign up!
                       </a>
                     </span>
@@ -144,5 +209,3 @@ const Signin = () => {
     </>
   );
 };
-
-export default Signin;

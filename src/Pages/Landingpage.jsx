@@ -7,7 +7,7 @@ import VideoSection from "../components/LandingPageSections/VideoSection";
 import TestimonialSection from "../components/LandingPageSections/TestimonialSection";
 import { ContactusSection } from "../components/LandingPageSections/ContactusSection";
 
-const Landingpage = () => {
+export const Landingpage = () => {
   return (
     <>
       <HoutHandelSection />
@@ -22,5 +22,3 @@ const Landingpage = () => {
     </>
   );
 };
-
-export default Landingpage;

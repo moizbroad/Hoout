@@ -6,7 +6,9 @@ import CheckoutDetail from "../components/CartSections/CheckoutDetail";
 import OrderComplete from "../components/CartSections/OrderComplete";
 import check from "../assets/addToCart/check.svg";
 import { Stepper, Step } from "react-form-stepper";
-const AddToCart = () => {
+
+
+export const AddToCart = () => {
   const [selectedDiv, setSelectedDiv] = useState({
     firstTab: true,
     secondTab: false,
@@ -215,5 +217,3 @@ const AddToCart = () => {
     </>
   );
 };
-
-export default AddToCart;

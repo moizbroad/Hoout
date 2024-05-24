@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import valueOne from "../../assets/LandingPageImages/ourValues/valueOne.svg";
 import valueTwo from "../../assets/LandingPageImages/ourValues/valueTwo.svg";
 import valueThree from "../../assets/LandingPageImages/ourValues/valueThree.svg";
 import valueFour from "../../assets/LandingPageImages/ourValues/valueFour.svg";
+import { axiosApi } from "../../providers";
 
 const OurValuesSection = () => {
+
+  const [state, setState] = useState({
+    values: []
+  })
+
+  useEffect(() => {
+    handleGetOurValues()
+  },[]) 
+
+  const handleGetOurValues = async () => {
+    try {
+      const response = await axiosApi.get("/our-value/");
+      setState((prev) =>({
+        ...prev,
+        values: response.data
+      }))
+    } catch (error) {
+    }
+  }
+
   const valueData = [
     {
       image: valueOne,
@@ -40,7 +61,7 @@ const OurValuesSection = () => {
       </div>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2  gap-x-[150px] px-[50px] max-w-[1240px] mx-auto">
-        {valueData.map((item, index) => {
+        {state.values.map((item, index) => {
           return (
             <div key={index} className="">
               <section className=" pt-[30px] md:pt-[70px] lg:pt-[85px] xl:pt-[85px]">
@@ -50,10 +71,10 @@ const OurValuesSection = () => {
                 </div>
                 <div className="text-center  text-22  pt-[25px]">
                   {" "}
-                  {item.head}
+                  {item.title}
                 </div>
                 <div className="text-center  text-16  pt-[25px] text-[#838381]">
-                  {item.subHead}
+                  {item.description}
                 </div>
               </section>
             </div>

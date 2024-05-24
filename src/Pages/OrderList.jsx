@@ -8,7 +8,7 @@ import sampleProductImg from "../assets/DashboardImages/sampleProductImg.svg";
 // import CountrySelector from "../components/Common/CountrySelector";
 // import DatePicker from "../components/Common/DatePicker";
 
-const OrderList = () => {
+export const OrderList = () => {
   const orderListTable = [
     {
       name: "Name",
@@ -264,5 +264,3 @@ const OrderList = () => {
     </div>
   );
 };
-
-export default OrderList;

@@ -11,7 +11,7 @@ import OrderHistory from "../components/Address/OrderHistory";
 import Wishlist from "../components/Address/Wishlist";
 import { useLocation } from "react-router-dom";
 
-const MyAccount = () => {
+export const MyAccount = () => {
   const location = useLocation();
   const { state } = location;
 
@@ -73,5 +73,3 @@ const MyAccount = () => {
     </>
   );
 };
-
-export default MyAccount;

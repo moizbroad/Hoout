@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import PaymentCard from "../Common/PaymentCard";
 
-const Filters = () => {
-  const [filterData, setFilterData] = useState([
-    { id: 1, filter: "Oak", isChecked: true },
-    { id: 1, filter: "Thermo Hout ", isChecked: false },
-    { id: 2, filter: "Fire", isChecked: false },
-    { id: 2, filter: "Hardwood", isChecked: false },
-    { id: 2, filter: "Beacon", isChecked: false },
-    { id: 2, filter: "Mahogany", isChecked: false },
-    { id: 2, filter: "Brazilian Nuts", isChecked: false },
-    { id: 2, filter: "Iron Store", isChecked: false },
-    { id: 2, filter: "Parasols", isChecked: false },
-  ]);
+const Filters = ({filters, filterCheck}) => {
+  const [state, setState] = useState({
+    filters: filters
+  })
 
   const handleChange = (clickedItem) => {
-    setFilterData((prevFilterData) => {
-      return prevFilterData.map((item) => {
+    setState((prev) => ({
+      ...prev,
+      filters: filters.map((item) => {
         if (item.filter === clickedItem.filter) {
-          return { ...item, isChecked: !item.isChecked };
+          const updatedItem = { ...item, checked: !item.checked };
+          filterCheck(updatedItem);
+          return updatedItem;
         }
         return item;
-      });
-    });
+      })
+    }));
   };
+  
 
   return (
     <div className="max-w-[300px] md:max-w-[100%]  sm:max-w-[100%]    xs:max-w-[100%]   xl:min-h-[1050px] shadow-xl md:overflow-auto sm:overflow-auto  xs:overflow-auto   ">
@@ -32,7 +28,7 @@ const Filters = () => {
       </span>
 
       <section className="md:flex sm:flex xs:flex filterRowMain ">
-        {filterData.map((item, index) => {
+        {state.filters.map((item, index) => {
           return (
             <div
               key={index}

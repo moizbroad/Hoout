@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../Common/Button";
 import location from "../../assets/HeaderAndFooter/locationFooter.svg";
@@ -9,22 +9,30 @@ import footerLogo from "../../assets/HeaderAndFooter/footerLogo.svg";
 import whatsp from "../../assets/HeaderAndFooter/whatspFooter.svg";
 import facebook from "../../assets/HeaderAndFooter/facebookFooter.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
+import { axiosApi } from "../../providers";
 
 const FooterSection = ({ isShow }) => {
   const navigate = useNavigate();
 
-  const [openhours, setOpenHours] = useState([
-    {
-      title: "Openings hours",
-      mon: "Mon - Closed",
-      tue: "Tue - 08:30-17:30",
-      wed: "Wed - 08:30-18:00",
-      thurs: "Thu - 08:30-17:30",
-      fri: "Fri - 09:00-17:30",
-      sat: "Sat - 10am-2pm",
-      sun: "Sun - Closed",
-    },
-  ]);
+  const [state, setState] = useState({
+    openHours: []
+  })
+
+  useEffect(() => {
+    handleGetOpeningHours()
+  }, [])
+
+  const handleGetOpeningHours = async () => {
+    try {
+      const response = await axiosApi.get("/opening-hours/");
+      setState((prev) => ({
+        ...prev,
+        openHours: response.data
+      }))
+    } catch (error) {
+      toast.error("Wrong credentials!");
+    }
+  }
 
   return (
     <>
@@ -92,18 +100,12 @@ const FooterSection = ({ isShow }) => {
             </div>
 
             <div className=" w-[100%] sm:w-[50%] md:w-[25%] lg:w-[25%] xl:w-[25%]">
-              {openhours.map((item, index) => (
+              <div className="mb-6 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
+                Opening Hours
+              </div>
+              {state.openHours.map((item, index) => (
                 <div key={index}>
-                  <div className="mb-6 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-semibold text-[#000]">
-                    {item.title}
-                  </div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.mon}</div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.tue}</div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.wed}</div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.thurs}</div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.fri}</div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.sat}</div>
-                  <div className="mb-5 text-[14px] vietnam ">{item.sun}</div>
+                  <div className="mb-5 text-[14px] vietnam ">{item.hour}</div>
                 </div>
               ))}
             </div>

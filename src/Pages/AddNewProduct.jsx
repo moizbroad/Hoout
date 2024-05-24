@@ -8,7 +8,7 @@ import Dropzone from "../components/Common/Dropzone";
 import addImg from "../assets/DashboardImages/add.svg";
 import { useNavigate } from "react-router-dom";
 
-const AddNewProduct = () => {
+export const AddNewProduct = () => {
   const navigate = useNavigate();
   return (
     <div>
@@ -342,5 +342,3 @@ const AddNewProduct = () => {
     </div>
   );
 };
-
-export default AddNewProduct;

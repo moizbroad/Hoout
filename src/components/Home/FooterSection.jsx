@@ -10,12 +10,14 @@ import whatsp from "../../assets/HeaderAndFooter/whatspFooter.svg";
 import facebook from "../../assets/HeaderAndFooter/facebookFooter.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 import { axiosApi } from "../../providers";
+import { toast } from "react-toastify";
 
 const FooterSection = ({ isShow }) => {
   const navigate = useNavigate();
 
   const [state, setState] = useState({
-    openHours: []
+    openHours: [],
+    email: ""
   })
 
   useEffect(() => {
@@ -34,6 +36,21 @@ const FooterSection = ({ isShow }) => {
     }
   }
 
+  const handleNewsLetter = async () => {
+    try {
+      const response = await axiosApi.post("/newsletter/", {email: state.email});
+      if(response.status === 201){
+        setState(prevState => ({
+          ...prevState,
+          email: ""
+        }));
+        toast.success("Newsletter submit successfuly")
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  }
+
   return (
     <>
       <footer className="bg-[#E9E6D6] relative">
@@ -45,11 +62,19 @@ const FooterSection = ({ isShow }) => {
               </div>
               <div className="flex flex-col xs:gap-4 sm:gap-4 sm:flex-row md:flex-row lg:flex-row xl:flex-row w-full">
                 <input
-                  type="text"
+                  type="email"
+                  autoComplete={true}
+                  onChange={(e) => {
+                    setState((prev) => ({
+                      ...prev,
+                      email: e.target.value
+                    }))
+                  }}
+                  value={state.email}
                   placeholder="Enter Email Address"
                   className="bg-[#F5F4F8] flex-grow input-field"
                 />
-                <button className="subscribe-btn vietnam  w-[150px] md:w-[200px] lg:w-[253px] xl:w-[253px]">
+                <button className="subscribe-btn vietnam  w-[150px] md:w-[200px] lg:w-[253px] xl:w-[253px]" onClick={handleNewsLetter}>
                   Subscribe
                 </button>
               </div>
@@ -92,10 +117,10 @@ const FooterSection = ({ isShow }) => {
                 <Link to="/terms-conditions">Terms & Conditions</Link>
               </div>
               <div className="mb-5 text-[14px]">
-                <Link to="privacy-policy vietnam ">Privacy Policy</Link>
+                <Link to="/privacy-policy">Privacy Policy</Link>
               </div>
               <div className="mb-5 text-[14px] vietnam ">
-                Customer Support/Faq
+                <Link to="/faq">Customer Support/Faq</Link>
               </div>
             </div>
 

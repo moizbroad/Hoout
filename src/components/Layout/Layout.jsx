@@ -6,7 +6,7 @@ import AdminMainNav from "../AdminLayout/AdminMainNav";
 import { Outlet, useLocation } from "react-router-dom";
 const Layout = () => {
 
-  const authPaths = ["/sign-in", "/sign-up"];
+  const authPaths = ["/sign-in", "/sign-up", "/forget-password", "/reset-password"];
   const adminPaths = [
     "/dashboard/",
     "/inbox/",

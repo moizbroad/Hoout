@@ -24,6 +24,11 @@ import {
   AddNewProduct,
   MyAccount,
 } from "./pages";
+import { TermsConditions } from "./pages/TermsConditions";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { ForgetPassword } from "./pages/ForgetPassword";
+import { Faq } from "./pages/Faq";
+import { ResetPassword } from "./pages/ResetPassword";
 
 function Routes() {
   return (
@@ -49,6 +54,11 @@ function Routes() {
         </Route>
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Route>
       
       <Route path="*" element={<Navigate to="/" />} />

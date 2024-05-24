@@ -14,6 +14,7 @@ const ContactInputField = (props) => {
     onKeyDown,
     autoFocus,
     disabled,
+    color,
     placeholder,
     onChange,
     minLength,
@@ -47,7 +48,7 @@ const ContactInputField = (props) => {
           <input
             className={`block w-full  ${
               IconComponent ? "pl-10" : ""
-            }  py-3 px-3 outline-none bg-[#000000] border-[#FFF] border-b-2  focus:outline-none sm:text-sm `}
+            } ${color ? `text-[${color}]` : "text-[#000]"} py-3 px-3 outline-none bg-[#000000] border-[#FFF] border-b-2  focus:outline-none sm:text-sm `}
             id={id}
             label={label}
             type={type}

@@ -43,17 +43,16 @@ const HeaderSection = () => {
 
 
         <span className=" cursor-pointer ml-4" onClick={() => navigate('/')}>Home</span>
-        {!token && <>
+        {token === null && <>
           <span className=" cursor-pointer ml-4" onClick={() => navigate('/sign-in')}> Login </span>
           <span className="cursor-pointer ml-4" onClick={() => navigate('/sign-up')}> Signup</span>
         </>}
-        <span className="cursor-pointer ml-4" onClick={() => navigate('/dashboard')}> Dashboard</span>
-
+        {token !== null && <span className="cursor-pointer ml-4" onClick={() => navigate('/dashboard')}> Dashboard</span>}
         {/* <div>Values</div> */}
         {/* <div>Product Range</div> */}
         {/* <div>Why Hout Total</div> */}
         {/* <div>Contact</div> */}
-        <div className="header-logo flex items-center justify-between w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
+        <div className="header-logo flex items-center justify-center w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
           {" "}
 
 
@@ -88,14 +87,11 @@ const HeaderSection = () => {
           {" "}
           Shop{" "}
         </div>{" "}
-        <div>
+        {token !== null && <div>
           {" "}
-
-
-
           <img src={persons} className="cursor-pointer" onClick={() => navigate('/myaccount')} />{" "}
 
-        </div>{" "}
+        </div>}
         <div>
           {" "}
           <img src={search} className="cursor-pointer " />{" "}

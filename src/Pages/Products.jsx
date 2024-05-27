@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 // import sampleProductImg from "../assets/DashboardImages/sampleProductImg.svg";
 import productName from "../assets/DashboardImages/productName.svg";
 import woodImg from "../assets/DashboardImages/woodImg.svg";
@@ -8,10 +8,50 @@ import dltImg from "../assets/DashboardImages/delete.svg";
 import dots from "../assets/DashboardImages/dotsvertical.svg";
 import Button from "../components/Common/Button";
 import cartButton from "../assets/addToCart/cartButton.svg"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { axiosApi } from "../providers";
 
 export  const Products = () => {
   const navigate = useNavigate();
+
+  const location = useLocation()
+
+  const [state, setState] = useState({
+    products: [],
+    types: []
+  })
+
+  useEffect(() => {
+    handleGetProducts()
+  },[])
+
+  const handleGetProducts = async () => {
+    try {
+      const response = await axiosApi.get("/product/");
+      // if(selectedFilter === "" && location.pathname !== '/'){
+      //   setState((prev) => ({
+      //     ...prev,
+      //     products: response.data,
+      //     types: passTypes(response.data.map(product => ({ filter: product.hout_type, checked: false })))
+      //   }))
+      // } else if(selectedFilter !== "" && location.pathname !== "/"){
+      //   let filteredProducts = response.data.filter(item => item.hout_type === 'abvc')
+      //   setState((prev) => ({
+      //     ...prev,
+      //     products: filteredProducts,
+      //     types: passTypes(response.data.map(product => ({ filter: product.hout_type, checked: false })))
+      //   }))
+      // } else{
+        setState((prev) => ({
+          ...prev,
+          products: response.data,
+        }))
+      // }
+    } catch (error) {
+      console.log(error, "error")
+    }
+  }
+
   const productData = [
     {
       id: "#123456",
@@ -236,7 +276,8 @@ export  const Products = () => {
               </tr>
             </thead>
 
-            {productData.map((rowData, index) => {
+            {state.products.map((rowData, index) => {
+              console.log(rowData, "rooß")
               return (
                 <tbody>
                   <tr key={index} className={`border-b-[0.4px] border-gray ${index % 2 !== 0 ? 'bg-[#F1F4F9]' : 'bg-[#fff]'}`}>
@@ -250,7 +291,7 @@ export  const Products = () => {
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-1 items-center">
                         <div className="block xl:w-[60px] lg:w-[50px] w-[45px]">
-                          <img src={rowData.image} alt={rowData.productName} className="" />
+                          <img src={rowData.images_url[0]} alt={rowData.productName} className="" />
                         </div>
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">

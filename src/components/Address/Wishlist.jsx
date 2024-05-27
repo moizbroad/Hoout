@@ -1,12 +1,34 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import profileImg from "../../assets/myAccount/profile.png";
 import crossImg from "../../assets/myAccount/Shape.svg";
 import profilebtn from "../../assets/myAccount/profileBtn.svg";
 import productImg from "../../assets/myAccount/image 1.svg";
 import productImg2 from "../../assets/myAccount/image 2.svg";
 import productImg3 from "../../assets/myAccount/image 3.svg";
+import { axiosWithCredentials } from "../../providers";
 
 const Wishlist = () => {
+
+  const [state, setState] = useState({
+    wishList: []
+  })
+
+  useEffect(() => {
+    handleGetWishList()
+  }, [])
+
+  const handleGetWishList = async () => {
+    try {
+      const response = await axiosWithCredentials.get("/wishlist/");
+      setState((prev) => ({
+        ...prev,
+        wishList: response.data,
+      }))
+    } catch (error) {
+      console.log(error, "error")
+    }
+  }
+
   return (
     <section className="px-40 xs:px-8 sm:px-10 md:px-10 lg:px-12 my-20 xs:my-8 sm:my-10 md:my-13 lg:my-14">
       {/* <h1 className="text-[48px] xs:text-[20px] sm:text-[25px] md:text-[30px] lg:text-[35px] text-center text-[#000000] mb-[80px] xs:mb-[25px] sm:mb-[30px] md:mb-[50px] lg:mb-[70px]">

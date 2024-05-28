@@ -24,6 +24,7 @@ import {
   AddNewProduct,
   MyAccount,
 } from "./pages";
+
 import { TermsConditions } from "./pages/TermsConditions";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { ForgetPassword } from "./pages/ForgetPassword";
@@ -60,7 +61,7 @@ function Routes() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/reset-password" element={<ResetPassword />} />
       </Route>
-      
+
       <Route path="*" element={<Navigate to="/" />} />
     </AppRoutes>
   );

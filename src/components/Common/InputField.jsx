@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import eyes from "../../assets/authImages/eyes.svg";
-import showEye from '../../assets/authImages/showEye.svg'
+import showEye from "../../assets/authImages/showEye.svg";
 
 const InputField = (props) => {
   const {
@@ -31,7 +31,6 @@ const InputField = (props) => {
   } = props;
 
   const [hidePassword, setHidePassword] = useState(true);
-
 
   return (
     <div className={`${marginTop && "mt-4"} ${marginBottom && "mb-4"}`}>

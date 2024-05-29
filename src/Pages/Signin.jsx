@@ -45,6 +45,7 @@ export const Signin = () => {
     try {
       const response = await axiosApi.post("/accounts/login/", data);
       setAccessToken(response.data?.token);
+      localStorage.setItem("userData", JSON.stringify(response.data));
       setBtnLoading(false);
       navigate("/myaccount");
     } catch (error) {
@@ -176,7 +177,10 @@ export const Signin = () => {
 
                   <div className="recPasswrd xl:mb-[30px] mb-[15px] flex w-full justify-between">
                     <Switch />
-                    <a onClick={() => navigate('/forget-password')} className="text-14 text-red cursor-pointer">
+                    <a
+                      onClick={() => navigate("/forget-password")}
+                      className="text-14 text-red cursor-pointer"
+                    >
                       Recover Password{" "}
                     </a>{" "}
                   </div>

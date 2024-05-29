@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import sampleProductImg from "../assets/DashboardImages/sampleProductImg.svg";
 import productName from "../assets/DashboardImages/productName.svg";
 import woodImg from "../assets/DashboardImages/woodImg.svg";
@@ -7,10 +7,14 @@ import editImg from "../assets/DashboardImages/edit.svg";
 import dltImg from "../assets/DashboardImages/delete.svg";
 import dots from "../assets/DashboardImages/dotsvertical.svg";
 import Button from "../components/Common/Button";
-import cartButton from "../assets/addToCart/cartButton.svg"
+import cartButton from "../assets/addToCart/cartButton.svg";
 import { useNavigate } from "react-router-dom";
+import { axiosWithCredentials } from "../providers";
 
-export  const Products = () => {
+export const Products = () => {
+  const [state, setState] = useState({
+    data: [],
+  });
   const navigate = useNavigate();
   const productData = [
     {
@@ -128,11 +132,30 @@ export  const Products = () => {
     },
   ];
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosWithCredentials.get("/product/");
+        setState((prev) => ({
+          ...prev,
+          data: response.data,
+        }));
+      } catch (error) {
+        toast.error("Wrong credentials!");
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  console.log(state, "state");
+
   return (
     <div>
       <div className="xl:py-[24px] lg:py-[20px] py-[16px] xl:px-[20px] lg:px-[16px] px-[10px] bg-[#fafafa] h-full min-h-[86vh]">
         <div className="flex justify-between">
-          <h1 className="xl:text-32 lg:text-28 text-26 font-bold xl:mb-[30px] lg:mb-[22px] mb-[14px] ">Products</h1>
+          <h1 className="xl:text-32 lg:text-28 text-26 font-bold xl:mb-[30px] lg:mb-[22px] mb-[14px] ">
+            Products
+          </h1>
 
           <div className="flex gap-4">
             <div class="relative inline-block text-left">
@@ -144,8 +167,19 @@ export  const Products = () => {
                   aria-expanded="true"
                   aria-haspopup="true"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
+                    />
                   </svg>
                   Filters
                   <svg
@@ -231,15 +265,18 @@ export  const Products = () => {
                 <th className="px-[10px] py-[12px]  text-center text-14 font-bold">
                   Action
                 </th>
-
-              
               </tr>
             </thead>
 
             {productData.map((rowData, index) => {
               return (
                 <tbody>
-                  <tr key={index} className={`border-b-[0.4px] border-gray ${index % 2 !== 0 ? 'bg-[#F1F4F9]' : 'bg-[#fff]'}`}>
+                  <tr
+                    key={index}
+                    className={`border-b-[0.4px] border-gray ${
+                      index % 2 !== 0 ? "bg-[#F1F4F9]" : "bg-[#fff]"
+                    }`}
+                  >
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="">
                         <p className="text-gray-900 whitespace-no-wrap">
@@ -250,7 +287,11 @@ export  const Products = () => {
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-1 items-center">
                         <div className="block xl:w-[60px] lg:w-[50px] w-[45px]">
-                          <img src={rowData.image} alt={rowData.productName} className="" />
+                          <img
+                            src={rowData.image}
+                            alt={rowData.productName}
+                            className=""
+                          />
                         </div>
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
@@ -315,7 +356,9 @@ export  const Products = () => {
                     </td>
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
                       <div className="flex xl:gap-3 gap-2 items-center justify-center">
-                        <p className="xl:text-14 lg-text-[13px] text-12 text-center">N/A</p>
+                        <p className="xl:text-14 lg-text-[13px] text-12 text-center">
+                          N/A
+                        </p>
                       </div>
                     </td>
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left xl:text-14 lg-text-[13px] text-12 font-semibold text-gray3 min-w-[100px]">
@@ -326,7 +369,7 @@ export  const Products = () => {
                         <a href={rowData.deleteLink}>
                           <img src={dltImg} alt="Delete icon image" />
                         </a>
-                         <a href={rowData.dropdownMenuLink}>
+                        <a href={rowData.dropdownMenuLink}>
                           <img src={dots} alt="vertical drop down dot img" />
                         </a>
                       </div>
@@ -452,7 +495,10 @@ export  const Products = () => {
             Add New Product
           </button> */}
 
-          <Button btnText=" Add New Product" breakpoint="xl:w-[282px] lg:w-[240px] w-[200px] " />
+          <Button
+            btnText=" Add New Product"
+            breakpoint="xl:w-[282px] lg:w-[240px] w-[200px] "
+          />
         </div>
       </div>
     </div>

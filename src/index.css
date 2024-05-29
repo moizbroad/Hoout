@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-  font-family: josefin Sans, poppins;
+  font-family:
+    josefin Sans,
+    poppins;
   line-height: 1.5;
   font-weight: 400, 600, 800, 900;
 }
@@ -179,6 +181,14 @@ footer .input-field {
   color: #fff;
   font-weight: 600;
 }
+.submit-btn {
+  border-radius: 12px 12px 12px 12px;
+  background-color: #fbc700;
+  padding: 18px 30px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
 @media only screen and (max-width: 767.98px) {
   footer .input-field {
     border-radius: 8px;
@@ -204,12 +214,12 @@ footer .input-field {
     line-height: 26px;
     width: 70%;
     margin: 0 auto;
+  }
 }
-}
-@media (max-width: 767px){
-      .pay-button button {
-        font-size: 17px !important;
-        
-        margin: 0;
-    }
+@media (max-width: 767px) {
+  .pay-button button {
+    font-size: 17px !important;
+
+    margin: 0;
+  }
 }

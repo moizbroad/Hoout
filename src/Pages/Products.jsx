@@ -10,10 +10,11 @@ import Button from "../components/Common/Button";
 import cartButton from "../assets/addToCart/cartButton.svg";
 import { useNavigate } from "react-router-dom";
 import { axiosWithCredentials } from "../providers";
+import { getProducts } from "../redux/actions/orderActions";
 
 export const Products = () => {
   const [state, setState] = useState({
-    data: [],
+    productsData: [],
   });
   const navigate = useNavigate();
   const productData = [
@@ -132,21 +133,24 @@ export const Products = () => {
     },
   ];
 
+  const fetchProducts = async () => {
+    try {
+      const res = await getProducts();
+      setState((prev) => ({
+        ...prev,
+        productsData: res,
+      }));
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  console.log(state?.productsData, "state");
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axiosWithCredentials.get("/product/");
-        setState((prev) => ({
-          ...prev,
-          data: response.data,
-        }));
-      } catch (error) {
-        toast.error("Wrong credentials!");
-      }
-    };
     fetchProducts();
   }, []);
-
   console.log(state, "state");
 
   return (
@@ -229,10 +233,7 @@ export const Products = () => {
         <div className=" max-w-screen mx-auto overflow-x-auto">
           <table className="table-auto productsTable">
             <thead>
-              <tr
-                className="bg-[#F1F4F9]
-"
-              >
+              <tr className="bg-[#F1F4F9]">
                 <th className="px-[10px] py-[12px]  text-left text-14 font-bold  rounded-l-2xl	">
                   ID
                 </th>
@@ -268,9 +269,9 @@ export const Products = () => {
               </tr>
             </thead>
 
-            {productData.map((rowData, index) => {
-              return (
-                <tbody>
+            <tbody>
+              {state?.productsData?.length > 0 ? (
+                state.productsData.map((rowData, index) => (
                   <tr
                     key={index}
                     className={`border-b-[0.4px] border-gray ${
@@ -280,7 +281,7 @@ export const Products = () => {
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="">
                         <p className="text-gray-900 whitespace-no-wrap">
-                          {rowData.id}
+                          {rowData?.id}
                         </p>
                       </div>
                     </td>
@@ -288,58 +289,65 @@ export const Products = () => {
                       <div className="flex gap-1 items-center">
                         <div className="block xl:w-[60px] lg:w-[50px] w-[45px]">
                           <img
-                            src={rowData.image}
-                            alt={rowData.productName}
+                            src={rowData?.images_url?.[0]}
+                            alt={rowData?.name}
                             className=""
                           />
                         </div>
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {rowData.productName}
+                            {rowData?.name}
                           </p>
                         </div>
                       </div>
                     </td>
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3 w-[12%]">
                       <p className="text-gray-900 overflow-hidden whitespace-normal line-clamp-3 min-w-[120px]">
-                        {rowData.description}
+                        {rowData?.description}
                       </p>
                     </td>
+
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-2 items-center">
                         <div className="flex-shrink-0 w-[38.64px] h-[38.64px]">
-                          <img src={rowData.image} alt={rowData.productName} />
+                          <img
+                            src={rowData?.image}
+                            alt={rowData?.productName}
+                          />
                         </div>
                         <div className="min-w-[40px]">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {rowData.code}
+                            {rowData?.code}
                           </p>
                         </div>
                       </div>
                     </td>
+
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[12px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-3 items-center">
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {rowData.category}
+                            {rowData?.hangings}
                           </p>
                         </div>
                       </div>
                     </td>
+
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
                       <div className="flex xl:gap-3 gap-2 items-center">
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {rowData.condition}
+                            {rowData?.sanded}
                           </p>
                         </div>
                       </div>
                     </td>
+
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-3 items-center">
                         <div className="">
                           <p className="text-gray-900 whitespace-no-wrap flex gap-2 items-center">
-                            {rowData.quantity.amount}{" "}
+                            {rowData?.stock}{" "}
                             <span className="bg-[#FBC7001A] text-[#FBC700] p-[8px] rounded-full inline-block min-w-[70px] text-center">
                               {rowData.quantity.status}
                             </span>
@@ -347,10 +355,13 @@ export const Products = () => {
                         </div>
                       </div>
                     </td>
+
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left text-14 font-semibold text-gray3">
                       <div className="flex gap-3 items-center justify-center">
                         <div className="">
-                          <p className="text-14 text-center">{rowData.price}</p>
+                          <p className="text-14 text-center">
+                            ${rowData?.price}
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -363,13 +374,13 @@ export const Products = () => {
                     </td>
                     <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left xl:text-14 lg-text-[13px] text-12 font-semibold text-gray3 min-w-[100px]">
                       <div className="flex xl:gap-3 gap-2 items-center justify-center">
-                        <a href={rowData.editLink}>
+                        <a href={rowData?.editLink}>
                           <img src={editImg} alt="edit icon image" />
                         </a>
-                        <a href={rowData.deleteLink}>
+                        <a href={rowData?.deleteLink}>
                           <img src={dltImg} alt="Delete icon image" />
                         </a>
-                        <a href={rowData.dropdownMenuLink}>
+                        <a href={rowData?.dropdownMenuLink}>
                           <img src={dots} alt="vertical drop down dot img" />
                         </a>
                       </div>
@@ -380,9 +391,18 @@ export const Products = () => {
                       </div>
                     </td> */}
                   </tr>
-                </tbody>
-              );
-            })}
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan="5"
+                    className="text-[14px] text-[#141718] text-center py-[22px]"
+                  >
+                    No items
+                  </td>
+                </tr>
+              )}
+            </tbody>
 
             {/* PRODUCT TABLE FIRST ROW  */}
             {/* <tr className="border-b-[0.4px] border-gray">

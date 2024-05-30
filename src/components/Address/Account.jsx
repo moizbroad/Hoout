@@ -10,6 +10,7 @@ import {
   updatePass,
   updateProfile,
 } from "../../redux/actions/profileActions";
+import { passwordValidationSchema } from "../../utils/validations";
 
 const Account = ({ userData }) => {
   const [state, setState] = useState({
@@ -32,25 +33,6 @@ const Account = ({ userData }) => {
     phone: Yup.string()
       .matches(/^[0-9]+$/, "Phone number is not valid")
       .required("Phone number is required"),
-  });
-
-  const passwordValidationSchema = Yup.object({
-    oldPassword: Yup.string().required("Old password is required"),
-    newPassword: Yup.string()
-      .min(8, "Password must be at least 8 characters")
-      .matches(
-        /(?=.*[a-z])/,
-        "Password must contain at least one lowercase letter"
-      )
-      .matches(
-        /(?=.*[A-Z])/,
-        "Password must contain at least one uppercase letter"
-      )
-      .matches(/(?=.*\d)/, "Password must contain at least one number")
-      .required("New password is required"),
-    repeatNewPassword: Yup.string()
-      .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
-      .required("Repeat new password is required"),
   });
 
   const fetchUser = async () => {

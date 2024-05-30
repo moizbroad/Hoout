@@ -13,20 +13,31 @@ export const validationDelivery = Yup.object().shape({
   country: Yup.string().required("Country is required"),
 });
 
-export const validationResetPass = Yup.object().shape({
-  op: Yup.string().required("Old password is required"),
-  nPassword: Yup.string().required("New password is required"),
-  rnPassword: Yup.string()
-    .required("Repeat new password is required")
-    .oneOf([Yup.ref("nPassword"), null], "Passwords must match"),
-});
-
 export const validationProfile = Yup.object().shape({
-  fName: Yup.string().required("First name is required"),
+  firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  cName: Yup.string(),
-  phoneNumber: Yup.string(),
+  companyName: Yup.string(),
+  phone: Yup.string(),
+});
+
+export const passwordValidationSchema = Yup.object({
+  oldPassword: Yup.string().required("Old password is required"),
+  newPassword: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .matches(
+      /(?=.*[a-z])/,
+      "Password must contain at least one lowercase letter"
+    )
+    .matches(
+      /(?=.*[A-Z])/,
+      "Password must contain at least one uppercase letter"
+    )
+    .matches(/(?=.*\d)/, "Password must contain at least one number")
+    .required("New password is required"),
+  repeatNewPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+    .required("Repeat new password is required"),
 });

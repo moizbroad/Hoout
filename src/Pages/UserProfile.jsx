@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Camera from "../assets/DashboardImages/CameraImg.png";
 import InputField from "../components/Common/InputField";
 import Button from "../components/Common/Button";
@@ -7,20 +7,25 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import FormikField from "../components/Common/FormikField";
 import {
+  passwordValidationSchema,
   validationDelivery,
   validationInvoice,
   validationProfile,
-  validationResetPass,
 } from "../utils/validations";
 import {
+  getProfile,
   updateDelivery,
   updateInvoiceDelivery,
   updatePass,
+  updateProfile,
 } from "../redux/actions/profileActions";
 
 export const UserProfile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [state, setState] = useState({
+    userData: null,
+  });
 
   const handleFileInputChange = (e) => {
     setSelectedImage(e.target.files[0]);
@@ -31,6 +36,24 @@ export const UserProfile = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
+
+  const fetchUser = async () => {
+    try {
+      const res = await getProfile();
+      setState((prev) => ({
+        ...prev,
+        userData: res?.data,
+      }));
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
     <div>
       <div className="xl:py-[48px] lg:py-[38px] py-[28px] xl:px-[170px] lg:px-[100px] px-[60px] bg-[rgb(250,250,250)] h-full min-h-[86vh]">
@@ -63,14 +86,32 @@ export const UserProfile = () => {
           </h5>
           <Formik
             initialValues={{
-              fName: "",
-              lastName: "",
-              email: "",
-              cName: "",
-              phoneNumber: "",
+              firstName: state?.userData?.first_name ?? "",
+              lastName: state?.userData?.last_name ?? "",
+              companyName: state?.userData?.company_name ?? "",
+              email: state?.userData?.email ?? "",
+              phone: state?.userData?.phone ?? "",
             }}
             validationSchema={validationProfile}
-            onSubmit={updatePass}
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
+              const updatedVal = {
+                first_name: values?.firstName,
+                last_name: values?.lastName,
+                email: values?.email,
+                company_name: values?.companyName,
+                phone: values?.phone,
+              };
+
+              try {
+                await updateProfile(updatedVal, { setSubmitting });
+                fetchUser();
+                resetForm();
+              } catch (error) {
+                console.error("Error updating user data:", error);
+                setSubmitting(false);
+              }
+            }}
+            enableReinitialize={true}
           >
             {({ isSubmitting }) => (
               <Form>
@@ -79,7 +120,7 @@ export const UserProfile = () => {
                     <div className="w-1/2 mb-6 md:mb-0">
                       <Field
                         component={FormikField}
-                        name="fName"
+                        name="firstName"
                         label="First name *"
                         placeholder="First name"
                       />
@@ -97,7 +138,7 @@ export const UserProfile = () => {
                     <div className="w-1/2 mb-6 md:mb-0">
                       <Field
                         component={FormikField}
-                        name="cName"
+                        name="companyName"
                         label="Company name"
                         placeholder="Company name"
                       />
@@ -105,7 +146,7 @@ export const UserProfile = () => {
                     <div className="w-1/2">
                       <Field
                         component={FormikField}
-                        name="phoneNumber"
+                        name="phone"
                         label="Phone number"
                         placeholder="Phone number"
                       />
@@ -144,8 +185,17 @@ export const UserProfile = () => {
               nPassword: "",
               rnPassword: "",
             }}
-            validationSchema={validationResetPass}
-            onSubmit={updatePass}
+            validationSchema={passwordValidationSchema}
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
+              try {
+                await updatePass(values, { setSubmitting });
+                resetForm(false);
+                setSubmitting(false);
+              } catch (error) {
+                console.error("Error updating password:", error);
+                setSubmitting(false);
+              }
+            }}
           >
             {({ isSubmitting }) => (
               <Form>
@@ -154,7 +204,7 @@ export const UserProfile = () => {
                     <div className="w-[48.5%]  md:mb-0">
                       <Field
                         component={FormikField}
-                        name="op"
+                        name="oldPassword"
                         label="Old password"
                         placeholder="Old password"
                         type="password"
@@ -165,7 +215,7 @@ export const UserProfile = () => {
                     <div className="w-1/2 md:mb-0">
                       <Field
                         component={FormikField}
-                        name="nPassword"
+                        name="newPassword"
                         label="New password"
                         placeholder="New password"
                         type="password"
@@ -174,7 +224,7 @@ export const UserProfile = () => {
                     <div className="w-1/2">
                       <Field
                         component={FormikField}
-                        name="rnPassword"
+                        name="repeatNewPassword"
                         label="Repeat new password"
                         placeholder="Repeat new password"
                         type="password"

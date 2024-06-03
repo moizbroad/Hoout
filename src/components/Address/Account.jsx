@@ -40,7 +40,7 @@ const Account = ({ userData }) => {
       const res = await getProfile(userData?.user_id);
       setState((prev) => ({
         ...prev,
-        userData: res.data,
+        userData: res?.data,
       }));
       console.log(res, "fetchUser");
     } catch (error) {

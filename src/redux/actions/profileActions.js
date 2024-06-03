@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { axiosWithCredentials } from "../../providers";
+import { axiosApi, axiosWithCredentials } from "../../providers";
 
 export const updatePass = async (values, { setSubmitting }) => {
   const userData = JSON.parse(localStorage.getItem("userData"));
@@ -45,6 +45,7 @@ export const getProfile = async (id) => {
     toast.error("Something went wrong!");
   }
 };
+
 export const updateProfile = async (values, { setSubmitting }) => {
   const userData = JSON.parse(localStorage.getItem("userData"));
   try {
@@ -90,6 +91,45 @@ export const updateDelivery = async (values, { setSubmitting }) => {
     );
     toast.success("Successfuly Updated");
     console.log("Response:", response.data);
+
+    setSubmitting(false);
+  } catch (error) {
+    console.error("Error:", error);
+    toast.error("Something went wrong!");
+  }
+};
+
+export const resetPasswordLink = async (values, { setSubmitting }) => {
+  try {
+    const { email } = values;
+    const payload = {
+      email,
+    };
+    const response = await axiosApi.post("/accounts/forget_password/", payload);
+    setSubmitting(false);
+    toast.success("Reset link sent to your email");
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    toast.error("Error sending password reset link");
+  }
+};
+
+export const resetPassword = async (values, { setSubmitting }) => {
+  try {
+    const { email, password } = values;
+
+    const payload = {
+      email,
+      password,
+      p,
+    };
+
+    const response = await axiosWithCredentials.post(
+      "/reset-password/",
+      payload
+    );
+    toast.success("Reset Link sent to youtr email");
 
     setSubmitting(false);
   } catch (error) {

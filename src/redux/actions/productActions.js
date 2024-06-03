@@ -16,3 +16,17 @@ export const deleteProduct = async (values, { setSubmitting }) => {
     console.log(error, "nbbb");
   }
 };
+export const deleteWishList = async (values) => {
+  try {
+    const { id } = values;
+
+    const response = await axiosWithCredentials.delete(
+      `/delete-wishlist/${id}/`
+    );
+    console.log(response.data, "ressppp");
+    toast.success("Successfuly Deleted");
+    return response;
+  } catch (error) {
+    console.log(error, "nbbb");
+  }
+};

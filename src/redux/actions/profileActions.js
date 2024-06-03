@@ -164,37 +164,26 @@ export const updateInvoiceDelivery = async (values, { setSubmitting }) => {
   }
 };
 
-export const uploadProfilePic = async (selectedImage) => {
-  // Pass selectedImage as a parameter
+export const uploadProfilePic = async (formData) => {
   try {
-    if (!selectedImage) {
+    if (!formData) {
       toast.error("No image selected.");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-
-    // Make a POST request to your server to upload the image using Axios
-    const response = await axiosWithCredentials.post(
-      "/upload-profile-image",
+    const response = await axiosWithCredentials.patch(
+      "/accounts/update_profile_picture/",
       formData,
       {
         headers: {
-          "Content-Type": "multipart/form-data", // Set content type to multipart/form-data
+          "Content-Type": "multipart/form-data",
         },
       }
     );
-
-    if (response.status === 200) {
-      // Check response status instead of response.ok
-      toast.success("Image uploaded successfully.");
-      // Optionally, you can update the UI or show a success message
-    } else {
-      toast.error("Failed to upload image:", response.statusText);
-      // Optionally, you can handle error cases or show an error message
-    }
+    toast.success("Successfully updated profile picture");
+    return response;
   } catch (error) {
-    toast.error("Error uploading image:", error);
+    console.error("Error uploading image:", error);
+    toast.error("Error uploading image");
   }
 };

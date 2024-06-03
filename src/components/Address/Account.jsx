@@ -12,7 +12,7 @@ import {
 } from "../../redux/actions/profileActions";
 import { passwordValidationSchema } from "../../utils/validations";
 
-const Account = ({ userData }) => {
+const Account = ({ userData, setSelectedPic }) => {
   const [state, setState] = useState({
     userData: null,
   });
@@ -35,6 +35,10 @@ const Account = ({ userData }) => {
       .required("Phone number is required"),
   });
 
+  useEffect(() => {
+    if (setSelectedPic) setSelectedPic(state?.userData?.profile_pic);
+  }, [state.userData]);
+
   const fetchUser = async () => {
     try {
       const res = await getProfile(userData?.user_id);
@@ -42,6 +46,7 @@ const Account = ({ userData }) => {
         ...prev,
         userData: res?.data,
       }));
+
       console.log(res, "fetchUser");
     } catch (error) {
       console.error("Error fetching user data:", error);

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import profileImg from "../assets/myAccount/profile.png";
+import React, { useEffect, useState } from "react";
+import dummyPic from "../assets/myAccount/profile.png";
 import profilebtn from "../assets/myAccount/profileBtn.svg";
 import Account from "../components/Address/Account";
 import AddressCard from "../components/Address/AddressCard";
@@ -7,6 +7,7 @@ import OrderHistory from "../components/Address/OrderHistory";
 import Wishlist from "../components/Address/Wishlist";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAccessToken } from "../providers";
+import { uploadProfilePic } from "../redux/actions/profileActions";
 
 export const MyAccount = () => {
   const location = useLocation();
@@ -14,9 +15,13 @@ export const MyAccount = () => {
   const { state } = location;
 
   const userData = JSON.parse(localStorage.getItem("userData"));
-
+  const [selectedPic, setSelectedPic] = useState(null);
   const [selectedComponent, setSelectedComponent] = useState(
-    state?.key === "wish" ? <Wishlist /> : <Account userData={userData} />
+    state?.key === "wish" ? (
+      <Wishlist />
+    ) : (
+      <Account userData={userData} setSelectedPic={setSelectedPic} />
+    )
   );
 
   const data = [
@@ -33,6 +38,29 @@ export const MyAccount = () => {
     navigate("/sign-in");
   };
 
+  console.log("selectedPic", selectedPic);
+  const getImageSrc = () => {
+    if (selectedPic instanceof File) {
+      return URL.createObjectURL(selectedPic);
+    } else if (typeof selectedPic === "string") {
+      return selectedPic;
+    } else {
+      return dummyPic;
+    }
+  };
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedPic(file);
+      const formData = new FormData();
+      formData.append("profile_pic", file);
+      await uploadProfilePic(formData);
+    } else {
+      toast.error("No file selected");
+    }
+  };
+
   return (
     <>
       <section className="px-40 xs:px-8 sm:px-10 md:px-10 lg:px-12 my-20 xs:my-8 sm:my-10 md:my-13 lg:my-14">
@@ -42,8 +70,18 @@ export const MyAccount = () => {
         <div className="flex xs:flex-col xs:items-center sm:flex-col sm:items-center mb-32 justify-center">
           <div className="px-[16px] py-[40px] bg-[#F3F5F7] w-[262px] xs:w-[100%] sm:w-[100%] flex justify-center items-center flex-col rounded-[8px] mr-[79px] xs:mr-0 sm:mr-0 md:mr-7 h-[fit-content]">
             <div className="w-[80px] h-[80px] rounded-[50%] relative">
-              <img src={profileImg} className="w-[100%]" alt="Profile" />
-              <button className="w-[30px] h-[30px] absolute bottom-0 right-0">
+              <img src={getImageSrc()} className="w-[100%]" alt="Profile" />
+              <input
+                type="file"
+                id="profileImageInput"
+                className="hidden"
+                accept="image/*"
+                onChange={handleFileChange} // You will need to implement this function
+              />
+              <label
+                htmlFor="profileImageInput"
+                className="w-[30px] h-[30px] absolute bottom-0 right-0 cursor-pointer"
+              >
                 <span>
                   <img
                     src={profilebtn}
@@ -51,8 +89,9 @@ export const MyAccount = () => {
                     alt="Edit Profile"
                   />
                 </span>
-              </button>
+              </label>
             </div>
+
             <h1 className="text-[16px] text-[#000000] text-center mt-[8px] mb-[48px] font-semibold">
               Sofia Havertz
             </h1>

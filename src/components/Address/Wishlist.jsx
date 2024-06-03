@@ -5,12 +5,18 @@ import profilebtn from "../../assets/myAccount/profileBtn.svg";
 import productImg from "../../assets/myAccount/image 1.svg";
 import productImg2 from "../../assets/myAccount/image 2.svg";
 import productImg3 from "../../assets/myAccount/image 3.svg";
-import { getWishList } from "../../redux/actions/orderActions";
+import { addToCart, getWishList } from "../../redux/actions/orderActions";
+import DeleteModal from "../Modals/DeleteModal";
+import { deleteWishList } from "../../redux/actions/productActions";
 
 const Wishlist = () => {
   const [state, setState] = useState({
     wishlistData: null,
   });
+
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const fetchWishlist = async () => {
     try {
@@ -25,14 +31,40 @@ const Wishlist = () => {
     }
   };
 
-  console.log(state, "state");
-
   useEffect(() => {
     fetchWishlist();
-  }, []);
+  }, [isDeleted]);
+
+  const handleDelete = async () => {
+    try {
+      if (selectedItem) {
+        const res = await deleteWishList({ id: selectedItem });
+        console.log(res, "fetchUser");
+        setIsDeleted(!isDeleted);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  const handleAddToCart = async (id) => {
+    try {
+      if (id) {
+        const res = await addToCart({ id });
+        console.log(res, "fetchUser");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
   return (
     <section className="">
+      <DeleteModal
+        isOpen={showModal}
+        closeModal={() => setShowModal(!showModal)}
+        handleDelete={handleDelete}
+      />
       {/* <h1 className="text-[48px] xs:text-[20px] sm:text-[25px] md:text-[30px] lg:text-[35px] text-center text-[#000000] mb-[80px] xs:mb-[25px] sm:mb-[30px] md:mb-[50px] lg:mb-[70px]">
         My Account
       </h1> */}
@@ -57,29 +89,35 @@ const Wishlist = () => {
                 </tr>
               </thead>
               <tbody>
-                {state?.wishlistData?.length > 0 ? (
-                  state.wishlistData.map((item, index) => (
+                {state?.wishlistData?.[0]?.product?.length > 0 ? (
+                  state.wishlistData?.[0]?.product?.map((item, index) => (
                     <tr
                       key={index}
                       className="border-solid border-b-[1px] border-[#E8ECEF] flex w-[100%] justify-between py-[22px] items-center"
                     >
                       <td className="text-[14px] text-[#141718] w-[40%] text-left">
                         <div className="flex items-center ">
-                          <button className="mr-[29px] md:mr-[15px] sm:mr-[10px]">
+                          <button
+                            className="mr-[29px] md:mr-[15px] sm:mr-[10px]"
+                            onClick={() => {
+                              setShowModal(true);
+                              setSelectedItem(item?.id);
+                            }}
+                          >
                             <span>
                               <img src={crossImg} alt="Cross" />
                             </span>
                           </button>
                           <div className="w-[60px] h-[72px] mr-[16px] md:w-[50px] md:h-[60px] md:mr-[12px] sm:w-[40px] sm:h-[50px] sm:mr-[10px]">
                             <img
-                              src={item.productImg}
-                              className="w-[100%]"
+                              src={item.images_url?.[0]}
+                              className="w-[100%] rounded-2xl h-20"
                               alt="Product"
                             />
                           </div>
-                          <div className="flex flex-col items-center content-center gap-[8px]">
-                            <h1 className="text-[14px]">{item.productName}</h1>
-                            <p className="text-[#6C7275] text-[12px]">
+                          <div className="flex flex-col  gap-[8px]">
+                            <h1 className="text-[14px]">{item.name}</h1>
+                            <p className="text-[#6C7275] text-left  text-[12px]">
                               Color: {item.productColor}
                             </p>
                           </div>
@@ -87,7 +125,12 @@ const Wishlist = () => {
                       </td>
                       <td className="w-[20%] text-left">${item.price}</td>
                       <td className="w-[40%] flex justify-center items-center">
-                        <button className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]">
+                        <button
+                          className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]"
+                          onClick={() => {
+                            handleAddToCart(item?.id);
+                          }}
+                        >
                           <span className="text-[#fff]">Add to cart</span>
                         </button>
                       </td>

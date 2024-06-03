@@ -1,49 +1,78 @@
 import React, { useEffect, useState } from "react";
 import productHeart from "../../assets/LandingPageImages/products/productHeart.svg";
-import addToCart from "../../assets/LandingPageImages/products/addToCart.svg";
+import addToCartt from "../../assets/LandingPageImages/products/addToCart.svg";
 import Button from "../Common/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { axiosApi } from "../../providers";
+import { addToCart } from "../../redux/actions/orderActions";
 
-const ProductsSection = ({ isthree, notRequired, isbuttonReqird, passTypes, selectedFilter }) => {
+const ProductsSection = ({
+  isthree,
+  notRequired,
+  isbuttonReqird,
+  passTypes,
+  selectedFilter,
+}) => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const [state, setState] = useState({
     products: [],
-    types: []
-  })
+    types: [],
+  });
 
   useEffect(() => {
-    handleGetProducts()
-  },[selectedFilter])
+    handleGetProducts();
+  }, [selectedFilter]);
 
   const handleGetProducts = async () => {
     try {
       const response = await axiosApi.get("/product/");
-      if(selectedFilter === "" && location.pathname !== '/'){
+      if (selectedFilter === "" && location.pathname !== "/") {
         setState((prev) => ({
           ...prev,
           products: response.data,
-          types: passTypes(response.data.map(product => ({ filter: product.hout_type, checked: false })))
-        }))
-      } else if(selectedFilter !== "" && location.pathname !== "/"){
-        let filteredProducts = response.data.filter(item => item.hout_type === 'abvc')
+          types: passTypes(
+            response.data.map((product) => ({
+              filter: product.hout_type,
+              checked: false,
+            }))
+          ),
+        }));
+      } else if (selectedFilter !== "" && location.pathname !== "/") {
+        let filteredProducts = response.data.filter(
+          (item) => item.hout_type === "abvc"
+        );
         setState((prev) => ({
           ...prev,
           products: filteredProducts,
-          types: passTypes(response.data.map(product => ({ filter: product.hout_type, checked: false })))
-        }))
-      } else{
+          types: passTypes(
+            response.data.map((product) => ({
+              filter: product.hout_type,
+              checked: false,
+            }))
+          ),
+        }));
+      } else {
         setState((prev) => ({
           ...prev,
           products: response.data,
-        }))
+        }));
       }
     } catch (error) {
-      console.log(error, "error")
+      console.log(error, "error");
     }
-  }
+  };
+
+  const handleAddToCart = async (id) => {
+    try {
+      if (id) {
+        const res = await addToCart({ id });
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
   return (
     <>
@@ -98,11 +127,12 @@ const ProductsSection = ({ isthree, notRequired, isbuttonReqird, passTypes, sele
                     <div
                       className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  add-cart-btn md:text-[12px] lg:text-[12px]"
                       onClick={() => {
-                        navigate("/cart");
+                        handleAddToCart(item?.id);
+                        // navigate("/cart");
                       }}
                     >
                       {/* <img src={item.addToCart} className="bg-red" /> */}
-                      <img src={addToCart} />
+                      <img src={addToCartt} />
                       Add to Cart{" "}
                     </div>
                     <div>

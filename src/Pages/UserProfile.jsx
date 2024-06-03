@@ -18,6 +18,7 @@ import {
   updateInvoiceDelivery,
   updatePass,
   updateProfile,
+  uploadProfilePic,
 } from "../redux/actions/profileActions";
 
 export const UserProfile = () => {
@@ -26,16 +27,7 @@ export const UserProfile = () => {
   const [state, setState] = useState({
     userData: null,
   });
-
-  const handleFileInputChange = (e) => {
-    setSelectedImage(e.target.files[0]);
-    // Generate image preview
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImagePreview(reader.result);
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  };
+  const [selectedPic, setSelectedPic] = useState(null);
 
   const fetchUser = async () => {
     try {
@@ -50,6 +42,31 @@ export const UserProfile = () => {
     }
   };
 
+  const getImageSrc = () => {
+    if (selectedPic instanceof File) {
+      return URL.createObjectURL(selectedPic);
+    } else if (typeof selectedPic === "string") {
+      return selectedPic;
+    } else {
+      return Camera;
+    }
+  };
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedPic(file);
+      const formData = new FormData();
+      formData.append("profile_pic", file);
+      await uploadProfilePic(formData);
+    } else {
+      toast.error("No file selected");
+    }
+  };
+  useEffect(() => {
+    if (setSelectedPic) setSelectedPic(state?.userData?.profile_pic);
+  }, [state.userData]);
+
   useEffect(() => {
     fetchUser();
   }, []);
@@ -60,19 +77,11 @@ export const UserProfile = () => {
         <div className="flex justify-center mb-[23px]">
           <div className="uploadImgWrap">
             <div className="imgGrayBox">
-              {imagePreview ? (
-                <img
-                  src={imagePreview}
-                  alt="Preview"
-                  className="w-full previewImage  rounded-full"
-                  style={{ aspectRatio: "1/1" }}
-                />
-              ) : (
-                <img src={Camera} alt="Profile" />
-              )}
-              <input type="file" onChange={handleFileInputChange}></input>
+              <img src={getImageSrc()} alt="Profile" />
+
+              <input type="file" onChange={handleFileChange}></input>
             </div>
-            <h6 className="text-14 text-yellow" onClick={handleFileInputChange}>
+            <h6 className="text-14 text-yellow" onClick={handleFileChange}>
               Upload Photo
             </h6>
           </div>

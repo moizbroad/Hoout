@@ -26,10 +26,9 @@ export const ForgetPassword = () => {
   const loginUser = async (values, { setSubmitting }) => {
     try {
       await resetPasswordLink(values, { setSubmitting });
+      navigate("/sign-in");
       resetForm(false);
       setSubmitting(false);
-
-      navigate("/reset-password");
     } catch (error) {
       setSubmitting(false);
     }

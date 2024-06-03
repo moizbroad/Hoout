@@ -108,7 +108,7 @@ export const resetPasswordLink = async (values, { setSubmitting }) => {
     const response = await axiosApi.post("/accounts/forget_password/", payload);
     setSubmitting(false);
     toast.success("Reset link sent to your email");
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error:", error);
     toast.error("Error sending password reset link");
@@ -117,24 +117,25 @@ export const resetPasswordLink = async (values, { setSubmitting }) => {
 
 export const resetPassword = async (values, { setSubmitting }) => {
   try {
-    const { email, password } = values;
+    const { password, uid } = values;
 
     const payload = {
-      email,
       password,
-      p,
+      password1: password,
     };
 
     const response = await axiosWithCredentials.post(
-      "/reset-password/",
+      `accounts/forget_password/confirm/${uid}/`,
       payload
     );
-    toast.success("Reset Link sent to youtr email");
-
+    toast.success("Your password has been reset successfully");
     setSubmitting(false);
+    return response;
   } catch (error) {
     console.error("Error:", error);
     toast.error("Something went wrong!");
+    setSubmitting(false);
+    throw error;
   }
 };
 

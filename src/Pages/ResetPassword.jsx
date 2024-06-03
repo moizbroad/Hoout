@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -10,9 +10,14 @@ import thumbsUp from "../assets/authImages/thumbsUp.svg";
 import signinBlur from "../assets/authImages/signinBlur.png";
 import InputField from "../components/Common/InputField";
 import FormikField from "../components/Common/FormikField";
+import { resetPassword } from "../redux/actions/profileActions";
 
 export const ResetPassword = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const uid = searchParams.get("uid");
 
   const validationSchema = Yup.object().shape({
     new_password: Yup.string()
@@ -26,19 +31,23 @@ export const ResetPassword = () => {
       .required("Confirm Password is required"),
   });
 
-  const handleSubmit = async (values) => {
-    setBtnLoading(true);
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    const data = {
+      password: values.new_password,
+      uid: uid,
+    };
+
     try {
-      // Make API call to reset password here
-      toast.success("Password reset successfully");
+      await resetPassword(data, { setSubmitting });
+      resetForm(false);
+      setSubmitting(false);
       navigate("/sign-in");
     } catch (error) {
-      toast.error("Failed to reset password");
-    } finally {
-      setBtnLoading(false);
+      setSubmitting(false);
     }
   };
 
+  console.log(uid, "nnnn");
   return (
     <div>
       <div className="signUpMain flex flex-row-reverse md:flex-col sm:flex-col xs:flex-col min-h-screen">

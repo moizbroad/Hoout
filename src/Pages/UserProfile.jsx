@@ -13,8 +13,11 @@ import {
   validationProfile,
 } from "../utils/validations";
 import {
+  getDeliveryAddress,
+  getInvoiceAddress,
   getProfile,
-  updateDelivery,
+  updateDeliveryAddress,
+  updateInvoiceAddress,
   updateInvoiceDelivery,
   updatePass,
   updateProfile,
@@ -22,10 +25,10 @@ import {
 } from "../redux/actions/profileActions";
 
 export const UserProfile = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
   const [state, setState] = useState({
     userData: null,
+    deliveryAddress: null,
+    invoiceAddress: null,
   });
   const [selectedPic, setSelectedPic] = useState(null);
 
@@ -35,6 +38,32 @@ export const UserProfile = () => {
       setState((prev) => ({
         ...prev,
         userData: res?.data,
+      }));
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  const fetchDeliveryAddress = async () => {
+    try {
+      const res = await getDeliveryAddress();
+      setState((prev) => ({
+        ...prev,
+        deliveryAddress: res?.data,
+      }));
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  const fetchInvoiceAddress = async () => {
+    try {
+      const res = await getInvoiceAddress();
+      setState((prev) => ({
+        ...prev,
+        invoiceAddress: res?.data,
       }));
       console.log(res, "fetchUser");
     } catch (error) {
@@ -63,12 +92,15 @@ export const UserProfile = () => {
       toast.error("No file selected");
     }
   };
+
   useEffect(() => {
     if (setSelectedPic) setSelectedPic(state?.userData?.profile_pic);
   }, [state.userData]);
 
   useEffect(() => {
     fetchUser();
+    fetchDeliveryAddress();
+    fetchInvoiceAddress();
   }, []);
 
   return (
@@ -266,7 +298,23 @@ export const UserProfile = () => {
               country: "",
             }}
             validationSchema={validationDelivery}
-            onSubmit={updateDelivery}
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
+              const updatedVal = {
+                stNumber: values?.stNumber,
+                zCode: values?.zCode,
+                city: values?.city,
+                country: values?.country,
+              };
+
+              try {
+                await updateDeliveryAddress(updatedVal, { setSubmitting });
+                fetchUser();
+                resetForm();
+              } catch (error) {
+                console.error("Error updating user data:", error);
+                setSubmitting(false);
+              }
+            }}
           >
             {({ isSubmitting }) => (
               <Form>
@@ -298,8 +346,8 @@ export const UserProfile = () => {
                         component={FormikField}
                         name="city"
                         label="City"
-                        id="zCode"
-                        type="number"
+                        id="city"
+                        type="text"
                         placeholder="Add City"
                       />
                     </div>
@@ -340,7 +388,23 @@ export const UserProfile = () => {
               country: "",
             }}
             validationSchema={validationInvoice}
-            onSubmit={updateInvoiceDelivery}
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
+              const updatedVal = {
+                stNumber: values?.stNumber,
+                zCode: values?.zCode,
+                city: values?.city,
+                country: values?.country,
+              };
+
+              try {
+                await updateInvoiceAddress(updatedVal, { setSubmitting });
+                fetchUser();
+                resetForm();
+              } catch (error) {
+                console.error("Error updating user data:", error);
+                setSubmitting(false);
+              }
+            }}
           >
             {({ isSubmitting }) => (
               <Form>

@@ -17,39 +17,61 @@ const FooterSection = ({ isShow }) => {
 
   const [state, setState] = useState({
     openHours: [],
-    email: ""
-  })
+    email: "",
+  });
 
   useEffect(() => {
-    handleGetOpeningHours()
-  }, [])
+    handleGetOpeningHours();
+  }, []);
 
   const handleGetOpeningHours = async () => {
     try {
       const response = await axiosApi.get("/opening-hours/");
       setState((prev) => ({
         ...prev,
-        openHours: response.data
-      }))
+        openHours: response.data,
+      }));
     } catch (error) {
       toast.error("Wrong credentials!");
     }
-  }
+  };
 
   const handleNewsLetter = async () => {
     try {
-      const response = await axiosApi.post("/newsletter/", {email: state.email});
-      if(response.status === 201){
-        setState(prevState => ({
+      const response = await axiosApi.post("/hubspot_subscribe/", {
+        email: state.email,
+      });
+      if (response.status === 201 || response.status === 200) {
+        setState((prevState) => ({
           ...prevState,
-          email: ""
+          email: "",
         }));
-        toast.success("Newsletter submit successfuly")
+        toast.success("Newsletter submit successfuly");
       }
     } catch (error) {
-      toast.error("Something went wrong");
+      // Log the error object for debugging
+      console.log(error, "error");
+
+      // Check if error.response exists
+      if (error?.response?.data) {
+        console.log(error.response, "76767667");
+        console.log(error.response.status);
+        console.log(error.response.headers);
+
+        toast.error(error?.response?.data?.error || "Something went wrong");
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser
+        // and an instance of http.ClientRequest in Node.js
+        console.log(error.request);
+        toast.error("No response from server. Please try again later.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+        toast.error(error.message);
+      }
     }
-  }
+  };
 
   return (
     <>
@@ -67,14 +89,17 @@ const FooterSection = ({ isShow }) => {
                   onChange={(e) => {
                     setState((prev) => ({
                       ...prev,
-                      email: e.target.value
-                    }))
+                      email: e.target.value,
+                    }));
                   }}
                   value={state.email}
                   placeholder="Enter Email Address"
                   className="bg-[#F5F4F8] flex-grow input-field"
                 />
-                <button className="subscribe-btn vietnam  w-[150px] md:w-[200px] lg:w-[253px] xl:w-[253px]" onClick={handleNewsLetter}>
+                <button
+                  className="subscribe-btn vietnam  w-[150px] md:w-[200px] lg:w-[253px] xl:w-[253px]"
+                  onClick={handleNewsLetter}
+                >
                   Subscribe
                 </button>
               </div>

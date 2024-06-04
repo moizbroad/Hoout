@@ -12,12 +12,15 @@ import { useNavigate } from "react-router-dom";
 import { axiosWithCredentials } from "../providers";
 import { getProducts } from "../redux/actions/orderActions";
 import DeleteModal from "../components/Modals/DeleteModal";
+import { deleteProduct } from "../redux/actions/productActions";
 
 export const Products = () => {
   const [state, setState] = useState({
     productsData: [],
   });
   const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isDeleted, setIsDeleted] = useState(false);
   const navigate = useNavigate();
   const productData = [
     {
@@ -148,16 +151,33 @@ export const Products = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      if (selectedItem) {
+        const res = await deleteProduct({ id: selectedItem });
+        console.log(res, "fetchUser");
+        setIsDeleted(!isDeleted);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:");
+    }
+  };
+
   console.log(state?.productsData, "state");
 
   useEffect(() => {
     fetchProducts();
-  }, []);
-  console.log(state, "state");
+  }, [isDeleted]);
+
+  console.log(open, "state");
 
   return (
     <>
-      <DeleteModal isOpen={open} closeModal={(prev) => !prev} />
+      <DeleteModal
+        isOpen={open}
+        closeModal={() => setOpen(!open)}
+        handleDelete={handleDelete}
+      />
       <div>
         <div className="xl:py-[24px] lg:py-[20px] py-[16px] xl:px-[20px] lg:px-[16px] px-[10px] bg-[#fafafa] h-full min-h-[86vh]">
           <div className="flex justify-between">
@@ -384,7 +404,7 @@ export const Products = () => {
                           <div
                             className="cursor-pointer"
                             onClick={() => {
-                              setSelectedItem(item?.id);
+                              setSelectedItem(rowData?.id);
                               setOpen(true);
                             }}
                           >

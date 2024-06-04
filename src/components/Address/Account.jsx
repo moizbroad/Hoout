@@ -12,7 +12,7 @@ import {
 } from "../../redux/actions/profileActions";
 import { passwordValidationSchema } from "../../utils/validations";
 
-const Account = ({ userData, setSelectedPic }) => {
+const Account = ({ userData, setSelectedPic, setUserName }) => {
   const [state, setState] = useState({
     userData: null,
   });
@@ -37,6 +37,10 @@ const Account = ({ userData, setSelectedPic }) => {
 
   useEffect(() => {
     if (setSelectedPic) setSelectedPic(state?.userData?.profile_pic);
+    if (setUserName)
+      setUserName(
+        state?.userData?.first_name + " " + state?.userData?.last_name
+      );
   }, [state.userData]);
 
   const fetchUser = async () => {

@@ -16,11 +16,16 @@ export const MyAccount = () => {
 
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedPic, setSelectedPic] = useState(null);
+  const [userrName, setUserName] = useState("");
   const [selectedComponent, setSelectedComponent] = useState(
     state?.key === "wish" ? (
       <Wishlist />
     ) : (
-      <Account userData={userData} setSelectedPic={setSelectedPic} />
+      <Account
+        userData={userData}
+        setSelectedPic={setSelectedPic}
+        setUserName={setUserName}
+      />
     )
   );
 
@@ -70,7 +75,11 @@ export const MyAccount = () => {
         <div className="flex xs:flex-col xs:items-center sm:flex-col sm:items-center mb-32 justify-center">
           <div className="px-[16px] py-[40px] bg-[#F3F5F7] w-[262px] xs:w-[100%] sm:w-[100%] flex justify-center items-center flex-col rounded-[8px] mr-[79px] xs:mr-0 sm:mr-0 md:mr-7 h-[fit-content]">
             <div className="w-[80px] h-[80px] rounded-[50%] relative">
-              <img src={getImageSrc()} className="w-[100%]" alt="Profile" />
+              <img
+                src={getImageSrc()}
+                className="w-[100%] rounded-full"
+                alt="Profile"
+              />
               <input
                 type="file"
                 id="profileImageInput"
@@ -85,7 +94,7 @@ export const MyAccount = () => {
                 <span>
                   <img
                     src={profilebtn}
-                    className="w-[100%]"
+                    className="w-[100%] rounded-full"
                     alt="Edit Profile"
                   />
                 </span>
@@ -93,7 +102,7 @@ export const MyAccount = () => {
             </div>
 
             <h1 className="text-[16px] text-[#000000] text-center mt-[8px] mb-[48px] font-semibold">
-              Sofia Havertz
+              {userrName}
             </h1>
 
             {data.map((item) => {

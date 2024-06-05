@@ -52,6 +52,7 @@ function Routes() {
           {/* <Route path="/wishlist" element={<Wishlist />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/myaccount" element={<MyAccount />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Route>
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />

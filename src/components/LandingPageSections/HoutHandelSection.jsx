@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Common/Button";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../utils/helper";
 
 const HoutHandelSection = () => {
   const navigate = useNavigate("/shop-page");
@@ -20,7 +21,14 @@ const HoutHandelSection = () => {
             paddingY="25px"
             paddingX="72px"
             fontbold
-            onClick={() => navigate("/shop-page")}
+            onClick={() => {
+              navigate("/");
+              setTimeout(() => {
+                document.getElementById("assortments-section")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }, 100);
+            }}
           />
         </div>
       </section>

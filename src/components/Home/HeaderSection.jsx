@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cart from "../../assets/HeaderAndFooter/cart.svg";
 import heart from "../../assets/HeaderAndFooter/heart.svg";
 import persons from "../../assets/HeaderAndFooter/persons.svg";
@@ -16,10 +16,34 @@ const HeaderSection = () => {
     setIsActive(!isActive);
   };
 
+  const handleScroll = () => {
+    // Check if the page is scrolled down
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  // Add scroll event listener on component mount
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    // Remove scroll event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   let role = "user";
 
   return (
-    <section className="px-[10px] sm:px-[20px] md:px-[30px] lg:px-[30px] xl:px-[100px] flex-between py-[27px] bg-[#E9E6D6] ">
+    <section
+      className={`px-6 fixed w-full z-50 lg:px-[55px] py-4 md:py-2 justify-between flex items-center  ${
+        isScrolled
+          ? " bg-[#b0ada8ab] scrollNav h-[90px] lg:h-[90px] md:h-[70px]"
+          : "bg-[#E9E6D6] h-[90px] lg:h-[90px] md:h-[70px]  "
+      }`}
+    >
       <div className="menu-cons xl:hidden lg:hidden" onClick={toggleMenu}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,9 +65,15 @@ const HeaderSection = () => {
           isActive ? "active" : null
         }    flex-wrap flex flex-col lg:flex-row xl:flex-row gap-[20px] xl:gap-[20px]  items-start lg:items-center xl:items-center px-6 lg:px-0 xl:px-0`}
       >
-        {/* <span className=" cursor-pointer ml-4" onClick={() => navigate("/")}>
-          Home
-        </span> */}
+        {role === "admin" && (
+          <span
+            className="cursor-pointer ml-4"
+            onClick={() => navigate("/dashboard")}
+          >
+            Dashboard
+          </span>
+        )}
+
         <span
           className=" cursor-pointer ml-4"
           onClick={() => {
@@ -101,14 +131,6 @@ const HeaderSection = () => {
             </span>
           </>
         )} */}
-        {role === "admin" && (
-          <span
-            className="cursor-pointer ml-4"
-            onClick={() => navigate("/dashboard")}
-          >
-            Dashboard
-          </span>
-        )}
 
         {/* <div>Values</div> */}
         {/* <div>Product Range</div> */}
@@ -141,7 +163,7 @@ const HeaderSection = () => {
 
       <section className="flex  gap-x-[24px] items-center xl:gap-x-[40px] ">
         <div
-          className="cursor-pointer  text-20"
+          className="cursor-pointer"
           onClick={() => {
             navigate("/shop-page");
           }}
@@ -153,7 +175,7 @@ const HeaderSection = () => {
           {" "}
           <img
             src={persons}
-            className="cursor-pointer"
+            className="cursor-pointer h-[18px]"
             onClick={() => {
               if (token) {
                 navigate("/myaccount");
@@ -165,19 +187,20 @@ const HeaderSection = () => {
         </div>{" "}
         <div>
           {" "}
-          <img src={search} className="cursor-pointer " />{" "}
+          <img src={search} className="cursor-pointer h-[20px] " />{" "}
         </div>{" "}
         <div>
           {" "}
           <img
             src={heart}
-            className="cursor-pointer "
-            onClick={() => navigate("/myaccount", { state: { key: "wish" } })}
+            className="cursor-pointer h-[20px]"
+            // onClick={() => navigate("/myaccount", { state: { key: "wish" } })}
+            onClick={() => navigate("/wishlist")}
           />{" "}
         </div>
         <div onClick={() => navigate("/cart")}>
           {" "}
-          <img src={cart} className="cursor-pointer " />{" "}
+          <img src={cart} className="cursor-pointer h-[20px] " />{" "}
         </div>
       </section>
     </section>

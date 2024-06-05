@@ -5,8 +5,12 @@ import AdminSideNav from "../AdminLayout/AdminSideNav";
 import AdminMainNav from "../AdminLayout/AdminMainNav";
 import { Outlet, useLocation } from "react-router-dom";
 const Layout = () => {
-
-  const authPaths = ["/sign-in", "/sign-up", "/forget-password", "/reset-password"];
+  const authPaths = [
+    "/sign-in",
+    "/sign-up",
+    "/forget-password",
+    "/reset-password",
+  ];
   const adminPaths = [
     "/dashboard/",
     "/inbox/",
@@ -19,15 +23,17 @@ const Layout = () => {
 
   const currentPath = useLocation().pathname;
   const hasSidnav = adminPaths.map((item, index) => {
-
-    let splittedRoute = item.split('/')[1]
-    if(currentPath === splittedRoute || currentPath.includes(splittedRoute)){
-      return true
-    } else{
-      return false
+    let splittedRoute = item.split("/")[1];
+    if (currentPath === splittedRoute || currentPath.includes(splittedRoute)) {
+      return true;
+    } else {
+      return false;
     }
-  })
+  });
   const hasHeaderFooter = authPaths.includes(currentPath);
+
+  const isAdmin = false;
+
   return (
     <>
       <div>
@@ -38,24 +44,29 @@ const Layout = () => {
                 <div className="min-h-screen">
                   <AdminSideNav />
                 </div>
-                <div className="flex-1 min-h-screen">
-                  {" "}
+                <div className="flex-1 min-h-screen ">
                   <AdminMainNav />
-                  <Outlet />
+                  <div className="!pt-18">
+                    <Outlet />
+                  </div>
                 </div>
               </div>
             </>
           ) : (
             <>
               {!hasHeaderFooter ? (
-                <>
+                <div className="">
                   <HeaderSection />
-                  <Outlet />
+                  <div className="!pt-18">
+                    <Outlet />
+                  </div>
                   <FooterSection />
-                </>
+                </div>
               ) : (
                 <>
-                  <Outlet />
+                  <div className="!pt-18">
+                    <Outlet />
+                  </div>
                 </>
               )}
             </>

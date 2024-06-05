@@ -6,25 +6,23 @@ import valueFour from "../../assets/LandingPageImages/ourValues/valueFour.svg";
 import { axiosApi } from "../../providers";
 
 const OurValuesSection = () => {
-
   const [state, setState] = useState({
-    values: []
-  })
+    values: [],
+  });
 
   useEffect(() => {
-    handleGetOurValues()
-  },[]) 
+    handleGetOurValues();
+  }, []);
 
   const handleGetOurValues = async () => {
     try {
       const response = await axiosApi.get("/our-value/");
-      setState((prev) =>({
+      setState((prev) => ({
         ...prev,
-        values: response.data
-      }))
-    } catch (error) {
-    }
-  }
+        values: response.data,
+      }));
+    } catch (error) {}
+  };
 
   const valueData = [
     {
@@ -54,14 +52,17 @@ const OurValuesSection = () => {
   ];
 
   return (
-    <section className="mt-[30px] md:mt-[70px] lg:mt-[92px] xl:mt-[92px]  bg-[#E9E6D6] pb-[114px]">
+    <section
+      className="mt-[30px] md:mt-[70px] lg:mt-[92px] xl:mt-[92px]  bg-[#E9E6D6] pb-[114px]"
+      id="our-values"
+    >
       <div className=" text-30 md:text-40 lg:text-52 xl:text-52 text-center font-bold  pt-[80px] md:pt-[100px] lg:pt-[150px] xl:pt-[150px]">
         {" "}
         Our Values{" "}
       </div>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2  gap-x-[150px] px-[50px] max-w-[1240px] mx-auto">
-        {state.values.map((item, index) => {
+        {valueData.map((item, index) => {
           return (
             <div key={index} className="">
               <section className=" pt-[30px] md:pt-[70px] lg:pt-[85px] xl:pt-[85px]">
@@ -71,10 +72,10 @@ const OurValuesSection = () => {
                 </div>
                 <div className="text-center  text-22  pt-[25px]">
                   {" "}
-                  {item.title}
+                  {item.head}
                 </div>
                 <div className="text-center  text-16  pt-[25px] text-[#838381]">
-                  {item.description}
+                  {item.subHead}
                 </div>
               </section>
             </div>

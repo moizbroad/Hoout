@@ -16,8 +16,10 @@ export const ContactusSection = () => {
   const handleSendQuery = async () => {
     try {
       const response = await axiosApi.post("/contact-form/", state);
-      if (response.status === 201) {
-        toast.success("Query sent successfuly");
+      if (response.status === 201 || response.status === 200) {
+        toast.success(
+          "Your message has been sent! We will get back to you as soon as possible "
+        );
         setState((prevState) => ({
           ...prevState,
           first_name: "",

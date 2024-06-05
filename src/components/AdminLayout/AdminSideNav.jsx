@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import houtLogo from "../../assets/authImages/houtLogo.svg";
+import houtLogo from "../../assets/new-logo.png";
 
 const AdminSidenav = () => {
-  
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const [navs, setNavs] = useState([
     { name: "Dashboard", link: "/dashboard/", active: true },
@@ -16,21 +15,21 @@ const AdminSidenav = () => {
   ]);
 
   useEffect(() => {
-    setNavs(prevNavs => (
-      prevNavs.map(subItem => ({
+    setNavs((prevNavs) =>
+      prevNavs.map((subItem) => ({
         ...subItem,
-        active: location.pathname.includes(subItem.link.split('/')[1])
+        active: location.pathname.includes(subItem.link.split("/")[1]),
       }))
-    ));
-  },[])
+    );
+  }, []);
 
   const handleClick = (item) => {
-    setNavs(prevNavs => (
-      prevNavs.map(subItem => ({
+    setNavs((prevNavs) =>
+      prevNavs.map((subItem) => ({
         ...subItem,
-        active: subItem.name === item.name
+        active: subItem.name === item.name,
       }))
-    ));
+    );
   };
 
   return (
@@ -40,8 +39,8 @@ const AdminSidenav = () => {
           <img
             src={houtLogo}
             alt=""
-            onClick={() => navigate('/')}
-            className="xl:w-[160px] xl:h-[46px] lg:w-[135px] lg:h-[40px] w-[120px] h-[36px] mx-auto object-cover	"
+            onClick={() => navigate("/")}
+            className="w-[160px] lg:w-[135px]  h-[70px] mx-auto object-cover	"
           />
         </a>
         <div className="flex flex-col items-start sideBarMain xl:px-[24px] lg:px-[20px] px-[16px]">
@@ -49,9 +48,11 @@ const AdminSidenav = () => {
             return (
               <a
                 key={item.link}
-                className={`h-[43px] text-14 font-medium cursor-pointer ${item.active ? 'sideActive' : ''}`}
+                className={`h-[43px] text-14 font-medium cursor-pointer ${
+                  item.active ? "sideActive" : ""
+                }`}
                 onClick={() => {
-                  handleClick(item)
+                  handleClick(item);
                   navigate(item.link);
                 }}
               >

@@ -5,6 +5,7 @@ import Button from "../Common/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { axiosApi } from "../../providers";
 import { addToCart } from "../../redux/actions/orderActions";
+import { scrollToTop } from "../../utils/helper";
 
 const ProductsSection = ({
   isthree,
@@ -153,6 +154,10 @@ const ProductsSection = ({
               paddingX="72px"
               fontbold
               paddingY="22px"
+              onClick={() => {
+                navigate("/shop-page");
+                scrollToTop();
+              }}
             />{" "}
           </div>
         )}

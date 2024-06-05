@@ -5,12 +5,13 @@ import location from "../../assets/HeaderAndFooter/locationFooter.svg";
 import cameraFooter from "../../assets/HeaderAndFooter/cameraFooter.svg";
 import emailFooter from "../../assets/HeaderAndFooter/emailFooter.svg";
 import phone from "../../assets/HeaderAndFooter/phoneFooter.svg";
-import footerLogo from "../../assets/HeaderAndFooter/footerLogo.svg";
+import footerLogo from "../../assets/new-logo.png";
 import whatsp from "../../assets/HeaderAndFooter/whatspFooter.svg";
 import facebook from "../../assets/HeaderAndFooter/facebookFooter.svg";
 import headerImage from "../../assets/HeaderAndFooter/headerImage.svg";
 import { axiosApi } from "../../providers";
 import { toast } from "react-toastify";
+import { scrollToTop } from "../../utils/helper";
 
 const FooterSection = ({ isShow }) => {
   const navigate = useNavigate();
@@ -73,6 +74,10 @@ const FooterSection = ({ isShow }) => {
     }
   };
 
+  const handleMailToClick = (e) => {
+    e.preventDefault();
+    window.location.href = "mailto:info@makeyourplank.nl";
+  };
   return (
     <>
       <footer className="bg-[#E9E6D6] relative">
@@ -112,7 +117,7 @@ const FooterSection = ({ isShow }) => {
 
         {/* footer top end */}
         <div className="xs:pt-[200px] sm:pt-[200] pt-[120px] pb-[37px] max-w-[1240px] mx-auto px-[30px]">
-          <img src={footerLogo} />
+          <img src={footerLogo} className="w-[160px] h-[60px]" />
         </div>
         <section className="footer-content">
           <div className="flex flex-wrap justify-center sm:justify-normal gap-y-12  text-[#000] mt-7 max-w-[1240px] px-[30px] mx-auto sm:mb-4 xs:mb-4">
@@ -121,30 +126,123 @@ const FooterSection = ({ isShow }) => {
                 Home
               </div>
               <div
-                className="mb-5 text-[14px] vietnam "
-                onClick={() => navigate("/")}
+                className="mb-5 text-[14px] vietnam cursor-pointer "
+                onClick={() => {
+                  scrollToTop();
+                  navigate("/");
+                }}
               >
                 Home
               </div>
               <div
-                className="mb-5 text-[14px] vietnam "
-                onClick={() => navigate("/about")}
+                className="mb-5 text-[14px] vietnam cursor-pointer "
+                onClick={() => {
+                  scrollToTop();
+                  navigate("/about");
+                }}
               >
                 About Us
               </div>
-              <div className="mb-5 text-[14px] vietnam ">Products</div>
-              <div className="mb-5 text-[14px] vietnam ">Our Values</div>
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    navigate("/");
+                    document
+                      .getElementById("products-section")
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                  }, 100);
+                }}
+              >
+                Products
+              </div>
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    navigate("/");
+                    document.getElementById("our-values")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }, 100);
+                }}
+              >
+                Our Values
+              </div>
               <div className="mb-5"></div>
-              <div className="mb-5 text-[14px] vietnam ">Our assortment</div>
-              <div className="mb-5 text-[14px] vietnam ">Why Hout Total</div>
-              <div className="mb-5 text-[14px] vietnam ">Contact Us</div>
-              <div className="mb-5 text-[14px] vietnam ">
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    navigate("/");
+                    document
+                      .getElementById("assortments-section")
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                  }, 100);
+                }}
+              >
+                Our assortment
+              </div>
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    navigate("/");
+                    document.getElementById("why-hout")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }, 100);
+                }}
+              >
+                Why Hout Total
+              </div>
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    navigate("/");
+                    document.getElementById("contact-us")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }, 100);
+                }}
+              >
+                Contact Us
+              </div>
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/terms-conditions");
+                  scrollToTop();
+                }}
+              >
                 <Link to="/terms-conditions">Terms & Conditions</Link>
               </div>
-              <div className="mb-5 text-[14px]">
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer"
+                onClick={() => {
+                  navigate("/privacy-policy");
+                  scrollToTop();
+                }}
+              >
                 <Link to="/privacy-policy">Privacy Policy</Link>
               </div>
-              <div className="mb-5 text-[14px] vietnam ">
+              <div
+                className="mb-5 text-[14px] vietnam cursor-pointer "
+                onClick={() => {
+                  navigate("/faq");
+                  scrollToTop();
+                }}
+              >
                 <Link to="/faq">Customer Support/Faq</Link>
               </div>
             </div>
@@ -166,9 +264,9 @@ const FooterSection = ({ isShow }) => {
               </div>
               <div className="flex items-start gap-x-2 mb-5 text-[14px] vietnam ">
                 {" "}
-                <img src={location} /> Lageweg 35K 2222AG <br /> Katwijk aan Zee
-                The <br />
-                Netherlands{" "}
+                <img src={location} /> Lageweg 35K <br />
+                2222AG Katwijk aan Zee <br />
+                The Netherlands{" "}
               </div>
               <div className="flex items-center mb-5 text-[14px] gap-x-2 vietnam ">
                 {" "}
@@ -178,15 +276,31 @@ const FooterSection = ({ isShow }) => {
                 {" "}
                 <img src={phone} /> +31 71 203 40 90
               </div>
-              <div className="flex items-center mb-5 text-[14px] gap-x-2 vietnam ">
-                {" "}
+              <div
+                onClick={handleMailToClick}
+                href="mailto:info@makeyourplank.nl"
+                className="flex items-center mb-5 text-[14px] gap-x-2 vietnam  cursor-pointer"
+              >
                 <img src={emailFooter} /> info@makeyourplank.nl
               </div>
               <div className="flex items-center mb-5 text-[14px] gap-x-6">
-                <div className="flex items-center">
+                <div
+                  className="flex items-center cursor-pointer"
+                  onClick={() =>
+                    window.open("https://www.facebook.com/HoutTotaal", "_blank")
+                  }
+                >
                   <img src={facebook} />{" "}
                 </div>
-                <div>
+                <div
+                  className="cursor-pointer"
+                  onClick={() =>
+                    window.open(
+                      "https://www.instagram.com/houttotaal",
+                      "_blank"
+                    )
+                  }
+                >
                   {" "}
                   <img src={cameraFooter} />
                 </div>
@@ -202,7 +316,7 @@ const FooterSection = ({ isShow }) => {
                 Bank
               </div>
               <div className="mb-5 text-[14px] vietnam ">
-                NL65 BUNQ 2064 2611 33
+                {/* NL65 BUNQ 2064 2611 33 */}
               </div>
               <div className=" mt-5 pay-button">
                 {" "}
@@ -211,6 +325,9 @@ const FooterSection = ({ isShow }) => {
                   xl:paddingX="60px"
                   lg:paddingX="30px"
                   breakpoint="w-[155px]"
+                  onClick={() =>
+                    window.open("https://bunq.me/houttotaal", "_blank")
+                  }
                 >
                   {" "}
                 </Button>
@@ -220,9 +337,9 @@ const FooterSection = ({ isShow }) => {
         </section>
         <div className="copyright-sect xs:flex-col-reverse flex justify-center items-center sm:gap-[30px] xs:gap-[30px] gap-[100px] py-[30px] px-[30px]">
           <div className="text-[14px] vietnam text-[#111727s]">
-            Copyright © 2024 Hout Total
+            Copyright © 2024 Hout Totaal
           </div>
-          <img src={footerLogo} />
+          <img src={footerLogo} className="w-[160px] h-[60px] " />
         </div>
       </footer>
     </>

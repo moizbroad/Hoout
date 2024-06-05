@@ -103,6 +103,8 @@ export const UserProfile = () => {
     fetchInvoiceAddress();
   }, []);
 
+  console.log(state?.deliveryAddress, "jjj");
+
   return (
     <div>
       <div className="xl:py-[48px] lg:py-[38px] py-[28px] xl:px-[170px] lg:px-[100px] px-[60px] bg-[rgb(250,250,250)] h-full min-h-[86vh]">
@@ -292,11 +294,12 @@ export const UserProfile = () => {
           <h5 className="text-20 font-semibold mb-[30px]">Delivery Address</h5>
           <Formik
             initialValues={{
-              stNumber: "",
-              zCode: "",
-              city: "",
-              country: "",
+              stNumber: state?.deliveryAddress?.street_and_number ?? "",
+              zCode: state?.deliveryAddress?.zip_code ?? "",
+              city: state?.deliveryAddress?.city ?? "",
+              country: state?.deliveryAddress?.country ?? "",
             }}
+            enableReinitialize={true}
             validationSchema={validationDelivery}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
               const updatedVal = {
@@ -382,11 +385,12 @@ export const UserProfile = () => {
           <h5 className="text-20 font-semibold mb-[30px]">Invoice Address</h5>
           <Formik
             initialValues={{
-              stNumber: "",
-              zCode: "",
-              city: "",
-              country: "",
+              stNumber: state?.invoiceAddress?.street_and_number ?? "",
+              zCode: state?.invoiceAddress?.zip_code ?? "",
+              city: state?.invoiceAddress?.city ?? "",
+              country: state?.invoiceAddress?.country ?? "",
             }}
+            enableReinitialize={true}
             validationSchema={validationInvoice}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
               const updatedVal = {

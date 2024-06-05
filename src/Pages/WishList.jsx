@@ -59,7 +59,7 @@ const Wishlist = () => {
   };
 
   return (
-    <section className="px-40 xs:px-8 sm:px-10 md:px-10 lg:px-12 my-20 xs:my-8 sm:my-10 md:my-13 lg:my-14">
+    <section className="">
       <DeleteModal
         isOpen={showModal}
         closeModal={() => setShowModal(!showModal)}
@@ -70,7 +70,7 @@ const Wishlist = () => {
       </h1> */}
       <div className="flex xs:flex-col xs:items-center sm:flex-col sm:items-center mb-32 justify-center">
         <div className="w-[100%]">
-          <h1 className="text-20 font-semibold mb-[18px] sm:mt-12 text-center xs:mt-10 xs:text-center">
+          <h1 className="text-20 font-semibold mb-[18px] sm:mt-12 sm:text-center xs:mt-10 xs:text-center">
             Your Wishlist
           </h1>
           <div className="xs:overflow-auto">

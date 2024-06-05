@@ -59,7 +59,7 @@ const OurAssortmentSectio = () => {
   ];
 
   return (
-    <section className="bg-[#000000] pb-[60px] ">
+    <section className="bg-[#000000] pb-[60px] " id="assortments-section">
       <div className="text-30 md:text-40 lg:text-50 xl:text-56 font-bold text-[#fff] pt-[40px] md:pt-[90px] lg:pt-[119px] xl:pt-[119px]  text-center ">
         {" "}
         Our assortment
@@ -74,7 +74,10 @@ const OurAssortmentSectio = () => {
           return (
             <div key={index} className="flex-col">
               <div>
-                <img src={item.image} className="w-full object-cover max-w-[100%] h-full sm:h-[310px] lg:h-[350px] xl:h-[350px]" />
+                <img
+                  src={item.image}
+                  className="w-full object-cover max-w-[100%] h-full sm:h-[310px] lg:h-[350px] xl:h-[350px]"
+                />
               </div>
               <div className="text-[#fff] text-center font-bold text-18 md:text-20 lg:text-24 xl:text-24 pt-[20px] ">
                 {" "}

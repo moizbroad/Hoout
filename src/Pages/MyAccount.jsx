@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import dummyPic from "../assets/myAccount/profile.png";
+import dummyPic from "../assets/no-user.webp";
 import profilebtn from "../assets/myAccount/profileBtn.svg";
 import Account from "../components/Address/Account";
 import AddressCard from "../components/Address/AddressCard";

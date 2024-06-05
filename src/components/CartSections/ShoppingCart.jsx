@@ -14,111 +14,116 @@ const ShoppingCart = () => {
       <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[80px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
         <section className="flex-1 ">
           <div className="overflow-auto">
-          <table className="w-full ">
-            <thead>
-              <tr className="border-b-[1px] border-[#979797]  ">
-                <th
-                  className="text-left xl:text-18 lg:text-16 text-14 xl:pb-[24px] lg:pb-[18px] pb-[10px]
+            <table className="w-full ">
+              <thead>
+                <tr className="border-b-[1px] border-[#979797]  ">
+                  <th
+                    className="text-left xl:text-18 lg:text-16 text-14 xl:pb-[24px] lg:pb-[18px] pb-[10px]
  "
-                >
-                  Product
-                </th>
-                <th
-                  className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
+                  >
+                    Product
+                  </th>
+                  <th
+                    className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
   "
-                >
-                  Quantity
-                </th>
-                <th
-                  className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
+                  >
+                    Quantity
+                  </th>
+                  <th
+                    className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
  "
-                >
-                  Price
-                </th>
-                <th
-                  className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
+                  >
+                    Price
+                  </th>
+                  <th
+                    className="text-left xl:text-18 lg:text-16 text-14 px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]
 "
-                >
-                  Subtotal
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                <section className="flex items-center gap-x-2 pt-5 xs:min-w-[300px]">
-                  <div>
-                    <a href="#">
+                  >
+                    Subtotal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                  <section className="flex items-center gap-x-2 pt-5 xs:min-w-[300px]">
+                    <div>
+                      <a href="#">
+                        {" "}
+                        <img src={cross} />{" "}
+                      </a>
+                    </div>
+                    <div>
                       {" "}
-                      <img src={cross} />{" "}
-                    </a>
-                  </div>
-                  <div>
-                    {" "}
-                    <img src={image1}  className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] "/>
-                  </div>
-
-                  <div className="flex flex-col xl:min-w-[220px]">
-                    <div
-                      className="xl:text-18 lg:text-16 text-14
-"
-                    >
-                      Tray Table
+                      <img
+                        src={image1}
+                        className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] "
+                      />
                     </div>
 
-                    <div className="flex gap-[15px] items-center">
-                      <div>
-                        <div
-                          className="text-12 text-[#24242480] font-medium "
-                        >
-                          THICKNESS
-                        </div>
-                        <div className="xl:text-14 text-[13px]">25 mm </div>
+                    <div className="flex flex-col xl:min-w-[220px]">
+                      <div
+                        className="xl:text-18 lg:text-16 text-14
+"
+                      >
+                        Tray Table
                       </div>
 
-                      <div>
-                        <div
-                          className="text-12 text-[#24242480]
- font-medium "
-                        >
-                          width
+                      <div className="flex gap-[15px] items-center">
+                        <div>
+                          <div className="text-12 text-[#24242480] font-medium ">
+                            THICKNESS
+                          </div>
+                          <div className="xl:text-14 text-[13px]">25 mm </div>
                         </div>
-                        <div className="xl:text-14 text-[13px]">220 mm </div>
-                      </div>
 
-                      <div>
-                        <div
-                          className="text-12 text-[#24242480]
+                        <div>
+                          <div
+                            className="text-12 text-[#24242480]
  font-medium "
-                        >
-                          Length
+                          >
+                            width
+                          </div>
+                          <div className="xl:text-14 text-[13px]">220 mm </div>
                         </div>
-                        <div className="xl:text-14 text-[13px]">220 mm </div>
+
+                        <div>
+                          <div
+                            className="text-12 text-[#24242480]
+ font-medium "
+                          >
+                            Length
+                          </div>
+                          <div className="xl:text-14 text-[13px]">220 mm </div>
+                        </div>
                       </div>
                     </div>
+                  </section>
+                </td>
+                <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                  <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px]">
+                    <div>
+                      <a href="#">
+                        {" "}
+                        <img src={minus} />
+                      </a>
+                    </div>
+                    <h6>2</h6>
+                    <div>
+                      <a href="#">
+                        {" "}
+                        <img src={plus} />{" "}
+                      </a>
+                    </div>
                   </div>
-                </section>
-              </td>
-              <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px]">
-                  <div>
-                    <a href="#">
-                      {" "}
-                      <img src={minus} />
-                    </a>
-                  </div>
-                  <h6>2</h6>
-                  <div>
-                    <a href="#">
-                      {" "}
-                      <img src={plus} />{" "}
-                    </a>
-                  </div>
-                </div>
-              </td>
-              <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">$19.00</td>
-              <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">$38.00</td>
-            </tbody>
-          </table>
+                </td>
+                <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                  €19.00
+                </td>
+                <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                  €38.00
+                </td>
+              </tbody>
+            </table>
           </div>
           {/* <section className="flex items-center  gap-x-2">
             <section className="flex items-center gap-x-2 pt-5">
@@ -194,20 +199,20 @@ const ShoppingCart = () => {
                 <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
                   Subtotal
                 </div>
-                <div>$1,500</div>
+                <div>€1,500</div>
               </section>
 
               <section className="flex justify-between pt-[25px]">
                 <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
                   Delivery Fee
                 </div>
-                <div>$30</div>
+                <div>€30</div>
               </section>
               <section className="flex justify-between pt-[25px] border-b  border-[#D9D9D9] pb-3">
                 <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]  ">
                   Tax
                 </div>
-                <div> $30</div>
+                <div> €30</div>
               </section>
 
               <section className="flex justify-between pt-[25px] pb-5 ">
@@ -218,7 +223,7 @@ const ShoppingCart = () => {
                   className="text-yellow font-medium xl:text-18 lg:text-16 text-14
 "
                 >
-                  USD $1,560.00
+                  USD €1,560.00
                 </div>
               </section>
             </section>

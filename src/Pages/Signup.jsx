@@ -4,7 +4,7 @@ import { axiosApi } from "../providers";
 import { toast } from "react-toastify";
 
 import signUpLeft from "../assets/authImages/signUpLeft.svg";
-import houtLogo from "../assets/authImages/houtLogo.svg";
+import houtLogo from "../assets/new-logo.png";
 import googleIcon from "../assets/authImages/googleIcon.svg";
 import faceBookIcon from "../assets/authImages/faceBookIcon.svg";
 import appleIcon from "../assets/authImages/appleIcon.svg";
@@ -51,7 +51,7 @@ export const Signup = () => {
     try {
       const response = await axiosApi.post("/accounts/sign_up/", data);
       setBtnLoading(false);
-      toast.success("Successfully registered! please check you email.");
+      toast.success("Thank you for sign up! Please check your email.");
       setTimeout(() => {
         navigate("/sign-in");
       }, 1000);
@@ -115,12 +115,12 @@ export const Signup = () => {
           </div>
         </div>
         <div className="xl:min-w-[650px] min-w-[auto] signUpRight xl:w-[50%] lg:w-[55%] w-[100%] sm:w-[100%] xs:w-[100%] xl:py-[25px] py-[18px] xl:px-[51px] lg:px-[30px] px-[20px]">
-          <div className="signUpHead flex justify-start xl:mb-[46px] lg:mb-[30px] mb-[20px]">
+          <div className="signUpHead flex justify-end xl:mb-[46px] lg:mb-[30px] mb-[20px]">
             <img
               src={houtLogo}
               alt=""
               onClick={() => navigate("/")}
-              className="cursor-pointer xl:w-[160px] xl:h-[46px] lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+              className="cursor-pointer  xl:h-[50px] lg:w-[160px] lg:h-[40px] w-[120px] h-[35px] object-cover"
             />
           </div>
           <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">

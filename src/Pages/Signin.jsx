@@ -4,7 +4,7 @@ import { axiosApi, setAccessToken } from "../providers";
 import { toast } from "react-toastify";
 
 import signInRight from "../assets/authImages/signInRight.svg";
-import houtLogo from "../assets/authImages/houtLogo.svg";
+import houtLogo from "../assets/new-logo.png";
 import googleIcon from "../assets/authImages/googleIcon.svg";
 import faceBookIcon from "../assets/authImages/faceBookIcon.svg";
 import appleIcon from "../assets/authImages/appleIcon.svg";
@@ -47,7 +47,8 @@ export const Signin = () => {
       setAccessToken(response.data?.token);
       localStorage.setItem("userData", JSON.stringify(response.data));
       setBtnLoading(false);
-      navigate("/myaccount");
+      navigate("/shop-page");
+      toast.success("Successfully logged in");
     } catch (error) {
       setBtnLoading(false);
       toast.error("Wrong credentials!");
@@ -101,7 +102,7 @@ export const Signin = () => {
                 src={houtLogo}
                 onClick={() => navigate("/")}
                 alt=""
-                className="xl:w-[160px] xl:h-[46px] cursor-pointer lg:w-[140px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+                className=" xl:h-[50px] cursor-pointer lg:w-[160px] lg:h-[40px] w-[120px] h-[35px] object-cover"
               />
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">

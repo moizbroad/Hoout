@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "../Common/Button";
+import { useNavigate } from "react-router-dom";
 
 const HoutHandelSection = () => {
+  const navigate = useNavigate("/shop-page");
   return (
     <div className="landing flex justify-center items-center">
       <section className="flex-col text-center    ">
@@ -18,6 +20,7 @@ const HoutHandelSection = () => {
             paddingY="25px"
             paddingX="72px"
             fontbold
+            onClick={() => navigate("/shop-page")}
           />
         </div>
       </section>

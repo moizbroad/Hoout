@@ -55,23 +55,20 @@ const CheckoutDetail = () => {
               </div>
             </section>
 
-          
-
             <section className="flex justify-between items-center xl:pl-[80px] lg:pl-[80px] md:pl-[80px] sm:pl-[80px] xs:pl-[60px] pl-[50px]  ">
               <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xl:min-w-[118px] lg:w-[170px] md:w-[170px] sm:w-[170px] xs:w-[170px] ">
-                  <div>
-                    <a href="#">
-                      {" "}
-                      <img src={minus} />
-                    </a>
-                  </div>
-                  <h6>2</h6>
-                  <div>
-                    <a href="#">
-                      {" "}
-                      <img src={plus} />{" "}
-                    </a>
-
+                <div>
+                  <a href="#">
+                    {" "}
+                    <img src={minus} />
+                  </a>
+                </div>
+                <h6>2</h6>
+                <div>
+                  <a href="#">
+                    {" "}
+                    <img src={plus} />{" "}
+                  </a>
                 </div>
                 <h6>2</h6>
                 <div>
@@ -84,7 +81,7 @@ const CheckoutDetail = () => {
 
               <div className="xl:text-22 lg:text-20 md:text-18 text-16 font-bold  ">
                 {" "}
-                $60.25{" "}
+                €60.25{" "}
               </div>
             </section>
 

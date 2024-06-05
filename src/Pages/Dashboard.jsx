@@ -19,7 +19,7 @@ export const Dashboard = () => {
       head: "Total Inventory",
       image: inventory,
       image1: trendUp,
-      totalInventory: "40,689",
+      totalInventory: "€40,689",
       trendPercentage: "8.5%",
       trendDescription: "Up from January",
     },
@@ -28,7 +28,7 @@ export const Dashboard = () => {
       head: " Total SKU",
       image: skuImg,
       image1: trendUp,
-      totalInventory: "40,689",
+      totalInventory: "€40,689",
       trendPercentage: "8.5%",
       trendDescription: "Up from January",
     },
@@ -37,7 +37,7 @@ export const Dashboard = () => {
       head: " Total Sales",
       image: salesImg,
       image1: trendDown,
-      totalInventory: "$40,689",
+      totalInventory: "€40,689",
       trendPercentage: "8.5%",
       trendDescription: "Down from last month",
     },
@@ -247,7 +247,7 @@ export const Dashboard = () => {
                           <td className="xl:px-[24px] lg:px-[16px] px-[8px] xl:py-[16px] lg:py-[14px] py-[12px]  text-left   font-semibold text-gray3">
                             <div className="flex gap-3 items-center">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                ${item?.gross_total}
+                                €{item?.gross_total}
                               </p>
                             </div>
                           </td>

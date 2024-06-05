@@ -55,7 +55,7 @@ const ProductDetailTable = () => {
                       </span>
                     </div>
                     <div className="text-14 text-[#111727] font-medium">
-                      $10,91
+                      €10,91
                     </div>
                   </div>
                 </td>
@@ -102,7 +102,7 @@ const ProductDetailTable = () => {
                       </span>
                     </div>
                     <div className="text-14 text-[#111727] font-medium">
-                      $10,91
+                      €10,91
                     </div>
                   </div>
                 </td>
@@ -147,7 +147,7 @@ const ProductDetailTable = () => {
                       </span>
                     </div>
                     <div className="text-14 text-[#111727] font-medium">
-                      $10,91
+                      €10,91
                     </div>
                   </div>
                 </td>

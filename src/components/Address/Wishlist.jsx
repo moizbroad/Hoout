@@ -123,7 +123,7 @@ const Wishlist = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="w-[20%] text-left">${item.price}</td>
+                      <td className="w-[20%] text-left">€{item.price}</td>
                       <td className="w-[40%] flex justify-center items-center">
                         <button
                           className="px-[24px] py-[6px] bg-[#FBC700] rounded-[8px]"

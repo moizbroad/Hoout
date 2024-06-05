@@ -77,7 +77,7 @@ const OrderHistory = () => {
                         {item?.status}
                       </td>
                       <td className="text-[14px] text-[#141718] w-[20%] md:w-[auto] sm:w-[auto] text-left">
-                        ${item?.gross_total}
+                        €{item?.gross_total}
                       </td>
                       <td className="text-[14px] text-[#141718] w-[20%] md:w-[auto] sm:w-[auto] text-left">
                         <button>

@@ -8,7 +8,7 @@ const OrderComplete = () => {
       <section className="rounded-md xl:mx-[351px] lg:mx-[280px] md:mx-[210px] mx-[160px]  shadow-2xl xl:mb-[130px] lg:mb-[100px]  mb-[100px]">
         <div className="xl:px-[95px] lg:px-[50px] md:px-[30px] px-[15px]">
           <div className="xl:pt-[80px] lg:pt-[60px] md:pt-[30px] pt-[20px] text-center xl:text-28 lg:text-26 md:text-24 text-22 text-[#6C7275] ">
-            Thank you!  &#127881;
+            Thank you! &#127881;
           </div>
           <div className="xl:text-40 lg:text-36 md:text-32 text-24 font-medium  text-center pt-4">
             Your order has been received
@@ -25,11 +25,13 @@ const OrderComplete = () => {
           </div>
           <div className="flex space-x-48  xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px] items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">Date:</div>
-            <div className="text-14 font-semibold text-left">October 19, 2023</div>
+            <div className="text-14 font-semibold text-left">
+              October 19, 2023
+            </div>
           </div>
           <div className="flex space-x-48  xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px] items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">Total:</div>
-            <div className="text-14 font-semibold text-left">$1,345.00</div>
+            <div className="text-14 font-semibold text-left">€1,345.00</div>
           </div>
           <div className="flex space-x-28 xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px]  items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">

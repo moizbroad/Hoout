@@ -22,7 +22,7 @@ export const OrderList = () => {
       address: "6096 Marjolaine Landing",
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
-      price: "$34,295",
+      price: "€34,295",
       status: "Delivered",
       image: sampleProductImg, // Make sure to define sampleProductImg
     },
@@ -32,7 +32,7 @@ export const OrderList = () => {
       address: "6096 Marjolaine Landing",
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
-      price: "$34,295",
+      price: "€34,295",
       status: "Delivered",
       image: sampleProductImg, // Make sure to define sampleProductImg
     },
@@ -42,7 +42,7 @@ export const OrderList = () => {
       address: "6096 Marjolaine Landing",
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
-      price: "$34,295",
+      price: "€34,295",
       status: "Delivered",
       image: sampleProductImg, // Make sure to define sampleProductImg
     },
@@ -52,7 +52,7 @@ export const OrderList = () => {
       address: "6096 Marjolaine Landing",
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
-      price: "$34,295",
+      price: "€34,295",
       status: "Pending",
       image: sampleProductImg, // Make sure to define sampleProductImg
     },
@@ -62,7 +62,7 @@ export const OrderList = () => {
       address: "6096 Marjolaine Landing",
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
-      price: "$34,295",
+      price: "€34,295",
       status: "Rejected",
       image: sampleProductImg, // Make sure to define sampleProductImg
     },
@@ -71,7 +71,7 @@ export const OrderList = () => {
       address: "6096 Marjolaine Landing",
       dateTime: "12.09.2019 - 12.53 PM",
       quantity: "423",
-      price: "$34,295",
+      price: "€34,295",
       status: "Rejected",
       image: sampleProductImg, // Make sure to define sampleProductImg
     },

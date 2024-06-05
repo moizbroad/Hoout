@@ -82,6 +82,7 @@ const ProductsSection = ({
             ? ""
             : "pt-[30px] md:pt-[70px] lg:pt-[100px] xl:pt-[100px] px-[30px] md:px-[80px] lg:px-[100px] xl:px-[100px]"
         }
+        id="products-section"
       >
         {notRequired ? null : (
           <div className="text-30 md:text-40 lg:text-50 xl:text-60 font-bold text-center pb-[30px] md:pb-[40px] lg:pb-[60px] xl:pb-[60px]">
@@ -120,7 +121,7 @@ const ProductsSection = ({
                     {item.hout_type}
                   </div>
                   <section className="flex gap-x-3 pt-[15px] pb-[20px] md:gap-x-2">
-                    <div>$ {item.price}</div>
+                    <div>€{item.price}</div>
                     <div className="text-gray2 line-through">{item.vat}</div>
                   </section>
                   <section className="flex gap-x-4 items-center justify-between">

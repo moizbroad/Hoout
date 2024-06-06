@@ -17,7 +17,6 @@ const HeaderSection = () => {
   };
 
   const handleScroll = () => {
-    // Check if the page is scrolled down
     if (window.scrollY > 0) {
       setIsScrolled(true);
     } else {
@@ -25,10 +24,8 @@ const HeaderSection = () => {
     }
   };
 
-  // Add scroll event listener on component mount
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    // Remove scroll event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -38,7 +35,7 @@ const HeaderSection = () => {
 
   return (
     <section
-      className={`px-6 fixed w-full z-50 lg:px-[55px] py-4 md:py-2 justify-between flex items-center  ${
+      className={`px-6 fixed top-0 w-full z-50 lg:px-[55px] py-4 md:py-2 justify-between flex items-center  ${
         isScrolled
           ? " bg-[#b0ada8ab] scrollNav h-[90px] lg:h-[90px] md:h-[70px]"
           : "bg-[#E9E6D6] h-[90px] lg:h-[90px] md:h-[70px]  "

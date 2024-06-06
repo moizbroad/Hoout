@@ -36,11 +36,8 @@ export const ContactusSection = () => {
   };
 
   return (
-    <section
-      className="bg-[#000000] py-[60px] md:pt-[80px] lg:pt-[119px] xl:pt-[119px] pb-[119px]"
-      id="contact-us"
-    >
-      <div className="max-w-[1240px] mx-auto">
+    <section className="bg-[#000000] py-[60px] md:pt-[80px] lg:pt-[119px] xl:pt-[119px] pb-[119px]">
+      <div className="max-w-[1240px] mx-auto " id="contact-us">
         <div className="text-[#fff] font-bold text-30 md:text-40 lg:text-50 xl:text-60 text-center ">
           Contact US
         </div>

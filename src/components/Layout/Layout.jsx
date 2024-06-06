@@ -46,7 +46,7 @@ const Layout = () => {
                 </div>
                 <div className="flex-1 min-h-screen ">
                   <AdminMainNav />
-                  <div className="!pt-18">
+                  <div className="!pt-20">
                     <Outlet />
                   </div>
                 </div>
@@ -56,15 +56,17 @@ const Layout = () => {
             <>
               {!hasHeaderFooter ? (
                 <div className="">
-                  <HeaderSection />
-                  <div className="!pt-18">
-                    <Outlet />
+                  <div className="">
+                    <HeaderSection />
+                    <div className="!pt-20 w-full flex-1">
+                      <Outlet />
+                    </div>
+                    <FooterSection />
                   </div>
-                  <FooterSection />
                 </div>
               ) : (
                 <>
-                  <div className="!pt-18">
+                  <div className="!pt-20">
                     <Outlet />
                   </div>
                 </>

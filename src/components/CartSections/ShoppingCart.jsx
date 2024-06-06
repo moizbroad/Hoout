@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cross from "../../assets/addToCart/cross.svg";
 import image1 from "../../assets/addToCart/image1.svg";
 import image2 from "../../assets/addToCart/image2.svg";
@@ -9,6 +9,51 @@ import minus from "../../assets/addToCart/minus.svg";
 import Button from "../../components/Common/Button";
 
 const ShoppingCart = () => {
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      image: image1,
+      name: "Tray Table",
+      thickness: 25,
+      width: 220,
+      length: 220,
+      pricePerUnit: 19.0,
+      quantity: 2,
+    },
+    // Add more items as needed
+  ]);
+
+  const deliveryFee = 30.0;
+  const taxRate = 0.02; // Assuming 2% tax rate
+
+  const handleIncrement = (id) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const handleDecrement = (id) => {
+    setItems(
+      items.map((item) =>
+        item.id === id && item.quantity > 0
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
+  const handleRemove = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+
+  const subtotal = items.reduce(
+    (acc, item) => acc + item.pricePerUnit * item.quantity,
+    0
+  );
+  const tax = subtotal * taxRate;
+  const total = subtotal + deliveryFee + tax;
   return (
     <>
       <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[80px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
@@ -44,84 +89,101 @@ const ShoppingCart = () => {
                 </tr>
               </thead>
               <tbody>
-                <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                  <section className="flex items-center gap-x-2 pt-5 xs:min-w-[300px]">
-                    <div>
-                      <a href="#">
-                        {" "}
-                        <img src={cross} />{" "}
-                      </a>
-                    </div>
-                    <div>
-                      {" "}
-                      <img
-                        src={image1}
-                        className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px] "
-                      />
-                    </div>
-
-                    <div className="flex flex-col xl:min-w-[220px]">
-                      <div
-                        className="xl:text-18 lg:text-16 text-14
-"
-                      >
-                        Tray Table
-                      </div>
-
-                      <div className="flex gap-[15px] items-center">
-                        <div>
-                          <div className="text-12 text-[#24242480] font-medium ">
-                            THICKNESS
+                {items.map((item) => {
+                  const totalPrice = (
+                    item.quantity * item.pricePerUnit
+                  ).toFixed(2);
+                  return (
+                    <tr>
+                      <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                        <section className="flex items-center gap-x-2 pt-5 xs:min-w-[300px]">
+                          <div>
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleRemove(item.id);
+                              }}
+                            >
+                              <img src={cross} alt="remove" />
+                            </a>
                           </div>
-                          <div className="xl:text-14 text-[13px]">25 mm </div>
-                        </div>
-
-                        <div>
-                          <div
-                            className="text-12 text-[#24242480]
- font-medium "
-                          >
-                            width
+                          <div>
+                            <img
+                              src={item.image}
+                              className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px]"
+                              alt={item.name}
+                            />
                           </div>
-                          <div className="xl:text-14 text-[13px]">220 mm </div>
-                        </div>
-
-                        <div>
-                          <div
-                            className="text-12 text-[#24242480]
- font-medium "
-                          >
-                            Length
+                          <div className="flex flex-col xl:min-w-[220px]">
+                            <div className="xl:text-18 lg:text-16 text-14">
+                              {item.name}
+                            </div>
+                            <div className="flex gap-[15px] items-center">
+                              <div>
+                                <div className="text-12 text-[#24242480] font-medium">
+                                  THICKNESS
+                                </div>
+                                <div className="xl:text-14 text-[13px]">
+                                  {item.thickness} mm
+                                </div>
+                              </div>
+                              <div>
+                                <div className="text-12 text-[#24242480] font-medium">
+                                  WIDTH
+                                </div>
+                                <div className="xl:text-14 text-[13px]">
+                                  {item.width} mm
+                                </div>
+                              </div>
+                              <div>
+                                <div className="text-12 text-[#24242480] font-medium">
+                                  LENGTH
+                                </div>
+                                <div className="xl:text-14 text-[13px]">
+                                  {item.length} mm
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div className="xl:text-14 text-[13px]">220 mm </div>
+                        </section>
+                      </td>
+                      <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                        <div className="flex justify-between border items-center px-[10px] py-[6px] rounded-md xs:min-w-[80px]">
+                          <div>
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleDecrement(item.id);
+                              }}
+                            >
+                              <img src={minus} alt="decrement" />
+                            </a>
+                          </div>
+                          <h6>{item.quantity}</h6>
+                          <div>
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleIncrement(item.id);
+                              }}
+                            >
+                              <img src={plus} alt="increment" />
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </section>
-                </td>
-                <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                  <div className="flex justify-between border items-center px-[10px] py-[6px]  rounded-md xs:min-w-[80px]">
-                    <div>
-                      <a href="#">
-                        {" "}
-                        <img src={minus} />
-                      </a>
-                    </div>
-                    <h6>2</h6>
-                    <div>
-                      <a href="#">
-                        {" "}
-                        <img src={plus} />{" "}
-                      </a>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                  €19.00
-                </td>
-                <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                  €38.00
-                </td>
+                      </td>
+                      <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                        €{item.pricePerUnit.toFixed(2)}
+                      </td>
+                      <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
+                        €{totalPrice}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -192,49 +254,40 @@ const ShoppingCart = () => {
         </section>
 
         {/* Right side of grid  */}
-        <section className=" xl:w-[38.2%] lg:w-[38.2%] ">
-          <section className="bg-[#F8F8F8] xl:px-[32px] lg:px-[25px] md:px-[20px] px-[12px]  xl:pt-[44px] lg:pt-[30px] pt-[15px] rounded-lg ">
-            <section className="">
-              <section className="flex justify-between">
-                <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
-                  Subtotal
-                </div>
-                <div>€1,500</div>
-              </section>
-
-              <section className="flex justify-between pt-[25px]">
-                <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
-                  Delivery Fee
-                </div>
-                <div>€30</div>
-              </section>
-              <section className="flex justify-between pt-[25px] border-b  border-[#D9D9D9] pb-3">
-                <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]  ">
-                  Tax
-                </div>
-                <div> €30</div>
-              </section>
-
-              <section className="flex justify-between pt-[25px] pb-5 ">
-                <div className="xl:text-16 lg:text-15 md:text-14 text-[13px] font-medium">
-                  Total
-                </div>
-                <div
-                  className="text-yellow font-medium xl:text-18 lg:text-16 text-14
-"
-                >
-                  USD €1,560.00
-                </div>
-              </section>
+        <section className="xl:w-[38.2%] lg:w-[38.2%] bg-[#F8F8F8] xl:px-[32px] lg:px-[25px] md:px-[20px] px-[12px] xl:pt-[44px] lg:pt-[30px] pt-[15px] rounded-lg ml-5">
+          <section>
+            <section className="flex justify-between">
+              <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
+                Subtotal
+              </div>
+              <div>€{subtotal.toFixed(2)}</div>
+            </section>
+            <section className="flex justify-between pt-[25px]">
+              <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
+                Delivery Fee
+              </div>
+              <div>€{deliveryFee.toFixed(2)}</div>
+            </section>
+            <section className="flex justify-between pt-[25px] border-b border-[#D9D9D9] pb-3">
+              <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
+                Tax
+              </div>
+              <div>€{tax.toFixed(2)}</div>
+            </section>
+            <section className="flex justify-between pt-[25px] pb-5">
+              <div className="xl:text-16 lg:text-15 md:text-14 text-[13px] font-medium">
+                Total
+              </div>
+              <div className="text-yellow font-medium xl:text-18 lg:text-16 text-14">
+                USD €{total.toFixed(2)}
+              </div>
             </section>
           </section>
 
-          <div className="xl:py-[30px] py-[15px] flex justify-center  ">
-            <Button
-              btnText="Checkout "
-              paddingY="14px"
-              breakpoint="xl:w-[93.5%] lg:w-[93.5%] w-[100%]"
-            />
+          <div className="xl:py-[30px] py-[15px] flex justify-center">
+            <button className="xl:w-[93.5%] lg:w-[93.5%] w-[100%] bg-yellow-500 text-white py-2 rounded-lg">
+              Checkout
+            </button>
           </div>
         </section>
       </section>

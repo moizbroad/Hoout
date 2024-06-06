@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import rightArrow from "../assets/shopPage/rightArrow.svg";
 import filter from "../assets/shopPage/filter.svg";
 import gridView from "../assets/shopPage/gridView.svg";
@@ -11,33 +11,34 @@ import shipping from "../assets/shopPage/shipping.svg";
 import supports from "../assets/shopPage/supports.svg";
 import QualitySection from "../components/Common/QualitySection";
 import Switch from "../components/Common/Switch";
+import { scrollToTop } from "../utils/helper";
 
 export const ShopPage = () => {
   const [state, setState] = useState({
     openfilter: true,
     filterTypes: [],
-    selectedFilter: ""
-  })
+    selectedFilter: "",
+  });
   const toggle = () => {
     setState((prev) => ({
       ...prev,
-      openfilter: !state.openfilter
-    }))
-  }
+      openfilter: !state.openfilter,
+    }));
+  };
 
   const getTypes = (types) => {
     setState((prev) => ({
       ...prev,
-      filterTypes: types
-    }))
-  }
+      filterTypes: types,
+    }));
+  };
 
   const handleFilterCheck = (item) => {
     setState((prev) => ({
       ...prev,
-      selectedFilter: item.checked === true ? item.filter : ""
-    }))
-  }
+      selectedFilter: item.checked === true ? item.filter : "",
+    }));
+  };
 
   return (
     <>
@@ -62,7 +63,12 @@ export const ShopPage = () => {
             <div className="poppins" onClick={toggle}>
               <img src={filter} className="md:size-5 xs:size-5" />
             </div>
-            <div onClick={state.openfilter}><h4 className="pops text-20 sm:text-16 xs:text-14 xs:leading-[22px]"> Filter </h4></div>
+            <div onClick={state.openfilter}>
+              <h4 className="pops text-20 sm:text-16 xs:text-14 xs:leading-[22px]">
+                {" "}
+                Filter{" "}
+              </h4>
+            </div>
             <div>
               <img src={gridView} className="md:size-4  xs:size-3 " />
             </div>
@@ -98,13 +104,22 @@ export const ShopPage = () => {
       <section className="flex pb-[200px]  md:flex-col sm:flex-col  xs:flex-col ">
         {state.openfilter && (
           <div className=" xl:w-[22%] md:w-full ">
-            <Filters filters={state.filterTypes} filterCheck={handleFilterCheck} />
+            <Filters
+              filters={state.filterTypes}
+              filterCheck={handleFilterCheck}
+            />
           </div>
         )}
 
         <div className="w-[100%] pt-[75px] xl:px-[100px] lg:px-[60px]  md:px-[40px]  sm:px-[40px]  xs:px-[40px]   ">
           {" "}
-          <ProductsSection isthree isbuttonReqird notRequired passTypes={getTypes} selectedFilter={state.selectedFilter} />{" "}
+          <ProductsSection
+            isthree
+            isbuttonReqird
+            notRequired
+            passTypes={getTypes}
+            selectedFilter={state.selectedFilter}
+          />{" "}
         </div>
       </section>
 

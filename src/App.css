@@ -241,6 +241,7 @@ input[type="radio"]:checked + .box-content {
 .navbar.active {
   left: 0;
   opacity: 1;
+  padding-top: 0 !important;
 }
 
 /* web screens css fk  */
@@ -328,11 +329,11 @@ input[type="number"] {
   }
 
   /* rauf bhai css  */
-  .header-logo {
+  /* .header-logo {
     position: absolute;
     top: 20px;
     left: 0;
-  }
+  } */
   .navbar {
     background: #e9e6d6;
     height: 100vh;
@@ -381,3 +382,19 @@ input[type="number"] {
 .scrollNav {
   backdrop-filter: blur(4px);
 }
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+} */

@@ -58,7 +58,7 @@ const Layout = () => {
                 <div className="">
                   <div className="">
                     <HeaderSection />
-                    <div className="!pt-20 w-full flex-1">
+                    <div className=" xl:!pt-20 lg:!pt-18 md:!pt-16 !pt-14 w-full flex-1 ">
                       <Outlet />
                     </div>
                     <FooterSection />

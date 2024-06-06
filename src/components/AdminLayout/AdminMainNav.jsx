@@ -5,9 +5,11 @@ import country from "../../assets/DashboardImages/country.svg";
 import ProfileDD from "../../assets/DashboardImages/ProfileDD.svg";
 import CountrySelector from "../Common/CountrySelector";
 import HeadLessDropDown from "../Common/HeadLessDropDown";
+import { getAccessToken } from "../../providers";
 
 const AdminMainNav = () => {
   const navigate = useNavigate();
+  const token = getAccessToken();
 
   //   const handleDashboardClick = () => {
   //     navigate("/dashboard");
@@ -62,7 +64,7 @@ const AdminMainNav = () => {
             </a>
           </div> */}
           <div className="">
-            <HeadLessDropDown />
+            <HeadLessDropDown token={token} />
           </div>
         </div>
       </div>

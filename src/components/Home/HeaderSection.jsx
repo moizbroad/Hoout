@@ -123,7 +123,7 @@ const HeaderSection = () => {
             }, 100);
           }}
         >
-          Why Hout Total
+          Why Hout Totaal
         </span>
         <span
           className=" cursor-pointer ml-4"
@@ -149,7 +149,7 @@ const HeaderSection = () => {
           Shop
         </div>
       </section>
-      <div className="header-logo flex flex-1 items-center justify-center w-full lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
+      <div className="header-logo flex flex-1 items-center justify-center w-full mt-2 lg:w-auto xl:w-auto pl-6 pr-6 md:pr-0">
         <img
           src={headerImage}
           className="cursor-pointer w-[160px] h-[43px] "

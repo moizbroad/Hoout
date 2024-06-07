@@ -12,8 +12,10 @@ import supports from "../assets/shopPage/supports.svg";
 import QualitySection from "../components/Common/QualitySection";
 import Switch from "../components/Common/Switch";
 import { scrollToTop } from "../utils/helper";
+import { useNavigate } from "react-router-dom";
 
 export const ShopPage = () => {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     openfilter: true,
     filterTypes: [],
@@ -48,7 +50,7 @@ export const ShopPage = () => {
             <div className="text-white text-48 font-medium">Shop</div>
             <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
               <div className="flex items-center gap-x-3 font-medium">
-                Home <img src={rightArrow} />
+                <p className="cursor-pointer" onClick={() => navigate('/')}>Home</p> <img src={rightArrow} />
               </div>
               <div className="font-light">Shop</div>
             </div>

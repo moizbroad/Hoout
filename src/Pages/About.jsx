@@ -6,8 +6,10 @@ import stars from "../assets/about/stars.svg";
 import QualitySection from "../components/Common/QualitySection";
 import Ratings from "../components/Common/Rating";
 import { axiosApi } from "../providers";
+import { useNavigate } from "react-router-dom";
 
 export const About = () => {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     data: [],
   });
@@ -24,7 +26,7 @@ export const About = () => {
         data: response.data,
       }));
     } catch (error) {
-      toast.error("Wrong credentials!");
+      // toast.error("Wrong credentials!");
     }
   };
 
@@ -35,7 +37,7 @@ export const About = () => {
           <div className="text-white text-48 font-medium">About US </div>
           <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
             <div className="flex items-center gap-x-3">
-              Home <img src={rightArrow} />
+              <p className="cursor-pointer" onClick={() => navigate('/')}>Home</p> <img src={rightArrow} />
             </div>
             <div>About us</div>
           </div>

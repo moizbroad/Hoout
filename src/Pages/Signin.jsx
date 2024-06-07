@@ -102,7 +102,7 @@ export const Signin = () => {
                 src={houtLogo}
                 onClick={() => navigate("/")}
                 alt=""
-                className=" xl:h-[50px] cursor-pointer lg:w-[160px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+                className=" xl:h-[50px] cursor-pointer lg:w-[160px] lg:h-[40px] w-[120px] h-[35px] mt-4 object-cover"
               />
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">

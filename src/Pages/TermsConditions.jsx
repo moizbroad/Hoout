@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import rightArrow from "../assets/shopPage/rightArrow.svg";
 import { axiosApi } from "../providers";
+import { useNavigate } from "react-router-dom";
 
 export const TermsConditions = () => {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     terms: [],
   });
@@ -32,7 +34,7 @@ export const TermsConditions = () => {
           </div>
           <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
             <div className="flex items-center gap-x-3">
-              Home <img src={rightArrow} />
+              <p className="cursor-pointer" onClick={() => navigate('/')}>Home</p> <img src={rightArrow} />
             </div>
             <div>Terms and Conditions</div>
           </div>

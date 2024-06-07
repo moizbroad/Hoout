@@ -66,7 +66,7 @@ const Layout = () => {
                 </div>
               ) : (
                 <>
-                  <div className="!pt-20">
+                  <div className="">
                     <Outlet />
                   </div>
                 </>

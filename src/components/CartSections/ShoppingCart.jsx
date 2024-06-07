@@ -243,12 +243,12 @@ const ShoppingCart = () => {
                 Add your code for an instant cart discount
               </p>
             </div>
-            <div className="flex border justify-between items-center rounded-md flex-1 xl:w-[442px] w-[100%] px-3 mt-3">
+            <div className="flex border justify-between items-center rounded-md flex-1 xl:w-[442px] w-[100%] pl-3 mt-3">
               <div className="flex gap-x-2 xl:py-[14px] lg:py-[12px] py-[8px] items-center">
                 <img src={coupon} />
                 <span className="pt-[4px] text-[#6C7275]">Coupon Code</span>
               </div>
-              <div> Apply</div>
+              <div className="bg-yellow text-white p-4 cursor-pointer rounded-md rounded-l-none">Apply</div>
             </div>
           </section>
         </section>

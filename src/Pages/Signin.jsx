@@ -47,7 +47,7 @@ export const Signin = () => {
       setAccessToken(response.data?.token);
       localStorage.setItem("userData", JSON.stringify(response.data));
       setBtnLoading(false);
-      navigate("/shop-page");
+      navigate("/");
       toast.success("Successfully logged in");
     } catch (error) {
       setBtnLoading(false);

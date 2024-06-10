@@ -24,7 +24,6 @@ export const Signup = () => {
     companyName: "",
     email: "",
     phone: "",
-    password: ""
   });
 
   const handleFormData = (event) => {
@@ -47,7 +46,6 @@ export const Signup = () => {
       email: formData.email,
       company_name: formData.companyName,
       phone: formData.phone,
-      password: formData.password
     };
 
     try {
@@ -218,15 +216,6 @@ export const Signup = () => {
                     placeholder="Phone Number"
                     name="phone"
                     value={formData.phone}
-                    onChange={handleFormData}
-                  />
-                </div>
-                <div className="mb-[23px]">
-                  <InputField
-                    required
-                    placeholder="Password"
-                    name="password"
-                    value={formData.password}
                     onChange={handleFormData}
                   />
                 </div>

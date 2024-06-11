@@ -8,7 +8,7 @@ import dltImg from "../assets/DashboardImages/delete.svg";
 import dots from "../assets/DashboardImages/dotsvertical.svg";
 import Button from "../components/Common/Button";
 import cartButton from "../assets/addToCart/cartButton.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosWithCredentials } from "../providers";
 import { getProducts } from "../redux/actions/orderActions";
 import DeleteModal from "../components/Modals/DeleteModal";
@@ -255,7 +255,7 @@ export const Products = () => {
 
           {/* order details table  */}
           <div className=" max-w-screen mx-auto overflow-x-auto">
-            <table className="table-auto productsTable">
+            <table className="table-auto productsTable w-full">
               <thead>
                 <tr className="bg-[#F1F4F9]">
                   <th className="px-[10px] py-[12px]  text-left text-14 font-bold  rounded-l-2xl	">
@@ -298,7 +298,7 @@ export const Products = () => {
                   state.productsData.map((rowData, index) => (
                     <tr
                       key={index}
-                      className={`border-b-[0.4px] border-gray ${
+                      className={`border-b-[0.4px] w-full border-gray ${
                         index % 2 !== 0 ? "bg-[#F1F4F9]" : "bg-[#fff]"
                       }`}
                     >
@@ -398,9 +398,16 @@ export const Products = () => {
                       </td>
                       <td className="xl:px-[10px] lg:px-[8px] px-[6px] py-[24px] text-left xl:text-14 lg-text-[13px] text-12 font-semibold text-gray3 min-w-[100px]">
                         <div className="flex xl:gap-3 gap-2 items-center justify-center">
-                          <a href={rowData?.editLink}>
+                          <div
+                            onClick={() => {
+                              navigate("/new-product", {
+                                state: { item: rowData },
+                              });
+                            }}
+                            className="cursor-pointer"
+                          >
                             <img src={editImg} alt="edit icon image" />
-                          </a>
+                          </div>
                           <div
                             className="cursor-pointer"
                             onClick={() => {
@@ -423,7 +430,7 @@ export const Products = () => {
                     </tr>
                   ))
                 ) : (
-                  <tr>
+                  <tr className="w-full">
                     <td
                       colSpan="5"
                       className="text-[14px] text-[#141718] text-center py-[22px]"

@@ -6,19 +6,24 @@ import Textarea from "../components/Common/Textarea";
 import Button from "../components/Common/Button";
 import Dropzone from "../components/Common/Dropzone";
 import addImg from "../assets/DashboardImages/add.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import FormikField from "../components/Common/FormikField";
 
 export const AddNewProduct = () => {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const selectedProduct = location.state.item;
+
+  console.log(selectedProduct, "selectedProduct");
   return (
     <div>
       <div>
         <Formik
           initialValues={{
-            name: "",
+            name: selectedProduct?.name ?? "",
             group: "",
             typeOfWood: "",
             woodGroup: "",

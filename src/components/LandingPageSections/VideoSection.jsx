@@ -1,8 +1,39 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 // import oak from "../../assets/LandingPageImages/assortment/oak.svg";
 import mianVideo from "../../assets/LandingPageImages/mianVideo.svg";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper/modules";
+
+import { axiosWithCredentials } from "../../providers";
+
 const VideoSection = () => {
+  const [content, setContent] = useState([]);
+
+  const getData = async () => {
+    try {
+      const response = await axiosWithCredentials.get("/why-hout-total/");
+      setContent(response.data);
+    } catch (error) {
+      console.log("error", error.response.data);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    console.log(content, "content");
+  }, [content]);
+
   return (
     <>
       <section
@@ -13,21 +44,22 @@ const VideoSection = () => {
           <div className="font-bold text-30 md:text-40 lg:text-50 xl:text-60 text-center ">
             Why Hout Total{" "}
           </div>
-          <div className="text-16 md:text-18 lg:text-18 xl:text-18 text-center px-[30px] md:px-[60px] lg:px-[100px] xl:px-[100px] pt-[20px] md:pt-[25px] lg:pt-[30px] xl:pt-[30px]">
-            Our extensive sustainable stock means we can almost always meet your
-            needs. With a wide range of products, including oak wood for the
-            furniture industry, gardeners and stair factories, thermally
-            modified Fraké for facade cladding but also interiors, Suar for
-            table tops, hardwood for terraces, window frames, scaffolding,
-            buildings and much more. We are flexible and, if desired, can also
-            carry out machining operations to deliver your custom work. We offer
-            our customers the best types of wood for a low price. Our dedication
-            and capabilities make us the ideal choice for your wood needs{" "}
-          </div>
-          <div className="font-bold text-60 px-[50px] md:px-[120px] lg:px-[200px] xl:px-[225px]  pt-[40px]">
-            {" "}
-            <img src={mianVideo} className="w-[100%]" />{" "}
-          </div>
+
+          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+            {content?.map?.((item) => (
+                <SwiperSlide key={item?.id}>
+                  <div className="text-16 md:text-18 lg:text-18 xl:text-18 text-center px-[30px] md:px-[60px] lg:px-[100px] xl:px-[100px] pt-[20px] md:pt-[25px] lg:pt-[30px] xl:pt-[30px]">
+                    {item?.content}
+                  </div>
+                  <div className="font-bold text-60 px-[50px] md:px-[120px] lg:px-[200px] xl:px-[225px]  pt-[40px]">
+                    <video width="750" height="500" controls>
+                      <source src={item?.video} type="video/mp4" />
+                    </video>
+                  </div>
+                </SwiperSlide>
+            
+            ))}
+          </Swiper>
         </div>
       </section>
     </>

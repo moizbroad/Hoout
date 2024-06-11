@@ -2,6 +2,7 @@ import axios from "axios";
 import { getAccessToken } from "./AccessToken";
 
 export const BASE_URL = "http://127.0.0.1:8000/api";
+export const authEndpoint = "http://127.0.0.1:8000/";
 
 export const axiosApi = axios.create({
   baseURL: BASE_URL,

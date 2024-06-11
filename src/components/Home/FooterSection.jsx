@@ -33,7 +33,7 @@ const FooterSection = ({ isShow }) => {
         openHours: response.data,
       }));
     } catch (error) {
-      toast.error("Wrong credentials!");
+      // toast.error("Wrong credentials!");
     }
   };
 

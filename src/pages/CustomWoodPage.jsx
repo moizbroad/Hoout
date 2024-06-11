@@ -15,8 +15,12 @@ import pintrest from "../assets/customWoodPage/pintrest.svg";
 import twitter from "../assets/customWoodPage/twitter.svg";
 import linkdln from "../assets/customWoodPage/linkdln.svg";
 import email from "../assets/customWoodPage/email.svg";
+import { useNavigate } from "react-router-dom";
 
 export const CustomWoodPage = () => {
+
+  const navigate = useNavigate()
+
   const [productInfo, setProductInfo] = useState([
     {
       itemName: "Hout Type",
@@ -60,13 +64,13 @@ export const CustomWoodPage = () => {
     <>
       <section className="px-[30px] md:px-[80px] lg:px-[100px] bg-[#F4F5F7]">
         <tr className="xs:gap-x-3 gap-x-6 flex  items-center  py-[40px]">
-          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16">
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16 cursor-pointer" onClick={() => navigate('/')}>
             Home{" "}
           </td>
           <td>
             <img src={rightArrow} />
           </td>
-          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16">
+          <td className="text-[#9F9F9F] xs:text-14 sm:text-15 text-16 cursor-pointer" onClick={() => navigate('/shop-page')}>
             {" "}
             Shop
           </td>
@@ -120,7 +124,7 @@ export const CustomWoodPage = () => {
               <div className="text-18"> 5 Customer Review</div>
             </div>
 
-            <div className="pt-6 text-44">$ 2,500</div>
+            <div className="pt-6 text-44">€ 2,500</div>
 
             <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
               <div className="text-14">SHARE THIS PAGE:</div>
@@ -185,7 +189,7 @@ export const CustomWoodPage = () => {
 "> 5 Customer Review</div>
           </div>
 
-          <div className="pt-6 xl:text-44 lg:text-40 md:text-36 sm:text-32 text-28">$ 2,500</div>
+          <div className="pt-6 xl:text-44 lg:text-40 md:text-36 sm:text-32 text-28">€ 2,500</div>
 
           <div className="flex items-center gap-x-4 pt-5 border-b-2 border-[#D9D9D9] pb-[26px]    ">
             <div className="text-14">SHARE THIS PAGE:</div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { axiosApi, setAccessToken } from "../providers";
+import { axiosApi, setAccessToken, authEndpoint } from "../providers";
 import { toast } from "react-toastify";
 
 import signInRight from "../assets/authImages/signInRight.svg";
@@ -47,7 +47,7 @@ export const Signin = () => {
       setAccessToken(response.data?.token);
       localStorage.setItem("userData", JSON.stringify(response.data));
       setBtnLoading(false);
-      navigate("/shop-page");
+      navigate("/");
       toast.success("Successfully logged in");
     } catch (error) {
       setBtnLoading(false);
@@ -102,7 +102,7 @@ export const Signin = () => {
                 src={houtLogo}
                 onClick={() => navigate("/")}
                 alt=""
-                className=" xl:h-[50px] cursor-pointer lg:w-[160px] lg:h-[40px] w-[120px] h-[35px] object-cover"
+                className=" xl:h-[50px] cursor-pointer mt-4 lg:w-[160px] lg:h-[40px] w-[120px] h-[35px] object-cover"
               />
             </div>
             <div className="signUpFormSec xl:px-[80px] lg:px-[30px] px-[5px] ">
@@ -118,7 +118,7 @@ export const Signin = () => {
                 {/* social auth row  */}
                 <div className="socialAuthRow flex gap-3 mb-[12px]">
                   <a
-                    href="#"
+                    href={`${authEndpoint}/accounts/google/login/?process=login`}
                     className="w-[32%] flex gap-2 items-center rounded-md	xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
                     style={{ border: "1px solid #ccc" }}
                   >
@@ -126,7 +126,7 @@ export const Signin = () => {
                     <span> Google </span>
                   </a>
                   <a
-                    href="#"
+                    href={`${authEndpoint}/accounts/facebook/login/?process=login`}
                     className="w-[32%] flex gap-2 items-center rounded-md		xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
                     style={{ border: "1px solid #ccc" }}
                   >
@@ -134,7 +134,7 @@ export const Signin = () => {
                     <span> Facebook </span>
                   </a>
                   <a
-                    href="#"
+                    href={`${authEndpoint}/accounts/apple/login/?process=login`}
                     className=" w-[32%] flex gap-2 items-center rounded-md xl:px-[20px] lg:px-[16px] px-[4px] xl:py-[10px] lg:py-[8px] py-[6px] text-center text-12 font-medium"
                     style={{ border: "1px solid #ccc" }}
                   >

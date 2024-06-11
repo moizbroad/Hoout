@@ -6,9 +6,11 @@ import CheckoutDetail from "../components/CartSections/CheckoutDetail";
 import OrderComplete from "../components/CartSections/OrderComplete";
 import check from "../assets/addToCart/check.svg";
 import { Stepper, Step } from "react-form-stepper";
+import { useNavigate } from "react-router-dom";
 
 
 export const AddToCart = () => {
+  const navigate = useNavigate()
   const [selectedDiv, setSelectedDiv] = useState({
     firstTab: true,
     secondTab: false,
@@ -93,7 +95,9 @@ export const AddToCart = () => {
           <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
             <h5 className="text-[#9F9F9F] xl:text-16 lg:text-15 md:text-14 text-[13px]">
               {" "}
-              <a href="#"> Home </a>
+              <a className="cursor-pointer" onClick={() => {
+                navigate('/')
+              }}> Home </a>
             </h5>
             <div>
               <img
@@ -104,7 +108,9 @@ export const AddToCart = () => {
           </div>
           <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
             <h5 className="text-[#9F9F9F] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
-              <a href="#"> Shop </a>
+              <a className="cursor-pointer" onClick={() => {
+                navigate('/shop-page')
+              }}> Shop </a>
             </h5>
             <div>
               <img

@@ -31,6 +31,7 @@ import { ForgetPassword } from "./pages/ForgetPassword";
 import { Faq } from "./pages/Faq";
 import { ResetPassword } from "./pages/ResetPassword";
 import AdminRoutes from "./components/Auth/AdminRoutes";
+import AuthRedirect from "./components/Auth/AuthRedirect";
 
 function Routes() {
   return (
@@ -57,8 +58,10 @@ function Routes() {
           <Route path="/user-profile" element={<UserProfile />} />
         </Route>
 
-        <Route path="/sign-in" element={<Signin />} />
-        <Route path="/sign-up" element={<Signup />} />
+        <Route element={<AuthRedirect />}>
+          <Route path="/sign-in" element={<Signin />} />
+          <Route path="/sign-up" element={<Signup />} />
+        </Route>
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/forget-password" element={<ForgetPassword />} />

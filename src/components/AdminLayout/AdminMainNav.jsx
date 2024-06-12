@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import notfiIcon from "../../assets/DashboardImages/notfiIcon.svg";
 import country from "../../assets/DashboardImages/country.svg";
@@ -9,18 +9,35 @@ import { getAccessToken } from "../../providers";
 
 const AdminMainNav = () => {
   const navigate = useNavigate();
-  const token = getAccessToken();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const token = userData.token;
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isAdmin = false;
+  console.log(token, "token");
 
-  //   const handleDashboardClick = () => {
-  //     navigate("/dashboard");
-  //   };
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
 
-  //   const handleInboxClick = () => {
-  //     navigate("/inbox");
-  //   };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="dashRightSide flex-1 ">
+    <div
+      className={`dashRightSide w-full  flex-1 ${
+        isScrolled
+          ? " scrollNav h-[90px] lg:h-[90px] md:h-[70px]"
+          : " h-[90px] lg:h-[90px] md:h-[70px]"
+      }`}
+    >
       <div className="dashHead xl:px-[30px] lg:px-[26px] px-[20px] xl:py-[16px] py-[10px] flex justify-between items-center">
         <div className="search w-[40%]">
           <div className="">

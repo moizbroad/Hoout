@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderSection from "../Home/HeaderSection";
 import FooterSection from "../Home/FooterSection";
 import AdminSideNav from "../AdminLayout/AdminSideNav";
@@ -32,8 +32,6 @@ const Layout = () => {
   });
   const hasHeaderFooter = authPaths.includes(currentPath);
 
-  const isAdmin = false;
-
   return (
     <>
       <div>
@@ -46,7 +44,7 @@ const Layout = () => {
                 </div>
                 <div className="flex-1 min-h-screen ">
                   <AdminMainNav />
-                  <div className="!pt-20">
+                  <div className="!pt-2">
                     <Outlet />
                   </div>
                 </div>

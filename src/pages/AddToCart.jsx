@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import rightArrow from "../assets/customWoodPage/rightArrow.svg";
 import ShoppingCart from "../components/CartSections/ShoppingCart";
@@ -7,10 +7,10 @@ import OrderComplete from "../components/CartSections/OrderComplete";
 import check from "../assets/addToCart/check.svg";
 import { Stepper, Step } from "react-form-stepper";
 import { useNavigate } from "react-router-dom";
-
+import { getCart } from "../redux/actions/orderActions";
 
 export const AddToCart = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [selectedDiv, setSelectedDiv] = useState({
     firstTab: true,
     secondTab: false,
@@ -76,6 +76,29 @@ export const AddToCart = () => {
       return newSelectedDiv;
     });
   };
+
+  const [state, setState] = useState({
+    cartData: [],
+  });
+
+  const fetchCart = async () => {
+    try {
+      const res = await getCart();
+      setState((prev) => ({
+        ...prev,
+        cartData: res,
+      }));
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
+  console.log(state, "state");
   return (
     <>
       <section className="xl:px-[100px] lg:px-[60px] md:px-[40px] px-[20px] bg-[#F4F5F7]">
@@ -95,9 +118,15 @@ export const AddToCart = () => {
           <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
             <h5 className="text-[#9F9F9F] xl:text-16 lg:text-15 md:text-14 text-[13px]">
               {" "}
-              <a className="cursor-pointer" onClick={() => {
-                navigate('/')
-              }}> Home </a>
+              <a
+                className="cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                {" "}
+                Home{" "}
+              </a>
             </h5>
             <div>
               <img
@@ -108,9 +137,15 @@ export const AddToCart = () => {
           </div>
           <div className="gap-x-6 flex  items-center  xl:py-[31.5px] lg:py-[24px] md-[20px] py-[12px]">
             <h5 className="text-[#9F9F9F] xl:text-16 lg:text-15 md:text-14 text-[13px] ">
-              <a className="cursor-pointer" onClick={() => {
-                navigate('/shop-page')
-              }}> Shop </a>
+              <a
+                className="cursor-pointer"
+                onClick={() => {
+                  navigate("/shop-page");
+                }}
+              >
+                {" "}
+                Shop{" "}
+              </a>
             </h5>
             <div>
               <img
@@ -205,7 +240,7 @@ export const AddToCart = () => {
         </section>
 
         {selectedTab === "firstTab" ? (
-          <ShoppingCart />
+          <ShoppingCart cartData={state.cartData} />
         ) : selectedTab === "secondTab" ? (
           <CheckoutDetail
             selectedThirdTab={selectedThirdTab}

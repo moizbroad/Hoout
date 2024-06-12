@@ -52,7 +52,7 @@ const HeadLessDropDown = ({ token }) => {
                 onClick={() => {
                   navigate("/sign-in");
                   setAccessToken(null);
-                  toast.success("Logged out");
+                  toast.success("Logged Out!");
                 }}
               >
                 {token ? "Logout" : "Login"}

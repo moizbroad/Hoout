@@ -41,6 +41,7 @@ export const MyAccount = () => {
     setAccessToken(null);
     localStorage.removeItem("userData");
     navigate("/sign-in");
+    toast.success("Logged Out!");
   };
 
   console.log("selectedPic", selectedPic);

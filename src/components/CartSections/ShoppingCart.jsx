@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cross from "../../assets/addToCart/cross.svg";
 import image1 from "../../assets/addToCart/image1.svg";
 import image2 from "../../assets/addToCart/image2.svg";
@@ -8,7 +8,7 @@ import plus from "../../assets/addToCart/plus.svg";
 import minus from "../../assets/addToCart/minus.svg";
 import Button from "../../components/Common/Button";
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ cartData }) => {
   const [items, setItems] = useState([
     {
       id: 1,
@@ -248,7 +248,9 @@ const ShoppingCart = () => {
                 <img src={coupon} />
                 <span className="pt-[4px] text-[#6C7275]">Coupon Code</span>
               </div>
-              <div className="bg-yellow text-white p-4 cursor-pointer rounded-md rounded-l-none">Apply</div>
+              <div className="bg-yellow text-white p-4 cursor-pointer rounded-md rounded-l-none">
+                Apply
+              </div>
             </div>
           </section>
         </section>

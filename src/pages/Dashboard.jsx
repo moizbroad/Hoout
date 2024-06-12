@@ -89,13 +89,15 @@ export const Dashboard = () => {
         <div className="dashCardRow flex justify-start gap-8 items-center xl:mb-[15.76px] mb-[10px]">
           <StatsCard
             name="Total Inventory"
-            amount={state?.stats?.total_inventory}
+            amount={state?.stats?.total_inventory ?state?.stats?.total_inventory : 0 }
             image={inventory}
           />
           <StatsCard
             name="Total Sales"
             image={salesImg}
-            amount={`€${state?.stats?.total_sales}`}
+            amount={`€${
+              state?.stats?.total_sales ? state?.stats?.total_sales : 0
+            }`}
           />
         </div>
 

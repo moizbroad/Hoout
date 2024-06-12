@@ -1,11 +1,26 @@
 import React from "react";
-import { useState } from "react";
-
 import { Outlet, Navigate } from "react-router-dom";
 
-const IsAuthenticated = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  return <>{isAuthenticated ? <Outlet /> : <Navigate to="/sign-in" />}</>;
+const UserRoutes = ({ children }) => {
+  const userData = JSON.parse(localStorage.getItem("userData"));
+
+  //* Check if user is authenticated
+  if (!userData || !userData.token) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  //* Check user role
+  if (userData.is_superuser) {
+    // Redirect admins away from user routes
+    return <Navigate to="/dashboard" />;
+  }
+
+  //* Render the child components/routes if user is authenticated and not an admin
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
-export default IsAuthenticated;
+export default UserRoutes;

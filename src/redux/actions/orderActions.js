@@ -24,6 +24,17 @@ export const getProducts = async () => {
   }
 };
 
+export const getCart = async () => {
+  const cartId = localStorage.getItem("cartId");
+  try {
+    const response = await axiosWithCredentials.get(`/cart/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching order details:", error);
+    throw error;
+  }
+};
+
 export const getWishList = async () => {
   try {
     const response = await axiosWithCredentials.get(`/wishlist/`);

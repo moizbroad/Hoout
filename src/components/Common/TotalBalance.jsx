@@ -35,22 +35,6 @@ const TotalBalance = ({ subtotal, deliveryFee, tax, total }) => {
             </section>
           </section>
         </section>
-
-        <section>
-          <div className="xl:text-14 lg:text-14 text-[13px] xl:pt-[25px] lg:pt-[20px] pt-[10px]">
-            <input
-              type="checkbox"
-              className="form-checkbox focus:ring-[#000] rounded-full mr-4 h-4 w-4 text-[#15803D]"
-              checked={true}
-            />{" "}
-            I Agree to the General Terms and Conditions and waive the Right of
-            Withdrawal because this is a customized product.
-          </div>
-        </section>
-
-        <div className="xl:py-[30px] lg:py-[25px] md:py-[20px] py-[10px]">
-          <Button btnText="Confirm Order" paddingY="20px" widthfull />
-        </div>
       </section>
     </>
   );

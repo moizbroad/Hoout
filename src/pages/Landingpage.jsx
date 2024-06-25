@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 export const Landingpage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
   const queryParams = new URLSearchParams(location.search);
 
   const getTokenFromURL = (item) => {

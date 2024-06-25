@@ -1,8 +1,24 @@
 import React from "react";
 import smallVideo from "../../assets/addToCart/smallVideo.svg";
 import Button from "../Common/Button";
+import moment from "moment";
 
-const OrderComplete = () => {
+const OrderComplete = ({
+  orderId,
+  orderDate,
+  paymentMethod,
+  orderAmount,
+  handleClick,
+}) => {
+  console.log(orderDate, "orderDate");
+
+  const formattedOrderDate = moment(
+    orderDate,
+    "YYYY-MM-DDTHH:mm:ss ZZ"
+  ).isValid()
+    ? moment(orderDate, "YYYY-MM-DDTHH:mm:ss ZZ").format("MMMM DD, YYYY")
+    : "Invalid Date"; // Replace with appropriate handling
+
   return (
     <>
       <section className="rounded-md xl:mx-[351px] lg:mx-[280px] md:mx-[210px] mx-[160px]  shadow-2xl xl:mb-[130px] lg:mb-[100px]  mb-[100px]">
@@ -21,23 +37,27 @@ const OrderComplete = () => {
             <div className="text-[#6C7275] text-14 font-semibold">
               Order code:
             </div>
-            <div className="text-14 font-semibold text-left">#0123_45678</div>
+            <div className="text-14 font-semibold text-left">{orderId}</div>
           </div>
           <div className="flex space-x-48  xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px] items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">Date:</div>
             <div className="text-14 font-semibold text-left">
-              October 19, 2023
+              {formattedOrderDate}
             </div>
           </div>
           <div className="flex space-x-48  xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px] items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">Total:</div>
-            <div className="text-14 font-semibold text-left">€1,345.00</div>
+            <div className="text-14 font-semibold text-left">
+              €{orderAmount}
+            </div>
           </div>
           <div className="flex space-x-28 xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px]  items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">
               Payment method:
             </div>
-            <div className="text-14 font-semibold text-left">Credit Card</div>
+            <div className="text-14 font-semibold text-left">
+              {paymentMethod}
+            </div>
           </div>
           <div className="flex space-x-16 xl:px-[80px] lg:px-[50px] md:px-[30px] px-[15px]  items-center pt-5">
             <div className="text-[#6C7275] text-14 font-semibold">
@@ -47,7 +67,11 @@ const OrderComplete = () => {
           </div>
 
           <div className="pt-[20px] flex justify-center pb-[80px]">
-            <Button btnText="Back to Home " breakpoint="w-[323px]" />
+            <Button
+              btnText="Back to Home "
+              breakpoint="w-[323px]"
+              onClick={handleClick}
+            />
           </div>
         </div>
       </section>

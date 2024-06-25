@@ -139,9 +139,6 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
               </thead>
               <tbody>
                 {cartItems?.map((item) => {
-                  const totalPrice = (
-                    item?.quantity * item?.product_price
-                  )?.toFixed(2);
                   return (
                     <tr key={item.id}>
                       <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">

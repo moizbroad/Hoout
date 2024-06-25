@@ -15,6 +15,7 @@ import { axiosWithCredentials } from "../../providers";
 const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
   const [cartItems, setCartItems] = useState(cartData?.cart_items || []);
   const [updatedItem, setUpdatedItem] = useState(null);
+  const [terms, setTerms] = useState(true);
 
   console.log(cartItems, "kklk");
   useEffect(() => {
@@ -97,9 +98,34 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
 
   const total = cartItems?.[0]?.product_price + delivery + taxData;
 
+  const confirmOrder = async () => {
+    const payload = {
+      gross_total: cartItems?.[0]?.product_price,
+      total: total,
+      delivery_method: "asdasda",
+      delivery_price: delivery,
+    };
+
+    try {
+      const response = await axiosWithCredentials.post(
+        `/confirm-order/`,
+        payload
+      );
+      console.log(response, "kkkkk");
+      if (response?.data?.checkout_url) {
+        window.location.href = response?.data?.checkout_url;
+      }
+    } catch (error) {
+      console.log(error, "klklk");
+      toast.error("Something went wrong");
+
+      throw error;
+    }
+  };
+
   return (
     <>
-      <section className="xl:px-[100px] lg:px-[60px] px-[30px] xs:px-[15px]">
+      <section className="xl:px-[100px] lg:px-[60px] px-[30px] xs:px-[15px]  mb-16">
         <section className="grid grid-cols-12 gap-4 xs:gap-6 lg:gap-[45px] gap-x-12 ">
           <section className="col-span-12 xl:col-span-4">
             <div className="text-22 font-medium border-b border-[#D9D9D9] pb-2">
@@ -171,6 +197,27 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
                 total={total}
               />
             </div>
+            <section>
+              <div className="xl:text-14 lg:text-14 text-[13px] xl:pt-[25px] lg:pt-[20px] pt-[10px]">
+                <input
+                  type="checkbox"
+                  className="form-checkbox focus:ring-[#000] rounded-full mr-4 h-4 w-4 text-[#15803D]"
+                  checked={terms}
+                  onChange={() => setTerms(!terms)}
+                />{" "}
+                I Agree to the General Terms and Conditions and waive the Right
+                of Withdrawal because this is a customized product.
+              </div>
+            </section>
+
+            <div className="xl:py-[30px] lg:py-[25px] md:py-[20px] py-[10px]">
+              <Button
+                btnText="Confirm Order"
+                paddingY="20px"
+                widthfull
+                onClick={confirmOrder}
+              />
+            </div>
           </section>
 
           {/* Right Side Section  */}
@@ -216,7 +263,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
               </div>
             </div>
 
-            <div className="mt-8 pb-[100px]">
+            {/* <div className="mt-8 pb-[100px] my-4">
               <h2 className="text-2xl font-bold my-2 border-b border-[#D9D9D9] pb-3">
                 Payment Method
               </h2>
@@ -231,7 +278,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
           </section>
         </section>
       </section>

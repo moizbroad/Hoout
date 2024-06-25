@@ -12,6 +12,13 @@ import { axiosWithCredentials } from "../providers";
 
 export const AddToCart = () => {
   const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const value = queryParams.get("response");
+  const orderId = queryParams.get("order_id");
+  const orderDate = queryParams.get("date");
+  const paymentMethod = queryParams.get("payment-method");
+  const orderAmount = queryParams.get("amount");
+
   const [selectedDiv, setSelectedDiv] = useState({
     firstTab: true,
     secondTab: false,
@@ -46,6 +53,12 @@ export const AddToCart = () => {
     },
   ];
 
+  useEffect(() => {
+    if (value) {
+      setSelectedTab("");
+      handleDivClick("thirdTab");
+    }
+  }, []);
   const handleDivClick = (tab) => {
     setSelectedTab(tab);
     setSelectedDiv((prev) => {
@@ -180,7 +193,6 @@ export const AddToCart = () => {
           </div>
         </div>
       </section>
-
       <section className="xl:pt-[50px] lg:pt-[35px] md:pt-[25px] pt-[15px] flex justify-center">
         <div className="font-medium xl:text-54 lg:text-50 md:text-46 sm:text-44 text-40  ">
           {" "}
@@ -192,13 +204,11 @@ export const AddToCart = () => {
         <Step label="Children Step 2" />
         <Step label="Children Step 3" />
       </Stepper> */}
-
       {/* <section className="pt-[50px] flex justify-center gap-x-28">
         <div className="font-medium  text-22  " onClick={stapper}> Cart </div>
         <div className="font-medium  text-22  "> Chekout </div>
         <div className="font-medium  text-22  "> Order Complete </div>
       </section> */}
-
       <section className="   flex-center flex-col ">
         {/* <div className="flex-center font-extrabold gap-x-3">
           <img
@@ -275,7 +285,15 @@ export const AddToCart = () => {
             delivery={state.deliveryFee}
           />
         ) : (
-          <OrderComplete handleDivClick={handleDivClick} />
+          <OrderComplete
+            orderId={orderId}
+            orderDate={orderDate}
+            paymentMethod={paymentMethod}
+            orderAmount={orderAmount}
+            handleClick={() => {
+              navigate("/");
+            }}
+          />
         )}
       </section>
 

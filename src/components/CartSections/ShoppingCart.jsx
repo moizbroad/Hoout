@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import cross from "../../assets/addToCart/cross.svg";
 import image1 from "../../assets/addToCart/image1.svg";
 import image2 from "../../assets/addToCart/image2.svg";
@@ -8,81 +8,89 @@ import plus from "../../assets/addToCart/plus.svg";
 import minus from "../../assets/addToCart/minus.svg";
 import Button from "../../components/Common/Button";
 import { debounce } from "lodash";
-import {
-  changeQuantity,
-  deleteCartItem,
-} from "../../redux/actions/orderActions";
+import { deleteCartItem } from "../../redux/actions/orderActions";
 import { toast } from "react-toastify";
+import { axiosWithCredentials } from "../../providers";
 
 const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
   const [cartItems, setCartItems] = useState(cartData?.cart_items || []);
-  const [loading, setLoading] = useState(false);
+  const [updatedItem, setUpdatedItem] = useState(null);
 
   useEffect(() => {
     setCartItems(cartData?.cart_items || []);
   }, [cartData]);
 
-  const updateQuantity = async (id, productId, price, newQuantity) => {
-    const originalCartItems = [...cartItems]; // Preserve original state
+  const updateQuantity = async ({ id, productId, price, newQuantity }) => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
     try {
-      setLoading(true);
-      await changeQuantity({
-        id,
-        productId,
-        price,
+      const payload = {
+        cart: userData.card_id,
+        user: userData?.user_id,
+        product: productId,
         quantity: newQuantity,
-      });
-      setLoading(false);
+        product_price: price,
+      };
+      await axiosWithCredentials.put(`/change-quantity/${id}/`, payload);
+
+      toast.success("Successfully updated the cart");
+
+      fetchCart();
     } catch (error) {
+      let errorMessage = "Something went wrong!";
       if (error.response?.data?.product?.length) {
-        toast.error(error.response.data.product[0]);
+        errorMessage = error.response.data.product[0];
       } else if (error?.response?.data?.message) {
-        toast.error(error?.response?.data?.message);
-      } else {
-        toast.error("Something went wrong!");
+        errorMessage = error?.response?.data?.message;
       }
-      setCartItems(originalCartItems); // Revert to original state
-      setLoading(false);
+      fetchCart();
+      toast.error(errorMessage);
     }
   };
 
-  const debouncedUpdateQuantity = useCallback(debounce(updateQuantity, 500), [
-    cartItems,
-  ]);
+  const debouncedUpdateQuantity = useCallback(
+    debounce((item) => updateQuantity(item), 500),
+    []
+  );
+
+  useEffect(() => {
+    if (updatedItem) {
+      debouncedUpdateQuantity(updatedItem);
+    }
+  }, [updatedItem]);
 
   const handleIncrement = (id) => {
-    setCartItems((prevItems) =>
-      prevItems?.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
     const item = cartItems?.find((item) => item.id === id);
     if (item) {
       const newQuantity = item.quantity + 1;
-      debouncedUpdateQuantity(
-        id,
-        item.product?.id,
-        item.product_price,
-        newQuantity
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
+        )
       );
+      setUpdatedItem({
+        id,
+        productId: item.product?.id,
+        price: item.product_price,
+        newQuantity,
+      });
     }
   };
 
   const handleDecrement = (id) => {
     const item = cartItems?.find((item) => item.id === id);
     if (item && item.quantity > 1) {
+      const newQuantity = item.quantity - 1;
       setCartItems((prevItems) =>
-        prevItems?.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        prevItems.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
         )
       );
-      const newQuantity = item.quantity - 1;
-      debouncedUpdateQuantity(
+      setUpdatedItem({
         id,
-        item.product?.id,
-        item.product_price,
-        newQuantity
-      );
+        productId: item.product?.id,
+        price: item.product_price,
+        newQuantity,
+      });
     }
   };
 
@@ -95,13 +103,7 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
     }
   };
 
-  console.log(taxData, delivery, "taxDelivery");
-  const subtotal = cartItems?.reduce(
-    (acc, item) => acc + item.product_price * item.quantity,
-    0
-  );
-
-  const total = subtotal + delivery + taxData;
+  const total = cartItems?.[0]?.product_price + delivery + taxData;
   return (
     <>
       <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[80px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
@@ -310,7 +312,7 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Subtotal
               </div>
-              <div>€{subtotal?.toFixed(2)}</div>
+              <div>€{cartItems?.[0]?.product_price?.toFixed(2)}</div>
             </section>
             <section className="flex justify-between pt-[25px]">
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">

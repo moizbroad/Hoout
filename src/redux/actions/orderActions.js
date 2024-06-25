@@ -72,31 +72,31 @@ export const addToCart = async (values) => {
   }
 };
 
-export const changeQuantity = async (values) => {
-  const userData = JSON.parse(localStorage.getItem("userData"));
+// export const changeQuantity = async (values) => {
+//   const userData = JSON.parse(localStorage.getItem("userData"));
 
-  const { id, price, productId, quantity } = values;
+//   const { id, price, productId, quantity } = values;
 
-  const payload = {
-    cart: userData.card_id,
-    user: userData?.user_id,
-    product: productId,
-    quantity,
-    product_price: price,
-  };
+//   const payload = {
+//     cart: userData.card_id,
+//     user: userData?.user_id,
+//     product: productId,
+//     quantity,
+//     product_price: price,
+//   };
 
-  try {
-    const response = await axiosWithCredentials.put(
-      `/change-quantity/${id}/`,
-      payload
-    );
+//   try {
+//     const response = await axiosWithCredentials.put(
+//       `/change-quantity/${id}/`,
+//       payload
+//     );
 
-    // toast.success("Successfully added to cart");
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
+//     // toast.success("Successfully added to cart");
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 export const deleteCartItem = async (id) => {
   try {

@@ -52,6 +52,7 @@ const HeadLessDropDown = ({ token }) => {
                 onClick={() => {
                   navigate("/sign-in");
                   setAccessToken(null);
+                  localStorage.clear();
                   toast.success("Logged Out!");
                 }}
               >

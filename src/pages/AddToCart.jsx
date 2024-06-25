@@ -8,6 +8,7 @@ import check from "../assets/addToCart/check.svg";
 import { Stepper, Step } from "react-form-stepper";
 import { useNavigate } from "react-router-dom";
 import { getCart } from "../redux/actions/orderActions";
+import { axiosWithCredentials } from "../providers";
 
 export const AddToCart = () => {
   const navigate = useNavigate();
@@ -79,6 +80,8 @@ export const AddToCart = () => {
 
   const [state, setState] = useState({
     cartData: [],
+    tax: 0,
+    deliveryFee: 0,
   });
 
   const fetchCart = async () => {
@@ -94,7 +97,22 @@ export const AddToCart = () => {
     }
   };
 
+  const getTaxDelivery = async () => {
+    try {
+      const response = await axiosWithCredentials.get(`/get-tax-delivery/`);
+      setState((prev) => ({
+        ...prev,
+        tax: response.data?.vat,
+        deliveryFee: response?.data?.delivery_fee,
+      }));
+      return response.data;
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
   useEffect(() => {
+    getTaxDelivery();
     fetchCart();
   }, []);
 
@@ -240,7 +258,12 @@ export const AddToCart = () => {
         </section>
 
         {selectedTab === "firstTab" ? (
-          <ShoppingCart cartData={state.cartData} />
+          <ShoppingCart
+            cartData={state.cartData}
+            fetchCart={fetchCart}
+            taxData={state.tax}
+            delivery={state.deliveryFee}
+          />
         ) : selectedTab === "secondTab" ? (
           <CheckoutDetail
             selectedThirdTab={selectedThirdTab}

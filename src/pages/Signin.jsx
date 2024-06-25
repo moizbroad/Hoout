@@ -46,6 +46,7 @@ export const Signin = () => {
       const response = await axiosApi.post("/accounts/login/", data);
       setAccessToken(response.data?.token);
       localStorage.setItem("userData", JSON.stringify(response.data));
+      localStorage.setItem("cartId", JSON.stringify(response.data?.cart_id));
       setBtnLoading(false);
       navigate("/");
       toast.success("Successfully logged in");

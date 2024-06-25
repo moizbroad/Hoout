@@ -55,6 +55,7 @@ const CheckoutDetail = () => {
     (acc, item) => acc + item.pricePerUnit * item.quantity,
     0
   );
+
   const tax = subtotal * taxRate;
   const total = subtotal + deliveryFee + tax;
 

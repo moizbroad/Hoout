@@ -3,7 +3,7 @@ import productHeart from "../../assets/LandingPageImages/products/productHeart.s
 import addToCartt from "../../assets/LandingPageImages/products/addToCart.svg";
 import Button from "../Common/Button";
 import { useLocation, useNavigate } from "react-router-dom";
-import { axiosApi } from "../../providers";
+import { axiosApi, axiosWithCredentials } from "../../providers";
 import { addToCart } from "../../redux/actions/orderActions";
 import { scrollToTop } from "../../utils/helper";
 
@@ -28,7 +28,7 @@ const ProductsSection = ({
 
   const handleGetProducts = async () => {
     try {
-      const response = await axiosApi.get("/product/");
+      const response = await axiosWithCredentials.get("/product-filter/");
       if (selectedFilter === "" && location.pathname !== "/") {
         setState((prev) => ({
           ...prev,
@@ -60,18 +60,12 @@ const ProductsSection = ({
           products: response.data,
         }));
       }
-    } catch (error) {
-      console.log(error, "error");
-    }
+    } catch (error) {}
   };
 
-  const handleAddToCart = async (id) => {
-    try {
-      if (id) {
-        const res = await addToCart({ id });
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
+  const handleAddToCart = async (id, price) => {
+    if (id) {
+      const res = await addToCart({ id, price });
     }
   };
 
@@ -129,7 +123,7 @@ const ProductsSection = ({
                     <div
                       className="border-2 cursor-pointer border-[#898989] px-2 flex items-center justify-center py-3  gap-x-3  add-cart-btn md:text-[12px] lg:text-[12px]"
                       onClick={() => {
-                        handleAddToCart(item?.id);
+                        handleAddToCart(item?.id, item?.price);
                         // navigate("/cart");
                       }}
                     >

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import cross from "../../assets/addToCart/cross.svg";
 import image1 from "../../assets/addToCart/image1.svg";
 import image2 from "../../assets/addToCart/image2.svg";
@@ -7,53 +7,101 @@ import coupon from "../../assets/addToCart/coupon.svg";
 import plus from "../../assets/addToCart/plus.svg";
 import minus from "../../assets/addToCart/minus.svg";
 import Button from "../../components/Common/Button";
+import { debounce } from "lodash";
+import {
+  changeQuantity,
+  deleteCartItem,
+} from "../../redux/actions/orderActions";
+import { toast } from "react-toastify";
 
-const ShoppingCart = ({ cartData }) => {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      image: image1,
-      name: "Tray Table",
-      thickness: 25,
-      width: 220,
-      length: 220,
-      pricePerUnit: 19.0,
-      quantity: 2,
-    },
-    // Add more items as needed
+const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
+  const [cartItems, setCartItems] = useState(cartData?.cart_items || []);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setCartItems(cartData?.cart_items || []);
+  }, [cartData]);
+
+  const updateQuantity = async (id, productId, price, newQuantity) => {
+    const originalCartItems = [...cartItems]; // Preserve original state
+    try {
+      setLoading(true);
+      await changeQuantity({
+        id,
+        productId,
+        price,
+        quantity: newQuantity,
+      });
+      setLoading(false);
+    } catch (error) {
+      if (error.response?.data?.product?.length) {
+        toast.error(error.response.data.product[0]);
+      } else if (error?.response?.data?.message) {
+        toast.error(error?.response?.data?.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
+      setCartItems(originalCartItems); // Revert to original state
+      setLoading(false);
+    }
+  };
+
+  const debouncedUpdateQuantity = useCallback(debounce(updateQuantity, 500), [
+    cartItems,
   ]);
 
-  const deliveryFee = 30.0;
-  const taxRate = 0.02; // Assuming 2% tax rate
-
   const handleIncrement = (id) => {
-    setItems(
-      items.map((item) =>
+    setCartItems((prevItems) =>
+      prevItems?.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
+    const item = cartItems?.find((item) => item.id === id);
+    if (item) {
+      const newQuantity = item.quantity + 1;
+      debouncedUpdateQuantity(
+        id,
+        item.product?.id,
+        item.product_price,
+        newQuantity
+      );
+    }
   };
 
   const handleDecrement = (id) => {
-    setItems(
-      items.map((item) =>
-        item.id === id && item.quantity > 0
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
+    const item = cartItems?.find((item) => item.id === id);
+    if (item && item.quantity > 1) {
+      setCartItems((prevItems) =>
+        prevItems?.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
+      const newQuantity = item.quantity - 1;
+      debouncedUpdateQuantity(
+        id,
+        item.product?.id,
+        item.product_price,
+        newQuantity
+      );
+    }
   };
 
-  const handleRemove = (id) => {
-    setItems(items.filter((item) => item.id !== id));
+  const handleRemove = async (id) => {
+    try {
+      await deleteCartItem(id);
+      fetchCart();
+    } catch (error) {
+      toast.error("Failed to remove item from the cart.");
+    }
   };
 
-  const subtotal = items.reduce(
-    (acc, item) => acc + item.pricePerUnit * item.quantity,
+  console.log(taxData, delivery, "taxDelivery");
+  const subtotal = cartItems?.reduce(
+    (acc, item) => acc + item.product_price * item.quantity,
     0
   );
-  const tax = subtotal * taxRate;
-  const total = subtotal + deliveryFee + tax;
+
+  const total = subtotal + delivery + taxData;
   return (
     <>
       <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[80px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
@@ -89,12 +137,12 @@ const ShoppingCart = ({ cartData }) => {
                 </tr>
               </thead>
               <tbody>
-                {items.map((item) => {
+                {cartItems?.map((item) => {
                   const totalPrice = (
-                    item.quantity * item.pricePerUnit
-                  ).toFixed(2);
+                    item?.quantity * item?.product_price
+                  )?.toFixed(2);
                   return (
-                    <tr>
+                    <tr key={item.id}>
                       <td className="xl:pb-[24px] lg:pb-[18px] pb-[10px]">
                         <section className="flex items-center gap-x-2 pt-5 xs:min-w-[300px]">
                           <div>
@@ -102,7 +150,7 @@ const ShoppingCart = ({ cartData }) => {
                               href="#"
                               onClick={(e) => {
                                 e.preventDefault();
-                                handleRemove(item.id);
+                                handleRemove(item?.id);
                               }}
                             >
                               <img src={cross} alt="remove" />
@@ -110,14 +158,14 @@ const ShoppingCart = ({ cartData }) => {
                           </div>
                           <div>
                             <img
-                              src={item.image}
+                              src={item?.product?.images_url?.[0]}
                               className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px]"
                               alt={item.name}
                             />
                           </div>
                           <div className="flex flex-col xl:min-w-[220px]">
                             <div className="xl:text-18 lg:text-16 text-14">
-                              {item.name}
+                              {item?.product?.name}
                             </div>
                             <div className="flex gap-[15px] items-center">
                               <div>
@@ -125,7 +173,7 @@ const ShoppingCart = ({ cartData }) => {
                                   THICKNESS
                                 </div>
                                 <div className="xl:text-14 text-[13px]">
-                                  {item.thickness} mm
+                                  {item?.thickness} mm
                                 </div>
                               </div>
                               <div>
@@ -133,7 +181,7 @@ const ShoppingCart = ({ cartData }) => {
                                   WIDTH
                                 </div>
                                 <div className="xl:text-14 text-[13px]">
-                                  {item.width} mm
+                                  {item?.width} mm
                                 </div>
                               </div>
                               <div>
@@ -141,7 +189,7 @@ const ShoppingCart = ({ cartData }) => {
                                   LENGTH
                                 </div>
                                 <div className="xl:text-14 text-[13px]">
-                                  {item.length} mm
+                                  {item?.length} mm
                                 </div>
                               </div>
                             </div>
@@ -155,19 +203,19 @@ const ShoppingCart = ({ cartData }) => {
                               href="#"
                               onClick={(e) => {
                                 e.preventDefault();
-                                handleDecrement(item.id);
+                                handleDecrement(item?.id);
                               }}
                             >
                               <img src={minus} alt="decrement" />
                             </a>
                           </div>
-                          <h6>{item.quantity}</h6>
+                          <h6>{item?.quantity}</h6>
                           <div>
                             <a
                               href="#"
                               onClick={(e) => {
                                 e.preventDefault();
-                                handleIncrement(item.id);
+                                handleIncrement(item?.id);
                               }}
                             >
                               <img src={plus} alt="increment" />
@@ -176,10 +224,10 @@ const ShoppingCart = ({ cartData }) => {
                         </div>
                       </td>
                       <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                        €{item.pricePerUnit.toFixed(2)}
+                        €{item?.product?.price?.toFixed(2)}
                       </td>
                       <td className="px-[10px] xl:pb-[24px] lg:pb-[18px] pb-[10px]">
-                        €{totalPrice}
+                        €{item?.product_price?.toFixed(2)}
                       </td>
                     </tr>
                   );
@@ -262,26 +310,26 @@ const ShoppingCart = ({ cartData }) => {
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Subtotal
               </div>
-              <div>€{subtotal.toFixed(2)}</div>
+              <div>€{subtotal?.toFixed(2)}</div>
             </section>
             <section className="flex justify-between pt-[25px]">
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Delivery Fee
               </div>
-              <div>€{deliveryFee.toFixed(2)}</div>
+              <div>€{delivery?.toFixed(2)}</div>
             </section>
             <section className="flex justify-between pt-[25px] border-b border-[#D9D9D9] pb-3">
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Tax
               </div>
-              <div>€{tax.toFixed(2)}</div>
+              <div>€{taxData?.toFixed(2)}</div>
             </section>
             <section className="flex justify-between pt-[25px] pb-5">
               <div className="xl:text-16 lg:text-15 md:text-14 text-[13px] font-medium">
                 Total
               </div>
               <div className="text-yellow font-medium xl:text-18 lg:text-16 text-14">
-                USD €{total.toFixed(2)}
+                USD €{total?.toFixed(2)}
               </div>
             </section>
           </section>

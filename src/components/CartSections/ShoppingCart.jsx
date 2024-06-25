@@ -308,26 +308,31 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Subtotal
               </div>
-              <div>€{cartItems?.[0]?.product_price?.toFixed(2)}</div>
+              <div>
+                €
+                {cartItems?.length
+                  ? cartItems?.[0]?.product_price?.toFixed(2)
+                  : 0}
+              </div>
             </section>
             <section className="flex justify-between pt-[25px]">
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Delivery Fee
               </div>
-              <div>€{delivery?.toFixed(2)}</div>
+              <div>€{cartItems?.length ? delivery?.toFixed(2) : 0}</div>
             </section>
             <section className="flex justify-between pt-[25px] border-b border-[#D9D9D9] pb-3">
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Tax
               </div>
-              <div>€{taxData?.toFixed(2)}</div>
+              <div>€{cartItems?.length ? taxData?.toFixed(2) : 0}</div>
             </section>
             <section className="flex justify-between pt-[25px] pb-5">
               <div className="xl:text-16 lg:text-15 md:text-14 text-[13px] font-medium">
                 Total
               </div>
               <div className="text-yellow font-medium xl:text-18 lg:text-16 text-14">
-                USD €{total?.toFixed(2)}
+                USD €{cartItems?.length ? total?.toFixed(2) : 0}
               </div>
             </section>
           </section>

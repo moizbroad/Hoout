@@ -16,6 +16,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
   const [cartItems, setCartItems] = useState(cartData?.cart_items || []);
   const [updatedItem, setUpdatedItem] = useState(null);
   const [terms, setTerms] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   console.log(cartItems, "kklk");
   useEffect(() => {
@@ -107,6 +108,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
     };
 
     try {
+      setLoading(true);
       const response = await axiosWithCredentials.post(
         `/confirm-order/`,
         payload
@@ -115,7 +117,9 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
       if (response?.data?.checkout_url) {
         window.location.href = response?.data?.checkout_url;
       }
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error, "klklk");
       toast.error("Something went wrong");
 
@@ -195,6 +199,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
                 deliveryFee={delivery}
                 tax={taxData}
                 total={total}
+                cartItems={cartItems}
               />
             </div>
             <section>
@@ -212,7 +217,8 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
 
             <div className="xl:py-[30px] lg:py-[25px] md:py-[20px] py-[10px]">
               <Button
-                btnText="Confirm Order"
+                disabled={loading}
+                btnText={loading ? "Confirming.." : "Confirm Order"}
                 paddingY="20px"
                 widthfull
                 onClick={confirmOrder}

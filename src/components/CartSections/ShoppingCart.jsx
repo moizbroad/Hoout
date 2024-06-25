@@ -101,8 +101,12 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
       toast.error("Failed to remove item from the cart.");
     }
   };
+  const totalPrice = cartItems?.reduce((acc, item) => {
+    return acc + item.product_price;
+  }, 0);
 
-  const total = cartItems?.[0]?.product_price + delivery + taxData;
+  console.log(totalPrice, "totalPrice");
+  const total = totalPrice + delivery + taxData;
   return (
     <>
       <section className="w-full flex xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[10px] justify-between xl:px-[135px] lg:px-[80px] px-[20px]  xl:pb-[100px] lg:pb-[70px] md:pb-[80px] pb-[70px] md:flex-col sm:flex-col xs:flex-col  ">
@@ -308,12 +312,7 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">
                 Subtotal
               </div>
-              <div>
-                €
-                {cartItems?.length
-                  ? cartItems?.[0]?.product_price?.toFixed(2)
-                  : 0}
-              </div>
+              <div>€{cartItems?.length ? totalPrice?.toFixed(2) : 0}</div>
             </section>
             <section className="flex justify-between pt-[25px]">
               <div className="text-[#696C74] xl:text-16 lg:text-15 md:text-14 text-[13px]">

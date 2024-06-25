@@ -97,7 +97,11 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
     }
   };
 
-  const total = cartItems?.[0]?.product_price + delivery + taxData;
+  const totalPrice = cartItems?.reduce((acc, item) => {
+    return acc + item.product_price;
+  }, 0);
+
+  const total = totalPrice + delivery + taxData;
 
   const confirmOrder = async () => {
     const payload = {
@@ -195,7 +199,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
 
             <div>
               <TotalBalance
-                subtotal={cartItems?.[0]?.product_price}
+                subtotal={totalPrice}
                 deliveryFee={delivery}
                 tax={taxData}
                 total={total}

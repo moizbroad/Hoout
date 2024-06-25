@@ -6,7 +6,6 @@ import image3 from "../../assets/addToCart/image3.svg";
 import coupon from "../../assets/addToCart/coupon.svg";
 import plus from "../../assets/addToCart/plus.svg";
 import minus from "../../assets/addToCart/minus.svg";
-import Button from "../../components/Common/Button";
 import { debounce } from "lodash";
 import { deleteCartItem } from "../../redux/actions/orderActions";
 import { toast } from "react-toastify";

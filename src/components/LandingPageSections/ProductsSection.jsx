@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { axiosApi, axiosWithCredentials } from "../../providers";
 import { addToCart } from "../../redux/actions/orderActions";
 import { scrollToTop } from "../../utils/helper";
+import { toast } from "react-toastify";
 
 const ProductsSection = ({
   isthree,
@@ -66,6 +67,24 @@ const ProductsSection = ({
   const handleAddToCart = async (id, price) => {
     if (id) {
       const res = await addToCart({ id, price });
+    }
+  };
+
+  const handleAddToWishlist = async (id) => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    console.log(userData, "lklklk");
+    if (id) {
+      const payload = {
+        product_id: id,
+        user: userData?.user_id,
+      };
+      try {
+        await axiosWithCredentials.post(`/wishlist/`, payload);
+
+        toast.success("Successfully added to wishlist");
+      } catch (error) {
+        console.log(error, "lklkl");
+      }
     }
   };
 
@@ -131,7 +150,12 @@ const ProductsSection = ({
                       <img src={addToCartt} />
                       Add to Cart{" "}
                     </div>
-                    <div>
+                    <div
+                      className="cursor-pointer"
+                      onClick={() => {
+                        handleAddToWishlist(item.id);
+                      }}
+                    >
                       <img src={productHeart} />{" "}
                     </div>
                   </section>

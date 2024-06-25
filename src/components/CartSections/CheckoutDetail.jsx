@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import InputField from "../../components/Common/InputField";
 import Button from "../../components/Common/Button";
 import { paymentMethods } from "../../utils/helper";
@@ -8,56 +8,94 @@ import minus from "../../assets/addToCart/minus.svg";
 import plus from "../../assets/addToCart/plus.svg";
 import TotalBalance from "../Common/TotalBalance";
 import RadioButtons from "../Common/RadioButtons";
+import { debounce } from "lodash";
+import { toast } from "react-toastify";
+import { axiosWithCredentials } from "../../providers";
 
-const CheckoutDetail = () => {
-  const pricePerUnit = 30;
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      image: image1,
-      name: "Tray Table",
-      thickness: 25,
-      width: 220,
-      length: 220,
-      pricePerUnit: 19.0,
-      quantity: 2,
-    },
-    // Add more items as needed
-  ]);
+const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
+  const [cartItems, setCartItems] = useState(cartData?.cart_items || []);
+  const [updatedItem, setUpdatedItem] = useState(null);
+
+  console.log(cartItems, "kklk");
+  useEffect(() => {
+    setCartItems(cartData?.cart_items || []);
+  }, [cartData]);
+
+  const updateQuantity = async ({ id, productId, price, newQuantity }) => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    try {
+      const payload = {
+        cart: userData.card_id,
+        user: userData?.user_id,
+        product: productId,
+        quantity: newQuantity,
+        product_price: price,
+      };
+      await axiosWithCredentials.put(`/change-quantity/${id}/`, payload);
+
+      toast.success("Successfully updated the cart");
+
+      fetchCart();
+    } catch (error) {
+      let errorMessage = "Something went wrong!";
+      if (error.response?.data?.product?.length) {
+        errorMessage = error.response.data.product[0];
+      } else if (error?.response?.data?.message) {
+        errorMessage = error?.response?.data?.message;
+      }
+      fetchCart();
+      toast.error(errorMessage);
+    }
+  };
+
+  const debouncedUpdateQuantity = useCallback(
+    debounce((item) => updateQuantity(item), 500),
+    []
+  );
+
+  useEffect(() => {
+    if (updatedItem) {
+      debouncedUpdateQuantity(updatedItem);
+    }
+  }, [updatedItem]);
 
   const handleIncrement = (id) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
+    const item = cartItems?.find((item) => item.id === id);
+    if (item) {
+      const newQuantity = item.quantity + 1;
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
+        )
+      );
+      setUpdatedItem({
+        id,
+        productId: item.product?.id,
+        price: item.product_price,
+        newQuantity,
+      });
+    }
   };
 
   const handleDecrement = (id) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(0, item.quantity - 1) }
-          : item
-      )
-    );
+    const item = cartItems?.find((item) => item.id === id);
+    if (item && item.quantity > 1) {
+      const newQuantity = item.quantity - 1;
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
+        )
+      );
+      setUpdatedItem({
+        id,
+        productId: item.product?.id,
+        price: item.product_price,
+        newQuantity,
+      });
+    }
   };
 
-  const totalPrice = (id) => {
-    const item = items.find((item) => item.id === id);
-    return (item.quantity * item.pricePerUnit).toFixed(2);
-  };
-
-  const deliveryFee = 30.0;
-  const taxRate = 0.02; // Assuming 2% tax rate
-
-  const subtotal = items.reduce(
-    (acc, item) => acc + item.pricePerUnit * item.quantity,
-    0
-  );
-
-  const tax = subtotal * taxRate;
-  const total = subtotal + deliveryFee + tax;
+  const total = cartItems?.[0]?.product_price + delivery + taxData;
 
   return (
     <>
@@ -68,7 +106,7 @@ const CheckoutDetail = () => {
               View Order
             </div>
 
-            {items.map((item) => (
+            {cartItems?.map((item) => (
               <div key={item.id}>
                 <section className="flex pt-5 items-center">
                   <div>
@@ -119,7 +157,7 @@ const CheckoutDetail = () => {
                     </div>
                   </div>
                   <div className="xl:text-22 lg:text-20 md:text-18 text-16 font-bold">
-                    €{totalPrice(item.id)}
+                    €{item?.product_price}
                   </div>
                 </section>
               </div>
@@ -127,9 +165,9 @@ const CheckoutDetail = () => {
 
             <div>
               <TotalBalance
-                subtotal={subtotal}
-                deliveryFee={deliveryFee}
-                tax={tax}
+                subtotal={cartItems?.[0]?.product_price}
+                deliveryFee={delivery}
+                tax={taxData}
                 total={total}
               />
             </div>

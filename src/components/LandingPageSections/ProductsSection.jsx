@@ -123,7 +123,7 @@ const ProductsSection = ({
                   }}
                 >
                   <img
-                    src={item.images_url[0]}
+                    src={item?.images_url?.[0]}
                     className="w-full object-cover h-full sm:h-[310px] lg:h-[310px] xl:h-[310px]"
                   />
                 </div>

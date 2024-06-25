@@ -145,7 +145,7 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
                 <section className="flex pt-5 items-center">
                   <div>
                     <img
-                      src={item.image}
+                      src={item?.product?.images_url?.[0]}
                       className="xl:w-[80px] xl:h-[96px] lg:w-[70px] lg:h-[80px] min-w-[60px] min-h-[60px] xs:w-[60px] xs:h-[60px]"
                     />
                   </div>

@@ -40,7 +40,7 @@ function Routes() {
         <Route element={<UserRoutes />}>
           <Route path="/" element={<Landingpage />} />
           <Route path="/shop-page" element={<ShopPage />} />
-          <Route path="/new-product" element={<AddNewProduct />} />
+
           <Route path="/wood-page" element={<CustomWoodPage />} />
           <Route path="/cart" element={<AddToCart />} />
           <Route path="/customized-product" element={<CustomizedProduct />} />
@@ -52,6 +52,7 @@ function Routes() {
 
         <Route element={<AdminRoutes />}>
           <Route path="/dashboard/" element={<Dashboard />} />
+          <Route path="/new-product" element={<AddNewProduct />} />
           <Route path="/products/" element={<Products />} />
           <Route path="/inbox/" element={<Inbox />} />
           <Route path="/order-list/" element={<OrderList />} />

@@ -15,7 +15,7 @@ export const AddNewProduct = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const selectedProduct = location.state.item;
+  const selectedProduct = location?.state?.item;
 
   console.log(selectedProduct, "selectedProduct");
   return (

@@ -7,6 +7,7 @@ import { axiosApi, axiosWithCredentials } from "../../providers";
 import { addToCart } from "../../redux/actions/orderActions";
 import { scrollToTop } from "../../utils/helper";
 import { toast } from "react-toastify";
+import { createSlice } from "@reduxjs/toolkit";
 
 const ProductsSection = ({
   isthree,
@@ -112,7 +113,7 @@ const ProductsSection = ({
               : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1240px] mx-auto"
           }
         >
-          {state.products.map((item, index) => {
+          {state?.products?.slice(0, 4)?.map((item, index) => {
             return (
               // JSX code here
               <div key={index} className="">

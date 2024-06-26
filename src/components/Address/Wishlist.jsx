@@ -59,7 +59,7 @@ const Wishlist = () => {
   };
 
   return (
-    <section className="px-40 xs:px-8 sm:px-10 md:px-10 lg:px-12 my-20 xs:my-8 sm:my-10 md:my-13 lg:my-14">
+    <section className="px-8 xs:px-8 sm:px-10 md:px-10 lg:px-12 my-20 xs:my-8 sm:my-10 md:my-13 lg:my-14">
       <DeleteModal
         isOpen={showModal}
         closeModal={() => setShowModal(!showModal)}

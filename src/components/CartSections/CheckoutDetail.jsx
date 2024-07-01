@@ -11,14 +11,46 @@ import RadioButtons from "../Common/RadioButtons";
 import { debounce } from "lodash";
 import { toast } from "react-toastify";
 import { axiosWithCredentials } from "../../providers";
+import { Field, Form, Formik } from "formik";
+import FormikField from "../Common/FormikField";
+import * as Yup from "yup";
+import {
+  getDeliveryAddress,
+  getProfile,
+} from "../../redux/actions/profileActions";
 
 const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
+  const [state, setState] = useState({
+    deliveryAddress: null,
+    userData: null,
+  });
   const [cartItems, setCartItems] = useState(cartData?.cart_items || []);
   const [updatedItem, setUpdatedItem] = useState(null);
   const [terms, setTerms] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  console.log(cartItems, "kklk");
+  const validationSchema = Yup.object().shape({
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
+    companyName: Yup.string().required("Company name is required"),
+    streetAndNumber: Yup.string().required("Street & Number is required"),
+    city: Yup.string().required("City is required"),
+    zipCode: Yup.string().required("Zip Code is required"),
+    country: Yup.string().required("Country is required"),
+  });
+
+  const fetchUser = async () => {
+    try {
+      const res = await getProfile();
+      setState((prev) => ({
+        ...prev,
+        userData: res?.data,
+      }));
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
   useEffect(() => {
     setCartItems(cartData?.cart_items || []);
   }, [cartData]);
@@ -50,10 +82,28 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
     }
   };
 
+  const fetchDeliveryAddress = async () => {
+    try {
+      const res = await getDeliveryAddress();
+      setState((prev) => ({
+        ...prev,
+        deliveryAddress: res?.data,
+      }));
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
   const debouncedUpdateQuantity = useCallback(
     debounce((item) => updateQuantity(item), 500),
     []
   );
+
+  console.log(state, "state");
+  useEffect(() => {
+    fetchUser();
+    fetchDeliveryAddress();
+  }, []);
 
   useEffect(() => {
     if (updatedItem) {
@@ -111,23 +161,41 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
       delivery_price: delivery,
     };
 
-    try {
-      setLoading(true);
-      const response = await axiosWithCredentials.post(
-        `/confirm-order/`,
-        payload
-      );
-      console.log(response, "kkkkk");
-      if (response?.data?.checkout_url) {
-        window.location.href = response?.data?.checkout_url;
-      }
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error, "klklk");
-      toast.error("Something went wrong");
+    if (
+      state?.deliveryAddress?.street_and_number &&
+      state?.deliveryAddress?.city &&
+      state?.deliveryAddress?.zip_code &&
+      state?.deliveryAddress?.country
+    ) {
+      if (terms) {
+        try {
+          setLoading(true);
+          const response = await axiosWithCredentials.post(
+            `/confirm-order/`,
+            payload
+          );
+          console.log(response, "kkkkk");
+          if (response?.data?.checkout_url) {
+            window.location.href = response?.data?.checkout_url;
+          }
+          setLoading(false);
+        } catch (error) {
+          setLoading(false);
 
-      throw error;
+          toast.error("Something went wrong");
+
+          throw error;
+        }
+      }
+      if (!terms) {
+        toast.warn("Please accept terms and conditions first");
+      }
+    } else {
+      if (!terms) {
+        toast.warn("Please accept terms and conditions first");
+      } else {
+        toast.warn("Please provide complete delivery address");
+      }
     }
   };
 
@@ -237,41 +305,127 @@ const CheckoutDetail = ({ cartData, fetchCart, taxData, delivery }) => {
               Delivery Address
             </div>
 
-            <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-12 xl:col-span-6 mt-8">
-                <div className="mb-4">
-                  <InputField label="First Name" />
-                </div>
-                <div className="mb-4">
-                  <InputField label="Company Name (Optional)" />
-                </div>
-                <div className="mb-4">
-                  <InputField label="Street & Number" />
-                </div>
-                <div className="">
-                  <InputField label="City" />
-                </div>
-              </div>
+            <Formik
+              initialValues={{
+                firstName: state?.userData?.first_name ?? "",
+                lastName: state?.userData?.last_name ?? "",
+                companyName: state?.userData?.company_name ?? "",
+                streetAndNumber:
+                  state?.deliveryAddress?.street_and_number ?? "",
+                city: state?.deliveryAddress?.city ?? "",
+                zipCode: state?.deliveryAddress?.zip_code ?? "",
+                country: state?.deliveryAddress?.country ?? "",
+              }}
+              enableReinitialize={true}
+              validationSchema={validationSchema}
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                const payload = {
+                  first_name: values.firstName,
+                  last_name: values.lastName,
+                  companyt_name: values.companyName,
+                  street_and_number: values.streetAndNumber,
+                  zip_code: values.zipCode,
+                  city: values.city,
+                  country: values.country,
+                };
 
-              <div className="col-span-12 xl:col-span-6 xl:mt-8">
-                <div className="mb-4">
-                  <InputField label="Last Name" />
-                </div>
-                <div className="w-full md:h-20 md:w-0 col-span-6 mb-2 lg:hidden md:hidden sm:hidden xs:hidden"></div>
-                <div className="mb-4 invisible lg:hidden md:hidden sm:hidden xs:hidden">
-                  <InputField label="Zip Code" />
-                </div>
-                <div className="mb-4">
-                  <InputField label="Zip Code" />
-                </div>
-                <div className="mb-4">
-                  <InputField label="Country" />
-                </div>
-                <div className="mt-4 float-end w-[39%]">
-                  <Button btnText="Save" widthfull />
-                </div>
-              </div>
-            </div>
+                try {
+                  const response = await axiosWithCredentials.patch(
+                    `/accounts/update-personal-details/${state.userData?.id}/`,
+                    payload
+                  );
+                  setSubmitting(false);
+                  resetForm(false);
+                  toast.success("Successfully updated");
+                } catch (error) {
+                  console.log(error, "klklkl");
+                  toast.error("Something went wrong");
+                  setSubmitting(false);
+                }
+              }}
+            >
+              {({ errors, touched, isSubmitting }) => (
+                <Form className="grid grid-cols-12 gap-6">
+                  <div className="col-span-12 xl:col-span-6 mt-8">
+                    <div className="mb-4">
+                      <Field
+                        component={FormikField}
+                        name="firstName"
+                        label="First Name"
+                        placeholder="First Name"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <Field
+                        component={FormikField}
+                        name="companyName"
+                        label="Company Name (Optional)"
+                        placeholder="Company Name (Optional)"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <Field
+                        component={FormikField}
+                        name="streetAndNumber"
+                        label="Street & Number"
+                        placeholder="Street & Number"
+                      />
+                    </div>
+                    <div>
+                      <Field
+                        component={FormikField}
+                        name="city"
+                        label="City"
+                        placeholder="City"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-span-12 xl:col-span-6 xl:mt-8">
+                    <div className="mb-4">
+                      <Field
+                        component={FormikField}
+                        name="lastName"
+                        label="Last Name"
+                        placeholder="Last Name"
+                      />
+                    </div>
+                    <div className="w-full md:h-20 md:w-0 col-span-6 mb-2 lg:hidden md:hidden sm:hidden xs:hidden"></div>
+                    <div className="mb-4 invisible lg:hidden md:hidden sm:hidden xs:hidden">
+                      <Field
+                        component={FormikField}
+                        name="zipCode"
+                        label="Zip Code"
+                        placeholder="Zip Code"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <Field
+                        component={FormikField}
+                        name="zipCode"
+                        label="Zip Code"
+                        placeholder="Zip Code"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <Field
+                        component={FormikField}
+                        name="country"
+                        label="Country"
+                        placeholder="Country"
+                      />
+                    </div>
+                    <div className="mt-4 float-end w-[39%]">
+                      <Button
+                        btnText={isSubmitting ? "Saving.." : "Save"}
+                        disabled={isSubmitting}
+                        type="submit"
+                      />
+                    </div>
+                  </div>
+                </Form>
+              )}
+            </Formik>
 
             {/* <div className="mt-8 pb-[100px] my-4">
               <h2 className="text-2xl font-bold my-2 border-b border-[#D9D9D9] pb-3">

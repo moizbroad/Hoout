@@ -105,7 +105,6 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
     return acc + item.product_price;
   }, 0);
 
-  console.log(totalPrice, "totalPrice");
   const total = totalPrice + delivery + taxData;
   return (
     <>
@@ -279,7 +278,7 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
             <div className="min-w-[140px]">$38.00</div>
           </section> */}
 
-          <section className="pt-[30px]">
+          {/* <section className="pt-[30px]">
             <div>
               <h6
                 className="xl:text-16 lg:text-14 text-[13px]
@@ -302,7 +301,7 @@ const ShoppingCart = ({ cartData, fetchCart, taxData, delivery }) => {
                 Apply
               </div>
             </div>
-          </section>
+          </section> */}
         </section>
 
         {/* Right side of grid  */}

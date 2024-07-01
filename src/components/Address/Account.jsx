@@ -60,8 +60,6 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
         ...prev,
         userData: res?.data,
       }));
-
-      console.log(res, "fetchUser");
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -73,8 +71,6 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
         ...prev,
         deliveryAddress: res?.data,
       }));
-
-      console.log(res, "fetchUser");
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -95,6 +91,8 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
 
   useEffect(() => {
     fetchUser();
+    fetchDeliveryAddress();
+    fetchInvoiceAddress();
   }, []);
 
   return (

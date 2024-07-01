@@ -18,6 +18,7 @@ export const MyAccount = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedPic, setSelectedPic] = useState(null);
   const [userrName, setUserName] = useState("");
+
   const [selectedComponent, setSelectedComponent] = useState(
     state?.key === "wish" ? (
       <Wishlist />
@@ -32,7 +33,11 @@ export const MyAccount = () => {
 
   const data = [
     { id: 1, name: "Account", component: <Account userData={userData} /> },
-    { id: 2, name: "Address", component: <AddressCard /> },
+    {
+      id: 2,
+      name: "Address",
+      component: <AddressCard setSelectedComponent={setSelectedComponent} />,
+    },
     { id: 3, name: "Orders", component: <OrderHistory /> },
     { id: 4, name: "Wishlist", component: <Wishlist /> },
     { id: 5, name: "LogOut", component: null },

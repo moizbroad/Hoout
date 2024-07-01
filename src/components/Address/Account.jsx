@@ -6,6 +6,8 @@ import Button from "../Common/Button";
 import { axiosWithCredentials } from "../../providers";
 import { toast } from "react-toastify";
 import {
+  getDeliveryAddress,
+  getInvoiceAddress,
   getProfile,
   updateDeliveryAddress,
   updateInvoiceAddress,
@@ -21,6 +23,8 @@ import {
 const Account = ({ userData, setSelectedPic, setUserName }) => {
   const [state, setState] = useState({
     userData: null,
+    deliveryAddress: null,
+    invoiceAddress: null,
   });
 
   const initialValuesPassword = {
@@ -55,6 +59,32 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
       setState((prev) => ({
         ...prev,
         userData: res?.data,
+      }));
+
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+  const fetchDeliveryAddress = async () => {
+    try {
+      const res = await getDeliveryAddress();
+      setState((prev) => ({
+        ...prev,
+        deliveryAddress: res?.data,
+      }));
+
+      console.log(res, "fetchUser");
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+  const fetchInvoiceAddress = async () => {
+    try {
+      const res = await getInvoiceAddress();
+      setState((prev) => ({
+        ...prev,
+        invoiceAddress: res?.data,
       }));
 
       console.log(res, "fetchUser");
@@ -186,7 +216,7 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
 
             try {
               await updateDeliveryAddress(updatedVal, { setSubmitting });
-              fetchUser();
+              await fetchDeliveryAddress();
               resetForm();
             } catch (error) {
               console.error("Error updating user data:", error);
@@ -279,7 +309,7 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
 
             try {
               await updateInvoiceAddress(updatedVal, { setSubmitting });
-              fetchUser();
+              await fetchInvoiceAddress();
               resetForm();
             } catch (error) {
               console.error("Error updating user data:", error);

@@ -7,10 +7,16 @@ import { axiosWithCredentials } from "../../providers";
 import { toast } from "react-toastify";
 import {
   getProfile,
+  updateDeliveryAddress,
+  updateInvoiceAddress,
   updatePass,
   updateProfile,
 } from "../../redux/actions/profileActions";
-import { passwordValidationSchema } from "../../utils/validations";
+import {
+  passwordValidationSchema,
+  validationDelivery,
+  validationInvoice,
+} from "../../utils/validations";
 
 const Account = ({ userData, setSelectedPic, setUserName }) => {
   const [state, setState] = useState({
@@ -96,7 +102,7 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
         {({ isSubmitting }) => (
           <Form>
             <section className="md:pt-10">
-              <h2 className="text-[20px] lg:text-xl font-semibold">
+              <h2 className="text-[20px] my-4 lg:text-xl font-semibold">
                 Account Details
               </h2>
               <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
@@ -156,7 +162,194 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
           </Form>
         )}
       </Formik>
-      {/* Second Section  Delivery address  */}
+
+      <>
+        <h5 className="text-20 font-semibold mb-[30px] mt-8">
+          Delivery Address
+        </h5>
+        <Formik
+          initialValues={{
+            stNumber: state?.deliveryAddress?.street_and_number ?? "",
+            zCode: state?.deliveryAddress?.zip_code ?? "",
+            city: state?.deliveryAddress?.city ?? "",
+            country: state?.deliveryAddress?.country ?? "",
+          }}
+          enableReinitialize={true}
+          validationSchema={validationDelivery}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            const updatedVal = {
+              stNumber: values?.stNumber,
+              zCode: values?.zCode,
+              city: values?.city,
+              country: values?.country,
+            };
+
+            try {
+              await updateDeliveryAddress(updatedVal, { setSubmitting });
+              fetchUser();
+              resetForm();
+            } catch (error) {
+              console.error("Error updating user data:", error);
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <div className="formSec">
+                <div className="flex gap-[20px] mb-[24px]">
+                  <div className="w-1/2 md:mb-0">
+                    <Field
+                      component={FormikField}
+                      name="stNumber"
+                      label="Street and Number"
+                      placeholder="Street and Number"
+                      id="stNumber"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <Field
+                      component={FormikField}
+                      name="zCode"
+                      label="Zip Code"
+                      placeholder="12345"
+                      id="zCode"
+                      type="number"
+                    />
+                  </div>
+                </div>
+                <div className="flex gap-[20px] mb-[24px]">
+                  <div className="w-1/2 md:mb-0">
+                    <Field
+                      component={FormikField}
+                      name="city"
+                      label="City"
+                      id="city"
+                      type="text"
+                      placeholder="Add City"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <Field
+                      component={FormikField}
+                      name="country"
+                      width="w-[100%]"
+                      paddingY="12px"
+                      label="Country"
+                      firstOptionText="Country"
+                      placeholder="Add Country"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Button
+                    btnText="Save Changes"
+                    paddingX="20px"
+                    breakpoint="w-[207px]"
+                    type="submit"
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </>
+      {/* Invoice Address  */}
+      <>
+        <h5 className="text-20 font-semibold mb-[30px]  mt-8">
+          Invoice Address
+        </h5>
+        <Formik
+          initialValues={{
+            stNumber: state?.invoiceAddress?.street_and_number ?? "",
+            zCode: state?.invoiceAddress?.zip_code ?? "",
+            city: state?.invoiceAddress?.city ?? "",
+            country: state?.invoiceAddress?.country ?? "",
+          }}
+          enableReinitialize={true}
+          validationSchema={validationInvoice}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            const updatedVal = {
+              stNumber: values?.stNumber,
+              zCode: values?.zCode,
+              city: values?.city,
+              country: values?.country,
+            };
+
+            try {
+              await updateInvoiceAddress(updatedVal, { setSubmitting });
+              fetchUser();
+              resetForm();
+            } catch (error) {
+              console.error("Error updating user data:", error);
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <div className="formSec">
+                <div className="flex gap-[20px] mb-[24px]">
+                  <div className="w-1/2 md:mb-0">
+                    <Field
+                      component={FormikField}
+                      name="stNumber"
+                      label="Street and Number"
+                      placeholder="Street and Number"
+                      id="stNumber"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <Field
+                      component={FormikField}
+                      name="zCode"
+                      label="Zip Code"
+                      placeholder="12345"
+                      id="zCode"
+                      type="number"
+                    />
+                  </div>
+                </div>
+                <div className="flex gap-[20px] mb-[24px]">
+                  <div className="w-1/2 md:mb-0">
+                    <Field
+                      component={FormikField}
+                      name="city"
+                      width="w-[100%]"
+                      paddingY="12px"
+                      firstOptionText="City"
+                      label="City"
+                      placeholder="Add city"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <Field
+                      component={FormikField}
+                      name="country"
+                      width="w-[100%]"
+                      paddingY="12px"
+                      firstOptionText="Country"
+                      placeholder="Add country"
+                      label="Country"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Button
+                    btnText="Save Changes"
+                    paddingX="20px"
+                    breakpoint="w-[207px]"
+                    type="submit"
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </>
+
       <Formik
         initialValues={initialValuesPassword}
         validationSchema={passwordValidationSchema}
@@ -174,7 +367,9 @@ const Account = ({ userData, setSelectedPic, setUserName }) => {
         {({ isSubmitting }) => (
           <Form>
             <section className="pt-8 pb-8">
-              <h2 className="text-[20px] lg:text-xl font-semibold">Password</h2>
+              <h2 className="text-[20px] lg:text-xl font-semibold my-2">
+                Password
+              </h2>
               <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4 pt-5">
                 <div className="w-full md:w-1/2">
                   <Field

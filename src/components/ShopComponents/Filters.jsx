@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import PaymentCard from "../Common/PaymentCard";
 
-const Filters = ({filters, filterCheck}) => {
+const Filters = ({ filters, filterCheck }) => {
+  console.log(filters, "kkjkj");
   const [state, setState] = useState({
-    filters: filters
-  })
+    filters: filters,
+  });
 
   const handleChange = (clickedItem) => {
     setState((prev) => ({
@@ -16,10 +17,9 @@ const Filters = ({filters, filterCheck}) => {
           return updatedItem;
         }
         return item;
-      })
+      }),
     }));
   };
-  
 
   return (
     <div className="max-w-[300px] md:max-w-[100%]  sm:max-w-[100%]    xs:max-w-[100%]   xl:min-h-[1050px] shadow-xl md:overflow-auto sm:overflow-auto  xs:overflow-auto   ">

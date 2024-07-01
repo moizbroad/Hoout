@@ -15,12 +15,24 @@ import { scrollToTop } from "../utils/helper";
 import { useNavigate } from "react-router-dom";
 
 export const ShopPage = () => {
-  const navigate = useNavigate()
+  const [filters, setFilters] = useState([
+    { id: 1, filter: "Oak", checked: false },
+    { id: 2, filter: "Thermo Hout", checked: false },
+    { id: 3, filter: "Fire", checked: false },
+    { id: 3, filter: "HardWood", checked: false },
+    { id: 3, filter: "Beacon", checked: false },
+    { id: 3, filter: "Mahogany", checked: false },
+    { id: 3, filter: "Brazilian Nuts", checked: false },
+    { id: 3, filter: "Iron Store", checked: false },
+    { id: 3, filter: "Parasols", checked: false },
+  ]);
+  const navigate = useNavigate();
   const [state, setState] = useState({
     openfilter: true,
     filterTypes: [],
     selectedFilter: "",
   });
+
   const toggle = () => {
     setState((prev) => ({
       ...prev,
@@ -50,7 +62,10 @@ export const ShopPage = () => {
             <div className="text-white text-48 font-medium">Shop</div>
             <div className="text-white flex items-center justify-center gap-x-3 pt-5 ">
               <div className="flex items-center gap-x-3 font-medium">
-                <p className="cursor-pointer" onClick={() => navigate('/')}>Home</p> <img src={rightArrow} />
+                <p className="cursor-pointer" onClick={() => navigate("/")}>
+                  Home
+                </p>{" "}
+                <img src={rightArrow} />
               </div>
               <div className="font-light">Shop</div>
             </div>
@@ -104,12 +119,9 @@ export const ShopPage = () => {
       </section>
 
       <section className="flex pb-[200px]  md:flex-col sm:flex-col  xs:flex-col ">
-        {state.openfilter && (
+        {filters && (
           <div className=" xl:w-[22%] md:w-full ">
-            <Filters
-              filters={state.filterTypes}
-              filterCheck={handleFilterCheck}
-            />
+            <Filters filters={filters} filterCheck={handleFilterCheck} />
           </div>
         )}
 
@@ -121,12 +133,11 @@ export const ShopPage = () => {
             notRequired
             passTypes={getTypes}
             selectedFilter={state.selectedFilter}
-          />{" "}
+          />
         </div>
       </section>
 
       <section>
-        {" "}
         <QualitySection />
       </section>
     </>

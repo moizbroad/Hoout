@@ -4,6 +4,7 @@ import cup from "../../assets/shopPage/cup.svg";
 import guarantee from "../../assets/shopPage/guarantee.svg";
 import shipping from "../../assets/shopPage/shipping.svg";
 import supports from "../../assets/shopPage/supports.svg";
+
 const QualitySection = () => {
   const data = [
     { image: cup, head: "High Quality", subHead: "crafted from top materials" },

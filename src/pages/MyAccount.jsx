@@ -8,6 +8,7 @@ import Wishlist from "../components/Address/Wishlist";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAccessToken } from "../providers";
 import { uploadProfilePic } from "../redux/actions/profileActions";
+import { toast } from "react-toastify";
 
 export const MyAccount = () => {
   const location = useLocation();

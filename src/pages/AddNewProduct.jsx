@@ -17,7 +17,6 @@ export const AddNewProduct = () => {
   const location = useLocation();
   const selectedProduct = location?.state?.item;
 
-  console.log(selectedProduct, "selectedProduct");
   return (
     <div>
       <div>
